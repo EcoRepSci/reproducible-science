@@ -1,0 +1,75 @@
+# Automatically Generated Websites with GitHub Pages {#github-pages}
+
+* Step 1. Open RStudio, click New Project, create Bookdown project in new directory
+(subdirectory of personal repository?).
+This will automatically create all the pieces (i.e., files and directory structure)
+needed to create a digital book with bookdown.
+* Step 2. Make the changes you want to the files.
+* Step 3. Knit the book. Check that everything looks like you meant it to look.
+* Repeat steps 2 and 3 until you're satisfied.
+* Step 4. Open terminal in your repository folder.
+* Step 5. Add files and commit to main branch.
+
+```{bash, eval = FALSE}
+git add --all
+git commit -m "Commit bookdown"
+```
+
+* Step 6. Create gh-pages branch and switch to it.
+
+```{bash, eval = FALSE}
+git checkout --orphan gh-pages
+git reset --hard
+```
+
+* Step 7. Make an empty first commit.
+
+```{bash, eval = FALSE}
+git commit --allow-empty -m "Init GitHub Pages."
+```
+
+* Step 8. Check back to main branch. 
+
+```{bash, eval = FALSE}
+git checkout main
+```
+
+* Step 9. Remove _book folder. 
+
+```{bash, eval = FALSE}
+rm -rf _book
+```
+
+* Step 10. Add _book as a worktree of branch gh-pages. 
+
+```{bash, eval = FALSE}
+git worktree add _book gh-pages
+```
+
+* Step 11. From within RStudio, knit the book again.
+* Step 12. Open terminal in main folder and commit files.
+
+```{bash, eval = FALSE}
+git add --all
+git commit -m "Knitted book after creating gh-pages"
+```
+
+* Step 13. Switch to _book folder and commit files.
+
+```{bash, eval = FALSE}
+cd _book
+git add --all
+git commit -m "First commit to GitHub Pages"
+```
+
+* Step 14. Push each branch separately to GitHub. 
+
+ ```{bash, eval = FALSE}
+cd ..
+git push
+cd _book
+git push
+```
+
+Now all you need to do any time you want the website to update is to commit to
+main and gh-pages branch + push both to GitHub separately (steps 12 through 14.)

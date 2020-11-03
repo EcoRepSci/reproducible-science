@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Project Organization | Computational Tools for Reproducible Science</title>
+  <meta name="description" content="WILD 6900: Computational Tools for Reproducible Science" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Project Organization | Computational Tools for Reproducible Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="WILD 6900: Computational Tools for Reproducible Science" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Project Organization | Computational Tools for Reproducible Science" />
+  
+  <meta name="twitter:description" content="WILD 6900: Computational Tools for Reproducible Science" />
+  
+
+<meta name="author" content="Simona Picardi" />
+
+
+<meta name="date" content="2020-11-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="version-control-git.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#git"><i class="fa fa-check"></i><b>0.1.1</b> Git</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#spreadsheet-editor"><i class="fa fa-check"></i><b>0.1.2</b> Spreadsheet Editor</a></li>
+<li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#sqlite"><i class="fa fa-check"></i><b>0.1.3</b> SQLite</a></li>
+<li class="chapter" data-level="0.1.4" data-path="index.html"><a href="index.html#r"><i class="fa fa-check"></i><b>0.1.4</b> R</a></li>
+<li class="chapter" data-level="0.1.5" data-path="index.html"><a href="index.html#rstudio"><i class="fa fa-check"></i><b>0.1.5</b> RStudio</a></li>
+<li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#required-r-packages"><i class="fa fa-check"></i><b>0.1.6</b> Required R Packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a><ul>
+<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="project-organization.html"><a href="project-organization.html#overlap"><i class="fa fa-check"></i><b>1.1.1</b> Overlap</a></li>
+<li class="chapter" data-level="1.1.2" data-path="project-organization.html"><a href="project-organization.html#minimizing-duplication"><i class="fa fa-check"></i><b>1.1.2</b> Minimizing duplication</a></li>
+<li class="chapter" data-level="1.1.3" data-path="project-organization.html"><a href="project-organization.html#self-containedness"><i class="fa fa-check"></i><b>1.1.3</b> Self-containedness</a></li>
+<li class="chapter" data-level="1.1.4" data-path="project-organization.html"><a href="project-organization.html#tradeoffs"><i class="fa fa-check"></i><b>1.1.4</b> Tradeoffs</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="project-organization.html"><a href="project-organization.html#golden-rules"><i class="fa fa-check"></i><b>1.2</b> Golden rules</a></li>
+<li class="chapter" data-level="1.3" data-path="project-organization.html"><a href="project-organization.html#be-flexible"><i class="fa fa-check"></i><b>1.3</b> Be flexible</a></li>
+<li class="chapter" data-level="1.4" data-path="project-organization.html"><a href="project-organization.html#documentation"><i class="fa fa-check"></i><b>1.4</b> Documentation</a></li>
+<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="project-organization.html"><a href="project-organization.html#machine-readable-file-names"><i class="fa fa-check"></i><b>1.5.1</b> Machine-readable file names</a></li>
+<li class="chapter" data-level="1.5.2" data-path="project-organization.html"><a href="project-organization.html#human-readable-file-names"><i class="fa fa-check"></i><b>1.5.2</b> Human-readable file names</a></li>
+<li class="chapter" data-level="1.5.3" data-path="project-organization.html"><a href="project-organization.html#file-names-that-work-well-with-default-ordering"><i class="fa fa-check"></i><b>1.5.3</b> File names that work well with default ordering</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="project-organization.html"><a href="project-organization.html#rstudio-projects"><i class="fa fa-check"></i><b>1.6</b> RStudio Projects</a></li>
+<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="project-organization.html"><a href="project-organization.html#path-separators"><i class="fa fa-check"></i><b>1.7.1</b> Path separators</a></li>
+<li class="chapter" data-level="1.7.2" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>1.7.2</b> References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a></li>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a></li>
+<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a></li>
+<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a></li>
+<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a></li>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Linking Databases and R with RSQLite</a></li>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a></li>
+<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a></li>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a></li>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a></li>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Working Environments in R</a></li>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a></li>
+<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a></li>
+<li class="chapter" data-level="15" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>15</b> Introduction to Geospatial Data in R</a></li>
+<li class="chapter" data-level="16" data-path="problem-decomposition.html"><a href="problem-decomposition.html"><i class="fa fa-check"></i><b>16</b> Problem Decomposition</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Tools for Reproducible Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="project-organization" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Project Organization</h1>
+<div id="directory-structure" class="section level2">
+<h2><span class="header-section-number">1.1</span> Directory structure</h2>
+<p>When starting a new project, it is worthwhile to spend some time thinking about how to best organize its content. This means asking questions such as:</p>
+<ul>
+<li>What are my project inputs?</li>
+<li>What types of outputs do I expect to come out of this project?</li>
+<li>How does this project relate to other projects I am working on?</li>
+</ul>
+<p>Answering these questions can help us decide on a directory structure to house our project files. For example, say that we are working on a research project that entails data cleaning, analysis, and writing of a manuscript. One way to go about it is to have a root project directory that contains subfolders for data, analysis code, results, and the manuscript file/s. We can call this a “project-based directory layout.” Alternatively, if we have multiple projects underway, we can split our files by activity rather than by projects and have a “data” folder, an “analyses” folder, a “manuscripts” folder, etc., all with a subfolder for each project. We can call this an “activity-based directory layout.”</p>
+<p><img src="img/project-based-directory-organization.jpg" alt="Project-based directory organization" />
+<img src="img/activity-based-directory-organization.jpg" alt="Activity-based directory organization" /></p>
+<p>How you define a project is largely up to you. It could be all the work you do on a given dataset, or all the work you do for a thesis or dissertation, or each manuscript could be its own project even if it uses the same dataset as a different project.</p>
+<p>With so many options, how do we choose? Ultimately, the way you structure your project directories will have a big impact on the efficiency and reproducibility of your work, so there are some criteria to keep in mind.</p>
+<div id="overlap" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Overlap</h3>
+<p>The first thing to consider is the overlap in data and code files between a project and other past/current projects. If two projects don’t share any data, it’s probably best to manage them separately. If two projects share a large amount of data, it might make more sense to manage them together as one. If you are writing functions to use across several different projects, they should probably be in their own project.</p>
+</div>
+<div id="minimizing-duplication" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Minimizing duplication</h3>
+<p>The reason why it’s important to account for overlap is because you want to minimize duplication as much as you can. Duplication of both data and code files is dangerous because it’s easy to lose track of modifications you have made to a file saved in one place but not in the other place. As you keep making changes, the two files will have the same name but different content, which generates confusion. Duplication is also inefficient because it occupies precious space on your computer.</p>
+</div>
+<div id="self-containedness" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Self-containedness</h3>
+<p>A fundamental quality of reproducible projects is that they are self-contained, meaning that ideally you could zip up the entire project directory and send it to a friend and they should be able to run your code and reproduce your results without changing anything. This means everything the project needs to work, from A to Z – data, functions, code – is contained in its root directory.</p>
+</div>
+<div id="tradeoffs" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Tradeoffs</h3>
+<p>The self-containedness criterion is sometimes in contradiction with minimizing duplication: if two projects share one or more data files, you can either violate the duplication criterion by making sure each project contains all the necessary data for the sake of self-containedness; or you can choose to sacrifice self-containedness to avoid file duplication and save space on your computer. The answer will depend on whether you anticipate the project to be widely shared or mostly for your personal use, how large the shared data files are, etc.</p>
+<p>The bottom line is that there is no one-size-fits-all solution for project organization. Most importantly, the structure you choose needs to be functional for your needs. Putting thought into it is a great place to start.</p>
+</div>
+</div>
+<div id="golden-rules" class="section level2">
+<h2><span class="header-section-number">1.2</span> Golden rules</h2>
+<p>Whichever directory structure you choose for a project, there are some universal rules to keep in mind for how to organize files within it.</p>
+<ol style="list-style-type: decimal">
+<li><p>First and foremost, <strong>raw data should never be changed</strong>. Save it into a “data” folder and treat it as immutable. You can even set it as read-only to make sure there is no room for accidents.</p></li>
+<li><p>The processed, clean version of your data will go into a dedicated “processed_data” folder.</p></li>
+<li><p>Anything that can be generated from code goes into its own folder. This includes basically everything but the raw data and the code itself. You can have an “output” folder, or separate folders for output files and figures (e.g., “output” and “figures”.)</p></li>
+<li><p>If there are text documents, put them in their own folder (e.g., “docs”)</p></li>
+<li><p>Code also has its own folder. If you write a lot of functions, it can be helpful to have a “funs” folder to store those and a “src” (for ‘source’) folder to save processing/analysis code.</p></li>
+<li><p>If processing/analysis scripts are meant to be used in a certain order, you can number them (more on this in a minute.) Sometimes the pipeline is not linear but branched, so numbering may not always make sense. Function scripts should not be numbered.</p></li>
+<li><p>Modularize your code: instead of having a giant script to run your entire analysis from data cleaning to final figures, break up your workflow into several short, single-purpose scripts with well-defined inputs and outputs.</p></li>
+</ol>
+</div>
+<div id="be-flexible" class="section level2">
+<h2><span class="header-section-number">1.3</span> Be flexible</h2>
+<p>It can be challenging to anticipate the structure of a project that is just about to start (especially the first time you start thinking through optimal directory structures.) It helps to be flexible and allow some room for adjustments. For example, you can start with a basic directory structure where you have a “data” folder, a “code” folder, and an “output” folder, and then you may decide to split the “code” folder into “src” and “funs”, or to further split the “output” folder into “output” and “figures”, etc. Sometimes these changes can break your code and become frustrating, but these problems are easy to fix.</p>
+<p>Similarly, it can be challenging to have the long-term vision to know where it’s best to break a script and start a new one. It’s easy to tunnel vision into an analysis and keep adding lines and lines of code without thinking about break points that make sense. One good way to deal with this is to reserve some time at the end of your coding session to look at your script and notice if there are any intermediate products that you can save and use as input of the next step of the workflow. Then you can make the necessary adjustments in terms of code compartmentalization, paths to input and output files, etc.</p>
+<p>In the words of Wilson et al. (2017, see references below), “consistency and predictability are more important than hairsplitting” when organizing the directory structure for your projects. Besides a few universal rules, designing the optimal structure often requires consideration of project specifics. Ultimately, the goal is to improve efficiency – by allowing you to find your files easily, only run the minimal amount of code you need for a task, making it easy for collaborators and future you to wrap your head around the project content – and reproducibility.</p>
+</div>
+<div id="documentation" class="section level2">
+<h2><span class="header-section-number">1.4</span> Documentation</h2>
+<p>One very important aspect of reproducibility is good documentation. Each of your projects should always be accompanied by a README file. The README should contain all the information an outsider would need to understand what the project is all about, what are the inputs and outputs, where to find files within the project directory, etc. The README is simply a text file, there’s nothing special to it – you can just create it in your Notepad or other text editor.</p>
+<p>Writing down everything about a project in a README can be tedious, but it pays off ten-fold. It’s good to get in the habit of starting a project by creating a README file right after the directory structure is created. Record who the author/s is/are, the date the project was started, and a description of what the project is for. Then, any time a new file is added, specify what it is and where you got it from. For example, “File X.csv was sent by Mary White in an email on 2/1/2019 to my.address @ gmail.com”, etc. Be meticulous: what seems obvious today can become a puzzle to solve in a few months.</p>
+</div>
+<div id="naming-files" class="section level2">
+<h2><span class="header-section-number">1.5</span> Naming files</h2>
+<p>There is a science to choosing good file names, too. Here is a list of file names that are <strong>not</strong> good, for a variety of different reasons:</p>
+<blockquote>
+<p>data.csv
+data_cleaned_03-22-2012.csv
+analysis code.R
+Green Frogs Manuscript_Final_edits.docx
+final.docx</p>
+</blockquote>
+<p>Why are those names bad, and what makes a good file name? Good file names are machine-readable, human-readable, and work well with default ordering. Let’s break these three criteria down one by one.</p>
+<div id="machine-readable-file-names" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Machine-readable file names</h3>
+<p>What makes a file name machine readable? First, machine readable files contain no spaces, no punctuation, and no special characters. They are case-consistent, which means that you always stick to the same case pattern, whether that be full lowercase, camel case (ThisIsWhatIMeanByCamelCase), or whatever else. Finally, good file names make deliberate use of text delimiters. Wise use of delimiters makes it easy to look for patterns when you are searching for a specific file. Usually, it’s recommended that you use an underscore (_) to delimit metadata units and a dash (-) to delimit words within a metadata unit. For example, here is a good, machine-readable file name:</p>
+<blockquote>
+<p>2018-04-26_reproducible-science_slides_lesson-01.pptx</p>
+</blockquote>
+</div>
+<div id="human-readable-file-names" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Human-readable file names</h3>
+<p>The example file name above is not only machine-readable, it’s also human-readable. This means that a human can read the file name and have a pretty good idea of what’s in that file. Good file names are informative! You shouldn’t be afraid to use long names if that’s what it takes to make them descriptive.</p>
+</div>
+<div id="file-names-that-work-well-with-default-ordering" class="section level3">
+<h3><span class="header-section-number">1.5.3</span> File names that work well with default ordering</h3>
+<p>If you sort your files by name in a folder, you want them to be ordered in a way that makes sense. Whether you sort your files by date or by a sequential number, the number always goes first. For dates, use the YMD format, or your files created in April of 1984 and 2020 will be closer than the ones created in March and April 2020. If you are using sequential numbering, add a sensible amount of zeros in front based on how many files of that category you expect to have in the future. If you expect to have more than 10 but not more than 99 files, you can add a single leading zero (e.g., “data_analysis_01.R” instead of “data_analysis_1.R”), whereas if you expect to have between 100 and 999 you can add two (e.g., “Photo_001.jpeg” instead of “Photo_1.jpeg” or “Photo_01.jpeg”.)</p>
+</div>
+</div>
+<div id="rstudio-projects" class="section level2">
+<h2><span class="header-section-number">1.6</span> RStudio Projects</h2>
+<p>RStudio Projects are a great tool to help you stay organized. The concept behind RStudio Projects is that each Project is a self-contained unit where inputs, outputs, and code are all in one place. Sounds familiar? RStudio Projects work seamlessly with the directory organization framework we have been talking about. It’s a good idea to make sure each of the projects (with a lowercase p) you work on has its own associated RStudio Project (with a capital P).</p>
+<div class="figure">
+<img src="img/rstudio-project.jpg" alt="" />
+<p class="caption">How to create a new RStudio Project</p>
+</div>
+<p>You may be familiar with the concept of a working directory in R. The working directory is the place where, unless otherwise specified, all of your outputs are saved. All relative paths are also interpreted relative to the working directory (more on relative paths in a minute.)</p>
+<p>The cool thing about an RStudio Project is that it automatically makes sure that your project directory is set as the working directory. All the clunkiness of having to set, change, or double check which directory you’re working in is forgotten: all you do is open up your Project and then the paths you use to load or save data are already, by default, relative to your project directory.</p>
+</div>
+<div id="relative-and-absolute-paths" class="section level2">
+<h2><span class="header-section-number">1.7</span> Relative and absolute paths</h2>
+<p>Paths define the location of files within the file system. There are two ways to point to a file from within a command prompt such as R. The first is to use what is called an absolute path: this describes the full sequence of folders a file is contained in, starting from the root directory of a computer. When you right click on any file on your computer, you can look up its absolute path in the Properties. This is an example of an absolute path:</p>
+<blockquote>
+<p>C:/Users/MJS/Documents/PhD/Planning/schedule_2021.csv</p>
+</blockquote>
+<p>Relative paths describe the position of a file with respect to a reference directory. In R, that reference directory is your working directory. When you type a relative path to open a file in R, R appends that path to the path of the working directory to get the full absolute path, which it then uses to open the file. For example, if our working directory was “Documents”, this would be the relative path to reach the same file as above:</p>
+<blockquote>
+<p>PhD/Planning/schedule_2021.csv</p>
+</blockquote>
+<p>If our working directory was “Planning”, this would be the relative path to the same file:</p>
+<blockquote>
+<p>schedule_2021.csv</p>
+</blockquote>
+<p>To work across subfolders of our working directory, we can just use relative paths to navigate and locate files. But relative paths also work to navigate across folders that are outside of the working directory, if need be. Using “../” in front of a folder name navigates to the parent of that folder (“parent” means the folder where that is contained.) Let’s consider the following directory structure:</p>
+<div class="figure">
+<img src="img/directory-tree.png" alt="" />
+<p class="caption">Example directory</p>
+</div>
+<p>We can navigate to a file into “PhD/Research” from “Planning” like so:</p>
+<blockquote>
+<p>../Research/GreenFrogs/data-cleaning.RProj</p>
+</blockquote>
+<p>The “../” means “the parent directory of the working directory”, which is “PhD”. We can also stack these to navigate further up the directory tree:</p>
+<blockquote>
+<p>../../../../DAJ</p>
+</blockquote>
+<p>The path above navigates all the way up to “Users” and into a different user’s directory.</p>
+<div id="path-separators" class="section level3">
+<h3><span class="header-section-number">1.7.1</span> Path separators</h3>
+<p>Something to be mindful of is that the separator between folder names in a path is different on different operating systems. On Windows, it is a backslash (“"), while on Mac/Linux, it is a slash (”/“). However, R uses the Mac/Linux convention, so always use”/" when typing paths in R.</p>
+</div>
+<div id="references" class="section level3">
+<h3><span class="header-section-number">1.7.2</span> References</h3>
+<ul>
+<li>Wilson G, Bryan J, Cranston K, Kitzes J, Nederbragt L, Teal TK (2017) Good enough practices in scientific computing. PLoS Comput Biol 13(6): e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510" class="uri">https://doi.org/10.1371/journal.pcbi.1005510</a></li>
+<li><a href="https://speakerdeck.com/jennybc/how-to-name-files" class="uri">https://speakerdeck.com/jennybc/how-to-name-files</a></li>
+<li><a href="https://r4ds.had.co.nz/workflow-projects.html" class="uri">https://r4ds.had.co.nz/workflow-projects.html</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="version-control-git.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["reproducible-science.pdf", "reproducible-science.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

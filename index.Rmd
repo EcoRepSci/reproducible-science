@@ -1,0 +1,195 @@
+--- 
+title: "Computational Tools for Reproducible Science"
+author: "Simona Picardi"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+description: "WILD 6900: Computational Tools for Reproducible Science"
+---
+
+# Overview {-}
+
+This digital book contains the material for the Graduate Special Topics
+course WILD 6900: Tools for Reproducible Science. The aim of the course is to 
+provide students with practical skills to manage and process their data 
+throughout their life cycle, from the moment they are entered into a computer 
+to the moment they are used in a publication, document, presentation, etc. The
+content is organized in the following Chapters:
+
+* Chapter \@ref(project-organization), Project Organization
+* Chapter \@ref(version-control-git), Version Control with Git
+* Chapter \@ref(github), Collaborative Science with GitHub
+* Chapter \@ref(spreadsheets), Best Practices in the Use of Spreadsheets 
+* Chapter \@ref(relational-databases), Relational Databases
+* Chapter \@ref(sql), Basics of SQL Language 
+* Chapter \@ref(rsqlite), Linking Databases and R with RSQLite 
+* Chapter \@ref(rmarkdown), Dynamic Documents with RMarkdown
+* Chapter \@ref(github-pages), Automatically Generated Websites with GitHub Pages
+* Chapter \@ref(intro-to-r), Introduction to R
+* Chapter \@ref(troubleshooting), Troubleshooting in R
+* Chapter \@ref(renv), Working Environments in R
+* Chapter \@ref(tidyverse), Data Wrangling with tidyverse
+* Chapter \@ref(ggplot2), Data Visualization with ggplot2
+* Chapter \@ref(geospatial), Introduction to Geospatial Data in R
+* Chapter \@ref(problem-decomposition), Problem Decomposition
+
+## Software Requirements and Installation Instructions
+
+Required software is listed below along with installation instructions for
+different operating systems. 
+
+### Git
+
+Git is a distributed version control system. It is free and open source. To
+install Git, follow instructions for your operating system below:
+
+#### Windows
+
+Download from the Git website: go to https://git-scm.com/download/win and the 
+download will start automatically.
+
+#### Mac OS
+
+On Mavericks (10.9) or above, when you try to run a Git command from the 
+Terminal for the first time, the installation will start automatically if you 
+don't already have Git installed. Type the following in the terminal:
+
+```{bash, eval = FALSE}
+
+$ git --version
+
+```
+
+And follow the instructions on the installation wizard. :-)
+
+#### Linux
+
+In the command line:
+
+```{bash, eval = FALSE}
+
+$ sudo apt install git-all
+
+```
+
+### Spreadsheet Editor
+
+Most people will already have Excel installed on their computer. However, any
+spreadsheet editor will work for the purpose of this course. If you don't have 
+access to an Office License, LibreOffice or OpenOffice are free, perfectly viable alternatives to Excel. Download the installer for your operating system:
+
+* LibreOffice: https://www.libreoffice.org/download/download/ 
+* OpenOffice: https://www.openoffice.org/download/
+
+### SQLite
+
+SQLite is a lightweight relational database management system. To install it, 
+follow these steps:
+
+1. Go to https://www.sqlite.org/download.html and find your operating system in 
+the list. You are looking for a category called "Precompiled Binaries". For 
+example, if you are on Windows, look for "Precompiled Binaries for Windows". 
+From this list, chose the file whose name starts with "sqlite-tools". The 
+description will read something like, "A bundle of command-line tools for 
+managing SQLite database files, including the command-line shell program, the 
+sqldiff.exe program, and the sqlite3_analyzer.exe program"
+
+2. In your file explorer, create a new folder called "sqlite" (e.g., on Windows,
+C:\sqlite)
+
+3. Extract the .zip file you downloaded into this new folder.
+
+4. Download SQLiteStudio (this is a GUI, or Graphical User Interface, that we 
+are going to use to run our SQL commands) here: https://github.com/pawelsalawa/sqlitestudio/releases. Download the file whose
+name starts with "Install" and choose the .exe extension if you're working on 
+Windows, .dmg if you're on Mac OS, and the one without extension if you're on 
+Linux. 
+
+If these instructions weren't clear, you can find more details (with screenshots) 
+at this link: https://www.sqlitetutorial.net/download-install-sqlite/ 
+
+### R
+
+R is a free software environment for statistical computing and graphics. Note 
+that installing or updating R is a separate, independent process from installing
+or updating RStudio! If you already have R installed, make sure you have the 
+latest available version. Follow installation or update instructions for your 
+operating system below.
+
+#### Windows
+
+Download the latest version of R at https://cran.r-project.org/bin/windows/base/
+
+#### Mac OS
+
+Download the latest version of R at https://cran.r-project.org/bin/macosx/
+
+#### Linux
+
+These instructions are for Ubuntu 18.04. If you are running a different version 
+of Debian/Ubuntu, there are some small adjustments to make (see below). In the command 
+line, add the GPG Key:
+
+```{bash, eval = FALSE}
+
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+```
+
+Add the R repository (here is where you have to replace the appropriate release 
+name if you're working with a different version of Ubuntu; you can find the 
+complete list here: https://cloud.r-project.org/bin/linux/ubuntu/):
+
+
+```{bash, eval = FALSE}
+
+sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/'
+
+```
+
+Update package lists:
+
+```{bash, eval = FALSE}
+
+$ sudo apt update
+```
+
+Install R:
+
+```{bash, eval = FALSE}
+
+$ sudo apt install r-base
+
+```
+
+### RStudio 
+
+RStudio is a free Integrated Development Environment (IDE) for R. Note that 
+installing or updating RStudio is a separate, independent process from 
+installing or updating R! If you already have RStudio installed, make sure you 
+have the latest available version. Otherwise, go ahead and download it from 
+here: https://rstudio.com/products/rstudio/download/#download (choose the 
+appropriate version for your operating system.)
+
+### Required R Packages
+
+Throughout the course, we will be using the following R packages: RSQLite, 
+rmarkdown, bookdown, renv, tidyverse, lubridate, raster, and sf. All these 
+packages are on CRAN and can be installed (along with their dependencies) by 
+running the following code in R:
+
+```{r, eval=FALSE}
+
+install.packages(c("RSQLite",
+                   "rmarkdown",
+                   "bookdown",
+                   "renv",
+                   "tidyverse",
+                   "lubridate",
+                   "raster",
+                   "sf"), dependencies = TRUE)
+
+```

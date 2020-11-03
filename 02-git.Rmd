@@ -1,0 +1,3 @@
+# Version Control with Git {#version-control-git}
+
+Check Wilson et al. 2017 for some tips on gitignore
