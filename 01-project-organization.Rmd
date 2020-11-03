@@ -10,9 +10,12 @@ When starting a new project, it is worthwhile to spend some time thinking about 
 
 Answering these questions can help us decide on a directory structure to house our project files. For example, say that we are working on a research project that entails data cleaning, analysis, and writing of a manuscript. One way to go about it is to have a root project directory that contains subfolders for data, analysis code, results, and the manuscript file/s. We can call this a "project-based directory layout." Alternatively, if we have multiple projects underway, we can split our files by activity rather than by projects and have a "data" folder, an "analyses" folder, a "manuscripts" folder, etc., all with a subfolder for each project. We can call this an "activity-based directory layout."
 
-![Project-based directory organization](img/project-based-directory-organization.jpg)
-![Activity-based directory organization](img/activity-based-directory-organization.jpg)
+![Project-based directory organization.](img/project-based-directory-organization.jpg){width=50%}
+  
+  
+![Activity-based directory organization.](img/activity-based-directory-organization.jpg){width=50%}
 
+  
 How you define a project is largely up to you. It could be all the work you do on a given dataset, or all the work you do for a thesis or dissertation, or each manuscript could be its own project even if it uses the same dataset as a different project. 
 
 With so many options, how do we choose? Ultimately, the way you structure your project directories will have a big impact on the efficiency and reproducibility of your work, so there are some criteria to keep in mind. 
