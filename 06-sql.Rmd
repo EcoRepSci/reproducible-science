@@ -1,1 +1,489 @@
 # Basics of SQL Language {#sql}
+
+```{r setup-db, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+Basic queries, aggregations, aliases, 
+
+Joins
+
+## Building a database
+
+### Creating a new database in SQLite Studio 
+
+We are now going to see how to build a database by recreating the dragons
+database we have been practicing on. Let's open up SQLite Studio and, on the
+*Database* tab, click "Add a database" (or use Ctrl/Cmd + O as a shortcut). 
+Click on the green plus sign, navigate to the folder where you want to save the
+database, and choose a file name. Click "Save". Now we need to also choose a 
+name to use internally (this name will appear in the drop-down list of databases
+within SQLite, but it does not necessarily need to be the same as the filename.) 
+Click "OK" and you should see your new database in the list on the left. 
+
+### Creating tables
+
+Now let's open the SQL editor (*Tools* > *SQL editor*). Double check that you 
+are working on the correct database (the name of the active database is shown
+in the toolbar). We are ready to create our first table! 
+
+To create a table, we need to specify a name for the table, as well as a name 
+and a data type for each column. The basic format is as follows: 
+
+```{sql}
+
+CREATE TABLE table_name (
+column_1 data_type,
+column_2 data_type,
+column_3 data_type,
+...
+)
+
+```
+
+Let's start by creating the dragons table. Remember that each table needs to 
+have a primary key, i.e., a column that serves as the unique identifier of each
+row. The values in this column need to be unique and cannot be null. In this 
+table, we can use the dragon ID as the primary key:
+
+```{sql}
+
+CREATE TABLE dragons (
+dragon_id varchar(5),
+sex char(1),
+age_class varchar(8),
+species varchar(50),
+PRIMARY KEY (dragon_id)
+);
+
+```
+
+Notice that I specified a number of digits for each character variable. Because 
+the format of the dragon ID is "D" + number from 1 up to 500 (for now), setting
+the ID as a character string with varying size up to 5 digits allows for IDs 
+from "D1" to "D9999". So far, we only have 500 individuals, so strictly it would 
+have been enough to set the limit to 4 digits only, but it's good to have some 
+forethought and allow for growth into the future. At the same time, it seems 
+reasonable to assume we won't catch 10 thousand dragons in this project, so 5
+digits is a good compromise. In reality, space is rarely limiting to the 
+point where 4 or 10 digits makes a difference, so when in doubt err on the side 
+of more room for growth.
+
+While dragon ID, age class, and species have a variable number of digits, sex 
+always has one (it can be "M" or "F"). So we can make this a `char` instead of
+a `varchar` and specify it will have 1 digit. 
+
+### Adding constraints
+
+We can also add some constraints for the purpose of quality assurance. For 
+example, because the dragon ID is the primary key, we can't accept null values 
+in this column. Sex is always one of "M" or "F" and age is always one of 
+"Juvenile", "Subadult", or "Adult". In other SQL dialects you can add these 
+after the fact, but in SQLite the only way to add these constraints is at the 
+same time as you create the table. We can delete the table and re-create it by 
+modifying the above syntax as follows:
+
+```{sql}
+
+DROP TABLE dragons;
+
+CREATE TABLE dragons (
+dragon_id varchar(5) NOT NULL,
+sex char(1) CHECK (sex IN ('M', 'F')),
+age_class varchar(8) CHECK (age_class IN ('Juvenile', 'Subadult', 'Adult')),
+species varchar(50),
+PRIMARY KEY (dragon_id)
+);
+```
+
+
+### Order of table creation
+
+Foreign keys are also specified as constraints. Because it's not possible to 
+enforce constraints as an afterthought, we need to plan the order in which we 
+add tables carefully. If we try to add a foreign key that refers to a table that
+doesn't exist yet, we won't be able to. Let's take another look at the diagram 
+of our table relationships:
+
+img
+
+Any table that has one or more foreign keys needs to be added *after* the 
+related table/s. In our case, there are three "root" tables that do not have
+any foreign keys: the dragons table, the tags table, and the capture sites 
+table. We can add these three first and then all the others. 
+
+The tags table has a `tag_id` field which is unique and can therefore be used as 
+a primary key. Note that when you make a column the primary key you automatically
+enforce a unique constraint on that column. However, SQLite does not enforce a 
+not-null constraint on primary keys like most other SQL dialects. Because SQLite 
+doesn't, we have to do it ourselves:
+
+```{sql}
+
+CREATE TABLE tags (
+tag_id char(6) NOT NULL PRIMARY KEY,
+brand varchar(50),
+status varchar(20)
+);
+```
+
+The capture sites table has a `site` field which contains a 3-letter code that
+uniquely identifies the site. We can use that as a primary key. The UTM 
+coordinates are numeric values for which we can use the data type called "double
+precision", or just "double". There are several possible choices for numeric 
+data types. "Double precision" and "float" are both suitable data types for 
+storing real numbers, but double precision stores numeric values 
+with higher precision than float. Both of these allow for variable decimal
+places, whereas the data type "decimal" enforces the same number of decimal 
+places across records. The choice between these data types depends on 1. whether
+we want the measurements to all have the same number of decimal places or not, 
+and 2. how many significant digits do we expect/care about. Double precision can 
+store up to 15 significant digits (unlike float which can store up to 8), but it
+also occupies double the space (64 bit instead of 32.) For UTM coordinates, the 
+Y value has a minimum of 7 digits, and we want to keep decimal places because
+we need the highest precision possible on the position of animals in space. 
+Therefore, we'll go with double precision: 
+
+```{sql}
+CREATE TABLE capture_sites (
+site char(3) NOT NULL PRIMARY KEY,
+utm_x double,
+utm_y double
+);
+
+```
+
+Note that I used an alternative syntax to specify the primary key. 
+This is equivalent to the one I used above for the dragons table. 
+
+### Populating the tables
+
+Now that we added a few tables, we can start to populate the database by loading 
+the data as .csv files. On the *Tools* tab, click "Import."
+
+img
+
+Check that the database is correct and then select the table you want to import
+data into. For example, let's start with the dragons table:
+
+img
+
+Click *Next*. Now, browse your directory to select the input file. Then check
+the box that says "First line represents CSV column names", make sure the field
+separator is a comma, and set the *NULL* values to `NA` (which is how they are
+encoded in the .csv.) Click *Finish*. 
+
+To check if the table was imported correctly, go back into the query editor and
+try to look at the first 10 rows:
+
+```{sql}
+SELECT * FROM dragons LIMIT 10;
+```
+
+If everything looks good, we can go ahead and import data in the other two 
+tables.
+
+### Autoincrements as primary keys
+
+Sometimes a table does not contain any columns with unique values. This is the 
+case for all the tables we have left to add. What do we use as primary key in 
+these situations? Adding a column with a serial number that gets automatically
+updated is a good option. SQLite has something called auto-increment, which is 
+an integer column that automatically increases by 1 each time you add a row to
+a table. Because it's incremental, the values of an auto-increment will always
+be unique, and because it's automatic, they will never be null. Sounds like a 
+perfect candidate for a primary key. 
+
+The problem with using an auto-increment as a primary key arises when you're 
+trying to import data from a .csv file. If the column with the auto-increment 
+does not already exist in the .csv, SQLite won't let you import the file into 
+the table because the number of columns does not match. We don't want to add the
+auto-increment into the .csv ourselves because that defeats the purpose of 
+having SQLite doing it for us. But if we import the .csv as it is (without 
+primary key) and then add the auto-increment column later, we won't be able to
+make it the primary key because SQLite won't let us. So, what do we do?
+
+One workaround that people have found to solve this issue is to trick SQLite by
+using a temporary table. This is how the process works:
+
+1. Create the table the way we want it, with an auto-increment primary key plus
+all the columns we want to import from the .csv;
+2. Create a temporary table without primary key that only contains the columns
+from the .csv;
+3. Import the .csv into the temporary table;
+4. Populate the final table by pulling data from the temporary table;
+5. Delete the temporary table. 
+
+A little convoluted, but it does the job. Let's demonstrate this on the captures
+table. First, we create the table like we want it to look in the end (note that 
+I am adding foreign keys; we'll go over that part in the next section):
+
+```{sql}
+CREATE TABLE captures (
+capture_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+date text,
+site char(3),
+FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)
+FOREIGN KEY(site) REFERENCES capture_sites(site)
+);
+```
+
+Second, we create a temporary table without the primary key (no need to add 
+foreign keys to this one as we are going to delete it anyway):
+
+```{sql}
+CREATE TABLE captures_temp (
+dragon_id varchar(5),
+date text,
+site char(3));
+```
+
+Now on *Tools* > *Import*, we upload `captures.csv` into `captures_temp`. Then 
+we can populate the final table as follows:
+
+```{sql}
+INSERT INTO captures(dragon_id, date, site) SELECT * FROM captures_temp;
+```
+
+And finally we delete our temporary table:
+
+```{sql}
+DROP TABLE captures_temp;
+```
+
+We better get familiar with this workflow because we are going to use it for all
+the other tables now. 
+
+### Foreign keys
+
+For each of the remaining tables, we will specify one or more foreign keys to 
+enforce the relationships between tables. Each foreign key is the primary key of 
+another table. See for example what we did above: the captures table we just 
+imported contains information on when and where each dragon was captured. This 
+means this table needs to have two foreign keys: the `dragon_id` column links it 
+to the dragons table and the `site` column links it to the capture sites table. 
+Now let's apply the concept to the other tables.
+
+The morphometrics table will have a single foreign key linking it to the dragons
+table (the dragon ID). The second column is a date -- SQLite does not have a 
+dedicated data type for dates. Instead, we stored this as a character string in 
+ISO8601 format ("YYYY-MM-DD HH:MM:SS.SSS"). This time there is no need for 
+double precision because we want to only retain up to the third decimal place 
+and the numbers are not larger than ~3000, so 8 significant digits is sufficient. 
+We'll use float as the data type for the measurements. Because individuals may 
+have been measured multiple times, none of the existing columns are unique. This 
+means we'll create a serial number to use as the primary key. We'll use the same 
+trick as above:
+
+```{sql}
+CREATE TABLE morphometrics (
+measurement_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+date text,
+total_body_length_cm float,
+wingspan_cm float,
+tail_length_cm float,
+tarsus_length_cm float,
+claw_length_cm float,
+FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
+);
+
+CREATE TABLE morphometrics_temp (
+dragon_id varchar(5),
+date text,
+total_body_length_cm float,
+wingspan_cm float,
+tail_length_cm float,
+tarsus_length_cm float,
+claw_length_cm float
+);
+
+```
+
+Now on *Tools* > *Import*, we upload `morphometrics.csv` into 
+`morphometrics_temp`. Then we populate the final table:
+
+```{sql}
+INSERT INTO morphometrics(dragon_id, date, total_body_length_cm, wingspan_cm,
+tail_length_cm, tarsus_length_cm, claw_length_cm) 
+SELECT * FROM morphometrics_temp;
+```
+
+And delete our temporary table:
+
+```{sql}
+DROP TABLE morphometrics_temp;
+```
+
+The diet table contains repeated sample IDs and repeated item IDs within each
+sample. We'll need a serial number here too because none of the columns are
+unique. The item ID is an integer so we are going to use a new numeric data type
+for it. The foreign key will be, again, the dragon ID referring to the dragons 
+table:
+
+```{sql}
+CREATE TABLE diet (
+diet_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+sample_id varchar(8),
+date text,
+item_id integer,
+item varchar(50),
+FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
+);
+
+CREATE TABLE diet_temp (
+dragon_id varchar(5),
+sample_id varchar(8),
+date text,
+item_id integer,
+item varchar(50)
+);
+```
+
+Upload `diet.csv` into `diet_temp`.
+
+```{sql}
+INSERT INTO diet(dragon_id, sample_id, date, item_id, item) 
+SELECT * FROM diet_temp;
+
+DROP TABLE diet_temp;
+```
+
+The deployments table assigns a tag to each individual within a certain period
+of time. The `dragon_id` column will be the foreign key that links it to the 
+dragons table, and the `tag_id` column will link it to the tags table. The start
+and end deployment dates will be stored as ISO8601 text. Again, we'll need a 
+serial number to use as a primary key:
+
+```{sql}
+
+CREATE TABLE deployments (
+deployment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+tag_id char(6),
+start_deployment text,
+end_deployment text,
+FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)
+FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
+);
+
+CREATE TABLE deployments_temp (
+dragon_id varchar(5),
+tag_id char(6),
+start_deployment text,
+end_deployment text
+);
+```
+
+Upload `deployments.csv` into `deployments_temp`.
+
+```{sql}
+INSERT INTO deployments(dragon_id, tag_id, start_deployment, end_deployment) 
+SELECT * FROM deployments_temp;
+
+DROP TABLE deployments_temp;
+```
+
+Now we can input the telemetry data. This table contains the raw tracking data 
+as we download it from the tags. We'll need a serial number to uniquely identify
+each record, and we'll add the tag ID as the foreign key to the tags table:
+
+```{sql}
+CREATE TABLE gps_data_raw (
+gps_id INTEGER PRIMARY KEY AUTOINCREMENT,
+tag_id char(6),
+timestamp text, 
+utm_x double,
+utm_y double,
+FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
+);
+
+CREATE TABLE gps_data_raw_temp (
+tag_id char(6),
+timestamp text, 
+utm_x double,
+utm_y double
+);
+```
+
+Upload `telemetry_raw.csv` into `gps_data_raw_temp`.
+
+```{sql}
+INSERT INTO gps_data_raw(tag_id, timestamp, utm_x, utm_y) 
+SELECT * FROM gps_data_raw_temp;
+
+DROP TABLE gps_data_raw_temp;
+```
+
+### Crossing existing information to derive new tables
+
+The raw GPS data table does not give us any information about which animal each 
+location corresponds to; all we know is the tag ID. Each tag does not correspond
+to an individual, because some tags are reused on multiple dragons. So how do 
+we make these data usable? How do we know who is who? To associate each location 
+to the correct animal, we need to know who was wearing the tag at the time that 
+location was taken. There is a very elegant solution to our problem, as we can 
+pull the range of dates an individual was wearing a certain tag from the 
+deployments table, cross those dates with the dates in the raw GPS data, and 
+create an updated telemetry table where each location is assigned to the correct 
+individual. No manual work involved. Are you ready for some magic?! First, we
+create the table structure:
+
+```{sql}
+
+CREATE TABLE gps_data (
+loc_id INTEGER PRIMARY KEY,
+tag_id char(6),
+dragon_id varchar(5),
+timestamp text,
+utm_x double,
+utm_y double,
+FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
+FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
+);
+
+```
+
+And then we populate it by pulling information from the raw GPS and deployment
+tables. Locations are assigned to the individual that was wearing the tag at the
+time based on the `WHERE` clause:
+
+```{sql}
+INSERT INTO gps_data (
+tag_id, dragon_id, timestamp, utm_x, utm_y)
+SELECT
+deployments.tag_id,
+deployments.dragon_id,
+gps_data_raw.timestamp,
+gps_data_raw.utm_x,
+gps_data_raw.utm_y
+FROM deployments LEFT JOIN gps_data_raw USING (tag_id)
+WHERE gps_data_raw.tag_id = deployments.tag_id AND
+(
+    (
+    (strftime(gps_data_raw.timestamp) >= strftime(deployments.start_deployment)) AND
+    (strftime(gps_data_raw.timestamp) <= strftime(deployments.end_deployment))
+    )
+OR 
+    (
+    (gps_data_raw.timestamp >= deployments.start_deployment) AND
+    (deployments.end_deployment IS NULL)
+    )
+);
+
+```
+
+Note that, because we populated this table with data from other existing tables,
+we ended up using `INSERT INTO` anyway and there was no need to use our trick 
+with a temporary table. 
+
+It should now be apparent that keeping the deployments table correctly filled 
+out with no gaps or errors is of vital importance for the integrity of the whole
+telemetry database. Having the database set up this way means we never have to 
+manually assign locations to animals, which would for sure lead to errors, but 
+it also means that any analysis downstream hinges on keeping the deployments 
+table up-to-date with new captures, tag retrievals, and deaths. This is just one 
+example of how databases can save us time and ensure data integrity with minimal 
+routine effort, but only if the data is curated with care in the first place. 

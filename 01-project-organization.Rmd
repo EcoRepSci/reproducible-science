@@ -10,12 +10,14 @@ When starting a new project, it is worthwhile to spend some time thinking about 
 
 Answering these questions can help us decide on a directory structure to house our project files. For example, say that we are working on a research project that entails data cleaning, analysis, and writing of a manuscript. One way to go about it is to have a root project directory that contains subfolders for data, analysis code, results, and the manuscript file/s. We can call this a "project-based directory layout." Alternatively, if we have multiple projects underway, we can split our files by activity rather than by projects and have a "data" folder, an "analyses" folder, a "manuscripts" folder, etc., all with a subfolder for each project. We can call this an "activity-based directory layout."
 
-![Project-based directory organization.](img/project-based-directory-organization.jpg){width=50%}
+```{r proj-based, fig.cap="Project-based directory organization", fig.align='center', out.width='50%', echo = FALSE}
+knitr::include_graphics("img/project-based-directory-organization.jpg")
+```
   
-  
-![Activity-based directory organization.](img/activity-based-directory-organization.jpg){width=50%}
+```{r act-based, fig.cap="Activity-based directory organization", fig.align='center', out.width='50%', echo = FALSE}
+knitr::include_graphics("img/activity-based-directory-organization.jpg")
+```
 
-  
 How you define a project is largely up to you. It could be all the work you do on a given dataset, or all the work you do for a thesis or dissertation, or each manuscript could be its own project even if it uses the same dataset as a different project. 
 
 With so many options, how do we choose? Ultimately, the way you structure your project directories will have a big impact on the efficiency and reproducibility of your work, so there are some criteria to keep in mind. 
@@ -74,23 +76,23 @@ Writing down everything about a project in a README can be tedious, but it pays 
 
 There is a science to choosing good file names, too. Here is a list of file names that are **not** good, for a variety of different reasons:
 
-> data.csv
-> data_cleaned_03-22-2012.csv
-> analysis code.R
-> Green Frogs Manuscript_Final_edits.docx
-> final.docx
+> data.csv <br/>
+> data_cleaned_03-22-2012.csv <br/>
+> analysis code.R <br/>
+> Green Frogs Manuscript_Final_edits.docx <br/>
+> final.docx <br/>
 
-Why are those names bad, and what makes a good file name? Good file names are machine-readable, human-readable, and work well with default ordering. Let's break these three criteria down one by one. 
+Why are those names bad, and what makes a good file name? Good file names are computer-readable, human-readable, and work well with default ordering. Let's break these three criteria down one by one. 
 
-### Machine-readable file names
+### Computer-readable file names
 
-What makes a file name machine readable? First, machine readable files contain no spaces, no punctuation, and no special characters. They are case-consistent, which means that you always stick to the same case pattern, whether that be full lowercase, camel case (ThisIsWhatIMeanByCamelCase), or whatever else. Finally, good file names make deliberate use of text delimiters. Wise use of delimiters makes it easy to look for patterns when you are searching for a specific file. Usually, it's recommended that you use an underscore (_) to delimit metadata units and a dash (-) to delimit words within a metadata unit. For example, here is a good, machine-readable file name:
+What makes a file name computer-readable? First, computer readable files contain no spaces, no punctuation, and no special characters. They are case-consistent, which means that you always stick to the same case pattern, whether that be full lowercase, camel case (ThisIsWhatIMeanByCamelCase), or whatever else. Finally, good file names make deliberate use of text delimiters. Wise use of delimiters makes it easy to look for patterns when you are searching for a specific file. Usually, it's recommended that you use an underscore (_) to delimit metadata units and a dash (-) to delimit words within a metadata unit. For example, here is a good, computer-readable file name:
 
 > 2018-04-26_reproducible-science_slides_lesson-01.pptx
 
 ### Human-readable file names
 
-The example file name above is not only machine-readable, it's also human-readable. This means that a human can read the file name and have a pretty good idea of what's in that file. Good file names are informative! You shouldn't be afraid to use long names if that's what it takes to make them descriptive. 
+The example file name above is not only computer-readable, it's also human-readable. This means that a human can read the file name and have a pretty good idea of what's in that file. Good file names are informative! You shouldn't be afraid to use long names if that's what it takes to make them descriptive. 
 
 ### File names that work well with default ordering
 
@@ -100,7 +102,9 @@ If you sort your files by name in a folder, you want them to be ordered in a way
 
 RStudio Projects are a great tool to help you stay organized. The concept behind RStudio Projects is that each Project is a self-contained unit where inputs, outputs, and code are all in one place. Sounds familiar? RStudio Projects work seamlessly with the directory organization framework we have been talking about. It's a good idea to make sure each of the projects (with a lowercase p) you work on has its own associated RStudio Project (with a capital P). 
 
-![How to create a new RStudio Project](img/rstudio-project.jpg)
+```{r rstudio-proj, fig.cap="How to create a new RStudio Project", fig.align='center', echo = FALSE}
+knitr::include_graphics("img/rstudio-project.jpg")
+```
 
 You may be familiar with the concept of a working directory in R. The working directory is the place where, unless otherwise specified, all of your outputs are saved. All relative paths are also interpreted relative to the working directory (more on relative paths in a minute.)  
 
@@ -122,7 +126,9 @@ If our working directory was "Planning", this would be the relative path to the 
 
 To work across subfolders of our working directory, we can just use relative paths to navigate and locate files. But relative paths also work to navigate across folders that are outside of the working directory, if need be. Using "../" in front of a folder name navigates to the parent of that folder ("parent" means the folder where that is contained.) Let's consider the following directory structure:
 
-![Example directory](img/directory-tree.png)
+```{r dir-example, fig.cap="Example directory structure", fig.align='center', echo = FALSE}
+knitr::include_graphics("img/directory-tree.png")
+```
 
 We can navigate to a file into "PhD/Research" from "Planning" like so:
 

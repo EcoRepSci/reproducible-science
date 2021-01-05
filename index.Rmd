@@ -40,7 +40,7 @@ different operating systems.
 ### Git
 
 Git is a distributed version control system. It is free and open source. To
-install Git, follow instructions for your operating system below:
+install Git, follow instructions for your operating system below. Also, make sure you create a GitHub account on https://github.com/.
 
 #### Windows
 
@@ -59,7 +59,7 @@ $ git --version
 
 ```
 
-And follow the instructions on the installation wizard. :-)
+And follow the instructions on the installation wizard. 
 
 #### Linux
 
