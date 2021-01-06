@@ -1,1 +1,280 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Linking Databases and R with RSQLite {#rsqlite}
+
+```{r}
+library(DBI)
+```
+
+```{r}
+dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+```
+
+```{r}
+dbExecute(dragons_db, 'DROP TABLE dragons')
+dbExecute(dragons_db, 'DROP TABLE morphometrics')
+dbExecute(dragons_db, 'DROP TABLE diet')
+dbExecute(dragons_db, 'DROP TABLE gps_data_raw')
+dbExecute(dragons_db, 'DROP TABLE gps_data')
+dbExecute(dragons_db, 'DROP TABLE captures')
+dbExecute(dragons_db, 'DROP TABLE deployments')
+dbExecute(dragons_db, 'DROP TABLE capture_sites')
+dbExecute(dragons_db, 'DROP TABLE tags')
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE dragons (
+dragon_id varchar(5) NOT NULL,
+sex char(1) CHECK (sex IN ('M', 'F')),
+age_class varchar(8) CHECK (age_class IN ('Juvenile', 'Subadult', 'Adult')),
+species varchar(50),
+PRIMARY KEY (dragon_id)
+);")
+```
+
+```{r}
+dragons <- read.csv("../../Course Material/Data/dragons/dragons.csv", 
+                   stringsAsFactors = FALSE) 
+names(dragons)[1] <- "dragon_id"
+
+dbWriteTable(dragons_db, "dragons", dragons, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM dragons LIMIT 10;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE tags (
+tag_id char(6) NOT NULL PRIMARY KEY,
+brand varchar(50),
+status varchar(20)
+);")
+```
+
+```{r}
+tags <- read.csv("../../Course Material/Data/dragons/tags.csv")
+
+dbWriteTable(dragons_db, "tags", tags, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM tags LIMIT 10;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE capture_sites (
+site char(3) NOT NULL PRIMARY KEY,
+utm_x double,
+utm_y double
+);")
+```
+
+```{r}
+capture_sites <- read.csv("../../Course Material/Data/dragons/capture_sites.csv")
+
+names(capture_sites)[2:3] <- c("utm_x", "utm_y")
+
+dbWriteTable(dragons_db, "capture_sites", capture_sites, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM capture_sites;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE captures (
+capture_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+date text,
+site char(3),
+FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)
+FOREIGN KEY(site) REFERENCES capture_sites(site)
+);")
+```
+
+```{r}
+captures <- read.csv("../../Course Material/Data/dragons/captures.csv") 
+
+captures$capture_id <- 1:nrow(captures)
+
+captures <- captures[, c("capture_id", "dragon", "capture_date", "capture_site")]
+
+names(captures)[2:4] <- c("dragon_id", "date", "site")
+
+dbWriteTable(dragons_db, "captures", captures, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM captures LIMIT 10;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE morphometrics (
+measurement_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+date text,
+total_body_length_cm float,
+wingspan_cm float,
+tail_length_cm float,
+tarsus_length_cm float,
+claw_length_cm float,
+FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
+);")
+```
+
+```{r}
+morphometrics <- read.csv("../../Course Material/Data/dragons/morphometrics.csv") 
+
+morphometrics$measurement_id <- 1:nrow(morphometrics)
+
+morphometrics <- morphometrics[, c("measurement_id", "dragon", "date",
+                                   "total_body_length_cm", "wingspan_cm",
+                                   "tail_length_cm", "tarsus_length_cm", 
+                                   "claw_length_cm")]
+
+names(morphometrics)[2] <- "dragon_id"
+
+dbWriteTable(dragons_db, "morphometrics", morphometrics, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM morphometrics LIMIT 10;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE diet (
+diet_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+sample_id varchar(8),
+date text,
+item_id integer,
+item varchar(50),
+FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
+);")
+```
+
+```{r}
+diet <- read.csv("../../Course Material/Data/dragons/diet.csv") 
+
+diet$diet_id <- 1:nrow(diet)
+
+diet <- diet[, c("diet_id", "dragon", "sample_id", "sample_dates", "item_id",
+                 "item")]
+
+names(diet)[c(2, 4)] <- c("dragon_id", "date")
+
+dbWriteTable(dragons_db, "diet", diet, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM diet LIMIT 10;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE deployments (
+deployment_id INTEGER PRIMARY KEY AUTOINCREMENT,
+dragon_id varchar(5),
+tag_id char(6),
+start_deployment text,
+end_deployment text,
+FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)
+FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
+);")
+```
+
+```{r}
+deployments <- read.csv("../../Course Material/Data/dragons/deployments.csv") 
+
+deployments$deployment_id <- 1:nrow(deployments)
+
+deployments <- deployments[, c("deployment_id", "dragon", "tag", 
+                               "start_deploy", "end_deploy")]
+
+names(deployments)[2:5] <- c("dragon_id", "tag_id", "start_deployment", "end_deployment")
+
+dbWriteTable(dragons_db, "deployments", deployments, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM deployments LIMIT 10;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE gps_data_raw (
+gps_id INTEGER PRIMARY KEY AUTOINCREMENT,
+tag_id char(6),
+timestamp text, 
+utm_x double,
+utm_y double,
+FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
+);")
+```
+
+```{r}
+gps_data_raw <- read.csv("../../Course Material/Data/dragons/telemetry_raw.csv") 
+
+gps_data_raw$gps_id <- 1:nrow(gps_data_raw)
+
+gps_data_raw <- gps_data_raw[, c("gps_id", "tag", "timestamp", "x", "y")]
+
+names(gps_data_raw)[c(2, 4, 5)] <- c("tag_id", "utm_x", "utm_y")
+
+dbWriteTable(dragons_db, "gps_data_raw", gps_data_raw, append = TRUE)
+
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM gps_data_raw LIMIT 10;")
+```
+
+```{r}
+dbExecute(dragons_db, "CREATE TABLE gps_data (
+loc_id INTEGER PRIMARY KEY,
+tag_id char(6),
+dragon_id varchar(5),
+timestamp text,
+utm_x double,
+utm_y double,
+FOREIGN KEY (tag_id) REFERENCES tags(tag_id)
+FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
+);")
+```
+
+```{r}
+dbExecute(dragons_db, "INSERT INTO gps_data (
+tag_id, dragon_id, timestamp, utm_x, utm_y)
+SELECT
+deployments.tag_id,
+deployments.dragon_id,
+gps_data_raw.timestamp,
+gps_data_raw.utm_x,
+gps_data_raw.utm_y
+FROM deployments LEFT JOIN gps_data_raw USING (tag_id)
+WHERE gps_data_raw.tag_id = deployments.tag_id AND
+(
+    (
+    (strftime(gps_data_raw.timestamp) >= strftime(deployments.start_deployment)) AND
+    (strftime(gps_data_raw.timestamp) <= strftime(deployments.end_deployment))
+    )
+OR 
+    (
+    (gps_data_raw.timestamp >= deployments.start_deployment) AND
+    (deployments.end_deployment IS NULL)
+    )
+);")
+```
+
+```{r}
+dbGetQuery(dragons_db, "SELECT * FROM gps_data LIMIT 10;")
+```

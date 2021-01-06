@@ -4,9 +4,484 @@
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
-Basic queries, aggregations, aliases, 
+## The SQL language
 
-Joins
+The acronym SQL stands for Structured Query Language. It is the most used 
+language worldwide for relational database management systems. Whenever you 
+interact with a database in your daily life (for example, any time you browse an 
+online shopping website, or any time you look up something on Google), you can 
+bet that it was written in SQL. 
+
+SQL is a language that is used and understood by different database management
+systems, such as Oracle, PostgreSQL, MySQL, or SQLite. While all these programs
+share many similarities, which one of these you'll end up using depends on
+the specifics of what you need it for. For the purposes of this class, we'll be
+using SQLite. SQLite provides all the core functionalities you'll need to get 
+familiar with databases while being lightweight in terms of setup (easy to 
+install and to configure). At the end of this chapter, we'll talk about why you
+may want to make a different choice in the future, but for now we'll stick with
+SQLite. 
+
+Each database management program uses a slightly different dialect of SQL. The 
+language is the same, but there may be some slight differences in the syntax 
+between different programs. I'll point out throughout the chapter when we 
+encounter syntax that is specific to the SQLite dialect. 
+
+## Writing SQL queries
+
+The nice thing about SQL is that it sounds a lot like human language. An SQL
+statement, or query, always begins with a verb that describes the action we want 
+to do. A semicolon at the end of the query lets SQL know that we are done 
+talking. For example:
+
+```{sql}
+SELECT dragon_id FROM dragons;
+```
+
+The verb `SELECT` is one we'll be using over and over again. Any time you want
+to select data you also have to specify which table you want it from, so the 
+`SELECT` clause is always followed by a `FROM` clause. In this case, we asked 
+to see the column `dragon_id` from the `dragons` table. Sounds like English, 
+right?
+
+If we want to see multiple columns, we can list them separated by commas:
+
+```{sql}
+SELECT dragon_id, sex 
+FROM dragons;
+```
+
+And if we want to see the whole table (not specific columns), we can use a 
+wildcard:
+
+```{sql}
+SELECT * 
+FROM dragons;
+```
+
+### Limiting results
+
+If the whole table is too big and we only want to take a look at the first, say,
+10 rows, we can add a `LIMIT` clause:
+
+```{sql}
+SELECT * 
+FROM dragons 
+LIMIT 10;
+```
+
+### Sorting results
+
+One thing to remember with SQL is that the data returned by a `SELECT` statement
+does not necessarily return the data in any specific order unless we tell it to.
+You can never assume the output is already sorted. To be explicit about how you
+want the data ordered, you can add an `ORDER BY` clause:
+
+```{sql}
+SELECT * 
+FROM dragons 
+ORDER BY species
+LIMIT 10;
+```
+
+The default ordering will be ascending. If we want descending ordering instead,
+we can specify that as follows:
+
+```{sql}
+SELECT * 
+FROM dragons 
+ORDER BY species DESC
+LIMIT 10;
+```
+
+### Finding unique values
+
+Say that we wanted to know what species of dragons are in the database. We can
+ask for unique values as follows:
+
+```{sql}
+SELECT DISTINCT species 
+FROM dragons;
+```
+
+### Filtering 
+
+We can filter data based on any logical condition using a `WHERE` clause. For
+instance, say that we we only want Norwegian Ridgebacks:
+
+```{sql}
+SELECT * 
+FROM dragons
+WHERE species = 'Norwegian Ridgeback';
+```
+
+We can specify multiple conditions at once. For example, if we want only female
+Norwegian Ridgebacks:
+
+```{sql}
+SELECT * 
+FROM dragons
+WHERE species = 'Norwegian Ridgeback' AND sex = 'F';
+```
+
+In the example above, both conditions have to be satisfied at once -- dragons
+have to be Norwegian Ridgeback **and** females to appear in the results. What if
+we want to return data where **at least** one of two conditions is satisfied? 
+The following query will return dragons that are either Norwegian Ridgebacks or
+Peruvian Vipertooths:
+
+```{sql}
+SELECT * 
+FROM dragons
+WHERE species = 'Norwegian Ridgeback' OR species = 'Peruvian Vipertooth';
+```
+
+A more concise way to write the same query would be:
+
+```{sql}
+SELECT * 
+FROM dragons
+WHERE species IN ('Norwegian Ridgeback', 'Peruvian Vipertooth');
+```
+
+Logical conditions also include "greater than", "less than", "not equal to". 
+For instance, we can exclude Norwegian Ridgeback like so:
+
+```{sql}
+SELECT * 
+FROM dragons
+WHERE species != 'Norwegian Ridgeback';
+```
+
+Let's see some examples with numbers using the morphometrics table. The 
+following query returns any dragons with wingspan greater than 8 meters 
+(incidentally, you can include comments in SQL is by using a double dash):
+
+```{sql}
+SELECT * 
+FROM morphometrics
+WHERE wingspan_cm > 800; -- 800 cm is 8 meters
+```
+
+We can also sort the output of the filter:
+
+```{sql}
+SELECT * 
+FROM morphometrics
+WHERE wingspan_cm > 800 
+ORDER BY wingspan_cm DESC;
+```
+
+### Calculations
+
+The morphometric measurements are in centimeters, but we often define our 
+filtering conditions using meters in our minds (see above, "wingspan greater 
+than 8 meters"). Instead of converting the condition into centimeters, wouldn't
+it be easier to have SQLite transform the data in meters and then evaluate the
+condition? We can do this calculation on the fly:
+
+```{sql}
+SELECT * 
+FROM morphometrics
+WHERE wingspan_cm/100 > 8;
+```
+
+### Aggregate functions
+
+Summary statistics are calculated using aggregate functions in SQL. Counting, 
+summing, calculating the mean, minimum, maximum values are all examples of 
+aggregate functions. Let's see how they work.
+
+If we want to know how many Norwegian Ridgebacks are in the database, we can 
+use:
+
+```{sql}
+SELECT COUNT(*) 
+FROM dragons
+WHERE species = 'Norwegian Ridgeback';
+```
+
+The dragons table has no repeated IDs, so we shouldn't have counted anybody 
+twice. However, let's double check if that's true by specifying that we want
+to only count distinct IDs:
+
+```{sql}
+SELECT COUNT(DISTINCT dragon_id) 
+FROM dragons
+WHERE species = 'Norwegian Ridgeback';
+```
+
+Now let's see how to calculate some summary stats on dragon morphometrics. What
+is the mean total body length of dragons in our sample?
+
+```{sql}
+SELECT AVG(total_body_length_cm)
+FROM morphometrics;
+```
+
+We can also calculate several different things at once:
+
+```{sql}
+SELECT AVG(total_body_length_cm), MIN(total_body_length_cm), MAX(total_body_length_cm)
+FROM morphometrics;
+```
+
+### Aliases
+
+Aliases are temporary names that we can assign to a column (or a table) during
+the execution of a query. For example, we can use an alias to rename the output
+of our mean body length calculation:
+
+```{sql}
+SELECT AVG(total_body_length_cm) AS mean_body_length
+FROM morphometrics;
+```
+
+### Grouping
+
+If we want to apply the same calculation to different groups within the data,
+we can use the `GROUP BY` clause. `GROUP BY` is used in conjunction with an
+aggregate function to return the computed values broken down by group. For 
+instance, if we want to count how many dragons we have for each species (and
+sort them from the most numerous to the least numerous):
+
+```{sql}
+SELECT species, COUNT(*) AS n_dragons
+FROM dragons
+GROUP BY species
+ORDER BY n_dragons DESC;
+```
+
+### Filtering based on computed values
+
+If we want to apply any filtering to our results based on calculated values, the
+`WHERE` clause is not going to work. Instead, a `HAVING` clause is used in 
+combination with an aggregate function and a `GROUP BY`. `HAVING` does the same 
+thing as `WHERE` except that it handles logical conditions on computed values. 
+For example, say that we want to count how many individuals we have in our 
+database and then only keep the species for which we have at least 50 individuals. 
+The following query counts how many individual dragons we have for each species:
+
+```{sql}
+SELECT COUNT(DISTINCT dragon_id) AS n_dragons, species
+FROM dragons
+GROUP BY species;
+```
+
+Because the count is a calculated value (the output of the aggregate function
+`COUNT`), if we try to apply a filter using `WHERE` we'll get an error:
+
+```{sql}
+SELECT COUNT(DISTINCT dragon_id) AS n_dragons, species
+FROM dragons
+GROUP BY species
+WHERE n_dragons > 50;
+```
+
+Instead, we can use `HAVING`:
+
+```{sql}
+SELECT COUNT(DISTINCT dragon_id) AS n_dragons, species
+FROM dragons
+GROUP BY species
+HAVING n_dragons > 50;
+```
+
+### Null values
+
+Missing values in SQL are represented as `NULL`. We can filter (or filter out)
+these values using the `IS NULL` operator:
+
+```{sql}
+SELECT * 
+FROM dragons
+WHERE sex IS NULL;
+```
+
+The query above returns all the dragons for which sex is unknown. If we want to
+exclude any individuals for which sex is unknown, then we can add the `NOT` 
+operator to our statement:
+
+```{sql}
+SELECT * 
+FROM dragons
+WHERE sex IS NOT NULL;
+```
+
+### Joins
+
+So far, we have learned how to query data from a single table. But what if we
+need to combine information from multiple tables to get the result we want? 
+Let's make an example. Say that we want to calculate the average wingspan for 
+male versus female dragons. The wingspan measurements are in the morphometrics 
+table. However, the morphometrics table does not have a "sex" column. The 
+information on sex is in the dragons table. To get our answer, we need to 
+combine information from the dragons and morphometrics tables. To do so, we 
+introduce SQL joins. 
+
+Joins are the heart of relational database use. Without joins, there is no point
+in a relational database because we can't take advantage of the relations 
+between tables. Joins exploit the links we established between tables via 
+foreign keys to combine information across them. 
+
+There are several types of join. The most common types are left join, inner
+join, or full join. To understand this terminology, consider this: 
+whenever you are joining two tables, the first table you mention (the one to 
+which you're joining) is called the **left** table, whereas the second table 
+(the one you're joining to the first) is called the **right** table. With a left
+join, you keep all the records in the left table and add information from the 
+right table whenever there's a matching row. A full join means that you retain
+all rows from both tables, matching them whenever possible. An inner join means
+that you only retain the rows that match between the two tables. 
+
+img
+
+Let's look at this in practice and it will make more sense. Our database 
+contains a deployments table and a morphometrics table. Not all dragons that 
+were tracked were also measured. If we do a left join using the deployments as 
+the left table, we get in output the whole deployments table (all the dragons 
+that were tracked) with the associated morphometric information whenever 
+available (for the dragons that were also measured):
+
+```{sql}
+SELECT *
+FROM deployments -- this is our left table
+LEFT JOIN morphometrics -- this is our right table 
+ON deployments.dragon_id = morphometrics.dragon_id -- this is the shared column
+LIMIT 10;
+```
+
+Since the shared column is named the same in the two tables (`dragon_id`), I had 
+to specify which table I was referring to each time in the `ON` clause, or it 
+would have been ambiguous. The syntax to do so is `table.column`. Also note that, 
+because the dragon ID column appears in both tables and we did not specify which 
+table we wanted it from, SQLite is duplicating it. To avoid that, we need to get 
+rid of the wildcard and spell out the name of each of the columns we want in 
+output (also specifying the table when ambiguous):
+
+```{sql}
+SELECT deployments.dragon_id, date, tag_id, start_deployment, end_deployment,
+total_body_length_cm, wingspan_cm, tail_length_cm, tarsus_length_cm, claw_length_cm
+FROM deployments 
+LEFT JOIN morphometrics 
+ON deployments.dragon_id = morphometrics.dragon_id 
+LIMIT 10;
+```
+
+If we invert the tables (the morphometrics becomes the left table and the
+deployments becomes the right), we get in output the whole morphometric table 
+(all the dragons that were measured) with the associated deployment information 
+whenever available (for the dragons that were also tracked):
+
+```{sql}
+SELECT *
+FROM morphometrics -- this is our left table
+LEFT JOIN deployments -- this is our right table 
+ON morphometrics.dragon_id = deployments.dragon_id 
+LIMIT 10;
+```
+
+An inner join only keeps the rows that match between two tables. In this case, 
+that means we only get in output data for animals that were both tracked **and**
+measured:
+
+```{sql}
+SELECT *
+FROM morphometrics
+INNER JOIN deployments 
+ON morphometrics.dragon_id = deployments.dragon_id 
+LIMIT 10;
+```
+
+A full join keeps all records from both the left and the right table, matching 
+them whenever possible. That is, we get in output all the dragons, with blanks 
+in the morphometrics table for those that were only tracked and blanks in the
+deployments table for those that were only measured. Unfortunately, SQLite does 
+not support full joins, so we cannot demonstrate it here, but it's important to 
+know that a full join exists and what it does because you'll find yourself using 
+it in any other database management program or even in R (see Chapter \@ref(tidyverse)).
+
+### Nested `SELECT` statements
+
+Now that we know how to use joins, we can go back to our challenge of calculating 
+the average wingspan for male versus female dragons. What we need to do is add 
+the sex column to the morphometrics table. We can do this by looking at the 
+dragon ID, which is the column the two tables have in common. So the join clause 
+will look like this:
+
+```{sql}
+SELECT dragon_id, wingspan_cm, sex
+FROM morphometrics -- this is our left table
+LEFT JOIN dragons -- this is our left table 
+ON morphometrics.dragon_id = dragons.dragon_id; -- this is the shared column
+```
+
+By using a left join, we are saying that we want to keep all rows from the left
+table (morphometrics) while adding information on sex whenever available. Now we
+can compute the average wingspan broken down by sex:
+
+```{sql}
+SELECT sex, AVG(wingspan_cm) AS mean_wingspan
+FROM (
+    SELECT morphometrics.dragon_id, wingspan_cm, sex
+    FROM morphometrics 
+    LEFT JOIN dragons 
+    ON morphometrics.dragon_id = dragons.dragon_id
+    )
+GROUP BY sex; 
+```
+
+The one above is a nested query, which means there are two `SELECT` statements
+nested within one another. The inner `SELECT` statement (everything between the
+parentheses) is treated as if it were a table in the database. SQL will 
+execute the query from the inside out, so even though that table physically does
+not exist, it gets temporarily created when the inner query is run and is then
+used in input to the second query. 
+
+### Order of operations
+
+The fact that SQL will execute nested queries from the inside out is one aspect
+of order of operations. But there's also a logic to the order in which SQL 
+executes clauses within a query: first, it gathers the data, then it filters it 
+and aggregates it as needed, then it computes results, and finally it sorts them 
+and truncate them if necessary. Let's look at this step by step:
+
+1. First, SQL executes the `FROM` clause and any
+`JOIN` clauses, if present, to determine what tables are being queried. 
+2. Then, it will execute the `WHERE` clause to filter the data.
+3. Then, it will `GROUP BY` the column/s of interest. 
+4. Then it will calculate any derived values based on aggregate functions.
+5. Then, it will apply any filters specified by `HAVING`.
+6. Now, and only now, it will execute the `SELECT` clause!
+7. Once the computations are completed and the output of `SELECT` is ready,
+SQL can start refining it. First, it will discard any duplicates if `DISTINCT`
+is specified.
+8. Then, it will sort the results based on `ORDER BY`.
+9. Finally, it will truncate the output if a `LIMIT` is specified. 
+
+If you think about it, all of this makes logical sense. You can't select a 
+column if you're not sure what table to look in. You can't compute a per-group
+count before defining the groups. You can't order results that you haven't 
+computed yet. But then why do we start our queries with `SELECT`? And does the 
+order in which we write our queries matter?
+
+The answer to both of those questions is that there is a difference between the 
+*logical* order of operations and the *lexical* (or syntactical) order of 
+operations, which is how we actually write queries. Even though these don't
+correspond, writing a query in any other order than the following is incorrect
+(and will return an error):
+
+```{sql}
+SELECT 
+FROM 
+    JOIN 
+      ON 
+    WHERE 
+    GROUP BY 
+    HAVING 
+    ORDER BY 
+    LIMIT;
+```
 
 ## Building a database
 
@@ -95,7 +570,6 @@ species varchar(50),
 PRIMARY KEY (dragon_id)
 );
 ```
-
 
 ### Order of table creation
 
