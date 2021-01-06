@@ -5,6 +5,10 @@ editor_options:
 ---
 # Linking Databases and R with RSQLite {#rsqlite}
 
+```{r setup-rsqlite, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
 ```{r}
 library(DBI)
 ```
