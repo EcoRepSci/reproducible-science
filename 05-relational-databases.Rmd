@@ -37,3 +37,13 @@ A database should also be designed so that each column only contains atomic valu
 ## Data types
 
 Data types define what kind of data is stored in each column of a table. Different database systems recognize different sets of data types, but the most fundamental are common to many. These include character strings, numerical values (and special cases of these, such as integers), boolean values (`TRUE` or `FALSE`), etc. Because each column in a table has a data type associated to it, it means that you can't mix data types inside the same column. You can't, for example, use both "5" (for 5-year-old) and "adult" in an "age" column. 
+
+## A first look at our practice database
+
+In the next chapter, we are going to take a deep dive into SQL, the most used
+programming language for relational databases. We are going to learn how to 
+write queries to retrieve data and how to build the database itself. The 
+database we'll practice with includes imaginary data on dragons. Let's take a 
+look at the content and structure:
+
+
