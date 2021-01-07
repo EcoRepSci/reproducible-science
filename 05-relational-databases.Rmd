@@ -46,4 +46,6 @@ write queries to retrieve data and how to build the database itself. The
 database we'll practice with includes imaginary data on dragons. Let's take a 
 look at the content and structure:
 
-
+```{r proj-based, fig.cap="Project-based directory organization", fig.align='center', out.width='50%', echo = FALSE}
+knitr::include_graphics("img/database_diagram.png")
+```
