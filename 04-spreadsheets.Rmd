@@ -12,6 +12,10 @@ Most of the problematic practices outlined in this Chapter can be summarized int
 
 ## Tidy data {#tidydata}
 
+```{r art2, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/tidydata.jpg")
+```
+
 The fundamental definition of tidy data is quite simple: **one variable per column and one observation per row**. Variables are the things we are measuring (e.g., temperature, distance, height.) Observations are repeated measurements of a variable on different experimental units. Structuring your data following this rule will put you in a great position for processing and analyzing your data in an automated way. First, using a standard approach to formatting data, where the *structure* of a table reflects the *meaning* of its content (i.e., where a column always means a variable and a row always means an observation) removes any ambiguity for yourself and for the computer. Second, this specific approach works very well with programming languages, like R, that support vector calculations (i.e., calculations on entire columns or tables at a time, instead of single elements only.)
 
 ## Problematic practices 

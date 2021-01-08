@@ -46,6 +46,23 @@ write queries to retrieve data and how to build the database itself. The
 database we'll practice with includes imaginary data on dragons. Let's take a 
 look at the content and structure:
 
-```{r db-diagram, fig.cap="Diagram of the dragons database", fig.align='center', out.width='50%', echo = FALSE}
+```{r db-diagram, fig.cap="Diagram of the dragons database", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
 knitr::include_graphics("img/database_diagram.png")
 ```
+
+The database is composed of 9 tables. The *dragons* table includes individual 
+information on the sample individuals. The *captures* table contains information
+on when and where each dragon was captured, and it's linked to the *capture sites*
+table which stores the coordinates of each capture site. The *morphometrics* 
+table contains body measurements and the *diet* table contains information on 
+diet samples. Both of these are linked to the *dragons* table based on 
+individual IDs. We also tracked some of these dragons, so we have a *tags* table
+which lists all the different GPS units we deployed within the project. The 
+*deployments* table tells us which dragon was wearing each tag at any given time,
+and therefore it's linked to both the *dragons* and the *tags* table through the
+dragon IDs and the tag IDs, respectively. A *raw GPS data* table contains 
+telemetry data in its raw form, i.e., as it comes out of the tags, and it's 
+therefore linked to the *tags* table via the tag ID. Finally, a *processed GPS data*
+table associates the tracking data to the dragons. Primary keys are in italics 
+and foreign keys are in bold. Connectors link tables with one another based on 
+their foreign keys. 

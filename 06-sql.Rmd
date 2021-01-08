@@ -4,6 +4,14 @@
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
+```{r dbi, echo = FALSE, eval = TRUE}
+library(DBI)
+```
+
+```{r conn, echo = FALSE, eval = TRUE}
+dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+```
+
 ## The SQL language
 
 The acronym SQL stands for Structured Query Language. It is the most used 
@@ -38,6 +46,10 @@ talking. For example:
 SELECT dragon_id FROM dragons;
 ```
 
+```{r q1, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT dragon_id FROM dragons")
+```
+
 The verb `SELECT` is one we'll be using over and over again. Any time you want
 to select data you also have to specify which table you want it from, so the 
 `SELECT` clause is always followed by a `FROM` clause. In this case, we asked 
@@ -51,12 +63,20 @@ SELECT dragon_id, sex
 FROM dragons;
 ```
 
+```{r q2, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT dragon_id, sex FROM dragons;")
+```
+
 And if we want to see the whole table (not specific columns), we can use a 
 wildcard:
 
 ```{sql}
 SELECT * 
 FROM dragons;
+```
+
+```{r q3, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons;")
 ```
 
 ### Limiting results
@@ -68,6 +88,10 @@ If the whole table is too big and we only want to take a look at the first, say,
 SELECT * 
 FROM dragons 
 LIMIT 10;
+```
+
+```{r q4, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons LIMIT 10;")
 ```
 
 ### Sorting results
@@ -84,6 +108,10 @@ ORDER BY species
 LIMIT 10;
 ```
 
+```{r q5, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons ORDER BY species LIMIT 10;")
+```
+
 The default ordering will be ascending. If we want descending ordering instead,
 we can specify that as follows:
 
@@ -92,6 +120,10 @@ SELECT *
 FROM dragons 
 ORDER BY species DESC
 LIMIT 10;
+```
+
+```{r q6, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons ORDER BY species DESC LIMIT 10;")
 ```
 
 ### Finding unique values
@@ -104,6 +136,10 @@ SELECT DISTINCT species
 FROM dragons;
 ```
 
+```{r q7, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT DISTINCT species FROM dragons;")
+```
+
 ### Filtering 
 
 We can filter data based on any logical condition using a `WHERE` clause. For
@@ -112,7 +148,12 @@ instance, say that we we only want Norwegian Ridgebacks:
 ```{sql}
 SELECT * 
 FROM dragons
-WHERE species = 'Norwegian Ridgeback';
+WHERE species = 'Norwegian Ridgeback'
+LIMIT 10;
+```
+
+```{r q8, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons WHERE species = 'Norwegian Ridgeback' LIMIT 10;")
 ```
 
 We can specify multiple conditions at once. For example, if we want only female
@@ -121,7 +162,12 @@ Norwegian Ridgebacks:
 ```{sql}
 SELECT * 
 FROM dragons
-WHERE species = 'Norwegian Ridgeback' AND sex = 'F';
+WHERE species = 'Norwegian Ridgeback' AND sex = 'F'
+LIMIT 10;
+```
+
+```{r q9, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons WHERE species = 'Norwegian Ridgeback' AND sex = 'F' LIMIT 10;")
 ```
 
 In the example above, both conditions have to be satisfied at once -- dragons
@@ -133,7 +179,12 @@ Peruvian Vipertooths:
 ```{sql}
 SELECT * 
 FROM dragons
-WHERE species = 'Norwegian Ridgeback' OR species = 'Peruvian Vipertooth';
+WHERE species = 'Norwegian Ridgeback' OR species = 'Peruvian Vipertooth'
+LIMIT 10;
+```
+
+```{r q10, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons WHERE species = 'Norwegian Ridgeback' OR species = 'Peruvian Vipertooth' LIMIT 10;")
 ```
 
 A more concise way to write the same query would be:
@@ -141,7 +192,12 @@ A more concise way to write the same query would be:
 ```{sql}
 SELECT * 
 FROM dragons
-WHERE species IN ('Norwegian Ridgeback', 'Peruvian Vipertooth');
+WHERE species IN ('Norwegian Ridgeback', 'Peruvian Vipertooth')
+LIMIT 10;
+```
+
+```{r q11, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons WHERE species IN ('Norwegian Ridgeback', 'Peruvian Vipertooth') LIMIT 10;")
 ```
 
 Logical conditions also include "greater than", "less than", "not equal to". 
@@ -150,7 +206,12 @@ For instance, we can exclude Norwegian Ridgeback like so:
 ```{sql}
 SELECT * 
 FROM dragons
-WHERE species != 'Norwegian Ridgeback';
+WHERE species != 'Norwegian Ridgeback'
+LIMIT 10;
+```
+
+```{r q12, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons WHERE species != 'Norwegian Ridgeback' LIMIT 10;")
 ```
 
 Let's see some examples with numbers using the morphometrics table. The 
@@ -160,7 +221,12 @@ following query returns any dragons with wingspan greater than 8 meters
 ```{sql}
 SELECT * 
 FROM morphometrics
-WHERE wingspan_cm > 800; -- 800 cm is 8 meters
+WHERE wingspan_cm > 800 -- 800 cm is 8 meters
+LIMIT 10;
+```
+
+```{r q13, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM morphometrics WHERE wingspan_cm > 800 LIMIT 10;")
 ```
 
 We can also sort the output of the filter:
@@ -169,7 +235,12 @@ We can also sort the output of the filter:
 SELECT * 
 FROM morphometrics
 WHERE wingspan_cm > 800 
-ORDER BY wingspan_cm DESC;
+ORDER BY wingspan_cm DESC
+LIMIT 10;
+```
+
+```{r q14, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM morphometrics WHERE wingspan_cm > 800 ORDER BY wingspan_cm DESC LIMIT 10;")
 ```
 
 ### Calculations
@@ -183,7 +254,12 @@ condition? We can do this calculation on the fly:
 ```{sql}
 SELECT * 
 FROM morphometrics
-WHERE wingspan_cm/100 > 8;
+WHERE wingspan_cm/100 > 8
+LIMIT 10;
+```
+
+```{r q15, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM morphometrics WHERE wingspan_cm/100 > 8 LIMIT 10;")
 ```
 
 ### Aggregate functions
@@ -201,6 +277,10 @@ FROM dragons
 WHERE species = 'Norwegian Ridgeback';
 ```
 
+```{r q16, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT COUNT(*) FROM dragons WHERE species = 'Norwegian Ridgeback';")
+```
+
 The dragons table has no repeated IDs, so we shouldn't have counted anybody 
 twice. However, let's double check if that's true by specifying that we want
 to only count distinct IDs:
@@ -211,6 +291,10 @@ FROM dragons
 WHERE species = 'Norwegian Ridgeback';
 ```
 
+```{r q17, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT COUNT(DISTINCT dragon_id) FROM dragons WHERE species = 'Norwegian Ridgeback';")
+```
+
 Now let's see how to calculate some summary stats on dragon morphometrics. What
 is the mean total body length of dragons in our sample?
 
@@ -219,11 +303,19 @@ SELECT AVG(total_body_length_cm)
 FROM morphometrics;
 ```
 
+```{r q18, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT AVG(total_body_length_cm) FROM morphometrics;")
+```
+
 We can also calculate several different things at once:
 
 ```{sql}
 SELECT AVG(total_body_length_cm), MIN(total_body_length_cm), MAX(total_body_length_cm)
 FROM morphometrics;
+```
+
+```{r q19, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT AVG(total_body_length_cm), MIN(total_body_length_cm), MAX(total_body_length_cm) FROM morphometrics;")
 ```
 
 ### Aliases
@@ -235,6 +327,10 @@ of our mean body length calculation:
 ```{sql}
 SELECT AVG(total_body_length_cm) AS mean_body_length
 FROM morphometrics;
+```
+
+```{r q20, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT AVG(total_body_length_cm) AS mean_body_length FROM morphometrics;")
 ```
 
 ### Grouping
@@ -250,6 +346,10 @@ SELECT species, COUNT(*) AS n_dragons
 FROM dragons
 GROUP BY species
 ORDER BY n_dragons DESC;
+```
+
+```{r q21, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT species, COUNT(*) AS n_dragons FROM dragons GROUP BY species ORDER BY n_dragons DESC;")
 ```
 
 ### Filtering based on computed values
@@ -268,23 +368,22 @@ FROM dragons
 GROUP BY species;
 ```
 
-Because the count is a calculated value (the output of the aggregate function
-`COUNT`), if we try to apply a filter using `WHERE` we'll get an error:
-
-```{sql}
-SELECT COUNT(DISTINCT dragon_id) AS n_dragons, species
-FROM dragons
-GROUP BY species
-WHERE n_dragons > 50;
+```{r q22, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT COUNT(DISTINCT dragon_id) AS n_dragons, species FROM dragons GROUP BY species;")
 ```
 
-Instead, we can use `HAVING`:
+Because the count is a calculated value (the output of the aggregate function
+`COUNT`), if we try to apply a filter using `WHERE` we'll get an error. Instead, we can use `HAVING`:
 
 ```{sql}
 SELECT COUNT(DISTINCT dragon_id) AS n_dragons, species
 FROM dragons
 GROUP BY species
 HAVING n_dragons > 50;
+```
+
+```{r q24, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT COUNT(DISTINCT dragon_id) AS n_dragons, species FROM dragons GROUP BY species HAVING n_dragons > 50;")
 ```
 
 ### Null values
@@ -295,7 +394,12 @@ these values using the `IS NULL` operator:
 ```{sql}
 SELECT * 
 FROM dragons
-WHERE sex IS NULL;
+WHERE sex IS NULL
+LIMIT 10;
+```
+
+```{r q25, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons WHERE sex IS NULL LIMIT 10;")
 ```
 
 The query above returns all the dragons for which sex is unknown. If we want to
@@ -305,7 +409,12 @@ operator to our statement:
 ```{sql}
 SELECT * 
 FROM dragons
-WHERE sex IS NOT NULL;
+WHERE sex IS NOT NULL
+LIMIT 10;
+```
+
+```{r q26, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons WHERE sex IS NOT NULL LIMIT 10;")
 ```
 
 ### Joins
@@ -334,7 +443,9 @@ right table whenever there's a matching row. A full join means that you retain
 all rows from both tables, matching them whenever possible. An inner join means
 that you only retain the rows that match between the two tables. 
 
-img
+```{r sql-joins, fig.cap="SQL Joins", fig.align='center', out.width='60%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/sql-joins.png")
+```
 
 Let's look at this in practice and it will make more sense. Our database 
 contains a deployments table and a morphometrics table. Not all dragons that 
@@ -349,6 +460,10 @@ FROM deployments -- this is our left table
 LEFT JOIN morphometrics -- this is our right table 
 ON deployments.dragon_id = morphometrics.dragon_id -- this is the shared column
 LIMIT 10;
+```
+
+```{r q27, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM deployments LEFT JOIN morphometrics ON deployments.dragon_id = morphometrics.dragon_id LIMIT 10;")
 ```
 
 Since the shared column is named the same in the two tables (`dragon_id`), I had 
@@ -368,6 +483,10 @@ ON deployments.dragon_id = morphometrics.dragon_id
 LIMIT 10;
 ```
 
+```{r q28, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT deployments.dragon_id, date, tag_id, start_deployment, end_deployment, total_body_length_cm, wingspan_cm, tail_length_cm, tarsus_length_cm, claw_length_cm FROM deployments LEFT JOIN morphometrics ON deployments.dragon_id = morphometrics.dragon_id LIMIT 10;")
+```
+
 If we invert the tables (the morphometrics becomes the left table and the
 deployments becomes the right), we get in output the whole morphometric table 
 (all the dragons that were measured) with the associated deployment information 
@@ -381,6 +500,10 @@ ON morphometrics.dragon_id = deployments.dragon_id
 LIMIT 10;
 ```
 
+```{r q29, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM morphometrics LEFT JOIN deployments ON morphometrics.dragon_id = deployments.dragon_id LIMIT 10;")
+```
+
 An inner join only keeps the rows that match between two tables. In this case, 
 that means we only get in output data for animals that were both tracked **and**
 measured:
@@ -391,6 +514,10 @@ FROM morphometrics
 INNER JOIN deployments 
 ON morphometrics.dragon_id = deployments.dragon_id 
 LIMIT 10;
+```
+
+```{r q30, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM morphometrics INNER JOIN deployments ON morphometrics.dragon_id = deployments.dragon_id LIMIT 10;")
 ```
 
 A full join keeps all records from both the left and the right table, matching 
@@ -410,10 +537,15 @@ dragon ID, which is the column the two tables have in common. So the join clause
 will look like this:
 
 ```{sql}
-SELECT dragon_id, wingspan_cm, sex
+SELECT morphometrics.dragon_id, wingspan_cm, sex
 FROM morphometrics -- this is our left table
 LEFT JOIN dragons -- this is our left table 
-ON morphometrics.dragon_id = dragons.dragon_id; -- this is the shared column
+ON morphometrics.dragon_id = dragons.dragon_id -- this is the shared column
+LIMIT 10;
+```
+
+```{r q31, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT morphometrics.dragon_id, wingspan_cm, sex FROM morphometrics LEFT JOIN dragons ON morphometrics.dragon_id = dragons.dragon_id LIMIT 10;")
 ```
 
 By using a left join, we are saying that we want to keep all rows from the left
@@ -429,6 +561,10 @@ FROM (
     ON morphometrics.dragon_id = dragons.dragon_id
     )
 GROUP BY sex; 
+```
+
+```{r q32, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT sex, AVG(wingspan_cm) AS mean_wingspan FROM (SELECT morphometrics.dragon_id, wingspan_cm, sex FROM morphometrics LEFT JOIN dragons ON morphometrics.dragon_id = dragons.dragon_id) GROUP BY sex;")
 ```
 
 The one above is a nested query, which means there are two `SELECT` statements
@@ -579,7 +715,9 @@ add tables carefully. If we try to add a foreign key that refers to a table that
 doesn't exist yet, we won't be able to. Let's take another look at the diagram 
 of our table relationships:
 
-img
+```{r db-diagram2, fig.cap="Diagram of the dragons database", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/database_diagram.png")
+```
 
 Any table that has one or more foreign keys needs to be added *after* the 
 related table/s. In our case, there are three "root" tables that do not have
@@ -635,12 +773,16 @@ This is equivalent to the one I used above for the dragons table.
 Now that we added a few tables, we can start to populate the database by loading 
 the data as .csv files. On the *Tools* tab, click "Import."
 
-img
+```{r db-import1, fig.cap=" ", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/sqlite_import1.png")
+```
 
 Check that the database is correct and then select the table you want to import
 data into. For example, let's start with the dragons table:
 
-img
+```{r db-import2, fig.cap=" ", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/sqlite_import2.png")
+```
 
 Click *Next*. Now, browse your directory to select the input file. Then check
 the box that says "First line represents CSV column names", make sure the field
@@ -652,6 +794,10 @@ try to look at the first 10 rows:
 
 ```{sql}
 SELECT * FROM dragons LIMIT 10;
+```
+
+```{r q33, echo = FALSE, eval = TRUE}
+dbGetQuery(dragons_db, "SELECT * FROM dragons LIMIT 10;")
 ```
 
 If everything looks good, we can go ahead and import data in the other two 

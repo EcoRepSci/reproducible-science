@@ -24,7 +24,7 @@
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-06" />
+<meta name="date" content="2021-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -245,8 +245,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Linking Databases and R with RSQLite</a></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a></li>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
+<li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
+<li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
+<li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
+<li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
+<li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
+<li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
+<li class="chapter" data-level="8.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>8.4.4</b> Inline code</a></li>
+<li class="chapter" data-level="8.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#text-formatting"><i class="fa fa-check"></i><b>8.4.5</b> Text formatting</a></li>
+<li class="chapter" data-level="8.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#embedding-images"><i class="fa fa-check"></i><b>8.4.6</b> Embedding images</a></li>
+<li class="chapter" data-level="8.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#adding-a-table-of-contents"><i class="fa fa-check"></i><b>8.4.7</b> Adding a table of contents</a></li>
+<li class="chapter" data-level="8.4.8" data-path="rmarkdown.html"><a href="rmarkdown.html#knitting-the-document"><i class="fa fa-check"></i><b>8.4.8</b> Knitting the document</a></li>
+<li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
 <li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
@@ -325,6 +345,28 @@ programming language for relational databases. We are going to learn how to
 write queries to retrieve data and how to build the database itself. The
 database we’ll practice with includes imaginary data on dragons. Let’s take a
 look at the content and structure:</p>
+<div class="figure" style="text-align: center"><span id="fig:db-diagram"></span>
+<img src="img/database_diagram.png" alt="Diagram of the dragons database" width="80%" />
+<p class="caption">
+Figure 5.1: Diagram of the dragons database
+</p>
+</div>
+<p>The database is composed of 9 tables. The <em>dragons</em> table includes individual
+information on the sample individuals. The <em>captures</em> table contains information
+on when and where each dragon was captured, and it’s linked to the <em>capture sites</em>
+table which stores the coordinates of each capture site. The <em>morphometrics</em>
+table contains body measurements and the <em>diet</em> table contains information on
+diet samples. Both of these are linked to the <em>dragons</em> table based on
+individual IDs. We also tracked some of these dragons, so we have a <em>tags</em> table
+which lists all the different GPS units we deployed within the project. The
+<em>deployments</em> table tells us which dragon was wearing each tag at any given time,
+and therefore it’s linked to both the <em>dragons</em> and the <em>tags</em> table through the
+dragon IDs and the tag IDs, respectively. A <em>raw GPS data</em> table contains
+telemetry data in its raw form, i.e., as it comes out of the tags, and it’s
+therefore linked to the <em>tags</em> table via the tag ID. Finally, a <em>processed GPS data</em>
+table associates the tracking data to the dragons. Primary keys are in italics
+and foreign keys are in bold. Connectors link tables with one another based on
+their foreign keys.</p>
 
 </div>
 </div>
@@ -384,6 +426,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

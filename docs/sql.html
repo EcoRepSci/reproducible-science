@@ -24,7 +24,7 @@
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-06" />
+<meta name="date" content="2021-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -245,8 +245,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Linking Databases and R with RSQLite</a></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a></li>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
+<li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
+<li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
+<li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
+<li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
+<li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
+<li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
+<li class="chapter" data-level="8.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>8.4.4</b> Inline code</a></li>
+<li class="chapter" data-level="8.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#text-formatting"><i class="fa fa-check"></i><b>8.4.5</b> Text formatting</a></li>
+<li class="chapter" data-level="8.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#embedding-images"><i class="fa fa-check"></i><b>8.4.6</b> Embedding images</a></li>
+<li class="chapter" data-level="8.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#adding-a-table-of-contents"><i class="fa fa-check"></i><b>8.4.7</b> Adding a table of contents</a></li>
+<li class="chapter" data-level="8.4.8" data-path="rmarkdown.html"><a href="rmarkdown.html#knitting-the-document"><i class="fa fa-check"></i><b>8.4.8</b> Knitting the document</a></li>
+<li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
 <li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
@@ -317,25 +337,1539 @@ statement, or query, always begins with a verb that describes the action we want
 to do. A semicolon at the end of the query lets SQL know that we are done
 talking. For example:</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb47-1"><a href="sql.html#cb47-1"></a><span class="kw">SELECT</span> dragon_id <span class="kw">FROM</span> dragons;</span></code></pre></div>
+<pre><code>##     dragon_id
+## 1          D1
+## 2         D10
+## 3        D100
+## 4        D101
+## 5        D102
+## 6        D103
+## 7        D104
+## 8        D105
+## 9        D106
+## 10       D107
+## 11       D108
+## 12       D109
+## 13        D11
+## 14       D110
+## 15       D111
+## 16       D112
+## 17       D113
+## 18       D114
+## 19       D115
+## 20       D116
+## 21       D117
+## 22       D118
+## 23       D119
+## 24        D12
+## 25       D120
+## 26       D121
+## 27       D122
+## 28       D123
+## 29       D124
+## 30       D125
+## 31       D126
+## 32       D127
+## 33       D128
+## 34       D129
+## 35        D13
+## 36       D130
+## 37       D131
+## 38       D132
+## 39       D133
+## 40       D134
+## 41       D135
+## 42       D136
+## 43       D137
+## 44       D138
+## 45       D139
+## 46        D14
+## 47       D140
+## 48       D141
+## 49       D142
+## 50       D143
+## 51       D144
+## 52       D145
+## 53       D146
+## 54       D147
+## 55       D148
+## 56       D149
+## 57        D15
+## 58       D150
+## 59       D151
+## 60       D152
+## 61       D153
+## 62       D154
+## 63       D155
+## 64       D156
+## 65       D157
+## 66       D158
+## 67       D159
+## 68        D16
+## 69       D160
+## 70       D161
+## 71       D162
+## 72       D163
+## 73       D164
+## 74       D165
+## 75       D166
+## 76       D167
+## 77       D168
+## 78       D169
+## 79        D17
+## 80       D170
+## 81       D171
+## 82       D172
+## 83       D173
+## 84       D174
+## 85       D175
+## 86       D176
+## 87       D177
+## 88       D178
+## 89       D179
+## 90        D18
+## 91       D180
+## 92       D181
+## 93       D182
+## 94       D183
+## 95       D184
+## 96       D185
+## 97       D186
+## 98       D187
+## 99       D188
+## 100      D189
+## 101       D19
+## 102      D190
+## 103      D191
+## 104      D192
+## 105      D193
+## 106      D194
+## 107      D195
+## 108      D196
+## 109      D197
+## 110      D198
+## 111      D199
+## 112        D2
+## 113       D20
+## 114      D200
+## 115      D201
+## 116      D202
+## 117      D203
+## 118      D204
+## 119      D205
+## 120      D206
+## 121      D207
+## 122      D208
+## 123      D209
+## 124       D21
+## 125      D210
+## 126      D211
+## 127      D212
+## 128      D213
+## 129      D214
+## 130      D215
+## 131      D216
+## 132      D217
+## 133      D218
+## 134      D219
+## 135       D22
+## 136      D220
+## 137      D221
+## 138      D222
+## 139      D223
+## 140      D224
+## 141      D225
+## 142      D226
+## 143      D227
+## 144      D228
+## 145      D229
+## 146       D23
+## 147      D230
+## 148      D231
+## 149      D232
+## 150      D233
+## 151      D234
+## 152      D235
+## 153      D236
+## 154      D237
+## 155      D238
+## 156      D239
+## 157       D24
+## 158      D240
+## 159      D241
+## 160      D242
+## 161      D243
+## 162      D244
+## 163      D245
+## 164      D246
+## 165      D247
+## 166      D248
+## 167      D249
+## 168       D25
+## 169      D250
+## 170      D251
+## 171      D252
+## 172      D253
+## 173      D254
+## 174      D255
+## 175      D256
+## 176      D257
+## 177      D258
+## 178      D259
+## 179       D26
+## 180      D260
+## 181      D261
+## 182      D262
+## 183      D263
+## 184      D264
+## 185      D265
+## 186      D266
+## 187      D267
+## 188      D268
+## 189      D269
+## 190       D27
+## 191      D270
+## 192      D271
+## 193      D272
+## 194      D273
+## 195      D274
+## 196      D275
+## 197      D276
+## 198      D277
+## 199      D278
+## 200      D279
+## 201       D28
+## 202      D280
+## 203      D281
+## 204      D282
+## 205      D283
+## 206      D284
+## 207      D285
+## 208      D286
+## 209      D287
+## 210      D288
+## 211      D289
+## 212       D29
+## 213      D290
+## 214      D291
+## 215      D292
+## 216      D293
+## 217      D294
+## 218      D295
+## 219      D296
+## 220      D297
+## 221      D298
+## 222      D299
+## 223        D3
+## 224       D30
+## 225      D300
+## 226      D301
+## 227      D302
+## 228      D303
+## 229      D304
+## 230      D305
+## 231      D306
+## 232      D307
+## 233      D308
+## 234      D309
+## 235       D31
+## 236      D310
+## 237      D311
+## 238      D312
+## 239      D313
+## 240      D314
+## 241      D315
+## 242      D316
+## 243      D317
+## 244      D318
+## 245      D319
+## 246       D32
+## 247      D320
+## 248      D321
+## 249      D322
+## 250      D323
+## 251      D324
+## 252      D325
+## 253      D326
+## 254      D327
+## 255      D328
+## 256      D329
+## 257       D33
+## 258      D330
+## 259      D331
+## 260      D332
+## 261      D333
+## 262      D334
+## 263      D335
+## 264      D336
+## 265      D337
+## 266      D338
+## 267      D339
+## 268       D34
+## 269      D340
+## 270      D341
+## 271      D342
+## 272      D343
+## 273      D344
+## 274      D345
+## 275      D346
+## 276      D347
+## 277      D348
+## 278      D349
+## 279       D35
+## 280      D350
+## 281      D351
+## 282      D352
+## 283      D353
+## 284      D354
+## 285      D355
+## 286      D356
+## 287      D357
+## 288      D358
+## 289      D359
+## 290       D36
+## 291      D360
+## 292      D361
+## 293      D362
+## 294      D363
+## 295      D364
+## 296      D365
+## 297      D366
+## 298      D367
+## 299      D368
+## 300      D369
+## 301       D37
+## 302      D370
+## 303      D371
+## 304      D372
+## 305      D373
+## 306      D374
+## 307      D375
+## 308      D376
+## 309      D377
+## 310      D378
+## 311      D379
+## 312       D38
+## 313      D380
+## 314      D381
+## 315      D382
+## 316      D383
+## 317      D384
+## 318      D385
+## 319      D386
+## 320      D387
+## 321      D388
+## 322      D389
+## 323       D39
+## 324      D390
+## 325      D391
+## 326      D392
+## 327      D393
+## 328      D394
+## 329      D395
+## 330      D396
+## 331      D397
+## 332      D398
+## 333      D399
+## 334        D4
+## 335       D40
+## 336      D400
+## 337      D401
+## 338      D402
+## 339      D403
+## 340      D404
+## 341      D405
+## 342      D406
+## 343      D407
+## 344      D408
+## 345      D409
+## 346       D41
+## 347      D410
+## 348      D411
+## 349      D412
+## 350      D413
+## 351      D414
+## 352      D415
+## 353      D416
+## 354      D417
+## 355      D418
+## 356      D419
+## 357       D42
+## 358      D420
+## 359      D421
+## 360      D422
+## 361      D423
+## 362      D424
+## 363      D425
+## 364      D426
+## 365      D427
+## 366      D428
+## 367      D429
+## 368       D43
+## 369      D430
+## 370      D431
+## 371      D432
+## 372      D433
+## 373      D434
+## 374      D435
+## 375      D436
+## 376      D437
+## 377      D438
+## 378      D439
+## 379       D44
+## 380      D440
+## 381      D441
+## 382      D442
+## 383      D443
+## 384      D444
+## 385      D445
+## 386      D446
+## 387      D447
+## 388      D448
+## 389      D449
+## 390       D45
+## 391      D450
+## 392      D451
+## 393      D452
+## 394      D453
+## 395      D454
+## 396      D455
+## 397      D456
+## 398      D457
+## 399      D458
+## 400      D459
+## 401       D46
+## 402      D460
+## 403      D461
+## 404      D462
+## 405      D463
+## 406      D464
+## 407      D465
+## 408      D466
+## 409      D467
+## 410      D468
+## 411      D469
+## 412       D47
+## 413      D470
+## 414      D471
+## 415      D472
+## 416      D473
+## 417      D474
+## 418      D475
+## 419      D476
+## 420      D477
+## 421      D478
+## 422      D479
+## 423       D48
+## 424      D480
+## 425      D481
+## 426      D482
+## 427      D483
+## 428      D484
+## 429      D485
+## 430      D486
+## 431      D487
+## 432      D488
+## 433      D489
+## 434       D49
+## 435      D490
+## 436      D491
+## 437      D492
+## 438      D493
+## 439      D494
+## 440      D495
+## 441      D496
+## 442      D497
+## 443      D498
+## 444      D499
+## 445        D5
+## 446       D50
+## 447      D500
+## 448       D51
+## 449       D52
+## 450       D53
+## 451       D54
+## 452       D55
+## 453       D56
+## 454       D57
+## 455       D58
+## 456       D59
+## 457        D6
+## 458       D60
+## 459       D61
+## 460       D62
+## 461       D63
+## 462       D64
+## 463       D65
+## 464       D66
+## 465       D67
+## 466       D68
+## 467       D69
+## 468        D7
+## 469       D70
+## 470       D71
+## 471       D72
+## 472       D73
+## 473       D74
+## 474       D75
+## 475       D76
+## 476       D77
+## 477       D78
+## 478       D79
+## 479        D8
+## 480       D80
+## 481       D81
+## 482       D82
+## 483       D83
+## 484       D84
+## 485       D85
+## 486       D86
+## 487       D87
+## 488       D88
+## 489       D89
+## 490        D9
+## 491       D90
+## 492       D91
+## 493       D92
+## 494       D93
+## 495       D94
+## 496       D95
+## 497       D96
+## 498       D97
+## 499       D98
+## 500       D99</code></pre>
 <p>The verb <code>SELECT</code> is one we’ll be using over and over again. Any time you want
 to select data you also have to specify which table you want it from, so the
 <code>SELECT</code> clause is always followed by a <code>FROM</code> clause. In this case, we asked
 to see the column <code>dragon_id</code> from the <code>dragons</code> table. Sounds like English,
 right?</p>
 <p>If we want to see multiple columns, we can list them separated by commas:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb48-1"><a href="sql.html#cb48-1"></a><span class="kw">SELECT</span> dragon_id, sex </span>
-<span id="cb48-2"><a href="sql.html#cb48-2"></a><span class="kw">FROM</span> dragons;</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb49-1"><a href="sql.html#cb49-1"></a><span class="kw">SELECT</span> dragon_id, sex </span>
+<span id="cb49-2"><a href="sql.html#cb49-2"></a><span class="kw">FROM</span> dragons;</span></code></pre></div>
+<pre><code>##     dragon_id  sex
+## 1          D1    F
+## 2          D2 &lt;NA&gt;
+## 3          D3    F
+## 4          D4    F
+## 5          D5 &lt;NA&gt;
+## 6          D6    F
+## 7          D7    M
+## 8          D8 &lt;NA&gt;
+## 9          D9    F
+## 10        D10    F
+## 11        D11    F
+## 12        D12    F
+## 13        D13 &lt;NA&gt;
+## 14        D14 &lt;NA&gt;
+## 15        D15 &lt;NA&gt;
+## 16        D16    F
+## 17        D17    F
+## 18        D18    F
+## 19        D19    F
+## 20        D20    M
+## 21        D21    F
+## 22        D22 &lt;NA&gt;
+## 23        D23    M
+## 24        D24 &lt;NA&gt;
+## 25        D25    M
+## 26        D26 &lt;NA&gt;
+## 27        D27    F
+## 28        D28    M
+## 29        D29    F
+## 30        D30    F
+## 31        D31 &lt;NA&gt;
+## 32        D32    M
+## 33        D33    F
+## 34        D34    F
+## 35        D35    F
+## 36        D36 &lt;NA&gt;
+## 37        D37    F
+## 38        D38    F
+## 39        D39 &lt;NA&gt;
+## 40        D40 &lt;NA&gt;
+## 41        D41 &lt;NA&gt;
+## 42        D42    M
+## 43        D43    F
+## 44        D44    M
+## 45        D45    F
+## 46        D46    M
+## 47        D47    F
+## 48        D48    M
+## 49        D49 &lt;NA&gt;
+## 50        D50    F
+## 51        D51    F
+## 52        D52    M
+## 53        D53 &lt;NA&gt;
+## 54        D54    F
+## 55        D55 &lt;NA&gt;
+## 56        D56    F
+## 57        D57    F
+## 58        D58    M
+## 59        D59    F
+## 60        D60    F
+## 61        D61    M
+## 62        D62    F
+## 63        D63    F
+## 64        D64 &lt;NA&gt;
+## 65        D65 &lt;NA&gt;
+## 66        D66 &lt;NA&gt;
+## 67        D67    M
+## 68        D68    M
+## 69        D69    F
+## 70        D70    F
+## 71        D71    M
+## 72        D72 &lt;NA&gt;
+## 73        D73    F
+## 74        D74 &lt;NA&gt;
+## 75        D75    M
+## 76        D76    M
+## 77        D77 &lt;NA&gt;
+## 78        D78 &lt;NA&gt;
+## 79        D79    M
+## 80        D80    F
+## 81        D81 &lt;NA&gt;
+## 82        D82    F
+## 83        D83 &lt;NA&gt;
+## 84        D84    M
+## 85        D85    F
+## 86        D86    F
+## 87        D87    M
+## 88        D88    M
+## 89        D89    F
+## 90        D90    M
+## 91        D91    F
+## 92        D92    M
+## 93        D93    M
+## 94        D94    M
+## 95        D95    M
+## 96        D96    F
+## 97        D97 &lt;NA&gt;
+## 98        D98 &lt;NA&gt;
+## 99        D99    F
+## 100      D100 &lt;NA&gt;
+## 101      D101 &lt;NA&gt;
+## 102      D102    F
+## 103      D103    F
+## 104      D104    F
+## 105      D105    M
+## 106      D106 &lt;NA&gt;
+## 107      D107 &lt;NA&gt;
+## 108      D108    F
+## 109      D109    M
+## 110      D110    F
+## 111      D111    M
+## 112      D112    F
+## 113      D113 &lt;NA&gt;
+## 114      D114 &lt;NA&gt;
+## 115      D115    F
+## 116      D116    F
+## 117      D117 &lt;NA&gt;
+## 118      D118 &lt;NA&gt;
+## 119      D119    F
+## 120      D120    F
+## 121      D121 &lt;NA&gt;
+## 122      D122    F
+## 123      D123 &lt;NA&gt;
+## 124      D124    M
+## 125      D125 &lt;NA&gt;
+## 126      D126    M
+## 127      D127    M
+## 128      D128 &lt;NA&gt;
+## 129      D129    M
+## 130      D130 &lt;NA&gt;
+## 131      D131 &lt;NA&gt;
+## 132      D132    F
+## 133      D133    F
+## 134      D134    F
+## 135      D135 &lt;NA&gt;
+## 136      D136    F
+## 137      D137    F
+## 138      D138    F
+## 139      D139    F
+## 140      D140 &lt;NA&gt;
+## 141      D141    F
+## 142      D142    M
+## 143      D143    F
+## 144      D144    M
+## 145      D145    M
+## 146      D146    M
+## 147      D147 &lt;NA&gt;
+## 148      D148 &lt;NA&gt;
+## 149      D149    M
+## 150      D150    F
+## 151      D151 &lt;NA&gt;
+## 152      D152    F
+## 153      D153    M
+## 154      D154    F
+## 155      D155    F
+## 156      D156    M
+## 157      D157    F
+## 158      D158 &lt;NA&gt;
+## 159      D159 &lt;NA&gt;
+## 160      D160    F
+## 161      D161    F
+## 162      D162    F
+## 163      D163 &lt;NA&gt;
+## 164      D164 &lt;NA&gt;
+## 165      D165    M
+## 166      D166 &lt;NA&gt;
+## 167      D167    M
+## 168      D168    F
+## 169      D169    F
+## 170      D170 &lt;NA&gt;
+## 171      D171    M
+## 172      D172    M
+## 173      D173    F
+## 174      D174 &lt;NA&gt;
+## 175      D175    M
+## 176      D176    F
+## 177      D177    F
+## 178      D178    F
+## 179      D179 &lt;NA&gt;
+## 180      D180    F
+## 181      D181    F
+## 182      D182    F
+## 183      D183    F
+## 184      D184    F
+## 185      D185    M
+## 186      D186 &lt;NA&gt;
+## 187      D187 &lt;NA&gt;
+## 188      D188    M
+## 189      D189    F
+## 190      D190    F
+## 191      D191    M
+## 192      D192    M
+## 193      D193    M
+## 194      D194 &lt;NA&gt;
+## 195      D195    F
+## 196      D196    F
+## 197      D197    F
+## 198      D198    M
+## 199      D199 &lt;NA&gt;
+## 200      D200 &lt;NA&gt;
+## 201      D201 &lt;NA&gt;
+## 202      D202    M
+## 203      D203 &lt;NA&gt;
+## 204      D204    M
+## 205      D205    F
+## 206      D206    F
+## 207      D207 &lt;NA&gt;
+## 208      D208    M
+## 209      D209 &lt;NA&gt;
+## 210      D210    M
+## 211      D211    F
+## 212      D212    F
+## 213      D213 &lt;NA&gt;
+## 214      D214    F
+## 215      D215    F
+## 216      D216 &lt;NA&gt;
+## 217      D217    F
+## 218      D218    F
+## 219      D219    M
+## 220      D220    F
+## 221      D221    M
+## 222      D222    M
+## 223      D223    M
+## 224      D224 &lt;NA&gt;
+## 225      D225    M
+## 226      D226 &lt;NA&gt;
+## 227      D227    F
+## 228      D228    F
+## 229      D229 &lt;NA&gt;
+## 230      D230    M
+## 231      D231    M
+## 232      D232    F
+## 233      D233    F
+## 234      D234    F
+## 235      D235 &lt;NA&gt;
+## 236      D236    F
+## 237      D237    M
+## 238      D238    F
+## 239      D239    F
+## 240      D240    F
+## 241      D241 &lt;NA&gt;
+## 242      D242    M
+## 243      D243 &lt;NA&gt;
+## 244      D244    F
+## 245      D245 &lt;NA&gt;
+## 246      D246 &lt;NA&gt;
+## 247      D247    M
+## 248      D248    M
+## 249      D249 &lt;NA&gt;
+## 250      D250    F
+## 251      D251 &lt;NA&gt;
+## 252      D252 &lt;NA&gt;
+## 253      D253    F
+## 254      D254    F
+## 255      D255 &lt;NA&gt;
+## 256      D256 &lt;NA&gt;
+## 257      D257 &lt;NA&gt;
+## 258      D258 &lt;NA&gt;
+## 259      D259    F
+## 260      D260    F
+## 261      D261 &lt;NA&gt;
+## 262      D262    M
+## 263      D263    M
+## 264      D264    F
+## 265      D265    M
+## 266      D266 &lt;NA&gt;
+## 267      D267 &lt;NA&gt;
+## 268      D268    F
+## 269      D269    F
+## 270      D270 &lt;NA&gt;
+## 271      D271    F
+## 272      D272    F
+## 273      D273 &lt;NA&gt;
+## 274      D274    F
+## 275      D275    F
+## 276      D276    M
+## 277      D277    F
+## 278      D278    F
+## 279      D279 &lt;NA&gt;
+## 280      D280    M
+## 281      D281    F
+## 282      D282    F
+## 283      D283    F
+## 284      D284    F
+## 285      D285 &lt;NA&gt;
+## 286      D286    F
+## 287      D287    M
+## 288      D288    M
+## 289      D289 &lt;NA&gt;
+## 290      D290 &lt;NA&gt;
+## 291      D291    F
+## 292      D292 &lt;NA&gt;
+## 293      D293    F
+## 294      D294    F
+## 295      D295    M
+## 296      D296 &lt;NA&gt;
+## 297      D297 &lt;NA&gt;
+## 298      D298    M
+## 299      D299    F
+## 300      D300    F
+## 301      D301    F
+## 302      D302    F
+## 303      D303 &lt;NA&gt;
+## 304      D304    F
+## 305      D305    M
+## 306      D306 &lt;NA&gt;
+## 307      D307 &lt;NA&gt;
+## 308      D308    F
+## 309      D309 &lt;NA&gt;
+## 310      D310 &lt;NA&gt;
+## 311      D311    M
+## 312      D312    M
+## 313      D313    F
+## 314      D314    M
+## 315      D315    F
+## 316      D316    M
+## 317      D317    F
+## 318      D318 &lt;NA&gt;
+## 319      D319 &lt;NA&gt;
+## 320      D320 &lt;NA&gt;
+## 321      D321    M
+## 322      D322 &lt;NA&gt;
+## 323      D323    M
+## 324      D324 &lt;NA&gt;
+## 325      D325    F
+## 326      D326    F
+## 327      D327    M
+## 328      D328 &lt;NA&gt;
+## 329      D329    M
+## 330      D330    F
+## 331      D331 &lt;NA&gt;
+## 332      D332    F
+## 333      D333 &lt;NA&gt;
+## 334      D334 &lt;NA&gt;
+## 335      D335    F
+## 336      D336 &lt;NA&gt;
+## 337      D337    M
+## 338      D338 &lt;NA&gt;
+## 339      D339 &lt;NA&gt;
+## 340      D340 &lt;NA&gt;
+## 341      D341    F
+## 342      D342 &lt;NA&gt;
+## 343      D343    F
+## 344      D344 &lt;NA&gt;
+## 345      D345    M
+## 346      D346    F
+## 347      D347    F
+## 348      D348 &lt;NA&gt;
+## 349      D349    M
+## 350      D350    M
+## 351      D351    M
+## 352      D352    M
+## 353      D353 &lt;NA&gt;
+## 354      D354    F
+## 355      D355 &lt;NA&gt;
+## 356      D356    F
+## 357      D357    F
+## 358      D358 &lt;NA&gt;
+## 359      D359    F
+## 360      D360    M
+## 361      D361    M
+## 362      D362    F
+## 363      D363 &lt;NA&gt;
+## 364      D364 &lt;NA&gt;
+## 365      D365    M
+## 366      D366    M
+## 367      D367    M
+## 368      D368    F
+## 369      D369    M
+## 370      D370 &lt;NA&gt;
+## 371      D371 &lt;NA&gt;
+## 372      D372    M
+## 373      D373    F
+## 374      D374    M
+## 375      D375    M
+## 376      D376 &lt;NA&gt;
+## 377      D377    F
+## 378      D378    M
+## 379      D379    F
+## 380      D380 &lt;NA&gt;
+## 381      D381    M
+## 382      D382    F
+## 383      D383    F
+## 384      D384    M
+## 385      D385    F
+## 386      D386 &lt;NA&gt;
+## 387      D387    M
+## 388      D388    F
+## 389      D389    F
+## 390      D390    F
+## 391      D391 &lt;NA&gt;
+## 392      D392    M
+## 393      D393    M
+## 394      D394    M
+## 395      D395 &lt;NA&gt;
+## 396      D396    F
+## 397      D397 &lt;NA&gt;
+## 398      D398    F
+## 399      D399    F
+## 400      D400 &lt;NA&gt;
+## 401      D401    M
+## 402      D402    F
+## 403      D403 &lt;NA&gt;
+## 404      D404    F
+## 405      D405    M
+## 406      D406    M
+## 407      D407    M
+## 408      D408    F
+## 409      D409 &lt;NA&gt;
+## 410      D410    F
+## 411      D411 &lt;NA&gt;
+## 412      D412 &lt;NA&gt;
+## 413      D413    F
+## 414      D414    F
+## 415      D415    F
+## 416      D416    F
+## 417      D417    M
+## 418      D418    M
+## 419      D419    F
+## 420      D420 &lt;NA&gt;
+## 421      D421 &lt;NA&gt;
+## 422      D422    F
+## 423      D423    M
+## 424      D424    F
+## 425      D425    M
+## 426      D426    F
+## 427      D427    F
+## 428      D428 &lt;NA&gt;
+## 429      D429 &lt;NA&gt;
+## 430      D430    F
+## 431      D431 &lt;NA&gt;
+## 432      D432    M
+## 433      D433    M
+## 434      D434 &lt;NA&gt;
+## 435      D435 &lt;NA&gt;
+## 436      D436 &lt;NA&gt;
+## 437      D437    M
+## 438      D438 &lt;NA&gt;
+## 439      D439    F
+## 440      D440    M
+## 441      D441    F
+## 442      D442    M
+## 443      D443    F
+## 444      D444    M
+## 445      D445    M
+## 446      D446    F
+## 447      D447 &lt;NA&gt;
+## 448      D448    F
+## 449      D449    M
+## 450      D450    F
+## 451      D451    F
+## 452      D452    F
+## 453      D453    F
+## 454      D454    M
+## 455      D455    F
+## 456      D456    F
+## 457      D457    F
+## 458      D458    F
+## 459      D459    F
+## 460      D460    F
+## 461      D461    M
+## 462      D462 &lt;NA&gt;
+## 463      D463    M
+## 464      D464    F
+## 465      D465    M
+## 466      D466 &lt;NA&gt;
+## 467      D467 &lt;NA&gt;
+## 468      D468    M
+## 469      D469    F
+## 470      D470    F
+## 471      D471    F
+## 472      D472    M
+## 473      D473    M
+## 474      D474    F
+## 475      D475    M
+## 476      D476    F
+## 477      D477    M
+## 478      D478    M
+## 479      D479    F
+## 480      D480    F
+## 481      D481    F
+## 482      D482    M
+## 483      D483 &lt;NA&gt;
+## 484      D484    M
+## 485      D485    M
+## 486      D486 &lt;NA&gt;
+## 487      D487    F
+## 488      D488 &lt;NA&gt;
+## 489      D489    F
+## 490      D490    F
+## 491      D491    F
+## 492      D492    F
+## 493      D493    F
+## 494      D494    F
+## 495      D495    M
+## 496      D496    F
+## 497      D497    F
+## 498      D498    F
+## 499      D499    F
+## 500      D500    F</code></pre>
 <p>And if we want to see the whole table (not specific columns), we can use a
 wildcard:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb49-1"><a href="sql.html#cb49-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb49-2"><a href="sql.html#cb49-2"></a><span class="kw">FROM</span> dragons;</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb51-1"><a href="sql.html#cb51-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb51-2"><a href="sql.html#cb51-2"></a><span class="kw">FROM</span> dragons;</span></code></pre></div>
+<pre><code>##     dragon_id  sex age_class             species
+## 1          D1    F  Subadult     Hebridean Black
+## 2          D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 3          D3    F     Adult     Hebridean Black
+## 4          D4    F     Adult Peruvian Vipertooth
+## 5          D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 6          D6    F     Adult Norwegian Ridgeback
+## 7          D7    M     Adult     Hebridean Black
+## 8          D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 9          D9    F     Adult Norwegian Ridgeback
+## 10        D10    F     Adult  Common Welsh Green
+## 11        D11    F     Adult Peruvian Vipertooth
+## 12        D12    F     Adult Swedish Short-Snout
+## 13        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 14        D14 &lt;NA&gt;  Juvenile     Hebridean Black
+## 15        D15 &lt;NA&gt;  Juvenile    Chinese Fireball
+## 16        D16    F     Adult    Chinese Fireball
+## 17        D17    F     Adult Peruvian Vipertooth
+## 18        D18    F     Adult Norwegian Ridgeback
+## 19        D19    F     Adult  Common Welsh Green
+## 20        D20    M  Subadult    Chinese Fireball
+## 21        D21    F     Adult Ukrainian Ironbelly
+## 22        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 23        D23    M     Adult Swedish Short-Snout
+## 24        D24 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 25        D25    M     Adult Peruvian Vipertooth
+## 26        D26 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 27        D27    F     Adult Norwegian Ridgeback
+## 28        D28    M     Adult  Common Welsh Green
+## 29        D29    F     Adult Norwegian Ridgeback
+## 30        D30    F     Adult    Chinese Fireball
+## 31        D31 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 32        D32    M     Adult Ukrainian Ironbelly
+## 33        D33    F     Adult   Romanian Longhorn
+## 34        D34    F     Adult Norwegian Ridgeback
+## 35        D35    F     Adult Ukrainian Ironbelly
+## 36        D36 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 37        D37    F  Subadult  Common Welsh Green
+## 38        D38    F     Adult  Hungarian Horntail
+## 39        D39 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 40        D40 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 41        D41 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 42        D42    M     Adult Swedish Short-Snout
+## 43        D43    F  Subadult  Antipodean Opaleye
+## 44        D44    M     Adult   Romanian Longhorn
+## 45        D45    F     Adult Peruvian Vipertooth
+## 46        D46    M  Subadult     Hebridean Black
+## 47        D47    F     Adult Ukrainian Ironbelly
+## 48        D48    M     Adult Ukrainian Ironbelly
+## 49        D49 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 50        D50    F     Adult    Chinese Fireball
+## 51        D51    F  Subadult Norwegian Ridgeback
+## 52        D52    M     Adult  Common Welsh Green
+## 53        D53 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 54        D54    F     Adult Norwegian Ridgeback
+## 55        D55 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 56        D56    F  Subadult Norwegian Ridgeback
+## 57        D57    F     Adult  Common Welsh Green
+## 58        D58    M     Adult     Hebridean Black
+## 59        D59    F     Adult Peruvian Vipertooth
+## 60        D60    F     Adult     Hebridean Black
+## 61        D61    M  Subadult   Romanian Longhorn
+## 62        D62    F     Adult  Hungarian Horntail
+## 63        D63    F     Adult  Antipodean Opaleye
+## 64        D64 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 65        D65 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 66        D66 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 67        D67    M     Adult Norwegian Ridgeback
+## 68        D68    M     Adult  Antipodean Opaleye
+## 69        D69    F  Subadult     Hebridean Black
+## 70        D70    F     Adult Norwegian Ridgeback
+## 71        D71    M     Adult     Hebridean Black
+## 72        D72 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 73        D73    F     Adult   Romanian Longhorn
+## 74        D74 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 75        D75    M     Adult Swedish Short-Snout
+## 76        D76    M     Adult   Romanian Longhorn
+## 77        D77 &lt;NA&gt;  Juvenile     Hebridean Black
+## 78        D78 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 79        D79    M     Adult  Common Welsh Green
+## 80        D80    F     Adult   Romanian Longhorn
+## 81        D81 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 82        D82    F     Adult     Hebridean Black
+## 83        D83 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 84        D84    M     Adult Norwegian Ridgeback
+## 85        D85    F     Adult     Hebridean Black
+## 86        D86    F     Adult     Hebridean Black
+## 87        D87    M     Adult  Hungarian Horntail
+## 88        D88    M     Adult Swedish Short-Snout
+## 89        D89    F     Adult Norwegian Ridgeback
+## 90        D90    M     Adult Peruvian Vipertooth
+## 91        D91    F     Adult     Hebridean Black
+## 92        D92    M     Adult     Hebridean Black
+## 93        D93    M  Subadult Peruvian Vipertooth
+## 94        D94    M     Adult   Romanian Longhorn
+## 95        D95    M     Adult   Romanian Longhorn
+## 96        D96    F     Adult  Common Welsh Green
+## 97        D97 &lt;NA&gt;  Juvenile    Chinese Fireball
+## 98        D98 &lt;NA&gt;  Juvenile     Hebridean Black
+## 99        D99    F     Adult     Hebridean Black
+## 100      D100 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 101      D101 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 102      D102    F  Subadult  Hungarian Horntail
+## 103      D103    F     Adult     Hebridean Black
+## 104      D104    F     Adult     Hebridean Black
+## 105      D105    M     Adult  Common Welsh Green
+## 106      D106 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 107      D107 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 108      D108    F     Adult Norwegian Ridgeback
+## 109      D109    M     Adult Swedish Short-Snout
+## 110      D110    F     Adult Peruvian Vipertooth
+## 111      D111    M     Adult Norwegian Ridgeback
+## 112      D112    F     Adult Peruvian Vipertooth
+## 113      D113 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 114      D114 &lt;NA&gt;  Juvenile    Chinese Fireball
+## 115      D115    F     Adult  Common Welsh Green
+## 116      D116    F     Adult Norwegian Ridgeback
+## 117      D117 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 118      D118 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 119      D119    F     Adult Norwegian Ridgeback
+## 120      D120    F     Adult     Hebridean Black
+## 121      D121 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 122      D122    F     Adult Ukrainian Ironbelly
+## 123      D123 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 124      D124    M     Adult    Chinese Fireball
+## 125      D125 &lt;NA&gt;  Juvenile Swedish Short-Snout
+## 126      D126    M     Adult Swedish Short-Snout
+## 127      D127    M  Subadult Ukrainian Ironbelly
+## 128      D128 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 129      D129    M     Adult   Romanian Longhorn
+## 130      D130 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 131      D131 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 132      D132    F     Adult Norwegian Ridgeback
+## 133      D133    F     Adult Ukrainian Ironbelly
+## 134      D134    F     Adult     Hebridean Black
+## 135      D135 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 136      D136    F  Subadult    Chinese Fireball
+## 137      D137    F     Adult  Antipodean Opaleye
+## 138      D138    F     Adult  Common Welsh Green
+## 139      D139    F     Adult     Hebridean Black
+## 140      D140 &lt;NA&gt;  Juvenile     Hebridean Black
+## 141      D141    F     Adult   Romanian Longhorn
+## 142      D142    M  Subadult  Common Welsh Green
+## 143      D143    F     Adult  Antipodean Opaleye
+## 144      D144    M     Adult Norwegian Ridgeback
+## 145      D145    M     Adult Norwegian Ridgeback
+## 146      D146    M     Adult Norwegian Ridgeback
+## 147      D147 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 148      D148 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 149      D149    M     Adult Norwegian Ridgeback
+## 150      D150    F     Adult  Hungarian Horntail
+## 151      D151 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 152      D152    F  Subadult Peruvian Vipertooth
+## 153      D153    M     Adult  Antipodean Opaleye
+## 154      D154    F     Adult     Hebridean Black
+## 155      D155    F     Adult  Common Welsh Green
+## 156      D156    M     Adult Peruvian Vipertooth
+## 157      D157    F  Subadult Swedish Short-Snout
+## 158      D158 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 159      D159 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 160      D160    F     Adult  Common Welsh Green
+## 161      D161    F     Adult    Chinese Fireball
+## 162      D162    F     Adult  Hungarian Horntail
+## 163      D163 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 164      D164 &lt;NA&gt;  Juvenile    Chinese Fireball
+## 165      D165    M     Adult  Hungarian Horntail
+## 166      D166 &lt;NA&gt;  Juvenile Swedish Short-Snout
+## 167      D167    M     Adult Norwegian Ridgeback
+## 168      D168    F     Adult Swedish Short-Snout
+## 169      D169    F     Adult     Hebridean Black
+## 170      D170 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 171      D171    M  Subadult Ukrainian Ironbelly
+## 172      D172    M     Adult Peruvian Vipertooth
+## 173      D173    F     Adult Swedish Short-Snout
+## 174      D174 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 175      D175    M     Adult    Chinese Fireball
+## 176      D176    F     Adult Ukrainian Ironbelly
+## 177      D177    F     Adult   Romanian Longhorn
+## 178      D178    F     Adult     Hebridean Black
+## 179      D179 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 180      D180    F     Adult Norwegian Ridgeback
+## 181      D181    F     Adult  Common Welsh Green
+## 182      D182    F     Adult  Common Welsh Green
+## 183      D183    F     Adult  Common Welsh Green
+## 184      D184    F     Adult Norwegian Ridgeback
+## 185      D185    M     Adult    Chinese Fireball
+## 186      D186 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 187      D187 &lt;NA&gt;  Juvenile     Hebridean Black
+## 188      D188    M     Adult  Hungarian Horntail
+## 189      D189    F     Adult  Hungarian Horntail
+## 190      D190    F     Adult     Hebridean Black
+## 191      D191    M     Adult Peruvian Vipertooth
+## 192      D192    M     Adult Norwegian Ridgeback
+## 193      D193    M     Adult Peruvian Vipertooth
+## 194      D194 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 195      D195    F     Adult   Romanian Longhorn
+## 196      D196    F     Adult   Romanian Longhorn
+## 197      D197    F     Adult  Hungarian Horntail
+## 198      D198    M     Adult Ukrainian Ironbelly
+## 199      D199 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 200      D200 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 201      D201 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 202      D202    M     Adult  Common Welsh Green
+## 203      D203 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 204      D204    M     Adult   Romanian Longhorn
+## 205      D205    F     Adult  Hungarian Horntail
+## 206      D206    F     Adult  Hungarian Horntail
+## 207      D207 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 208      D208    M     Adult Norwegian Ridgeback
+## 209      D209 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 210      D210    M     Adult Norwegian Ridgeback
+## 211      D211    F     Adult     Hebridean Black
+## 212      D212    F     Adult  Antipodean Opaleye
+## 213      D213 &lt;NA&gt;  Juvenile     Hebridean Black
+## 214      D214    F  Subadult  Hungarian Horntail
+## 215      D215    F     Adult Norwegian Ridgeback
+## 216      D216 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 217      D217    F     Adult Peruvian Vipertooth
+## 218      D218    F     Adult     Hebridean Black
+## 219      D219    M     Adult Peruvian Vipertooth
+## 220      D220    F     Adult  Common Welsh Green
+## 221      D221    M     Adult Peruvian Vipertooth
+## 222      D222    M  Subadult  Hungarian Horntail
+## 223      D223    M     Adult  Antipodean Opaleye
+## 224      D224 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 225      D225    M     Adult Norwegian Ridgeback
+## 226      D226 &lt;NA&gt;  Juvenile Swedish Short-Snout
+## 227      D227    F     Adult   Romanian Longhorn
+## 228      D228    F     Adult     Hebridean Black
+## 229      D229 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 230      D230    M     Adult Norwegian Ridgeback
+## 231      D231    M     Adult Norwegian Ridgeback
+## 232      D232    F  Subadult     Hebridean Black
+## 233      D233    F  Subadult   Romanian Longhorn
+## 234      D234    F     Adult Norwegian Ridgeback
+## 235      D235 &lt;NA&gt;  Juvenile     Hebridean Black
+## 236      D236    F     Adult  Hungarian Horntail
+## 237      D237    M     Adult  Hungarian Horntail
+## 238      D238    F     Adult Swedish Short-Snout
+## 239      D239    F     Adult     Hebridean Black
+## 240      D240    F     Adult Ukrainian Ironbelly
+## 241      D241 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 242      D242    M     Adult   Romanian Longhorn
+## 243      D243 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 244      D244    F     Adult  Hungarian Horntail
+## 245      D245 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 246      D246 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 247      D247    M     Adult Norwegian Ridgeback
+## 248      D248    M  Subadult  Common Welsh Green
+## 249      D249 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 250      D250    F     Adult   Romanian Longhorn
+## 251      D251 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 252      D252 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 253      D253    F     Adult Norwegian Ridgeback
+## 254      D254    F     Adult   Romanian Longhorn
+## 255      D255 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 256      D256 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 257      D257 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 258      D258 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 259      D259    F     Adult     Hebridean Black
+## 260      D260    F     Adult  Common Welsh Green
+## 261      D261 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 262      D262    M     Adult Peruvian Vipertooth
+## 263      D263    M     Adult     Hebridean Black
+## 264      D264    F  Subadult Norwegian Ridgeback
+## 265      D265    M     Adult     Hebridean Black
+## 266      D266 &lt;NA&gt;  Juvenile Swedish Short-Snout
+## 267      D267 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 268      D268    F     Adult   Romanian Longhorn
+## 269      D269    F     Adult Swedish Short-Snout
+## 270      D270 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 271      D271    F     Adult   Romanian Longhorn
+## 272      D272    F     Adult   Romanian Longhorn
+## 273      D273 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 274      D274    F     Adult Norwegian Ridgeback
+## 275      D275    F     Adult     Hebridean Black
+## 276      D276    M     Adult Norwegian Ridgeback
+## 277      D277    F  Subadult Swedish Short-Snout
+## 278      D278    F     Adult  Common Welsh Green
+## 279      D279 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 280      D280    M     Adult Ukrainian Ironbelly
+## 281      D281    F     Adult   Romanian Longhorn
+## 282      D282    F     Adult Peruvian Vipertooth
+## 283      D283    F     Adult  Common Welsh Green
+## 284      D284    F     Adult   Romanian Longhorn
+## 285      D285 &lt;NA&gt;  Juvenile     Hebridean Black
+## 286      D286    F     Adult Ukrainian Ironbelly
+## 287      D287    M     Adult Norwegian Ridgeback
+## 288      D288    M  Subadult     Hebridean Black
+## 289      D289 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 290      D290 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 291      D291    F     Adult     Hebridean Black
+## 292      D292 &lt;NA&gt;  Juvenile     Hebridean Black
+## 293      D293    F     Adult    Chinese Fireball
+## 294      D294    F     Adult  Common Welsh Green
+## 295      D295    M  Subadult  Antipodean Opaleye
+## 296      D296 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 297      D297 &lt;NA&gt;  Juvenile     Hebridean Black
+## 298      D298    M     Adult Peruvian Vipertooth
+## 299      D299    F     Adult   Romanian Longhorn
+## 300      D300    F     Adult Peruvian Vipertooth
+## 301      D301    F  Subadult  Common Welsh Green
+## 302      D302    F     Adult Ukrainian Ironbelly
+## 303      D303 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 304      D304    F  Subadult   Romanian Longhorn
+## 305      D305    M     Adult  Common Welsh Green
+## 306      D306 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 307      D307 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 308      D308    F     Adult   Romanian Longhorn
+## 309      D309 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 310      D310 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 311      D311    M     Adult Norwegian Ridgeback
+## 312      D312    M  Subadult    Chinese Fireball
+## 313      D313    F     Adult  Antipodean Opaleye
+## 314      D314    M     Adult   Romanian Longhorn
+## 315      D315    F     Adult  Common Welsh Green
+## 316      D316    M  Subadult     Hebridean Black
+## 317      D317    F     Adult  Antipodean Opaleye
+## 318      D318 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 319      D319 &lt;NA&gt;  Juvenile Swedish Short-Snout
+## 320      D320 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 321      D321    M     Adult Norwegian Ridgeback
+## 322      D322 &lt;NA&gt;  Juvenile    Chinese Fireball
+## 323      D323    M     Adult   Romanian Longhorn
+## 324      D324 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 325      D325    F     Adult Norwegian Ridgeback
+## 326      D326    F     Adult Ukrainian Ironbelly
+## 327      D327    M  Subadult   Romanian Longhorn
+## 328      D328 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 329      D329    M     Adult   Romanian Longhorn
+## 330      D330    F     Adult Peruvian Vipertooth
+## 331      D331 &lt;NA&gt;  Juvenile Swedish Short-Snout
+## 332      D332    F  Subadult  Common Welsh Green
+## 333      D333 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 334      D334 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 335      D335    F     Adult   Romanian Longhorn
+## 336      D336 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 337      D337    M     Adult Peruvian Vipertooth
+## 338      D338 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 339      D339 &lt;NA&gt;  Juvenile    Chinese Fireball
+## 340      D340 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 341      D341    F     Adult Norwegian Ridgeback
+## 342      D342 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 343      D343    F     Adult  Antipodean Opaleye
+## 344      D344 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 345      D345    M     Adult Swedish Short-Snout
+## 346      D346    F     Adult   Romanian Longhorn
+## 347      D347    F  Subadult  Common Welsh Green
+## 348      D348 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 349      D349    M     Adult Peruvian Vipertooth
+## 350      D350    M     Adult     Hebridean Black
+## 351      D351    M     Adult Peruvian Vipertooth
+## 352      D352    M     Adult   Romanian Longhorn
+## 353      D353 &lt;NA&gt;  Juvenile     Hebridean Black
+## 354      D354    F     Adult Norwegian Ridgeback
+## 355      D355 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 356      D356    F     Adult   Romanian Longhorn
+## 357      D357    F  Subadult   Romanian Longhorn
+## 358      D358 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 359      D359    F     Adult     Hebridean Black
+## 360      D360    M     Adult Norwegian Ridgeback
+## 361      D361    M     Adult Swedish Short-Snout
+## 362      D362    F  Subadult Norwegian Ridgeback
+## 363      D363 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 364      D364 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 365      D365    M     Adult   Romanian Longhorn
+## 366      D366    M     Adult Norwegian Ridgeback
+## 367      D367    M     Adult Peruvian Vipertooth
+## 368      D368    F     Adult  Common Welsh Green
+## 369      D369    M     Adult Norwegian Ridgeback
+## 370      D370 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 371      D371 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 372      D372    M     Adult Peruvian Vipertooth
+## 373      D373    F     Adult Peruvian Vipertooth
+## 374      D374    M     Adult Swedish Short-Snout
+## 375      D375    M     Adult Norwegian Ridgeback
+## 376      D376 &lt;NA&gt;  Juvenile Swedish Short-Snout
+## 377      D377    F     Adult     Hebridean Black
+## 378      D378    M     Adult   Romanian Longhorn
+## 379      D379    F     Adult  Antipodean Opaleye
+## 380      D380 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 381      D381    M     Adult  Common Welsh Green
+## 382      D382    F     Adult Norwegian Ridgeback
+## 383      D383    F     Adult     Hebridean Black
+## 384      D384    M     Adult  Hungarian Horntail
+## 385      D385    F     Adult  Common Welsh Green
+## 386      D386 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 387      D387    M     Adult     Hebridean Black
+## 388      D388    F  Subadult  Common Welsh Green
+## 389      D389    F     Adult     Hebridean Black
+## 390      D390    F     Adult  Common Welsh Green
+## 391      D391 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 392      D392    M     Adult Peruvian Vipertooth
+## 393      D393    M     Adult     Hebridean Black
+## 394      D394    M     Adult Swedish Short-Snout
+## 395      D395 &lt;NA&gt;  Juvenile  Antipodean Opaleye
+## 396      D396    F  Subadult Norwegian Ridgeback
+## 397      D397 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 398      D398    F     Adult  Common Welsh Green
+## 399      D399    F     Adult   Romanian Longhorn
+## 400      D400 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 401      D401    M  Subadult Norwegian Ridgeback
+## 402      D402    F     Adult  Common Welsh Green
+## 403      D403 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 404      D404    F     Adult  Common Welsh Green
+## 405      D405    M     Adult   Romanian Longhorn
+## 406      D406    M     Adult     Hebridean Black
+## 407      D407    M     Adult  Antipodean Opaleye
+## 408      D408    F     Adult  Common Welsh Green
+## 409      D409 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 410      D410    F     Adult     Hebridean Black
+## 411      D411 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 412      D412 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 413      D413    F     Adult   Romanian Longhorn
+## 414      D414    F     Adult Peruvian Vipertooth
+## 415      D415    F     Adult   Romanian Longhorn
+## 416      D416    F     Adult   Romanian Longhorn
+## 417      D417    M     Adult Norwegian Ridgeback
+## 418      D418    M  Subadult  Common Welsh Green
+## 419      D419    F     Adult Norwegian Ridgeback
+## 420      D420 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 421      D421 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 422      D422    F     Adult Norwegian Ridgeback
+## 423      D423    M     Adult  Common Welsh Green
+## 424      D424    F     Adult     Hebridean Black
+## 425      D425    M     Adult   Romanian Longhorn
+## 426      D426    F     Adult Norwegian Ridgeback
+## 427      D427    F     Adult Peruvian Vipertooth
+## 428      D428 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 429      D429 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 430      D430    F     Adult  Hungarian Horntail
+## 431      D431 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 432      D432    M     Adult  Antipodean Opaleye
+## 433      D433    M     Adult Peruvian Vipertooth
+## 434      D434 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 435      D435 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 436      D436 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 437      D437    M     Adult  Common Welsh Green
+## 438      D438 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 439      D439    F  Subadult  Hungarian Horntail
+## 440      D440    M     Adult  Common Welsh Green
+## 441      D441    F     Adult Norwegian Ridgeback
+## 442      D442    M     Adult   Romanian Longhorn
+## 443      D443    F     Adult     Hebridean Black
+## 444      D444    M     Adult     Hebridean Black
+## 445      D445    M     Adult Norwegian Ridgeback
+## 446      D446    F     Adult Swedish Short-Snout
+## 447      D447 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 448      D448    F     Adult Peruvian Vipertooth
+## 449      D449    M     Adult    Chinese Fireball
+## 450      D450    F     Adult Peruvian Vipertooth
+## 451      D451    F     Adult  Common Welsh Green
+## 452      D452    F     Adult Swedish Short-Snout
+## 453      D453    F     Adult  Antipodean Opaleye
+## 454      D454    M     Adult   Romanian Longhorn
+## 455      D455    F     Adult  Common Welsh Green
+## 456      D456    F     Adult Peruvian Vipertooth
+## 457      D457    F     Adult  Antipodean Opaleye
+## 458      D458    F     Adult   Romanian Longhorn
+## 459      D459    F  Subadult Swedish Short-Snout
+## 460      D460    F     Adult Norwegian Ridgeback
+## 461      D461    M     Adult     Hebridean Black
+## 462      D462 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 463      D463    M     Adult Peruvian Vipertooth
+## 464      D464    F     Adult     Hebridean Black
+## 465      D465    M     Adult  Hungarian Horntail
+## 466      D466 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 467      D467 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 468      D468    M     Adult Peruvian Vipertooth
+## 469      D469    F     Adult   Romanian Longhorn
+## 470      D470    F     Adult  Hungarian Horntail
+## 471      D471    F     Adult Peruvian Vipertooth
+## 472      D472    M     Adult  Hungarian Horntail
+## 473      D473    M     Adult Peruvian Vipertooth
+## 474      D474    F     Adult Ukrainian Ironbelly
+## 475      D475    M  Subadult Norwegian Ridgeback
+## 476      D476    F     Adult Norwegian Ridgeback
+## 477      D477    M     Adult Norwegian Ridgeback
+## 478      D478    M     Adult  Common Welsh Green
+## 479      D479    F     Adult    Chinese Fireball
+## 480      D480    F     Adult     Hebridean Black
+## 481      D481    F     Adult  Hungarian Horntail
+## 482      D482    M  Subadult   Romanian Longhorn
+## 483      D483 &lt;NA&gt;  Juvenile     Hebridean Black
+## 484      D484    M     Adult     Hebridean Black
+## 485      D485    M     Adult     Hebridean Black
+## 486      D486 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 487      D487    F     Adult  Hungarian Horntail
+## 488      D488 &lt;NA&gt;  Juvenile  Hungarian Horntail
+## 489      D489    F     Adult  Common Welsh Green
+## 490      D490    F     Adult   Romanian Longhorn
+## 491      D491    F     Adult     Hebridean Black
+## 492      D492    F     Adult  Hungarian Horntail
+## 493      D493    F     Adult     Hebridean Black
+## 494      D494    F     Adult    Chinese Fireball
+## 495      D495    M     Adult   Romanian Longhorn
+## 496      D496    F     Adult   Romanian Longhorn
+## 497      D497    F     Adult  Hungarian Horntail
+## 498      D498    F     Adult  Common Welsh Green
+## 499      D499    F     Adult Peruvian Vipertooth
+## 500      D500    F     Adult  Common Welsh Green</code></pre>
 <div id="limiting-results" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Limiting results</h3>
 <p>If the whole table is too big and we only want to take a look at the first, say,
 10 rows, we can add a <code>LIMIT</code> clause:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb50-1"><a href="sql.html#cb50-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb50-2"><a href="sql.html#cb50-2"></a><span class="kw">FROM</span> dragons </span>
-<span id="cb50-3"><a href="sql.html#cb50-3"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb53-1"><a href="sql.html#cb53-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb53-2"><a href="sql.html#cb53-2"></a><span class="kw">FROM</span> dragons </span>
+<span id="cb53-3"><a href="sql.html#cb53-3"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D1    F  Subadult     Hebridean Black
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 3         D3    F     Adult     Hebridean Black
+## 4         D4    F     Adult Peruvian Vipertooth
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 6         D6    F     Adult Norwegian Ridgeback
+## 7         D7    M     Adult     Hebridean Black
+## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 9         D9    F     Adult Norwegian Ridgeback
+## 10       D10    F     Adult  Common Welsh Green</code></pre>
 </div>
 <div id="sorting-results" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Sorting results</h3>
@@ -343,64 +1877,203 @@ wildcard:</p>
 does not necessarily return the data in any specific order unless we tell it to.
 You can never assume the output is already sorted. To be explicit about how you
 want the data ordered, you can add an <code>ORDER BY</code> clause:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb51-1"><a href="sql.html#cb51-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb51-2"><a href="sql.html#cb51-2"></a><span class="kw">FROM</span> dragons </span>
-<span id="cb51-3"><a href="sql.html#cb51-3"></a><span class="kw">ORDER</span> <span class="kw">BY</span> species</span>
-<span id="cb51-4"><a href="sql.html#cb51-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb55-1"><a href="sql.html#cb55-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb55-2"><a href="sql.html#cb55-2"></a><span class="kw">FROM</span> dragons </span>
+<span id="cb55-3"><a href="sql.html#cb55-3"></a><span class="kw">ORDER</span> <span class="kw">BY</span> species</span>
+<span id="cb55-4"><a href="sql.html#cb55-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class            species
+## 1        D39 &lt;NA&gt;  Juvenile Antipodean Opaleye
+## 2        D43    F  Subadult Antipodean Opaleye
+## 3        D63    F     Adult Antipodean Opaleye
+## 4        D68    M     Adult Antipodean Opaleye
+## 5        D74 &lt;NA&gt;  Juvenile Antipodean Opaleye
+## 6       D117 &lt;NA&gt;  Juvenile Antipodean Opaleye
+## 7       D137    F     Adult Antipodean Opaleye
+## 8       D143    F     Adult Antipodean Opaleye
+## 9       D153    M     Adult Antipodean Opaleye
+## 10      D212    F     Adult Antipodean Opaleye</code></pre>
 <p>The default ordering will be ascending. If we want descending ordering instead,
 we can specify that as follows:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb52-1"><a href="sql.html#cb52-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb52-2"><a href="sql.html#cb52-2"></a><span class="kw">FROM</span> dragons </span>
-<span id="cb52-3"><a href="sql.html#cb52-3"></a><span class="kw">ORDER</span> <span class="kw">BY</span> species <span class="kw">DESC</span></span>
-<span id="cb52-4"><a href="sql.html#cb52-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb57-1"><a href="sql.html#cb57-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb57-2"><a href="sql.html#cb57-2"></a><span class="kw">FROM</span> dragons </span>
+<span id="cb57-3"><a href="sql.html#cb57-3"></a><span class="kw">ORDER</span> <span class="kw">BY</span> species <span class="kw">DESC</span></span>
+<span id="cb57-4"><a href="sql.html#cb57-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 2        D21    F     Adult Ukrainian Ironbelly
+## 3        D32    M     Adult Ukrainian Ironbelly
+## 4        D35    F     Adult Ukrainian Ironbelly
+## 5        D41 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 6        D47    F     Adult Ukrainian Ironbelly
+## 7        D48    M     Adult Ukrainian Ironbelly
+## 8        D66 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 9       D122    F     Adult Ukrainian Ironbelly
+## 10      D127    M  Subadult Ukrainian Ironbelly</code></pre>
 </div>
 <div id="finding-unique-values" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Finding unique values</h3>
 <p>Say that we wanted to know what species of dragons are in the database. We can
 ask for unique values as follows:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb53-1"><a href="sql.html#cb53-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> species </span>
-<span id="cb53-2"><a href="sql.html#cb53-2"></a><span class="kw">FROM</span> dragons;</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb59-1"><a href="sql.html#cb59-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> species </span>
+<span id="cb59-2"><a href="sql.html#cb59-2"></a><span class="kw">FROM</span> dragons;</span></code></pre></div>
+<pre><code>##                species
+## 1      Hebridean Black
+## 2    Romanian Longhorn
+## 3  Peruvian Vipertooth
+## 4  Ukrainian Ironbelly
+## 5  Norwegian Ridgeback
+## 6   Common Welsh Green
+## 7  Swedish Short-Snout
+## 8     Chinese Fireball
+## 9   Hungarian Horntail
+## 10  Antipodean Opaleye</code></pre>
 </div>
 <div id="filtering" class="section level3">
 <h3><span class="header-section-number">6.2.4</span> Filtering</h3>
 <p>We can filter data based on any logical condition using a <code>WHERE</code> clause. For
 instance, say that we we only want Norwegian Ridgebacks:</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb54-1"><a href="sql.html#cb54-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb54-2"><a href="sql.html#cb54-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb54-3"><a href="sql.html#cb54-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb61-1"><a href="sql.html#cb61-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb61-2"><a href="sql.html#cb61-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb61-3"><a href="sql.html#cb61-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span></span>
+<span id="cb61-4"><a href="sql.html#cb61-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D6    F     Adult Norwegian Ridgeback
+## 2         D9    F     Adult Norwegian Ridgeback
+## 3        D18    F     Adult Norwegian Ridgeback
+## 4        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 5        D27    F     Adult Norwegian Ridgeback
+## 6        D29    F     Adult Norwegian Ridgeback
+## 7        D34    F     Adult Norwegian Ridgeback
+## 8        D51    F  Subadult Norwegian Ridgeback
+## 9        D53 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 10       D54    F     Adult Norwegian Ridgeback</code></pre>
 <p>We can specify multiple conditions at once. For example, if we want only female
 Norwegian Ridgebacks:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb55-1"><a href="sql.html#cb55-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb55-2"><a href="sql.html#cb55-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb55-3"><a href="sql.html#cb55-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span> <span class="kw">AND</span> sex <span class="op">=</span> <span class="st">&#39;F&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb63-1"><a href="sql.html#cb63-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb63-2"><a href="sql.html#cb63-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb63-3"><a href="sql.html#cb63-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span> <span class="kw">AND</span> sex <span class="op">=</span> <span class="st">&#39;F&#39;</span></span>
+<span id="cb63-4"><a href="sql.html#cb63-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id sex age_class             species
+## 1         D6   F     Adult Norwegian Ridgeback
+## 2         D9   F     Adult Norwegian Ridgeback
+## 3        D18   F     Adult Norwegian Ridgeback
+## 4        D27   F     Adult Norwegian Ridgeback
+## 5        D29   F     Adult Norwegian Ridgeback
+## 6        D34   F     Adult Norwegian Ridgeback
+## 7        D51   F  Subadult Norwegian Ridgeback
+## 8        D54   F     Adult Norwegian Ridgeback
+## 9        D56   F  Subadult Norwegian Ridgeback
+## 10       D70   F     Adult Norwegian Ridgeback</code></pre>
 <p>In the example above, both conditions have to be satisfied at once – dragons
 have to be Norwegian Ridgeback <strong>and</strong> females to appear in the results. What if
 we want to return data where <strong>at least</strong> one of two conditions is satisfied?
 The following query will return dragons that are either Norwegian Ridgebacks or
 Peruvian Vipertooths:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb56-1"><a href="sql.html#cb56-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb56-2"><a href="sql.html#cb56-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb56-3"><a href="sql.html#cb56-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span> <span class="kw">OR</span> species <span class="op">=</span> <span class="st">&#39;Peruvian Vipertooth&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb65-1"><a href="sql.html#cb65-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb65-2"><a href="sql.html#cb65-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb65-3"><a href="sql.html#cb65-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span> <span class="kw">OR</span> species <span class="op">=</span> <span class="st">&#39;Peruvian Vipertooth&#39;</span></span>
+<span id="cb65-4"><a href="sql.html#cb65-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D4    F     Adult Peruvian Vipertooth
+## 2         D6    F     Adult Norwegian Ridgeback
+## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 4         D9    F     Adult Norwegian Ridgeback
+## 5        D11    F     Adult Peruvian Vipertooth
+## 6        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 7        D17    F     Adult Peruvian Vipertooth
+## 8        D18    F     Adult Norwegian Ridgeback
+## 9        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 10       D25    M     Adult Peruvian Vipertooth</code></pre>
 <p>A more concise way to write the same query would be:</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb57-1"><a href="sql.html#cb57-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb57-2"><a href="sql.html#cb57-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb57-3"><a href="sql.html#cb57-3"></a><span class="kw">WHERE</span> species <span class="kw">IN</span> (<span class="st">&#39;Norwegian Ridgeback&#39;</span>, <span class="st">&#39;Peruvian Vipertooth&#39;</span>);</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb67-1"><a href="sql.html#cb67-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb67-2"><a href="sql.html#cb67-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb67-3"><a href="sql.html#cb67-3"></a><span class="kw">WHERE</span> species <span class="kw">IN</span> (<span class="st">&#39;Norwegian Ridgeback&#39;</span>, <span class="st">&#39;Peruvian Vipertooth&#39;</span>)</span>
+<span id="cb67-4"><a href="sql.html#cb67-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D4    F     Adult Peruvian Vipertooth
+## 2         D6    F     Adult Norwegian Ridgeback
+## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 4         D9    F     Adult Norwegian Ridgeback
+## 5        D11    F     Adult Peruvian Vipertooth
+## 6        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 7        D17    F     Adult Peruvian Vipertooth
+## 8        D18    F     Adult Norwegian Ridgeback
+## 9        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 10       D25    M     Adult Peruvian Vipertooth</code></pre>
 <p>Logical conditions also include “greater than”, “less than”, “not equal to”.
 For instance, we can exclude Norwegian Ridgeback like so:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb58-1"><a href="sql.html#cb58-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb58-2"><a href="sql.html#cb58-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb58-3"><a href="sql.html#cb58-3"></a><span class="kw">WHERE</span> species <span class="op">!=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb69-1"><a href="sql.html#cb69-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb69-2"><a href="sql.html#cb69-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb69-3"><a href="sql.html#cb69-3"></a><span class="kw">WHERE</span> species <span class="op">!=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span></span>
+<span id="cb69-4"><a href="sql.html#cb69-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D1    F  Subadult     Hebridean Black
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 3         D3    F     Adult     Hebridean Black
+## 4         D4    F     Adult Peruvian Vipertooth
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 6         D7    M     Adult     Hebridean Black
+## 7         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 8        D10    F     Adult  Common Welsh Green
+## 9        D11    F     Adult Peruvian Vipertooth
+## 10       D12    F     Adult Swedish Short-Snout</code></pre>
 <p>Let’s see some examples with numbers using the morphometrics table. The
 following query returns any dragons with wingspan greater than 8 meters
 (incidentally, you can include comments in SQL is by using a double dash):</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb59-1"><a href="sql.html#cb59-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb59-2"><a href="sql.html#cb59-2"></a><span class="kw">FROM</span> morphometrics</span>
-<span id="cb59-3"><a href="sql.html#cb59-3"></a><span class="kw">WHERE</span> wingspan_cm <span class="op">&gt;</span> <span class="dv">800</span>; <span class="co">-- 800 cm is 8 meters</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb71-1"><a href="sql.html#cb71-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb71-2"><a href="sql.html#cb71-2"></a><span class="kw">FROM</span> morphometrics</span>
+<span id="cb71-3"><a href="sql.html#cb71-3"></a><span class="kw">WHERE</span> wingspan_cm <span class="op">&gt;</span> <span class="dv">800</span> <span class="co">-- 800 cm is 8 meters</span></span>
+<span id="cb71-4"><a href="sql.html#cb71-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1               1       D96 2012-10-10            1069.8965    1389.553
+## 2               3      D316 2017-09-08             866.8935    1052.370
+## 3               4      D317 2016-09-05            1146.9708    1356.808
+## 4               5      D484 2016-12-04            1032.0520    1720.864
+## 5               6      D149 2012-02-13             919.9908    1533.599
+## 6               9      D283 2007-06-21            1698.1918    1387.194
+## 7              11      D485 2002-10-04             957.4830    1780.262
+## 8              16      D343 2016-04-08            1520.7012    1537.747
+## 9              19      D237 2009-02-22            1204.7588    2120.408
+## 10             20      D312 2001-06-16             927.1642    1267.669
+##    tail_length_cm tarsus_length_cm claw_length_cm
+## 1        595.2706        121.65175       15.59622
+## 2        373.7619         68.16869       12.71970
+## 3        542.5670        172.43663       14.80936
+## 4        596.4419        114.05057       11.98567
+## 5        563.9201        134.18051       11.00507
+## 6        666.4246        147.44219       13.18923
+## 7        560.8861        130.86021       16.52066
+## 8        618.2842        151.93929       10.37198
+## 9        655.5090        134.75780       11.13375
+## 10       452.7417        108.84082       11.93288</code></pre>
 <p>We can also sort the output of the filter:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb60-1"><a href="sql.html#cb60-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb60-2"><a href="sql.html#cb60-2"></a><span class="kw">FROM</span> morphometrics</span>
-<span id="cb60-3"><a href="sql.html#cb60-3"></a><span class="kw">WHERE</span> wingspan_cm <span class="op">&gt;</span> <span class="dv">800</span> </span>
-<span id="cb60-4"><a href="sql.html#cb60-4"></a><span class="kw">ORDER</span> <span class="kw">BY</span> wingspan_cm <span class="kw">DESC</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb73-1"><a href="sql.html#cb73-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb73-2"><a href="sql.html#cb73-2"></a><span class="kw">FROM</span> morphometrics</span>
+<span id="cb73-3"><a href="sql.html#cb73-3"></a><span class="kw">WHERE</span> wingspan_cm <span class="op">&gt;</span> <span class="dv">800</span> </span>
+<span id="cb73-4"><a href="sql.html#cb73-4"></a><span class="kw">ORDER</span> <span class="kw">BY</span> wingspan_cm <span class="kw">DESC</span></span>
+<span id="cb73-5"><a href="sql.html#cb73-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1              90      D494 2004-06-12             1307.224    3101.688
+## 2              39       D99 2016-11-16             1334.744    2891.525
+## 3              86      D378 2013-09-14             1311.868    2792.250
+## 4             138      D414 2015-08-28             1721.825    2653.967
+## 5             240      D228 2019-06-28             1789.812    2653.470
+## 6             312      D476 2000-06-20             1391.101    2617.818
+## 7             127       D70 2010-09-10             1601.945    2518.449
+## 8              23      D499 2011-12-09             1268.471    2481.832
+## 9             282      D496 2006-08-18             1536.888    2460.436
+## 10            256      D321 2017-03-19             1423.789    2440.229
+##    tail_length_cm tarsus_length_cm claw_length_cm
+## 1        609.9900         131.2439      14.031487
+## 2        596.7174         144.0813       7.619286
+## 3        601.6576         107.9930      20.714964
+## 4        619.6061         128.5858      18.447108
+## 5        604.2838         162.4562       8.846004
+## 6        599.2680         138.8046       9.720670
+## 7        598.8351         135.7797       8.544782
+## 8        609.8503         129.6169      10.313340
+## 9        679.7031         136.7213      17.495741
+## 10       619.7223         116.3764       7.266753</code></pre>
 </div>
 <div id="calculations" class="section level3">
 <h3><span class="header-section-number">6.2.5</span> Calculations</h3>
@@ -409,9 +2082,32 @@ filtering conditions using meters in our minds (see above, “wingspan greater
 than 8 meters”). Instead of converting the condition into centimeters, wouldn’t
 it be easier to have SQLite transform the data in meters and then evaluate the
 condition? We can do this calculation on the fly:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb61-1"><a href="sql.html#cb61-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb61-2"><a href="sql.html#cb61-2"></a><span class="kw">FROM</span> morphometrics</span>
-<span id="cb61-3"><a href="sql.html#cb61-3"></a><span class="kw">WHERE</span> wingspan_cm<span class="op">/</span><span class="dv">100</span> <span class="op">&gt;</span> <span class="dv">8</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb75-1"><a href="sql.html#cb75-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb75-2"><a href="sql.html#cb75-2"></a><span class="kw">FROM</span> morphometrics</span>
+<span id="cb75-3"><a href="sql.html#cb75-3"></a><span class="kw">WHERE</span> wingspan_cm<span class="op">/</span><span class="dv">100</span> <span class="op">&gt;</span> <span class="dv">8</span></span>
+<span id="cb75-4"><a href="sql.html#cb75-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1               1       D96 2012-10-10            1069.8965    1389.553
+## 2               3      D316 2017-09-08             866.8935    1052.370
+## 3               4      D317 2016-09-05            1146.9708    1356.808
+## 4               5      D484 2016-12-04            1032.0520    1720.864
+## 5               6      D149 2012-02-13             919.9908    1533.599
+## 6               9      D283 2007-06-21            1698.1918    1387.194
+## 7              11      D485 2002-10-04             957.4830    1780.262
+## 8              16      D343 2016-04-08            1520.7012    1537.747
+## 9              19      D237 2009-02-22            1204.7588    2120.408
+## 10             20      D312 2001-06-16             927.1642    1267.669
+##    tail_length_cm tarsus_length_cm claw_length_cm
+## 1        595.2706        121.65175       15.59622
+## 2        373.7619         68.16869       12.71970
+## 3        542.5670        172.43663       14.80936
+## 4        596.4419        114.05057       11.98567
+## 5        563.9201        134.18051       11.00507
+## 6        666.4246        147.44219       13.18923
+## 7        560.8861        130.86021       16.52066
+## 8        618.2842        151.93929       10.37198
+## 9        655.5090        134.75780       11.13375
+## 10       452.7417        108.84082       11.93288</code></pre>
 </div>
 <div id="aggregate-functions" class="section level3">
 <h3><span class="header-section-number">6.2.6</span> Aggregate functions</h3>
@@ -420,30 +2116,40 @@ summing, calculating the mean, minimum, maximum values are all examples of
 aggregate functions. Let’s see how they work.</p>
 <p>If we want to know how many Norwegian Ridgebacks are in the database, we can
 use:</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb62-1"><a href="sql.html#cb62-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) </span>
-<span id="cb62-2"><a href="sql.html#cb62-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb62-3"><a href="sql.html#cb62-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb77-1"><a href="sql.html#cb77-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) </span>
+<span id="cb77-2"><a href="sql.html#cb77-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb77-3"><a href="sql.html#cb77-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
+<pre><code>##   COUNT(*)
+## 1       86</code></pre>
 <p>The dragons table has no repeated IDs, so we shouldn’t have counted anybody
 twice. However, let’s double check if that’s true by specifying that we want
 to only count distinct IDs:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb63-1"><a href="sql.html#cb63-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> dragon_id) </span>
-<span id="cb63-2"><a href="sql.html#cb63-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb63-3"><a href="sql.html#cb63-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb79-1"><a href="sql.html#cb79-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> dragon_id) </span>
+<span id="cb79-2"><a href="sql.html#cb79-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb79-3"><a href="sql.html#cb79-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
+<pre><code>##   COUNT(DISTINCT dragon_id)
+## 1                        86</code></pre>
 <p>Now let’s see how to calculate some summary stats on dragon morphometrics. What
 is the mean total body length of dragons in our sample?</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb64-1"><a href="sql.html#cb64-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(total_body_length_cm)</span>
-<span id="cb64-2"><a href="sql.html#cb64-2"></a><span class="kw">FROM</span> morphometrics;</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb81-1"><a href="sql.html#cb81-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(total_body_length_cm)</span>
+<span id="cb81-2"><a href="sql.html#cb81-2"></a><span class="kw">FROM</span> morphometrics;</span></code></pre></div>
+<pre><code>##   AVG(total_body_length_cm)
+## 1                  961.3612</code></pre>
 <p>We can also calculate several different things at once:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb65-1"><a href="sql.html#cb65-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(total_body_length_cm), <span class="fu">MIN</span>(total_body_length_cm), <span class="fu">MAX</span>(total_body_length_cm)</span>
-<span id="cb65-2"><a href="sql.html#cb65-2"></a><span class="kw">FROM</span> morphometrics;</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb83-1"><a href="sql.html#cb83-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(total_body_length_cm), <span class="fu">MIN</span>(total_body_length_cm), <span class="fu">MAX</span>(total_body_length_cm)</span>
+<span id="cb83-2"><a href="sql.html#cb83-2"></a><span class="kw">FROM</span> morphometrics;</span></code></pre></div>
+<pre><code>##   AVG(total_body_length_cm) MIN(total_body_length_cm) MAX(total_body_length_cm)
+## 1                  961.3612                  285.6049                  2250.789</code></pre>
 </div>
 <div id="aliases" class="section level3">
 <h3><span class="header-section-number">6.2.7</span> Aliases</h3>
 <p>Aliases are temporary names that we can assign to a column (or a table) during
 the execution of a query. For example, we can use an alias to rename the output
 of our mean body length calculation:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb66-1"><a href="sql.html#cb66-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(total_body_length_cm) <span class="kw">AS</span> mean_body_length</span>
-<span id="cb66-2"><a href="sql.html#cb66-2"></a><span class="kw">FROM</span> morphometrics;</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb85-1"><a href="sql.html#cb85-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(total_body_length_cm) <span class="kw">AS</span> mean_body_length</span>
+<span id="cb85-2"><a href="sql.html#cb85-2"></a><span class="kw">FROM</span> morphometrics;</span></code></pre></div>
+<pre><code>##   mean_body_length
+## 1         961.3612</code></pre>
 </div>
 <div id="grouping" class="section level3">
 <h3><span class="header-section-number">6.2.8</span> Grouping</h3>
@@ -452,10 +2158,21 @@ we can use the <code>GROUP BY</code> clause. <code>GROUP BY</code> is used in co
 aggregate function to return the computed values broken down by group. For
 instance, if we want to count how many dragons we have for each species (and
 sort them from the most numerous to the least numerous):</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb67-1"><a href="sql.html#cb67-1"></a><span class="kw">SELECT</span> species, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> n_dragons</span>
-<span id="cb67-2"><a href="sql.html#cb67-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb67-3"><a href="sql.html#cb67-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species</span>
-<span id="cb67-4"><a href="sql.html#cb67-4"></a><span class="kw">ORDER</span> <span class="kw">BY</span> n_dragons <span class="kw">DESC</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb87-1"><a href="sql.html#cb87-1"></a><span class="kw">SELECT</span> species, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> n_dragons</span>
+<span id="cb87-2"><a href="sql.html#cb87-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb87-3"><a href="sql.html#cb87-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species</span>
+<span id="cb87-4"><a href="sql.html#cb87-4"></a><span class="kw">ORDER</span> <span class="kw">BY</span> n_dragons <span class="kw">DESC</span>;</span></code></pre></div>
+<pre><code>##                species n_dragons
+## 1  Norwegian Ridgeback        86
+## 2   Common Welsh Green        81
+## 3    Romanian Longhorn        69
+## 4      Hebridean Black        66
+## 5  Peruvian Vipertooth        60
+## 6   Hungarian Horntail        40
+## 7  Swedish Short-Snout        27
+## 8  Ukrainian Ironbelly        26
+## 9   Antipodean Opaleye        25
+## 10    Chinese Fireball        20</code></pre>
 </div>
 <div id="filtering-based-on-computed-values" class="section level3">
 <h3><span class="header-section-number">6.2.9</span> Filtering based on computed values</h3>
@@ -466,34 +2183,70 @@ thing as <code>WHERE</code> except that it handles logical conditions on compute
 For example, say that we want to count how many individuals we have in our
 database and then only keep the species for which we have at least 50 individuals.
 The following query counts how many individual dragons we have for each species:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb68-1"><a href="sql.html#cb68-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> dragon_id) <span class="kw">AS</span> n_dragons, species</span>
-<span id="cb68-2"><a href="sql.html#cb68-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb68-3"><a href="sql.html#cb68-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species;</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb89-1"><a href="sql.html#cb89-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> dragon_id) <span class="kw">AS</span> n_dragons, species</span>
+<span id="cb89-2"><a href="sql.html#cb89-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb89-3"><a href="sql.html#cb89-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species;</span></code></pre></div>
+<pre><code>##    n_dragons             species
+## 1         25  Antipodean Opaleye
+## 2         20    Chinese Fireball
+## 3         81  Common Welsh Green
+## 4         66     Hebridean Black
+## 5         40  Hungarian Horntail
+## 6         86 Norwegian Ridgeback
+## 7         60 Peruvian Vipertooth
+## 8         69   Romanian Longhorn
+## 9         27 Swedish Short-Snout
+## 10        26 Ukrainian Ironbelly</code></pre>
 <p>Because the count is a calculated value (the output of the aggregate function
-<code>COUNT</code>), if we try to apply a filter using <code>WHERE</code> we’ll get an error:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb69-1"><a href="sql.html#cb69-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> dragon_id) <span class="kw">AS</span> n_dragons, species</span>
-<span id="cb69-2"><a href="sql.html#cb69-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb69-3"><a href="sql.html#cb69-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species</span>
-<span id="cb69-4"><a href="sql.html#cb69-4"></a><span class="kw">WHERE</span> n_dragons <span class="op">&gt;</span> <span class="dv">50</span>;</span></code></pre></div>
-<p>Instead, we can use <code>HAVING</code>:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb70-1"><a href="sql.html#cb70-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> dragon_id) <span class="kw">AS</span> n_dragons, species</span>
-<span id="cb70-2"><a href="sql.html#cb70-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb70-3"><a href="sql.html#cb70-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species</span>
-<span id="cb70-4"><a href="sql.html#cb70-4"></a><span class="kw">HAVING</span> n_dragons <span class="op">&gt;</span> <span class="dv">50</span>;</span></code></pre></div>
+<code>COUNT</code>), if we try to apply a filter using <code>WHERE</code> we’ll get an error. Instead, we can use <code>HAVING</code>:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb91-1"><a href="sql.html#cb91-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> dragon_id) <span class="kw">AS</span> n_dragons, species</span>
+<span id="cb91-2"><a href="sql.html#cb91-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb91-3"><a href="sql.html#cb91-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species</span>
+<span id="cb91-4"><a href="sql.html#cb91-4"></a><span class="kw">HAVING</span> n_dragons <span class="op">&gt;</span> <span class="dv">50</span>;</span></code></pre></div>
+<pre><code>##   n_dragons             species
+## 1        81  Common Welsh Green
+## 2        66     Hebridean Black
+## 3        86 Norwegian Ridgeback
+## 4        60 Peruvian Vipertooth
+## 5        69   Romanian Longhorn</code></pre>
 </div>
 <div id="null-values" class="section level3">
 <h3><span class="header-section-number">6.2.10</span> Null values</h3>
 <p>Missing values in SQL are represented as <code>NULL</code>. We can filter (or filter out)
 these values using the <code>IS NULL</code> operator:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb71-1"><a href="sql.html#cb71-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb71-2"><a href="sql.html#cb71-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb71-3"><a href="sql.html#cb71-3"></a><span class="kw">WHERE</span> sex <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb93-1"><a href="sql.html#cb93-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb93-2"><a href="sql.html#cb93-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb93-3"><a href="sql.html#cb93-3"></a><span class="kw">WHERE</span> sex <span class="kw">IS</span> <span class="kw">NULL</span></span>
+<span id="cb93-4"><a href="sql.html#cb93-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 2         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 4        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 5        D14 &lt;NA&gt;  Juvenile     Hebridean Black
+## 6        D15 &lt;NA&gt;  Juvenile    Chinese Fireball
+## 7        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
+## 8        D24 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 9        D26 &lt;NA&gt;  Juvenile  Common Welsh Green
+## 10       D31 &lt;NA&gt;  Juvenile  Common Welsh Green</code></pre>
 <p>The query above returns all the dragons for which sex is unknown. If we want to
 exclude any individuals for which sex is unknown, then we can add the <code>NOT</code>
 operator to our statement:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb72-1"><a href="sql.html#cb72-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
-<span id="cb72-2"><a href="sql.html#cb72-2"></a><span class="kw">FROM</span> dragons</span>
-<span id="cb72-3"><a href="sql.html#cb72-3"></a><span class="kw">WHERE</span> sex <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb95-1"><a href="sql.html#cb95-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
+<span id="cb95-2"><a href="sql.html#cb95-2"></a><span class="kw">FROM</span> dragons</span>
+<span id="cb95-3"><a href="sql.html#cb95-3"></a><span class="kw">WHERE</span> sex <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb95-4"><a href="sql.html#cb95-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id sex age_class             species
+## 1         D1   F  Subadult     Hebridean Black
+## 2         D3   F     Adult     Hebridean Black
+## 3         D4   F     Adult Peruvian Vipertooth
+## 4         D6   F     Adult Norwegian Ridgeback
+## 5         D7   M     Adult     Hebridean Black
+## 6         D9   F     Adult Norwegian Ridgeback
+## 7        D10   F     Adult  Common Welsh Green
+## 8        D11   F     Adult Peruvian Vipertooth
+## 9        D12   F     Adult Swedish Short-Snout
+## 10       D16   F     Adult    Chinese Fireball</code></pre>
 </div>
 <div id="joins" class="section level3">
 <h3><span class="header-section-number">6.2.11</span> Joins</h3>
@@ -518,18 +2271,56 @@ join, you keep all the records in the left table and add information from the
 right table whenever there’s a matching row. A full join means that you retain
 all rows from both tables, matching them whenever possible. An inner join means
 that you only retain the rows that match between the two tables.</p>
-<p>img</p>
+<div class="figure" style="text-align: center"><span id="fig:sql-joins"></span>
+<img src="img/sql-joins.png" alt="SQL Joins" width="60%" />
+<p class="caption">
+Figure 6.1: SQL Joins
+</p>
+</div>
 <p>Let’s look at this in practice and it will make more sense. Our database
 contains a deployments table and a morphometrics table. Not all dragons that
 were tracked were also measured. If we do a left join using the deployments as
 the left table, we get in output the whole deployments table (all the dragons
 that were tracked) with the associated morphometric information whenever
 available (for the dragons that were also measured):</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb73-1"><a href="sql.html#cb73-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
-<span id="cb73-2"><a href="sql.html#cb73-2"></a><span class="kw">FROM</span> deployments <span class="co">-- this is our left table</span></span>
-<span id="cb73-3"><a href="sql.html#cb73-3"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> morphometrics <span class="co">-- this is our right table </span></span>
-<span id="cb73-4"><a href="sql.html#cb73-4"></a><span class="kw">ON</span> deployments.dragon_id <span class="op">=</span> morphometrics.dragon_id <span class="co">-- this is the shared column</span></span>
-<span id="cb73-5"><a href="sql.html#cb73-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb97-1"><a href="sql.html#cb97-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb97-2"><a href="sql.html#cb97-2"></a><span class="kw">FROM</span> deployments <span class="co">-- this is our left table</span></span>
+<span id="cb97-3"><a href="sql.html#cb97-3"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> morphometrics <span class="co">-- this is our right table </span></span>
+<span id="cb97-4"><a href="sql.html#cb97-4"></a><span class="kw">ON</span> deployments.dragon_id <span class="op">=</span> morphometrics.dragon_id <span class="co">-- this is the shared column</span></span>
+<span id="cb97-5"><a href="sql.html#cb97-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    deployment_id dragon_id tag_id start_deployment end_deployment
+## 1              1      D486 N33529       2006-12-20     2007-07-04
+## 2              2      D393 J47978       2008-01-13     2008-10-13
+## 3              3       D88 R61684       2004-09-19     2004-12-01
+## 4              4      D330 B35524       2015-11-21     2016-08-02
+## 5              5      D478 T55954       2002-05-07     2002-10-26
+## 6              6      D300 O31688       2006-01-20     2006-08-23
+## 7              7      D380 B61925       2015-01-27     2015-10-21
+## 8              8      D315 P47677       2006-03-03     2006-06-06
+## 9              9      D209 P35987       2007-02-26     2007-05-31
+## 10            10      D357 I41609       2013-09-09     2014-03-08
+##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1              14      D486 2006-12-20             315.2255    616.5057
+## 2             146      D393 2008-01-13            1275.6809    803.7776
+## 3              NA      &lt;NA&gt;       &lt;NA&gt;                   NA          NA
+## 4             252      D330 2015-11-21            1364.8418   1351.6375
+## 5              NA      &lt;NA&gt;       &lt;NA&gt;                   NA          NA
+## 6              NA      &lt;NA&gt;       &lt;NA&gt;                   NA          NA
+## 7             260      D380 2015-01-27             327.5435    616.5409
+## 8              NA      &lt;NA&gt;       &lt;NA&gt;                   NA          NA
+## 9              82      D209 2007-02-26             325.2996    670.5136
+## 10             31      D357 2013-09-09             730.9783    972.8464
+##    tail_length_cm tarsus_length_cm claw_length_cm
+## 1        117.3121         31.70299       4.980824
+## 2        638.4500        133.38012      12.472582
+## 3              NA               NA             NA
+## 4        637.7992        140.29208      14.076526
+## 5              NA               NA             NA
+## 6              NA               NA             NA
+## 7        102.2240         35.78315       4.716980
+## 8              NA               NA             NA
+## 9        118.8795         41.10574       4.926693
+## 10       489.0859         93.98672      17.895960</code></pre>
 <p>Since the shared column is named the same in the two tables (<code>dragon_id</code>), I had
 to specify which table I was referring to each time in the <code>ON</code> clause, or it
 would have been ambiguous. The syntax to do so is <code>table.column</code>. Also note that,
@@ -537,29 +2328,128 @@ because the dragon ID column appears in both tables and we did not specify which
 table we wanted it from, SQLite is duplicating it. To avoid that, we need to get
 rid of the wildcard and spell out the name of each of the columns we want in
 output (also specifying the table when ambiguous):</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb74-1"><a href="sql.html#cb74-1"></a><span class="kw">SELECT</span> deployments.dragon_id, <span class="dt">date</span>, tag_id, start_deployment, end_deployment,</span>
-<span id="cb74-2"><a href="sql.html#cb74-2"></a>total_body_length_cm, wingspan_cm, tail_length_cm, tarsus_length_cm, claw_length_cm</span>
-<span id="cb74-3"><a href="sql.html#cb74-3"></a><span class="kw">FROM</span> deployments </span>
-<span id="cb74-4"><a href="sql.html#cb74-4"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> morphometrics </span>
-<span id="cb74-5"><a href="sql.html#cb74-5"></a><span class="kw">ON</span> deployments.dragon_id <span class="op">=</span> morphometrics.dragon_id </span>
-<span id="cb74-6"><a href="sql.html#cb74-6"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb99-1"><a href="sql.html#cb99-1"></a><span class="kw">SELECT</span> deployments.dragon_id, <span class="dt">date</span>, tag_id, start_deployment, end_deployment,</span>
+<span id="cb99-2"><a href="sql.html#cb99-2"></a>total_body_length_cm, wingspan_cm, tail_length_cm, tarsus_length_cm, claw_length_cm</span>
+<span id="cb99-3"><a href="sql.html#cb99-3"></a><span class="kw">FROM</span> deployments </span>
+<span id="cb99-4"><a href="sql.html#cb99-4"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> morphometrics </span>
+<span id="cb99-5"><a href="sql.html#cb99-5"></a><span class="kw">ON</span> deployments.dragon_id <span class="op">=</span> morphometrics.dragon_id </span>
+<span id="cb99-6"><a href="sql.html#cb99-6"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id       date tag_id start_deployment end_deployment
+## 1       D486 2006-12-20 N33529       2006-12-20     2007-07-04
+## 2       D393 2008-01-13 J47978       2008-01-13     2008-10-13
+## 3        D88       &lt;NA&gt; R61684       2004-09-19     2004-12-01
+## 4       D330 2015-11-21 B35524       2015-11-21     2016-08-02
+## 5       D478       &lt;NA&gt; T55954       2002-05-07     2002-10-26
+## 6       D300       &lt;NA&gt; O31688       2006-01-20     2006-08-23
+## 7       D380 2015-01-27 B61925       2015-01-27     2015-10-21
+## 8       D315       &lt;NA&gt; P47677       2006-03-03     2006-06-06
+## 9       D209 2007-02-26 P35987       2007-02-26     2007-05-31
+## 10      D357 2013-09-09 I41609       2013-09-09     2014-03-08
+##    total_body_length_cm wingspan_cm tail_length_cm tarsus_length_cm
+## 1              315.2255    616.5057       117.3121         31.70299
+## 2             1275.6809    803.7776       638.4500        133.38012
+## 3                    NA          NA             NA               NA
+## 4             1364.8418   1351.6375       637.7992        140.29208
+## 5                    NA          NA             NA               NA
+## 6                    NA          NA             NA               NA
+## 7              327.5435    616.5409       102.2240         35.78315
+## 8                    NA          NA             NA               NA
+## 9              325.2996    670.5136       118.8795         41.10574
+## 10             730.9783    972.8464       489.0859         93.98672
+##    claw_length_cm
+## 1        4.980824
+## 2       12.472582
+## 3              NA
+## 4       14.076526
+## 5              NA
+## 6              NA
+## 7        4.716980
+## 8              NA
+## 9        4.926693
+## 10      17.895960</code></pre>
 <p>If we invert the tables (the morphometrics becomes the left table and the
 deployments becomes the right), we get in output the whole morphometric table
 (all the dragons that were measured) with the associated deployment information
 whenever available (for the dragons that were also tracked):</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb75-1"><a href="sql.html#cb75-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
-<span id="cb75-2"><a href="sql.html#cb75-2"></a><span class="kw">FROM</span> morphometrics <span class="co">-- this is our left table</span></span>
-<span id="cb75-3"><a href="sql.html#cb75-3"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> deployments <span class="co">-- this is our right table </span></span>
-<span id="cb75-4"><a href="sql.html#cb75-4"></a><span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> deployments.dragon_id </span>
-<span id="cb75-5"><a href="sql.html#cb75-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb101-1"><a href="sql.html#cb101-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb101-2"><a href="sql.html#cb101-2"></a><span class="kw">FROM</span> morphometrics <span class="co">-- this is our left table</span></span>
+<span id="cb101-3"><a href="sql.html#cb101-3"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> deployments <span class="co">-- this is our right table </span></span>
+<span id="cb101-4"><a href="sql.html#cb101-4"></a><span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> deployments.dragon_id </span>
+<span id="cb101-5"><a href="sql.html#cb101-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1               1       D96 2012-10-10            1069.8965   1389.5527
+## 2               2      D400 2003-07-03             333.4600    634.9109
+## 3               3      D316 2017-09-08             866.8935   1052.3702
+## 4               4      D317 2016-09-05            1146.9708   1356.8084
+## 5               5      D484 2016-12-04            1032.0520   1720.8641
+## 6               6      D149 2012-02-13             919.9908   1533.5991
+## 7               7      D285 2016-03-23             304.8285    698.8157
+## 8               8      D256 2013-09-07             358.9701    652.0053
+## 9               9      D283 2007-06-21            1698.1918   1387.1943
+## 10             10      D213 2001-12-12             353.6952    670.5283
+##    tail_length_cm tarsus_length_cm claw_length_cm deployment_id dragon_id
+## 1        595.2706        121.65175      15.596219           274       D96
+## 2        104.2241         38.10844       4.305086           260      D400
+## 3        373.7619         68.16869      12.719697            NA      &lt;NA&gt;
+## 4        542.5670        172.43663      14.809363            98      D317
+## 5        596.4419        114.05057      11.985672           285      D484
+## 6        563.9201        134.18051      11.005070            NA      &lt;NA&gt;
+## 7        115.8964         42.18657       5.041634           126      D285
+## 8        148.3656         43.57849       4.576640           291      D256
+## 9        666.4246        147.44219      13.189233           145      D283
+## 10       140.4342         43.60513       4.248564           128      D213
+##    tag_id start_deployment end_deployment
+## 1  H83101       2012-10-10     2013-06-02
+## 2  S49621       2003-07-03     2004-01-17
+## 3    &lt;NA&gt;             &lt;NA&gt;           &lt;NA&gt;
+## 4  A49007       2016-09-05     2017-01-09
+## 5  V63425       2016-12-04     2017-02-19
+## 6    &lt;NA&gt;             &lt;NA&gt;           &lt;NA&gt;
+## 7  B74989       2016-03-23     2016-11-08
+## 8  O66678       2013-09-07     2013-11-10
+## 9  G59298       2007-06-21     2007-11-14
+## 10 F64333       2001-12-12     2002-02-05</code></pre>
 <p>An inner join only keeps the rows that match between two tables. In this case,
 that means we only get in output data for animals that were both tracked <strong>and</strong>
 measured:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb76-1"><a href="sql.html#cb76-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
-<span id="cb76-2"><a href="sql.html#cb76-2"></a><span class="kw">FROM</span> morphometrics</span>
-<span id="cb76-3"><a href="sql.html#cb76-3"></a><span class="kw">INNER</span> <span class="kw">JOIN</span> deployments </span>
-<span id="cb76-4"><a href="sql.html#cb76-4"></a><span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> deployments.dragon_id </span>
-<span id="cb76-5"><a href="sql.html#cb76-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb103-1"><a href="sql.html#cb103-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb103-2"><a href="sql.html#cb103-2"></a><span class="kw">FROM</span> morphometrics</span>
+<span id="cb103-3"><a href="sql.html#cb103-3"></a><span class="kw">INNER</span> <span class="kw">JOIN</span> deployments </span>
+<span id="cb103-4"><a href="sql.html#cb103-4"></a><span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> deployments.dragon_id </span>
+<span id="cb103-5"><a href="sql.html#cb103-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1               1       D96 2012-10-10            1069.8965   1389.5527
+## 2               2      D400 2003-07-03             333.4600    634.9109
+## 3               4      D317 2016-09-05            1146.9708   1356.8084
+## 4               5      D484 2016-12-04            1032.0520   1720.8641
+## 5               7      D285 2016-03-23             304.8285    698.8157
+## 6               8      D256 2013-09-07             358.9701    652.0053
+## 7               9      D283 2007-06-21            1698.1918   1387.1943
+## 8              10      D213 2001-12-12             353.6952    670.5283
+## 9              13       D41 2016-11-03             325.5946    626.2576
+## 10             14      D486 2006-12-20             315.2255    616.5057
+##    tail_length_cm tarsus_length_cm claw_length_cm deployment_id dragon_id
+## 1       595.27056        121.65175      15.596219           274       D96
+## 2       104.22414         38.10844       4.305086           260      D400
+## 3       542.56700        172.43663      14.809363            98      D317
+## 4       596.44195        114.05057      11.985672           285      D484
+## 5       115.89640         42.18657       5.041634           126      D285
+## 6       148.36555         43.57849       4.576640           291      D256
+## 7       666.42455        147.44219      13.189233           145      D283
+## 8       140.43424         43.60513       4.248564           128      D213
+## 9        86.63968         39.26696       6.077829           114       D41
+## 10      117.31209         31.70299       4.980824             1      D486
+##    tag_id start_deployment end_deployment
+## 1  H83101       2012-10-10     2013-06-02
+## 2  S49621       2003-07-03     2004-01-17
+## 3  A49007       2016-09-05     2017-01-09
+## 4  V63425       2016-12-04     2017-02-19
+## 5  B74989       2016-03-23     2016-11-08
+## 6  O66678       2013-09-07     2013-11-10
+## 7  G59298       2007-06-21     2007-11-14
+## 8  F64333       2001-12-12     2002-02-05
+## 9  X71699       2016-11-03     2017-05-10
+## 10 N33529       2006-12-20     2007-07-04</code></pre>
 <p>A full join keeps all records from both the left and the right table, matching
 them whenever possible. That is, we get in output all the dragons, with blanks
 in the morphometrics table for those that were only tracked and blanks in the
@@ -575,21 +2465,37 @@ the average wingspan for male versus female dragons. What we need to do is add
 the sex column to the morphometrics table. We can do this by looking at the
 dragon ID, which is the column the two tables have in common. So the join clause
 will look like this:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb77-1"><a href="sql.html#cb77-1"></a><span class="kw">SELECT</span> dragon_id, wingspan_cm, sex</span>
-<span id="cb77-2"><a href="sql.html#cb77-2"></a><span class="kw">FROM</span> morphometrics <span class="co">-- this is our left table</span></span>
-<span id="cb77-3"><a href="sql.html#cb77-3"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> dragons <span class="co">-- this is our left table </span></span>
-<span id="cb77-4"><a href="sql.html#cb77-4"></a><span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> dragons.dragon_id; <span class="co">-- this is the shared column</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb105-1"><a href="sql.html#cb105-1"></a><span class="kw">SELECT</span> morphometrics.dragon_id, wingspan_cm, sex</span>
+<span id="cb105-2"><a href="sql.html#cb105-2"></a><span class="kw">FROM</span> morphometrics <span class="co">-- this is our left table</span></span>
+<span id="cb105-3"><a href="sql.html#cb105-3"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> dragons <span class="co">-- this is our left table </span></span>
+<span id="cb105-4"><a href="sql.html#cb105-4"></a><span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> dragons.dragon_id <span class="co">-- this is the shared column</span></span>
+<span id="cb105-5"><a href="sql.html#cb105-5"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id wingspan_cm  sex
+## 1        D96   1389.5527    F
+## 2       D400    634.9109 &lt;NA&gt;
+## 3       D316   1052.3702    M
+## 4       D317   1356.8084    F
+## 5       D484   1720.8641    M
+## 6       D149   1533.5991    M
+## 7       D285    698.8157 &lt;NA&gt;
+## 8       D256    652.0053 &lt;NA&gt;
+## 9       D283   1387.1943    F
+## 10      D213    670.5283 &lt;NA&gt;</code></pre>
 <p>By using a left join, we are saying that we want to keep all rows from the left
 table (morphometrics) while adding information on sex whenever available. Now we
 can compute the average wingspan broken down by sex:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb78-1"><a href="sql.html#cb78-1"></a><span class="kw">SELECT</span> sex, <span class="fu">AVG</span>(wingspan_cm) <span class="kw">AS</span> mean_wingspan</span>
-<span id="cb78-2"><a href="sql.html#cb78-2"></a><span class="kw">FROM</span> (</span>
-<span id="cb78-3"><a href="sql.html#cb78-3"></a>    <span class="kw">SELECT</span> morphometrics.dragon_id, wingspan_cm, sex</span>
-<span id="cb78-4"><a href="sql.html#cb78-4"></a>    <span class="kw">FROM</span> morphometrics </span>
-<span id="cb78-5"><a href="sql.html#cb78-5"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> dragons </span>
-<span id="cb78-6"><a href="sql.html#cb78-6"></a>    <span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> dragons.dragon_id</span>
-<span id="cb78-7"><a href="sql.html#cb78-7"></a>    )</span>
-<span id="cb78-8"><a href="sql.html#cb78-8"></a><span class="kw">GROUP</span> <span class="kw">BY</span> sex; </span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb107-1"><a href="sql.html#cb107-1"></a><span class="kw">SELECT</span> sex, <span class="fu">AVG</span>(wingspan_cm) <span class="kw">AS</span> mean_wingspan</span>
+<span id="cb107-2"><a href="sql.html#cb107-2"></a><span class="kw">FROM</span> (</span>
+<span id="cb107-3"><a href="sql.html#cb107-3"></a>    <span class="kw">SELECT</span> morphometrics.dragon_id, wingspan_cm, sex</span>
+<span id="cb107-4"><a href="sql.html#cb107-4"></a>    <span class="kw">FROM</span> morphometrics </span>
+<span id="cb107-5"><a href="sql.html#cb107-5"></a>    <span class="kw">LEFT</span> <span class="kw">JOIN</span> dragons </span>
+<span id="cb107-6"><a href="sql.html#cb107-6"></a>    <span class="kw">ON</span> morphometrics.dragon_id <span class="op">=</span> dragons.dragon_id</span>
+<span id="cb107-7"><a href="sql.html#cb107-7"></a>    )</span>
+<span id="cb107-8"><a href="sql.html#cb107-8"></a><span class="kw">GROUP</span> <span class="kw">BY</span> sex; </span></code></pre></div>
+<pre><code>##    sex mean_wingspan
+## 1 &lt;NA&gt;      645.3158
+## 2    F     1550.0009
+## 3    M     1549.1300</code></pre>
 <p>The one above is a nested query, which means there are two <code>SELECT</code> statements
 nested within one another. The inner <code>SELECT</code> statement (everything between the
 parentheses) is treated as if it were a table in the database. SQL will
@@ -628,15 +2534,15 @@ order in which we write our queries matter?</p>
 operations, which is how we actually write queries. Even though these don’t
 correspond, writing a query in any other order than the following is incorrect
 (and will return an error):</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb79-1"><a href="sql.html#cb79-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb79-2"><a href="sql.html#cb79-2"></a><span class="kw">FROM</span> </span>
-<span id="cb79-3"><a href="sql.html#cb79-3"></a>    <span class="kw">JOIN</span> </span>
-<span id="cb79-4"><a href="sql.html#cb79-4"></a>      <span class="kw">ON</span> </span>
-<span id="cb79-5"><a href="sql.html#cb79-5"></a>    <span class="kw">WHERE</span> </span>
-<span id="cb79-6"><a href="sql.html#cb79-6"></a>    <span class="kw">GROUP</span> <span class="kw">BY</span> </span>
-<span id="cb79-7"><a href="sql.html#cb79-7"></a>    <span class="kw">HAVING</span> </span>
-<span id="cb79-8"><a href="sql.html#cb79-8"></a>    <span class="kw">ORDER</span> <span class="kw">BY</span> </span>
-<span id="cb79-9"><a href="sql.html#cb79-9"></a>    <span class="kw">LIMIT</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb109-1"><a href="sql.html#cb109-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb109-2"><a href="sql.html#cb109-2"></a><span class="kw">FROM</span> </span>
+<span id="cb109-3"><a href="sql.html#cb109-3"></a>    <span class="kw">JOIN</span> </span>
+<span id="cb109-4"><a href="sql.html#cb109-4"></a>      <span class="kw">ON</span> </span>
+<span id="cb109-5"><a href="sql.html#cb109-5"></a>    <span class="kw">WHERE</span> </span>
+<span id="cb109-6"><a href="sql.html#cb109-6"></a>    <span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb109-7"><a href="sql.html#cb109-7"></a>    <span class="kw">HAVING</span> </span>
+<span id="cb109-8"><a href="sql.html#cb109-8"></a>    <span class="kw">ORDER</span> <span class="kw">BY</span> </span>
+<span id="cb109-9"><a href="sql.html#cb109-9"></a>    <span class="kw">LIMIT</span>;</span></code></pre></div>
 </div>
 </div>
 <div id="building-a-database" class="section level2">
@@ -659,25 +2565,25 @@ are working on the correct database (the name of the active database is shown
 in the toolbar). We are ready to create our first table!</p>
 <p>To create a table, we need to specify a name for the table, as well as a name
 and a data type for each column. The basic format is as follows:</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb80-1"><a href="sql.html#cb80-1"></a></span>
-<span id="cb80-2"><a href="sql.html#cb80-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> table_name (</span>
-<span id="cb80-3"><a href="sql.html#cb80-3"></a>column_1 data_type,</span>
-<span id="cb80-4"><a href="sql.html#cb80-4"></a>column_2 data_type,</span>
-<span id="cb80-5"><a href="sql.html#cb80-5"></a>column_3 data_type,</span>
-<span id="cb80-6"><a href="sql.html#cb80-6"></a><span class="op">..</span>.</span>
-<span id="cb80-7"><a href="sql.html#cb80-7"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb110-1"><a href="sql.html#cb110-1"></a></span>
+<span id="cb110-2"><a href="sql.html#cb110-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> table_name (</span>
+<span id="cb110-3"><a href="sql.html#cb110-3"></a>column_1 data_type,</span>
+<span id="cb110-4"><a href="sql.html#cb110-4"></a>column_2 data_type,</span>
+<span id="cb110-5"><a href="sql.html#cb110-5"></a>column_3 data_type,</span>
+<span id="cb110-6"><a href="sql.html#cb110-6"></a><span class="op">..</span>.</span>
+<span id="cb110-7"><a href="sql.html#cb110-7"></a>)</span></code></pre></div>
 <p>Let’s start by creating the dragons table. Remember that each table needs to
 have a primary key, i.e., a column that serves as the unique identifier of each
 row. The values in this column need to be unique and cannot be null. In this
 table, we can use the dragon ID as the primary key:</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb81-1"><a href="sql.html#cb81-1"></a></span>
-<span id="cb81-2"><a href="sql.html#cb81-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> dragons (</span>
-<span id="cb81-3"><a href="sql.html#cb81-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb81-4"><a href="sql.html#cb81-4"></a>sex <span class="dt">char</span>(<span class="dv">1</span>),</span>
-<span id="cb81-5"><a href="sql.html#cb81-5"></a>age_class <span class="dt">varchar</span>(<span class="dv">8</span>),</span>
-<span id="cb81-6"><a href="sql.html#cb81-6"></a>species <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
-<span id="cb81-7"><a href="sql.html#cb81-7"></a><span class="kw">PRIMARY</span> <span class="kw">KEY</span> (dragon_id)</span>
-<span id="cb81-8"><a href="sql.html#cb81-8"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb111-1"><a href="sql.html#cb111-1"></a></span>
+<span id="cb111-2"><a href="sql.html#cb111-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> dragons (</span>
+<span id="cb111-3"><a href="sql.html#cb111-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb111-4"><a href="sql.html#cb111-4"></a>sex <span class="dt">char</span>(<span class="dv">1</span>),</span>
+<span id="cb111-5"><a href="sql.html#cb111-5"></a>age_class <span class="dt">varchar</span>(<span class="dv">8</span>),</span>
+<span id="cb111-6"><a href="sql.html#cb111-6"></a>species <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
+<span id="cb111-7"><a href="sql.html#cb111-7"></a><span class="kw">PRIMARY</span> <span class="kw">KEY</span> (dragon_id)</span>
+<span id="cb111-8"><a href="sql.html#cb111-8"></a>);</span></code></pre></div>
 <p>Notice that I specified a number of digits for each character variable. Because
 the format of the dragon ID is “D” + number from 1 up to 500 (for now), setting
 the ID as a character string with varying size up to 5 digits allows for IDs
@@ -701,16 +2607,16 @@ in this column. Sex is always one of “M” or “F” and age is always one of
 after the fact, but in SQLite the only way to add these constraints is at the
 same time as you create the table. We can delete the table and re-create it by
 modifying the above syntax as follows:</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb82-1"><a href="sql.html#cb82-1"></a></span>
-<span id="cb82-2"><a href="sql.html#cb82-2"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> dragons;</span>
-<span id="cb82-3"><a href="sql.html#cb82-3"></a></span>
-<span id="cb82-4"><a href="sql.html#cb82-4"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> dragons (</span>
-<span id="cb82-5"><a href="sql.html#cb82-5"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
-<span id="cb82-6"><a href="sql.html#cb82-6"></a>sex <span class="dt">char</span>(<span class="dv">1</span>) <span class="kw">CHECK</span> (sex <span class="kw">IN</span> (<span class="st">&#39;M&#39;</span>, <span class="st">&#39;F&#39;</span>)),</span>
-<span id="cb82-7"><a href="sql.html#cb82-7"></a>age_class <span class="dt">varchar</span>(<span class="dv">8</span>) <span class="kw">CHECK</span> (age_class <span class="kw">IN</span> (<span class="st">&#39;Juvenile&#39;</span>, <span class="st">&#39;Subadult&#39;</span>, <span class="st">&#39;Adult&#39;</span>)),</span>
-<span id="cb82-8"><a href="sql.html#cb82-8"></a>species <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
-<span id="cb82-9"><a href="sql.html#cb82-9"></a><span class="kw">PRIMARY</span> <span class="kw">KEY</span> (dragon_id)</span>
-<span id="cb82-10"><a href="sql.html#cb82-10"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb112-1"><a href="sql.html#cb112-1"></a></span>
+<span id="cb112-2"><a href="sql.html#cb112-2"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> dragons;</span>
+<span id="cb112-3"><a href="sql.html#cb112-3"></a></span>
+<span id="cb112-4"><a href="sql.html#cb112-4"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> dragons (</span>
+<span id="cb112-5"><a href="sql.html#cb112-5"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb112-6"><a href="sql.html#cb112-6"></a>sex <span class="dt">char</span>(<span class="dv">1</span>) <span class="kw">CHECK</span> (sex <span class="kw">IN</span> (<span class="st">&#39;M&#39;</span>, <span class="st">&#39;F&#39;</span>)),</span>
+<span id="cb112-7"><a href="sql.html#cb112-7"></a>age_class <span class="dt">varchar</span>(<span class="dv">8</span>) <span class="kw">CHECK</span> (age_class <span class="kw">IN</span> (<span class="st">&#39;Juvenile&#39;</span>, <span class="st">&#39;Subadult&#39;</span>, <span class="st">&#39;Adult&#39;</span>)),</span>
+<span id="cb112-8"><a href="sql.html#cb112-8"></a>species <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
+<span id="cb112-9"><a href="sql.html#cb112-9"></a><span class="kw">PRIMARY</span> <span class="kw">KEY</span> (dragon_id)</span>
+<span id="cb112-10"><a href="sql.html#cb112-10"></a>);</span></code></pre></div>
 </div>
 <div id="order-of-table-creation" class="section level3">
 <h3><span class="header-section-number">6.3.4</span> Order of table creation</h3>
@@ -719,7 +2625,12 @@ enforce constraints as an afterthought, we need to plan the order in which we
 add tables carefully. If we try to add a foreign key that refers to a table that
 doesn’t exist yet, we won’t be able to. Let’s take another look at the diagram
 of our table relationships:</p>
-<p>img</p>
+<div class="figure" style="text-align: center"><span id="fig:db-diagram2"></span>
+<img src="img/database_diagram.png" alt="Diagram of the dragons database" width="80%" />
+<p class="caption">
+Figure 6.2: Diagram of the dragons database
+</p>
+</div>
 <p>Any table that has one or more foreign keys needs to be added <em>after</em> the
 related table/s. In our case, there are three “root” tables that do not have
 any foreign keys: the dragons table, the tags table, and the capture sites
@@ -729,12 +2640,12 @@ a primary key. Note that when you make a column the primary key you automaticall
 enforce a unique constraint on that column. However, SQLite does not enforce a
 not-null constraint on primary keys like most other SQL dialects. Because SQLite
 doesn’t, we have to do it ourselves:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb83-1"><a href="sql.html#cb83-1"></a></span>
-<span id="cb83-2"><a href="sql.html#cb83-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> tags (</span>
-<span id="cb83-3"><a href="sql.html#cb83-3"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb83-4"><a href="sql.html#cb83-4"></a>brand <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
-<span id="cb83-5"><a href="sql.html#cb83-5"></a>status <span class="dt">varchar</span>(<span class="dv">20</span>)</span>
-<span id="cb83-6"><a href="sql.html#cb83-6"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb113-1"><a href="sql.html#cb113-1"></a></span>
+<span id="cb113-2"><a href="sql.html#cb113-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> tags (</span>
+<span id="cb113-3"><a href="sql.html#cb113-3"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb113-4"><a href="sql.html#cb113-4"></a>brand <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
+<span id="cb113-5"><a href="sql.html#cb113-5"></a>status <span class="dt">varchar</span>(<span class="dv">20</span>)</span>
+<span id="cb113-6"><a href="sql.html#cb113-6"></a>);</span></code></pre></div>
 <p>The capture sites table has a <code>site</code> field which contains a 3-letter code that
 uniquely identifies the site. We can use that as a primary key. The UTM
 coordinates are numeric values for which we can use the data type called “double
@@ -751,11 +2662,11 @@ also occupies double the space (64 bit instead of 32.) For UTM coordinates, the
 Y value has a minimum of 7 digits, and we want to keep decimal places because
 we need the highest precision possible on the position of animals in space.
 Therefore, we’ll go with double precision:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb84-1"><a href="sql.html#cb84-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> capture_sites (</span>
-<span id="cb84-2"><a href="sql.html#cb84-2"></a>site <span class="dt">char</span>(<span class="dv">3</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb84-3"><a href="sql.html#cb84-3"></a>utm_x <span class="dt">double</span>,</span>
-<span id="cb84-4"><a href="sql.html#cb84-4"></a>utm_y <span class="dt">double</span></span>
-<span id="cb84-5"><a href="sql.html#cb84-5"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb114-1"><a href="sql.html#cb114-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> capture_sites (</span>
+<span id="cb114-2"><a href="sql.html#cb114-2"></a>site <span class="dt">char</span>(<span class="dv">3</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb114-3"><a href="sql.html#cb114-3"></a>utm_x <span class="dt">double</span>,</span>
+<span id="cb114-4"><a href="sql.html#cb114-4"></a>utm_y <span class="dt">double</span></span>
+<span id="cb114-5"><a href="sql.html#cb114-5"></a>);</span></code></pre></div>
 <p>Note that I used an alternative syntax to specify the primary key.
 This is equivalent to the one I used above for the dragons table.</p>
 </div>
@@ -763,17 +2674,36 @@ This is equivalent to the one I used above for the dragons table.</p>
 <h3><span class="header-section-number">6.3.5</span> Populating the tables</h3>
 <p>Now that we added a few tables, we can start to populate the database by loading
 the data as .csv files. On the <em>Tools</em> tab, click “Import.”</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/sqlite_import1.png" alt=" " width="80%" />
+<p class="caption">
+</p>
+</div>
 <p>Check that the database is correct and then select the table you want to import
 data into. For example, let’s start with the dragons table:</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/sqlite_import2.png" alt=" " width="80%" />
+<p class="caption">
+</p>
+</div>
 <p>Click <em>Next</em>. Now, browse your directory to select the input file. Then check
 the box that says “First line represents CSV column names”, make sure the field
 separator is a comma, and set the <em>NULL</em> values to <code>NA</code> (which is how they are
 encoded in the .csv.) Click <em>Finish</em>.</p>
 <p>To check if the table was imported correctly, go back into the query editor and
 try to look at the first 10 rows:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb85-1"><a href="sql.html#cb85-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> dragons <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb115-1"><a href="sql.html#cb115-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> dragons <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
+<pre><code>##    dragon_id  sex age_class             species
+## 1         D1    F  Subadult     Hebridean Black
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
+## 3         D3    F     Adult     Hebridean Black
+## 4         D4    F     Adult Peruvian Vipertooth
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
+## 6         D6    F     Adult Norwegian Ridgeback
+## 7         D7    M     Adult     Hebridean Black
+## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
+## 9         D9    F     Adult Norwegian Ridgeback
+## 10       D10    F     Adult  Common Welsh Green</code></pre>
 <p>If everything looks good, we can go ahead and import data in the other two
 tables.</p>
 </div>
@@ -809,25 +2739,25 @@ from the .csv;</li>
 <p>A little convoluted, but it does the job. Let’s demonstrate this on the captures
 table. First, we create the table like we want it to look in the end (note that
 I am adding foreign keys; we’ll go over that part in the next section):</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb86-1"><a href="sql.html#cb86-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> captures (</span>
-<span id="cb86-2"><a href="sql.html#cb86-2"></a>capture_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
-<span id="cb86-3"><a href="sql.html#cb86-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb86-4"><a href="sql.html#cb86-4"></a><span class="dt">date</span> text,</span>
-<span id="cb86-5"><a href="sql.html#cb86-5"></a>site <span class="dt">char</span>(<span class="dv">3</span>),</span>
-<span id="cb86-6"><a href="sql.html#cb86-6"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
-<span id="cb86-7"><a href="sql.html#cb86-7"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(site) <span class="kw">REFERENCES</span> capture_sites(site)</span>
-<span id="cb86-8"><a href="sql.html#cb86-8"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb117-1"><a href="sql.html#cb117-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> captures (</span>
+<span id="cb117-2"><a href="sql.html#cb117-2"></a>capture_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
+<span id="cb117-3"><a href="sql.html#cb117-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb117-4"><a href="sql.html#cb117-4"></a><span class="dt">date</span> text,</span>
+<span id="cb117-5"><a href="sql.html#cb117-5"></a>site <span class="dt">char</span>(<span class="dv">3</span>),</span>
+<span id="cb117-6"><a href="sql.html#cb117-6"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
+<span id="cb117-7"><a href="sql.html#cb117-7"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(site) <span class="kw">REFERENCES</span> capture_sites(site)</span>
+<span id="cb117-8"><a href="sql.html#cb117-8"></a>);</span></code></pre></div>
 <p>Second, we create a temporary table without the primary key (no need to add
 foreign keys to this one as we are going to delete it anyway):</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb87-1"><a href="sql.html#cb87-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> captures_temp (</span>
-<span id="cb87-2"><a href="sql.html#cb87-2"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb87-3"><a href="sql.html#cb87-3"></a><span class="dt">date</span> text,</span>
-<span id="cb87-4"><a href="sql.html#cb87-4"></a>site <span class="dt">char</span>(<span class="dv">3</span>));</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb118-1"><a href="sql.html#cb118-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> captures_temp (</span>
+<span id="cb118-2"><a href="sql.html#cb118-2"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb118-3"><a href="sql.html#cb118-3"></a><span class="dt">date</span> text,</span>
+<span id="cb118-4"><a href="sql.html#cb118-4"></a>site <span class="dt">char</span>(<span class="dv">3</span>));</span></code></pre></div>
 <p>Now on <em>Tools</em> &gt; <em>Import</em>, we upload <code>captures.csv</code> into <code>captures_temp</code>. Then
 we can populate the final table as follows:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb88-1"><a href="sql.html#cb88-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> captures(dragon_id, <span class="dt">date</span>, site) <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> captures_temp;</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb119-1"><a href="sql.html#cb119-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> captures(dragon_id, <span class="dt">date</span>, site) <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> captures_temp;</span></code></pre></div>
 <p>And finally we delete our temporary table:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb89-1"><a href="sql.html#cb89-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> captures_temp;</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb120-1"><a href="sql.html#cb120-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> captures_temp;</span></code></pre></div>
 <p>We better get familiar with this workflow because we are going to use it for all
 the other tables now.</p>
 </div>
@@ -850,111 +2780,111 @@ We’ll use float as the data type for the measurements. Because individuals may
 have been measured multiple times, none of the existing columns are unique. This
 means we’ll create a serial number to use as the primary key. We’ll use the same
 trick as above:</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb90-1"><a href="sql.html#cb90-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> morphometrics (</span>
-<span id="cb90-2"><a href="sql.html#cb90-2"></a>measurement_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
-<span id="cb90-3"><a href="sql.html#cb90-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb90-4"><a href="sql.html#cb90-4"></a><span class="dt">date</span> text,</span>
-<span id="cb90-5"><a href="sql.html#cb90-5"></a>total_body_length_cm <span class="dt">float</span>,</span>
-<span id="cb90-6"><a href="sql.html#cb90-6"></a>wingspan_cm <span class="dt">float</span>,</span>
-<span id="cb90-7"><a href="sql.html#cb90-7"></a>tail_length_cm <span class="dt">float</span>,</span>
-<span id="cb90-8"><a href="sql.html#cb90-8"></a>tarsus_length_cm <span class="dt">float</span>,</span>
-<span id="cb90-9"><a href="sql.html#cb90-9"></a>claw_length_cm <span class="dt">float</span>,</span>
-<span id="cb90-10"><a href="sql.html#cb90-10"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
-<span id="cb90-11"><a href="sql.html#cb90-11"></a>);</span>
-<span id="cb90-12"><a href="sql.html#cb90-12"></a></span>
-<span id="cb90-13"><a href="sql.html#cb90-13"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> morphometrics_temp (</span>
-<span id="cb90-14"><a href="sql.html#cb90-14"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb90-15"><a href="sql.html#cb90-15"></a><span class="dt">date</span> text,</span>
-<span id="cb90-16"><a href="sql.html#cb90-16"></a>total_body_length_cm <span class="dt">float</span>,</span>
-<span id="cb90-17"><a href="sql.html#cb90-17"></a>wingspan_cm <span class="dt">float</span>,</span>
-<span id="cb90-18"><a href="sql.html#cb90-18"></a>tail_length_cm <span class="dt">float</span>,</span>
-<span id="cb90-19"><a href="sql.html#cb90-19"></a>tarsus_length_cm <span class="dt">float</span>,</span>
-<span id="cb90-20"><a href="sql.html#cb90-20"></a>claw_length_cm <span class="dt">float</span></span>
-<span id="cb90-21"><a href="sql.html#cb90-21"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb121-1"><a href="sql.html#cb121-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> morphometrics (</span>
+<span id="cb121-2"><a href="sql.html#cb121-2"></a>measurement_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
+<span id="cb121-3"><a href="sql.html#cb121-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb121-4"><a href="sql.html#cb121-4"></a><span class="dt">date</span> text,</span>
+<span id="cb121-5"><a href="sql.html#cb121-5"></a>total_body_length_cm <span class="dt">float</span>,</span>
+<span id="cb121-6"><a href="sql.html#cb121-6"></a>wingspan_cm <span class="dt">float</span>,</span>
+<span id="cb121-7"><a href="sql.html#cb121-7"></a>tail_length_cm <span class="dt">float</span>,</span>
+<span id="cb121-8"><a href="sql.html#cb121-8"></a>tarsus_length_cm <span class="dt">float</span>,</span>
+<span id="cb121-9"><a href="sql.html#cb121-9"></a>claw_length_cm <span class="dt">float</span>,</span>
+<span id="cb121-10"><a href="sql.html#cb121-10"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
+<span id="cb121-11"><a href="sql.html#cb121-11"></a>);</span>
+<span id="cb121-12"><a href="sql.html#cb121-12"></a></span>
+<span id="cb121-13"><a href="sql.html#cb121-13"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> morphometrics_temp (</span>
+<span id="cb121-14"><a href="sql.html#cb121-14"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb121-15"><a href="sql.html#cb121-15"></a><span class="dt">date</span> text,</span>
+<span id="cb121-16"><a href="sql.html#cb121-16"></a>total_body_length_cm <span class="dt">float</span>,</span>
+<span id="cb121-17"><a href="sql.html#cb121-17"></a>wingspan_cm <span class="dt">float</span>,</span>
+<span id="cb121-18"><a href="sql.html#cb121-18"></a>tail_length_cm <span class="dt">float</span>,</span>
+<span id="cb121-19"><a href="sql.html#cb121-19"></a>tarsus_length_cm <span class="dt">float</span>,</span>
+<span id="cb121-20"><a href="sql.html#cb121-20"></a>claw_length_cm <span class="dt">float</span></span>
+<span id="cb121-21"><a href="sql.html#cb121-21"></a>);</span></code></pre></div>
 <p>Now on <em>Tools</em> &gt; <em>Import</em>, we upload <code>morphometrics.csv</code> into
 <code>morphometrics_temp</code>. Then we populate the final table:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb91-1"><a href="sql.html#cb91-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> morphometrics(dragon_id, <span class="dt">date</span>, total_body_length_cm, wingspan_cm,</span>
-<span id="cb91-2"><a href="sql.html#cb91-2"></a>tail_length_cm, tarsus_length_cm, claw_length_cm) </span>
-<span id="cb91-3"><a href="sql.html#cb91-3"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> morphometrics_temp;</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb122-1"><a href="sql.html#cb122-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> morphometrics(dragon_id, <span class="dt">date</span>, total_body_length_cm, wingspan_cm,</span>
+<span id="cb122-2"><a href="sql.html#cb122-2"></a>tail_length_cm, tarsus_length_cm, claw_length_cm) </span>
+<span id="cb122-3"><a href="sql.html#cb122-3"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> morphometrics_temp;</span></code></pre></div>
 <p>And delete our temporary table:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb92-1"><a href="sql.html#cb92-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> morphometrics_temp;</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb123-1"><a href="sql.html#cb123-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> morphometrics_temp;</span></code></pre></div>
 <p>The diet table contains repeated sample IDs and repeated item IDs within each
 sample. We’ll need a serial number here too because none of the columns are
 unique. The item ID is an integer so we are going to use a new numeric data type
 for it. The foreign key will be, again, the dragon ID referring to the dragons
 table:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb93-1"><a href="sql.html#cb93-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> diet (</span>
-<span id="cb93-2"><a href="sql.html#cb93-2"></a>diet_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
-<span id="cb93-3"><a href="sql.html#cb93-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb93-4"><a href="sql.html#cb93-4"></a>sample_id <span class="dt">varchar</span>(<span class="dv">8</span>),</span>
-<span id="cb93-5"><a href="sql.html#cb93-5"></a><span class="dt">date</span> text,</span>
-<span id="cb93-6"><a href="sql.html#cb93-6"></a>item_id <span class="dt">integer</span>,</span>
-<span id="cb93-7"><a href="sql.html#cb93-7"></a>item <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
-<span id="cb93-8"><a href="sql.html#cb93-8"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
-<span id="cb93-9"><a href="sql.html#cb93-9"></a>);</span>
-<span id="cb93-10"><a href="sql.html#cb93-10"></a></span>
-<span id="cb93-11"><a href="sql.html#cb93-11"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> diet_temp (</span>
-<span id="cb93-12"><a href="sql.html#cb93-12"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb93-13"><a href="sql.html#cb93-13"></a>sample_id <span class="dt">varchar</span>(<span class="dv">8</span>),</span>
-<span id="cb93-14"><a href="sql.html#cb93-14"></a><span class="dt">date</span> text,</span>
-<span id="cb93-15"><a href="sql.html#cb93-15"></a>item_id <span class="dt">integer</span>,</span>
-<span id="cb93-16"><a href="sql.html#cb93-16"></a>item <span class="dt">varchar</span>(<span class="dv">50</span>)</span>
-<span id="cb93-17"><a href="sql.html#cb93-17"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb124-1"><a href="sql.html#cb124-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> diet (</span>
+<span id="cb124-2"><a href="sql.html#cb124-2"></a>diet_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
+<span id="cb124-3"><a href="sql.html#cb124-3"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb124-4"><a href="sql.html#cb124-4"></a>sample_id <span class="dt">varchar</span>(<span class="dv">8</span>),</span>
+<span id="cb124-5"><a href="sql.html#cb124-5"></a><span class="dt">date</span> text,</span>
+<span id="cb124-6"><a href="sql.html#cb124-6"></a>item_id <span class="dt">integer</span>,</span>
+<span id="cb124-7"><a href="sql.html#cb124-7"></a>item <span class="dt">varchar</span>(<span class="dv">50</span>),</span>
+<span id="cb124-8"><a href="sql.html#cb124-8"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
+<span id="cb124-9"><a href="sql.html#cb124-9"></a>);</span>
+<span id="cb124-10"><a href="sql.html#cb124-10"></a></span>
+<span id="cb124-11"><a href="sql.html#cb124-11"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> diet_temp (</span>
+<span id="cb124-12"><a href="sql.html#cb124-12"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb124-13"><a href="sql.html#cb124-13"></a>sample_id <span class="dt">varchar</span>(<span class="dv">8</span>),</span>
+<span id="cb124-14"><a href="sql.html#cb124-14"></a><span class="dt">date</span> text,</span>
+<span id="cb124-15"><a href="sql.html#cb124-15"></a>item_id <span class="dt">integer</span>,</span>
+<span id="cb124-16"><a href="sql.html#cb124-16"></a>item <span class="dt">varchar</span>(<span class="dv">50</span>)</span>
+<span id="cb124-17"><a href="sql.html#cb124-17"></a>);</span></code></pre></div>
 <p>Upload <code>diet.csv</code> into <code>diet_temp</code>.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb94-1"><a href="sql.html#cb94-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> diet(dragon_id, sample_id, <span class="dt">date</span>, item_id, item) </span>
-<span id="cb94-2"><a href="sql.html#cb94-2"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> diet_temp;</span>
-<span id="cb94-3"><a href="sql.html#cb94-3"></a></span>
-<span id="cb94-4"><a href="sql.html#cb94-4"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> diet_temp;</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb125-1"><a href="sql.html#cb125-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> diet(dragon_id, sample_id, <span class="dt">date</span>, item_id, item) </span>
+<span id="cb125-2"><a href="sql.html#cb125-2"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> diet_temp;</span>
+<span id="cb125-3"><a href="sql.html#cb125-3"></a></span>
+<span id="cb125-4"><a href="sql.html#cb125-4"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> diet_temp;</span></code></pre></div>
 <p>The deployments table assigns a tag to each individual within a certain period
 of time. The <code>dragon_id</code> column will be the foreign key that links it to the
 dragons table, and the <code>tag_id</code> column will link it to the tags table. The start
 and end deployment dates will be stored as ISO8601 text. Again, we’ll need a
 serial number to use as a primary key:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb95-1"><a href="sql.html#cb95-1"></a></span>
-<span id="cb95-2"><a href="sql.html#cb95-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> deployments (</span>
-<span id="cb95-3"><a href="sql.html#cb95-3"></a>deployment_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
-<span id="cb95-4"><a href="sql.html#cb95-4"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb95-5"><a href="sql.html#cb95-5"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
-<span id="cb95-6"><a href="sql.html#cb95-6"></a>start_deployment text,</span>
-<span id="cb95-7"><a href="sql.html#cb95-7"></a>end_deployment text,</span>
-<span id="cb95-8"><a href="sql.html#cb95-8"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
-<span id="cb95-9"><a href="sql.html#cb95-9"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(tag_id) <span class="kw">REFERENCES</span> tags(tag_id)</span>
-<span id="cb95-10"><a href="sql.html#cb95-10"></a>);</span>
-<span id="cb95-11"><a href="sql.html#cb95-11"></a></span>
-<span id="cb95-12"><a href="sql.html#cb95-12"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> deployments_temp (</span>
-<span id="cb95-13"><a href="sql.html#cb95-13"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb95-14"><a href="sql.html#cb95-14"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
-<span id="cb95-15"><a href="sql.html#cb95-15"></a>start_deployment text,</span>
-<span id="cb95-16"><a href="sql.html#cb95-16"></a>end_deployment text</span>
-<span id="cb95-17"><a href="sql.html#cb95-17"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb126-1"><a href="sql.html#cb126-1"></a></span>
+<span id="cb126-2"><a href="sql.html#cb126-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> deployments (</span>
+<span id="cb126-3"><a href="sql.html#cb126-3"></a>deployment_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
+<span id="cb126-4"><a href="sql.html#cb126-4"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb126-5"><a href="sql.html#cb126-5"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
+<span id="cb126-6"><a href="sql.html#cb126-6"></a>start_deployment text,</span>
+<span id="cb126-7"><a href="sql.html#cb126-7"></a>end_deployment text,</span>
+<span id="cb126-8"><a href="sql.html#cb126-8"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
+<span id="cb126-9"><a href="sql.html#cb126-9"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(tag_id) <span class="kw">REFERENCES</span> tags(tag_id)</span>
+<span id="cb126-10"><a href="sql.html#cb126-10"></a>);</span>
+<span id="cb126-11"><a href="sql.html#cb126-11"></a></span>
+<span id="cb126-12"><a href="sql.html#cb126-12"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> deployments_temp (</span>
+<span id="cb126-13"><a href="sql.html#cb126-13"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb126-14"><a href="sql.html#cb126-14"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
+<span id="cb126-15"><a href="sql.html#cb126-15"></a>start_deployment text,</span>
+<span id="cb126-16"><a href="sql.html#cb126-16"></a>end_deployment text</span>
+<span id="cb126-17"><a href="sql.html#cb126-17"></a>);</span></code></pre></div>
 <p>Upload <code>deployments.csv</code> into <code>deployments_temp</code>.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb96-1"><a href="sql.html#cb96-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> deployments(dragon_id, tag_id, start_deployment, end_deployment) </span>
-<span id="cb96-2"><a href="sql.html#cb96-2"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> deployments_temp;</span>
-<span id="cb96-3"><a href="sql.html#cb96-3"></a></span>
-<span id="cb96-4"><a href="sql.html#cb96-4"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> deployments_temp;</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb127-1"><a href="sql.html#cb127-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> deployments(dragon_id, tag_id, start_deployment, end_deployment) </span>
+<span id="cb127-2"><a href="sql.html#cb127-2"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> deployments_temp;</span>
+<span id="cb127-3"><a href="sql.html#cb127-3"></a></span>
+<span id="cb127-4"><a href="sql.html#cb127-4"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> deployments_temp;</span></code></pre></div>
 <p>Now we can input the telemetry data. This table contains the raw tracking data
 as we download it from the tags. We’ll need a serial number to uniquely identify
 each record, and we’ll add the tag ID as the foreign key to the tags table:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb97-1"><a href="sql.html#cb97-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> gps_data_raw (</span>
-<span id="cb97-2"><a href="sql.html#cb97-2"></a>gps_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
-<span id="cb97-3"><a href="sql.html#cb97-3"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
-<span id="cb97-4"><a href="sql.html#cb97-4"></a><span class="dt">timestamp</span> text, </span>
-<span id="cb97-5"><a href="sql.html#cb97-5"></a>utm_x <span class="dt">double</span>,</span>
-<span id="cb97-6"><a href="sql.html#cb97-6"></a>utm_y <span class="dt">double</span>,</span>
-<span id="cb97-7"><a href="sql.html#cb97-7"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(tag_id) <span class="kw">REFERENCES</span> tags(tag_id)</span>
-<span id="cb97-8"><a href="sql.html#cb97-8"></a>);</span>
-<span id="cb97-9"><a href="sql.html#cb97-9"></a></span>
-<span id="cb97-10"><a href="sql.html#cb97-10"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> gps_data_raw_temp (</span>
-<span id="cb97-11"><a href="sql.html#cb97-11"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
-<span id="cb97-12"><a href="sql.html#cb97-12"></a><span class="dt">timestamp</span> text, </span>
-<span id="cb97-13"><a href="sql.html#cb97-13"></a>utm_x <span class="dt">double</span>,</span>
-<span id="cb97-14"><a href="sql.html#cb97-14"></a>utm_y <span class="dt">double</span></span>
-<span id="cb97-15"><a href="sql.html#cb97-15"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb128-1"><a href="sql.html#cb128-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> gps_data_raw (</span>
+<span id="cb128-2"><a href="sql.html#cb128-2"></a>gps_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTOINCREMENT,</span>
+<span id="cb128-3"><a href="sql.html#cb128-3"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
+<span id="cb128-4"><a href="sql.html#cb128-4"></a><span class="dt">timestamp</span> text, </span>
+<span id="cb128-5"><a href="sql.html#cb128-5"></a>utm_x <span class="dt">double</span>,</span>
+<span id="cb128-6"><a href="sql.html#cb128-6"></a>utm_y <span class="dt">double</span>,</span>
+<span id="cb128-7"><a href="sql.html#cb128-7"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span>(tag_id) <span class="kw">REFERENCES</span> tags(tag_id)</span>
+<span id="cb128-8"><a href="sql.html#cb128-8"></a>);</span>
+<span id="cb128-9"><a href="sql.html#cb128-9"></a></span>
+<span id="cb128-10"><a href="sql.html#cb128-10"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> gps_data_raw_temp (</span>
+<span id="cb128-11"><a href="sql.html#cb128-11"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
+<span id="cb128-12"><a href="sql.html#cb128-12"></a><span class="dt">timestamp</span> text, </span>
+<span id="cb128-13"><a href="sql.html#cb128-13"></a>utm_x <span class="dt">double</span>,</span>
+<span id="cb128-14"><a href="sql.html#cb128-14"></a>utm_y <span class="dt">double</span></span>
+<span id="cb128-15"><a href="sql.html#cb128-15"></a>);</span></code></pre></div>
 <p>Upload <code>telemetry_raw.csv</code> into <code>gps_data_raw_temp</code>.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb98-1"><a href="sql.html#cb98-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> gps_data_raw(tag_id, <span class="dt">timestamp</span>, utm_x, utm_y) </span>
-<span id="cb98-2"><a href="sql.html#cb98-2"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> gps_data_raw_temp;</span>
-<span id="cb98-3"><a href="sql.html#cb98-3"></a></span>
-<span id="cb98-4"><a href="sql.html#cb98-4"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> gps_data_raw_temp;</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb129-1"><a href="sql.html#cb129-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> gps_data_raw(tag_id, <span class="dt">timestamp</span>, utm_x, utm_y) </span>
+<span id="cb129-2"><a href="sql.html#cb129-2"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> gps_data_raw_temp;</span>
+<span id="cb129-3"><a href="sql.html#cb129-3"></a></span>
+<span id="cb129-4"><a href="sql.html#cb129-4"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> gps_data_raw_temp;</span></code></pre></div>
 </div>
 <div id="crossing-existing-information-to-derive-new-tables" class="section level3">
 <h3><span class="header-section-number">6.3.8</span> Crossing existing information to derive new tables</h3>
@@ -969,41 +2899,41 @@ deployments table, cross those dates with the dates in the raw GPS data, and
 create an updated telemetry table where each location is assigned to the correct
 individual. No manual work involved. Are you ready for some magic?! First, we
 create the table structure:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb99-1"><a href="sql.html#cb99-1"></a></span>
-<span id="cb99-2"><a href="sql.html#cb99-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> gps_data (</span>
-<span id="cb99-3"><a href="sql.html#cb99-3"></a>loc_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb99-4"><a href="sql.html#cb99-4"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
-<span id="cb99-5"><a href="sql.html#cb99-5"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
-<span id="cb99-6"><a href="sql.html#cb99-6"></a><span class="dt">timestamp</span> text,</span>
-<span id="cb99-7"><a href="sql.html#cb99-7"></a>utm_x <span class="dt">double</span>,</span>
-<span id="cb99-8"><a href="sql.html#cb99-8"></a>utm_y <span class="dt">double</span>,</span>
-<span id="cb99-9"><a href="sql.html#cb99-9"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (tag_id) <span class="kw">REFERENCES</span> tags(tag_id)</span>
-<span id="cb99-10"><a href="sql.html#cb99-10"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
-<span id="cb99-11"><a href="sql.html#cb99-11"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb130-1"><a href="sql.html#cb130-1"></a></span>
+<span id="cb130-2"><a href="sql.html#cb130-2"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> gps_data (</span>
+<span id="cb130-3"><a href="sql.html#cb130-3"></a>loc_id <span class="dt">INTEGER</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb130-4"><a href="sql.html#cb130-4"></a>tag_id <span class="dt">char</span>(<span class="dv">6</span>),</span>
+<span id="cb130-5"><a href="sql.html#cb130-5"></a>dragon_id <span class="dt">varchar</span>(<span class="dv">5</span>),</span>
+<span id="cb130-6"><a href="sql.html#cb130-6"></a><span class="dt">timestamp</span> text,</span>
+<span id="cb130-7"><a href="sql.html#cb130-7"></a>utm_x <span class="dt">double</span>,</span>
+<span id="cb130-8"><a href="sql.html#cb130-8"></a>utm_y <span class="dt">double</span>,</span>
+<span id="cb130-9"><a href="sql.html#cb130-9"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (tag_id) <span class="kw">REFERENCES</span> tags(tag_id)</span>
+<span id="cb130-10"><a href="sql.html#cb130-10"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (dragon_id) <span class="kw">REFERENCES</span> dragons(dragon_id)</span>
+<span id="cb130-11"><a href="sql.html#cb130-11"></a>);</span></code></pre></div>
 <p>And then we populate it by pulling information from the raw GPS and deployment
 tables. Locations are assigned to the individual that was wearing the tag at the
 time based on the <code>WHERE</code> clause:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb100-1"><a href="sql.html#cb100-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> gps_data (</span>
-<span id="cb100-2"><a href="sql.html#cb100-2"></a>tag_id, dragon_id, <span class="dt">timestamp</span>, utm_x, utm_y)</span>
-<span id="cb100-3"><a href="sql.html#cb100-3"></a><span class="kw">SELECT</span></span>
-<span id="cb100-4"><a href="sql.html#cb100-4"></a>deployments.tag_id,</span>
-<span id="cb100-5"><a href="sql.html#cb100-5"></a>deployments.dragon_id,</span>
-<span id="cb100-6"><a href="sql.html#cb100-6"></a>gps_data_raw.<span class="dt">timestamp</span>,</span>
-<span id="cb100-7"><a href="sql.html#cb100-7"></a>gps_data_raw.utm_x,</span>
-<span id="cb100-8"><a href="sql.html#cb100-8"></a>gps_data_raw.utm_y</span>
-<span id="cb100-9"><a href="sql.html#cb100-9"></a><span class="kw">FROM</span> deployments <span class="kw">LEFT</span> <span class="kw">JOIN</span> gps_data_raw <span class="kw">USING</span> (tag_id)</span>
-<span id="cb100-10"><a href="sql.html#cb100-10"></a><span class="kw">WHERE</span> gps_data_raw.tag_id <span class="op">=</span> deployments.tag_id <span class="kw">AND</span></span>
-<span id="cb100-11"><a href="sql.html#cb100-11"></a>(</span>
-<span id="cb100-12"><a href="sql.html#cb100-12"></a>    (</span>
-<span id="cb100-13"><a href="sql.html#cb100-13"></a>    (strftime(gps_data_raw.<span class="dt">timestamp</span>) <span class="op">&gt;=</span> strftime(deployments.start_deployment)) <span class="kw">AND</span></span>
-<span id="cb100-14"><a href="sql.html#cb100-14"></a>    (strftime(gps_data_raw.<span class="dt">timestamp</span>) <span class="op">&lt;=</span> strftime(deployments.end_deployment))</span>
-<span id="cb100-15"><a href="sql.html#cb100-15"></a>    )</span>
-<span id="cb100-16"><a href="sql.html#cb100-16"></a><span class="kw">OR</span> </span>
-<span id="cb100-17"><a href="sql.html#cb100-17"></a>    (</span>
-<span id="cb100-18"><a href="sql.html#cb100-18"></a>    (gps_data_raw.<span class="dt">timestamp</span> <span class="op">&gt;=</span> deployments.start_deployment) <span class="kw">AND</span></span>
-<span id="cb100-19"><a href="sql.html#cb100-19"></a>    (deployments.end_deployment <span class="kw">IS</span> <span class="kw">NULL</span>)</span>
-<span id="cb100-20"><a href="sql.html#cb100-20"></a>    )</span>
-<span id="cb100-21"><a href="sql.html#cb100-21"></a>);</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb131-1"><a href="sql.html#cb131-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> gps_data (</span>
+<span id="cb131-2"><a href="sql.html#cb131-2"></a>tag_id, dragon_id, <span class="dt">timestamp</span>, utm_x, utm_y)</span>
+<span id="cb131-3"><a href="sql.html#cb131-3"></a><span class="kw">SELECT</span></span>
+<span id="cb131-4"><a href="sql.html#cb131-4"></a>deployments.tag_id,</span>
+<span id="cb131-5"><a href="sql.html#cb131-5"></a>deployments.dragon_id,</span>
+<span id="cb131-6"><a href="sql.html#cb131-6"></a>gps_data_raw.<span class="dt">timestamp</span>,</span>
+<span id="cb131-7"><a href="sql.html#cb131-7"></a>gps_data_raw.utm_x,</span>
+<span id="cb131-8"><a href="sql.html#cb131-8"></a>gps_data_raw.utm_y</span>
+<span id="cb131-9"><a href="sql.html#cb131-9"></a><span class="kw">FROM</span> deployments <span class="kw">LEFT</span> <span class="kw">JOIN</span> gps_data_raw <span class="kw">USING</span> (tag_id)</span>
+<span id="cb131-10"><a href="sql.html#cb131-10"></a><span class="kw">WHERE</span> gps_data_raw.tag_id <span class="op">=</span> deployments.tag_id <span class="kw">AND</span></span>
+<span id="cb131-11"><a href="sql.html#cb131-11"></a>(</span>
+<span id="cb131-12"><a href="sql.html#cb131-12"></a>    (</span>
+<span id="cb131-13"><a href="sql.html#cb131-13"></a>    (strftime(gps_data_raw.<span class="dt">timestamp</span>) <span class="op">&gt;=</span> strftime(deployments.start_deployment)) <span class="kw">AND</span></span>
+<span id="cb131-14"><a href="sql.html#cb131-14"></a>    (strftime(gps_data_raw.<span class="dt">timestamp</span>) <span class="op">&lt;=</span> strftime(deployments.end_deployment))</span>
+<span id="cb131-15"><a href="sql.html#cb131-15"></a>    )</span>
+<span id="cb131-16"><a href="sql.html#cb131-16"></a><span class="kw">OR</span> </span>
+<span id="cb131-17"><a href="sql.html#cb131-17"></a>    (</span>
+<span id="cb131-18"><a href="sql.html#cb131-18"></a>    (gps_data_raw.<span class="dt">timestamp</span> <span class="op">&gt;=</span> deployments.start_deployment) <span class="kw">AND</span></span>
+<span id="cb131-19"><a href="sql.html#cb131-19"></a>    (deployments.end_deployment <span class="kw">IS</span> <span class="kw">NULL</span>)</span>
+<span id="cb131-20"><a href="sql.html#cb131-20"></a>    )</span>
+<span id="cb131-21"><a href="sql.html#cb131-21"></a>);</span></code></pre></div>
 <p>Note that, because we populated this table with data from other existing tables,
 we ended up using <code>INSERT INTO</code> anyway and there was no need to use our trick
 with a temporary table.</p>
@@ -1075,6 +3005,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

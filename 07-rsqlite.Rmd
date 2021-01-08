@@ -3,21 +3,36 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# Linking Databases and R with RSQLite {#rsqlite}
+# Interfacing Databases in R with RSQLite {#rsqlite}
 
-```{r setup-rsqlite, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
-```
+## The RSQLite package
 
-```{r}
+RSQLite is an R package that provides an interface with SQLite such that you can
+interact with the database from within R. Everything we have done so far on the database can be done from R without ever opening SQLite Studio. You could 
+actually do all of those things without even having SQLite installed on your
+computer, because the R package itself contains SQLite. 
+
+In turn, RSQLite relies on another R package called DBI (which stands for 
+database interface). DBI is a package that provides generic functions for 
+interfacing databases with R, and RSQLite makes adjustments that are specific
+to SQLite. So, first things first, we are going to load the DBI package:
+
+```{r dbi2, eval = TRUE, echo = TRUE}
 library(DBI)
 ```
 
-```{r}
+## Establising a database connection
+
+We start by connecting to a database, either an existing one or one we create 
+new. The `dbConnect` function takes as input a file path for the database. If
+the path exists, it will connect to the existing database; if it does not, it 
+will create it. We also specify that the type of database connection is SQLite:
+
+```{r conn2, eval = TRUE, echo = TRUE}
 dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
 ```
 
-```{r}
+```{r delete, echo = FALSE, eval = FALSE}
 dbExecute(dragons_db, 'DROP TABLE dragons')
 dbExecute(dragons_db, 'DROP TABLE morphometrics')
 dbExecute(dragons_db, 'DROP TABLE diet')
@@ -29,7 +44,16 @@ dbExecute(dragons_db, 'DROP TABLE capture_sites')
 dbExecute(dragons_db, 'DROP TABLE tags')
 ```
 
-```{r}
+## Sending queries to the database
+
+Now that the connection is established, we can start sending queries to the 
+database. Any time we perform actions that affect the database (creating or
+deleting tables, inserting data, etc.) we use the function `dbExecute`. This
+function takes as input a database connection and the SQL code that we want to
+run (as a character string). For example, we can copy-paste the code we used in
+Chapter \@ref(sql) to create the dragons table: 
+
+```{r create-drag, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE dragons (
 dragon_id varchar(5) NOT NULL,
 sex char(1) CHECK (sex IN ('M', 'F')),
@@ -39,20 +63,50 @@ PRIMARY KEY (dragon_id)
 );")
 ```
 
-```{r}
+Now, instead of manually importing the data by pointing and clicking, we can 
+load the data from .csv files into R and insert it into the newly created table. 
+
+```{r drag-csv, eval = TRUE, echo = TRUE}
 dragons <- read.csv("../../Course Material/Data/dragons/dragons.csv", 
                    stringsAsFactors = FALSE) 
+
+names(dragons)
+```
+
+Note that the column names in the .csv differ slightly from the column names we
+assigned when creating the dragons table. This is a problem because RSQLite 
+won't recognize the columns and won't be able to insert the data. We can prevent
+this by changing any names that do not match so that they match the database:
+
+```{r drag-names, echo = TRUE, eval = FALSE}
+
 names(dragons)[1] <- "dragon_id"
+
+```
+
+Now we can enter the data from the .csv into the dragons table. The function
+`dbWriteTable` takes as input the database connection, the name of the table we
+want to fill (in quotes), and the name of the data frame we want to input. Note 
+that I'm using `append = TRUE` because otherwise RSQLite will overwrite the 
+current table with whatever is in the .csv, and any constraints we have enforced (primary key, foreign key, etc.) will be lost:
+
+```{r write-drag, eval = FALSE, echo = TRUE}
 
 dbWriteTable(dragons_db, "dragons", dragons, append = TRUE)
 
 ```
 
-```{r}
+Now we can send a query to the database to check that the data were inserted 
+correctly. Because this is a query that retrieves data, not a query that 
+modifies the database, we use `dbGetQuery` instead of `dbExecute`:
+
+```{r select-drag, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM dragons LIMIT 10;")
 ```
 
-```{r}
+Now we can repeat this process with the other tables: 
+
+```{r create-tags, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE tags (
 tag_id char(6) NOT NULL PRIMARY KEY,
 brand varchar(50),
@@ -60,18 +114,18 @@ status varchar(20)
 );")
 ```
 
-```{r}
+```{r tags-csv, eval = FALSE, echo = TRUE}
 tags <- read.csv("../../Course Material/Data/dragons/tags.csv")
 
 dbWriteTable(dragons_db, "tags", tags, append = TRUE)
 
 ```
 
-```{r}
+```{r select-tags, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM tags LIMIT 10;")
 ```
 
-```{r}
+```{r create-capsites, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE capture_sites (
 site char(3) NOT NULL PRIMARY KEY,
 utm_x double,
@@ -79,7 +133,7 @@ utm_y double
 );")
 ```
 
-```{r}
+```{r write-capsites,  eval = FALSE, echo = TRUE}
 capture_sites <- read.csv("../../Course Material/Data/dragons/capture_sites.csv")
 
 names(capture_sites)[2:3] <- c("utm_x", "utm_y")
@@ -88,11 +142,18 @@ dbWriteTable(dragons_db, "capture_sites", capture_sites, append = TRUE)
 
 ```
 
-```{r}
+```{r select-capsites, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM capture_sites;")
 ```
 
-```{r}
+Remember how in SQLite we had to find a workaround to add auto-incremental 
+primary keys? Well, using RSQLite to build the database instead means we do not
+need that trick anymore. We can just add the auto-incremental serial number to 
+the data and append it to the table while keeping all the structure and the 
+constraints we have enforced. Let's try this with the captures table. First, we 
+create the table:
+
+```{r create-cap, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE captures (
 capture_id INTEGER PRIMARY KEY AUTOINCREMENT,
 dragon_id varchar(5),
@@ -103,24 +164,49 @@ FOREIGN KEY(site) REFERENCES capture_sites(site)
 );")
 ```
 
-```{r}
+Then we read in the .csv file and add a column called `capture_id` with the 
+serial number we'll use as primary key:
+
+```{r pkey-cap, eval = TRUE, echo = TRUE}
 captures <- read.csv("../../Course Material/Data/dragons/captures.csv") 
 
 captures$capture_id <- 1:nrow(captures)
 
+head(captures)
+
+```
+
+Not only the column names need to match the names in the database table, but the
+order has to match too. So we re-order the columns:
+
+```{r mod-cap, eval = FALSE, echo = TRUE}
 captures <- captures[, c("capture_id", "dragon", "capture_date", "capture_site")]
 
+```
+
+We fix the names so they match: 
+
+```{r name-cap, eval = FALSE, echo = TRUE}
 names(captures)[2:4] <- c("dragon_id", "date", "site")
 
+```
+
+And we append the data frame to the database table: 
+
+```{r write-cap, eval = FALSE, echo = TRUE}
 dbWriteTable(dragons_db, "captures", captures, append = TRUE)
 
 ```
 
-```{r}
+Let's check that everything worked: 
+
+```{r select-cap,  eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM captures LIMIT 10;")
 ```
 
-```{r}
+Now we can repeat this process with the remaining tables:
+
+```{r write-morph, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE morphometrics (
 measurement_id INTEGER PRIMARY KEY AUTOINCREMENT,
 dragon_id varchar(5),
@@ -134,27 +220,33 @@ FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
 );")
 ```
 
-```{r}
+```{r csv-morph, eval = FALSE, echo = TRUE}
+
+# Load csv file
 morphometrics <- read.csv("../../Course Material/Data/dragons/morphometrics.csv") 
 
+# Add auto-incremental number
 morphometrics$measurement_id <- 1:nrow(morphometrics)
 
+# Re-order columns
 morphometrics <- morphometrics[, c("measurement_id", "dragon", "date",
                                    "total_body_length_cm", "wingspan_cm",
                                    "tail_length_cm", "tarsus_length_cm", 
                                    "claw_length_cm")]
 
+# Change column names to match
 names(morphometrics)[2] <- "dragon_id"
 
+# Append to database table
 dbWriteTable(dragons_db, "morphometrics", morphometrics, append = TRUE)
 
 ```
 
-```{r}
+```{r select-morph, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM morphometrics LIMIT 10;")
 ```
 
-```{r}
+```{r create-diet, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE diet (
 diet_id INTEGER PRIMARY KEY AUTOINCREMENT,
 dragon_id varchar(5),
@@ -166,7 +258,7 @@ FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
 );")
 ```
 
-```{r}
+```{r csv-diet, eval = FALSE, echo = TRUE}
 diet <- read.csv("../../Course Material/Data/dragons/diet.csv") 
 
 diet$diet_id <- 1:nrow(diet)
@@ -180,11 +272,11 @@ dbWriteTable(dragons_db, "diet", diet, append = TRUE)
 
 ```
 
-```{r}
+```{r select-diet, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM diet LIMIT 10;")
 ```
 
-```{r}
+```{r create-deploy, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE deployments (
 deployment_id INTEGER PRIMARY KEY AUTOINCREMENT,
 dragon_id varchar(5),
@@ -196,7 +288,7 @@ FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
 );")
 ```
 
-```{r}
+```{r csv-deploy, eval = FALSE, echo = TRUE}
 deployments <- read.csv("../../Course Material/Data/dragons/deployments.csv") 
 
 deployments$deployment_id <- 1:nrow(deployments)
@@ -210,11 +302,11 @@ dbWriteTable(dragons_db, "deployments", deployments, append = TRUE)
 
 ```
 
-```{r}
+```{r select-deploy, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM deployments LIMIT 10;")
 ```
 
-```{r}
+```{r create-gps-raw, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE gps_data_raw (
 gps_id INTEGER PRIMARY KEY AUTOINCREMENT,
 tag_id char(6),
@@ -225,7 +317,7 @@ FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
 );")
 ```
 
-```{r}
+```{r csv-gps, eval = FALSE, echo = TRUE}
 gps_data_raw <- read.csv("../../Course Material/Data/dragons/telemetry_raw.csv") 
 
 gps_data_raw$gps_id <- 1:nrow(gps_data_raw)
@@ -238,11 +330,15 @@ dbWriteTable(dragons_db, "gps_data_raw", gps_data_raw, append = TRUE)
 
 ```
 
-```{r}
+```{r select-raw, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM gps_data_raw LIMIT 10;")
 ```
 
-```{r}
+Now we are ready to generate the `gps_data` table based on information from 
+existing tables. We can create and populate the table in 2 steps using 
+`dbExecute`:
+
+```{r create-gps, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "CREATE TABLE gps_data (
 loc_id INTEGER PRIMARY KEY,
 tag_id char(6),
@@ -255,7 +351,7 @@ FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
 );")
 ```
 
-```{r}
+```{r insert-gps, eval = FALSE, echo = TRUE}
 dbExecute(dragons_db, "INSERT INTO gps_data (
 tag_id, dragon_id, timestamp, utm_x, utm_y)
 SELECT
@@ -279,6 +375,20 @@ OR
 );")
 ```
 
-```{r}
+```{r select-locs, eval = TRUE, echo = TRUE}
 dbGetQuery(dragons_db, "SELECT * FROM gps_data LIMIT 10;")
 ```
+
+## A note on reproducibility
+
+When considering the utility of interfacing a database with R, evaluating the 
+benefits in terms of reproducibility is an important criterion. As far as the 
+code to create the database, we could have saved a SQL script in the SQLite
+query editor and that would have been comparable to saving it as an R script.
+However, by loading the data into the database in R we eliminated the need for
+any pointing and clicking. We were able to fully build and populate the database
+using a single R script. This gives a major advantage in terms of reproducibility.
+Moreover, using R as an interface for the database means we can seamlessly 
+transition from querying the data to processing it and analyzing it within the
+same programming framework, all while taking advantages of database-specific 
+functionalities that R does not provide on its own. 

@@ -24,7 +24,7 @@
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-06" />
+<meta name="date" content="2021-01-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -245,8 +245,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Linking Databases and R with RSQLite</a></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a></li>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
+<li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
+<li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
+<li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
+<li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
+<li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
+<li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
+<li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
+<li class="chapter" data-level="8.4.4" data-path="rmarkdown.html"><a href="rmarkdown.html#inline-code"><i class="fa fa-check"></i><b>8.4.4</b> Inline code</a></li>
+<li class="chapter" data-level="8.4.5" data-path="rmarkdown.html"><a href="rmarkdown.html#text-formatting"><i class="fa fa-check"></i><b>8.4.5</b> Text formatting</a></li>
+<li class="chapter" data-level="8.4.6" data-path="rmarkdown.html"><a href="rmarkdown.html#embedding-images"><i class="fa fa-check"></i><b>8.4.6</b> Embedding images</a></li>
+<li class="chapter" data-level="8.4.7" data-path="rmarkdown.html"><a href="rmarkdown.html#adding-a-table-of-contents"><i class="fa fa-check"></i><b>8.4.7</b> Adding a table of contents</a></li>
+<li class="chapter" data-level="8.4.8" data-path="rmarkdown.html"><a href="rmarkdown.html#knitting-the-document"><i class="fa fa-check"></i><b>8.4.8</b> Knitting the document</a></li>
+<li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
 <li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
@@ -289,7 +309,249 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="rmarkdown" class="section level1">
 <h1><span class="header-section-number">Chapter 8</span> Dynamic Documents with RMarkdown</h1>
+<div id="what-is-a-dynamic-document" class="section level2">
+<h2><span class="header-section-number">8.1</span> What is a dynamic document?</h2>
+<p>This Chapter is an introduction to creating dynamic documents in R using the
+<code>rmarkdown</code> package. But what do I mean by <em>dynamic document</em>? In this context,
+a dynamic document is a file that combines code, the output of that code, and
+narrative writing all in one. As a matter of fact, you are reading a dynamic
+document right now: this whole book is written in RMarkdown!</p>
+<div class="figure" style="text-align: center"><span id="fig:art3"></span>
+<img src="img/rmarkdown_wizards.png" alt="Artwork by Allison Horst" width="80%" />
+<p class="caption">
+Figure 8.1: Artwork by Allison Horst
+</p>
+</div>
+<p>In a dynamic document, the code is executed within the document in real
+time and it produces “living” figures, tables, models, etc. that are updated any
+time the code itself or the underlying data is updated. We can combine text and
+code to reproduce any graphical output we want to display in our finished
+document without having to do anything manually, and the document gets
+automatically updated any time there is a change upstream in the code or the
+input data. Because of this, dynamic documents are also reproducible.</p>
+</div>
+<div id="markdown-and-rmarkdown" class="section level2">
+<h2><span class="header-section-number">8.2</span> Markdown and RMarkdown</h2>
+<p>Markdown is a system that translates plain text into HTML (the standard language
+for creating web pages). RMarkdown is a variant of Markdown specifically created
+for R that combines Markdown with code and allows you to export dynamic
+documents in a variety of formats ranging from PDF documents to presentation
+slides to web pages. The advantages of preparing documents in RMarkdown are
+numerous:</p>
+<ol style="list-style-type: decimal">
+<li>Your text and code are consolidated in the same place rather than in separate
+documents;</li>
+<li>You don’t need to save code-generated images and then insert them into a
+different document;</li>
+<li>You don’t have to re-save all your plots and manually replace them if you
+change something in the data or the code;</li>
+<li>You can forget about all the headaches of having to figure out page breaks or
+figure placement;</li>
+<li>You can put all your documents under version control, not just your code.</li>
+</ol>
+<p>The file format for RMarkdown is <code>.Rmd</code>. This is the format of the dynamic
+document that includes code chunks and narrative text. The process of exporting
+this document into a publishable format (such as .pdf, .html, etc.) is called
+<strong>knitting</strong>. The knitting consists of two steps that happen under the hood. First,
+the R package <code>knitr</code> will take the <code>.Rmd</code> file, run the R code that is
+contained in it, and convert it into an <code>.md</code> file. The <code>.md</code> file is then
+passed on to Pandoc, which is a universal document converter. Pandoc will handle
+the conversion to the final file format.</p>
+</div>
+<div id="installing-rmarkdown" class="section level2">
+<h2><span class="header-section-number">8.3</span> Installing RMarkdown</h2>
+<p>To get started with RMarkdown documents, we need to make sure we have the
+necessary R packages installed:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="rmarkdown.html#cb177-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>) </span>
+<span id="cb177-2"><a href="rmarkdown.html#cb177-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
+</div>
+<div id="writing-an-rmarkdown-document" class="section level2">
+<h2><span class="header-section-number">8.4</span> Writing an RMarkdown document</h2>
+<div id="creating-the-document" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Creating the document</h3>
+<p>In RStudio, we create a new RMarkdown document by clicking on the <em>File</em> tab
+and selecting <em>New File</em> &gt; <em>R Markdown</em>.</p>
+<div class="figure" style="text-align: center"><span id="fig:rmarkdown1"></span>
+<img src="img/rmarkdown1.png" alt="Create a new RMarkdown file" width="60%" />
+<p class="caption">
+Figure 8.2: Create a new RMarkdown file
+</p>
+</div>
+<p>A window will pop up asking us what do we want the default format of our
+document to be. If you are putting together a document to be displayed as a web
+page, you will select HTML. Even if you want to produce a PDF or other type of
+document, it’s still a good idea to select HTML here, because you can easily
+switch from HTML to PDF or others but not the other way around.</p>
+<div class="figure" style="text-align: center"><span id="fig:rmarkdown2"></span>
+<img src="img/rmarkdown2.png" alt="Create a new RMarkdown file" width="60%" />
+<p class="caption">
+Figure 8.3: Create a new RMarkdown file
+</p>
+</div>
+</div>
+<div id="yaml-headers" class="section level3">
+<h3><span class="header-section-number">8.4.2</span> YAML headers</h3>
+<p>Once you click OK, RStudio will create a new document that automatically
+contains a YAML header. YAML stands for “YAML Ain’t Markup Language” and it
+encodes the metadata of the document. This is what it looks like:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb178-1"><a href="rmarkdown.html#cb178-1"></a>---</span>
+<span id="cb178-2"><a href="rmarkdown.html#cb178-2"></a>title: &quot;Untitled&quot;</span>
+<span id="cb178-3"><a href="rmarkdown.html#cb178-3"></a>author: &quot;Simona Picardi&quot;</span>
+<span id="cb178-4"><a href="rmarkdown.html#cb178-4"></a>date: &quot;2/18/2021&quot;</span>
+<span id="cb178-5"><a href="rmarkdown.html#cb178-5"></a>output: html_document</span>
+<span id="cb178-6"><a href="rmarkdown.html#cb178-6"></a>---</span></code></pre></div>
+<p>The author and date were automatically added in, as well as the default output
+format (HTML). We can go ahead and edit the title, or anything else that is in
+quotes if we want the date to be different our our name to appear differently
+(or add more names). The content of the YAML header will appear on top of our
+document.</p>
+</div>
+<div id="code-chunks" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> Code chunks</h3>
+<p>Under the YAML header, the template document contains what is called a code
+chunk:</p>
+<pre><code>```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```</code></pre>
+<p>A code chunk is recognized by RMarkdown as containing code. Inside the curly
+brackets, we specify the language the code is written in (RStudio defaults to R,
+but we can change this to a different programming language – RMarkdown
+understands SQL, python, css, and many others.) Then comes the name of the code
+chunk. This one was automatically named “setup” by RStudio, but we can give it
+any other name. The important thing is that we can never repeat the same name
+for a code chunk within the same document. After the comma we can include
+options that will determine how the code chunk behaves. In this case, the code
+chunk has the option <code>include=FALSE</code>, which means neither the code or its result
+will be displayed in the finished document. Other frequently used <code>TRUE/FALSE</code>
+options are:</p>
+<ul>
+<li><code>eval</code>: when set to <code>FALSE</code>, the code will not be run when knitting the
+document (default is <code>TRUE</code>);</li>
+<li><code>echo</code>: when set to <code>FALSE</code>, the code will not show up in the document but
+it will be run under the hood and its results will be displayed (default is
+<code>TRUE</code>);</li>
+<li><code>warning</code>: this option controls whether warning messages are displayed
+(default is <code>TRUE</code>);</li>
+<li><code>error</code>: this option controls whether error messages are displayed (default is
+<code>FALSE</code>).</li>
+</ul>
+<p>By playing with <code>eval</code> and <code>echo</code> we can control whether our code is run and
+displayed or any combination of these. For example, <code>eval = FALSE, echo = TRUE</code>
+means our code chunk won’t be run but it will show up in the document (this
+is great for a tutorial where you want to show someone how to install a package,
+but you don’t want to reinstall it yourself every time you knit the document);
+<code>eval = TRUE, echo = TRUE</code> means our code chunk will be displayed as well as run,
+and its results will be displayed too (this is great for teaching purposes, when
+you want to show how to write code to produce a certain result);
+<code>eval = TRUE, echo = FALSE</code> means the code will be run but it will not be
+visible in the final document (this is great for including a graph in the final
+document, where the code that produced the graph is not the point.)</p>
+<p>To insert a new code chunk in your document, you can click on the green “+C” in
+your RStudio script toolbar (ore use the shortcut Ctrl + Alt + I).</p>
+</div>
+<div id="inline-code" class="section level3">
+<h3><span class="header-section-number">8.4.4</span> Inline code</h3>
+<p>Besides code chunks, you can also embed code within the text using the syntax
+<code>`r my_code`</code>. The code will be run and the results displayed in
+its place. For example, if I want to know what 2 + 2 is, I can type
+<code>`r 2 + 2`</code> in the document and the results displayed will be
+4.</p>
+<p>To quote code verbatim (which means without interpreting it or executing it,
+just displaying it), omit the “r” between the two grave symbols. I also like to
+use the same syntax whenever I mention R functions or any other R-specific words,
+so it looks like this: <code>function</code>. That makes it clear to the reader that I’m
+using the word to refer to something that exists in R (a function, an object, a package) and not to the common meaning of that word.</p>
+</div>
+<div id="text-formatting" class="section level3">
+<h3><span class="header-section-number">8.4.5</span> Text formatting</h3>
+<p>Anything that is not inside a code chunk or inline code is interpreted by
+RMarkdown as text. There are many different formatting styles that you can
+achieve with RMarkdown syntax. You can use <em>italics</em> by wrapping text in
+asterisks, <strong>bold</strong> with double asterisks, and <del>strikethrough</del> with double
+tilde. You can add block quotes using a &gt; at the beginning of a line:</p>
+<blockquote>
+<p>This is a block quote.</p>
+</blockquote>
+<p>Or equations:</p>
+<p><span class="math display">\[E = mc^{2}\]</span></p>
+<p>The headers in this book are formatted using RMarkdown, and so are bullet lists.
+Headers are lines that start with one or more hashtags, with the number of
+hashtags determining the size of the header (one hashtags for main headers, two
+for sections, three for subsections, etc.)
+For an overview of how to format text I recommend consulting the <a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">RMarkdown cheatsheet</a>.
+Wonder how I just embedded that link? Just type the words you want to
+hyperlink in brackets followed by the link in parentheses: <code>[]()</code>.</p>
+</div>
+<div id="embedding-images" class="section level3">
+<h3><span class="header-section-number">8.4.6</span> Embedding images</h3>
+<p>Sometimes you may want to add an image in an RMarkdown document that is not
+code-generated (for example, a photo). There are several ways to do that. One is
+to use the syntax <code>![Caption](path_to_image.png)</code> (this needs to be in a
+new line). Another option is to use the <code>include_graphics</code> function from <code>knitr</code>.
+You can create a new code chunk where you want the image to appear:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb180-1"><a href="rmarkdown.html#cb180-1"></a><span class="bn">```{r image, fig.cap=&quot;this is a caption&quot;, fig.align=&#39;center&#39;, out.width=&#39;100%&#39;}</span></span>
+<span id="cb180-2"><a href="rmarkdown.html#cb180-2"></a><span class="bn">knitr::include_graphics(&quot;img/my_image.png&quot;)</span></span>
+<span id="cb180-3"><a href="rmarkdown.html#cb180-3"></a><span class="bn">```</span></span></code></pre></div>
+<p>Note the chunk options: <code>fig.cap</code> allows you to add a caption under the figure,
+<code>fig.align</code> allows you to tweak the alignment of the image with respect to the
+page, and you can control the size with <code>out.width</code>.</p>
+</div>
+<div id="adding-a-table-of-contents" class="section level3">
+<h3><span class="header-section-number">8.4.7</span> Adding a table of contents</h3>
+<p>You can add a table of contents to your document by adding an option for it in
+the YAML header:</p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb181-1"><a href="rmarkdown.html#cb181-1"></a>---</span>
+<span id="cb181-2"><a href="rmarkdown.html#cb181-2"></a>title: &quot;Untitled&quot;</span>
+<span id="cb181-3"><a href="rmarkdown.html#cb181-3"></a>author: &quot;Simona Picardi&quot;</span>
+<span id="cb181-4"><a href="rmarkdown.html#cb181-4"></a>date: &quot;2/18/2021&quot;</span>
+<span id="cb181-5"><a href="rmarkdown.html#cb181-5"></a>output: </span>
+<span id="cb181-6"><a href="rmarkdown.html#cb181-6"></a>  html_document:</span>
+<span id="cb181-7"><a href="rmarkdown.html#cb181-7"></a><span class="bn">    toc: true</span></span>
+<span id="cb181-8"><a href="rmarkdown.html#cb181-8"></a><span class="bn">    toc_depth: 2</span></span>
+<span id="cb181-9"><a href="rmarkdown.html#cb181-9"></a>---</span></code></pre></div>
+<p>The option <code>toc: true</code> activates the table of contents. You can then list
+additional options to tweak the appearance of the table of contents. For
+example, <code>toc_depth</code> controls how many header levels are visible in the table of
+contents (default is 3, which means headers that range from <code>#</code>-<code>###</code>). Another
+option is <code>toc_float</code>, which means the table of content will float on the side
+of the page even as we scroll down.</p>
+</div>
+<div id="knitting-the-document" class="section level3">
+<h3><span class="header-section-number">8.4.8</span> Knitting the document</h3>
+<p>When you are done composing your document and you want to see the rendered
+version, it’s time to knit. You can click <em>Knit</em> on the RStudio script toolbar
+and the process will start.</p>
+<div class="figure" style="text-align: center"><span id="fig:rmarkdown3"></span>
+<img src="img/rmarkdown3.png" alt="Knitting an RMarkdown file" width="60%" />
+<p class="caption">
+Figure 8.4: Knitting an RMarkdown file
+</p>
+</div>
+<p>You will see the progress status in the console. If
+there are any formatting mistakes, you will get an error that points you to the
+line where the problem is. A very common reason why knitting may fail is if you
+forgot to give the code chunks different names, so watch out for that! Once the
+knitting is complete, you’ll find an HTML file in your working directory with
+the same name as the <code>.Rmd</code> file. Double click on it, and your rendered document
+will open in a browser window.</p>
+</div>
+<div id="the-sky-is-the-limit" class="section level3">
+<h3><span class="header-section-number">8.4.9</span> The sky is the limit!</h3>
+<p>This is a brief overview on how to get started with RMarkdown, but the sky is
+the limit when it comes to possibilities for customization of RMarkdown
+documents. You can add tables, footnotes, and even a bibliography to your
+document which can be automatically synchronized with your reference management
+system. You can choose among several different themes for your rendered document
+or you could even make your own theme. Here are some great resources if you want
+to learn more about these and other functionalities of RMarkdown:</p>
+<ul>
+<li><a href="https://rmarkdown.rstudio.com/lesson-1.html">The RStudio tutorial to RMarkdown</a></li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></li>
+<li><a href="https://rstudio-pubs-static.s3.amazonaws.com/180546_e2d5bf84795745ebb5cd3be3dab71fca.html#1_welcome">Creating Dynamic Documents with RMarkdown and Knitr</a></li>
+</ul>
 
+</div>
+</div>
 </div>
             </section>
 
@@ -347,6 +609,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

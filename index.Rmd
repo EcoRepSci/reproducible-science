@@ -12,6 +12,10 @@ description: "WILD 6900: Computational Tools for Reproducible Science"
 
 # Overview {-}
 
+```{r art1, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE}
+knitr::include_graphics("img/environmental-data-science-r4ds-general.png")
+```
+
 This digital book contains the material for the Graduate Special Topics
 course WILD 6900: Computational Tools for Reproducible Science. The aim of the course is to provide students with practical skills to manage and process their data throughout their life cycle, from the moment they are entered into a computer to the moment they are used in a publication, document, presentation, etc. The content is organized in the following Chapters:
 

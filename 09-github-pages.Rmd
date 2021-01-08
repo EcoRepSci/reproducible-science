@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Automatically Generated Websites with GitHub Pages {#github-pages}
 
 We have seen how to knit RMarkdown documents into HTML, which is the standard format for web pages. From this to publishing your HTML documents as an actual website is a short step, thanks to GitHub Pages. GitHub Pages lets you turn your GitHub repositories into websites for free. Because it is GitHub, you can manage all the content of your website from RStudio and have it under version control, which means your website is reproducible. Sign us up, amirite?! Here, we are going to see how to create a web book using the R package `bookdown` and GitHub Pages.
