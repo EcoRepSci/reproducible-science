@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Working Environments in R | Computational Tools for Reproducible Science</title>
+  <title>Chapter 12 Dependency Management in R | Computational Tools for Reproducible Science</title>
   <meta name="description" content="WILD 6900: Computational Tools for Reproducible Science" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Working Environments in R | Computational Tools for Reproducible Science" />
+  <meta property="og:title" content="Chapter 12 Dependency Management in R | Computational Tools for Reproducible Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Working Environments in R | Computational Tools for Reproducible Science" />
+  <meta name="twitter:title" content="Chapter 12 Dependency Management in R | Computational Tools for Reproducible Science" />
   
   <meta name="twitter:description" content="WILD 6900: Computational Tools for Reproducible Science" />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-07" />
+<meta name="date" content="2021-01-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -280,9 +280,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
 <li class="chapter" data-level="9.4" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a></li>
-<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a></li>
-<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Working Environments in R</a></li>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
+<li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
+<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#assigning-objects"><i class="fa fa-check"></i><b>10.2.1</b> Assigning objects</a></li>
+<li class="chapter" data-level="10.2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#adding-comments"><i class="fa fa-check"></i><b>10.2.2</b> Adding comments</a></li>
+<li class="chapter" data-level="10.2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#headers-and-description"><i class="fa fa-check"></i><b>10.2.3</b> Headers and description</a></li>
+<li class="chapter" data-level="10.2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#navigating-through-the-script"><i class="fa fa-check"></i><b>10.2.4</b> Navigating through the script</a></li>
+<li class="chapter" data-level="10.2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>10.2.5</b> Functions and their arguments</a></li>
+<li class="chapter" data-level="10.2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#writing-functions"><i class="fa fa-check"></i><b>10.2.6</b> Writing functions</a></li>
+<li class="chapter" data-level="10.2.7" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>10.2.7</b> Data types</a></li>
+<li class="chapter" data-level="10.2.8" data-path="intro-to-r.html"><a href="intro-to-r.html#vectors"><i class="fa fa-check"></i><b>10.2.8</b> Vectors</a></li>
+<li class="chapter" data-level="10.2.9" data-path="intro-to-r.html"><a href="intro-to-r.html#factors"><i class="fa fa-check"></i><b>10.2.9</b> Factors</a></li>
+<li class="chapter" data-level="10.2.10" data-path="intro-to-r.html"><a href="intro-to-r.html#data-frames"><i class="fa fa-check"></i><b>10.2.10</b> Data frames</a></li>
+<li class="chapter" data-level="10.2.11" data-path="intro-to-r.html"><a href="intro-to-r.html#dimensions"><i class="fa fa-check"></i><b>10.2.11</b> Dimensions</a></li>
+<li class="chapter" data-level="10.2.12" data-path="intro-to-r.html"><a href="intro-to-r.html#subsetting"><i class="fa fa-check"></i><b>10.2.12</b> Subsetting</a></li>
+<li class="chapter" data-level="10.2.13" data-path="intro-to-r.html"><a href="intro-to-r.html#logical-conditions"><i class="fa fa-check"></i><b>10.2.13</b> Logical conditions</a></li>
+<li class="chapter" data-level="10.2.14" data-path="intro-to-r.html"><a href="intro-to-r.html#lists"><i class="fa fa-check"></i><b>10.2.14</b> Lists</a></li>
+<li class="chapter" data-level="10.2.15" data-path="intro-to-r.html"><a href="intro-to-r.html#control-structures"><i class="fa fa-check"></i><b>10.2.15</b> Control structures</a></li>
+<li class="chapter" data-level="10.2.16" data-path="intro-to-r.html"><a href="intro-to-r.html#repeating-operations"><i class="fa fa-check"></i><b>10.2.16</b> Repeating operations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
+<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="troubleshooting.html"><a href="troubleshooting.html#locating-the-problematic-piece-of-code"><i class="fa fa-check"></i><b>11.1.1</b> Locating the problematic piece of code</a></li>
+<li class="chapter" data-level="11.1.2" data-path="troubleshooting.html"><a href="troubleshooting.html#isolating-the-error"><i class="fa fa-check"></i><b>11.1.2</b> Isolating the error</a></li>
+<li class="chapter" data-level="11.1.3" data-path="troubleshooting.html"><a href="troubleshooting.html#deciphering-error-messages"><i class="fa fa-check"></i><b>11.1.3</b> Deciphering error messages</a></li>
+<li class="chapter" data-level="11.1.4" data-path="troubleshooting.html"><a href="troubleshooting.html#syntax-errors"><i class="fa fa-check"></i><b>11.1.4</b> Syntax errors</a></li>
+<li class="chapter" data-level="11.1.5" data-path="troubleshooting.html"><a href="troubleshooting.html#errors-from-using-package-functions"><i class="fa fa-check"></i><b>11.1.5</b> Errors from using package functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="troubleshooting.html"><a href="troubleshooting.html#r-documentation"><i class="fa fa-check"></i><b>11.2.1</b> R documentation</a></li>
+<li class="chapter" data-level="11.2.2" data-path="troubleshooting.html"><a href="troubleshooting.html#google"><i class="fa fa-check"></i><b>11.2.2</b> Google</a></li>
+<li class="chapter" data-level="11.2.3" data-path="troubleshooting.html"><a href="troubleshooting.html#stackoverflow-et-al."><i class="fa fa-check"></i><b>11.2.3</b> StackOverflow et al.</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-troubleshoot-a-loop"><i class="fa fa-check"></i><b>11.3</b> How to troubleshoot a loop</a></li>
+<li class="chapter" data-level="11.4" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-troubleshoot-a-function"><i class="fa fa-check"></i><b>11.4</b> How to troubleshoot a function</a></li>
+<li class="chapter" data-level="11.5" data-path="troubleshooting.html"><a href="troubleshooting.html#reproducible-examples"><i class="fa fa-check"></i><b>11.5</b> Reproducible examples</a></li>
+<li class="chapter" data-level="11.6" data-path="troubleshooting.html"><a href="troubleshooting.html#the-rubber-duck"><i class="fa fa-check"></i><b>11.6</b> The rubber duck</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a><ul>
+<li class="chapter" data-level="12.1" data-path="renv.html"><a href="renv.html#whats-the-need-for-dependency-management"><i class="fa fa-check"></i><b>12.1</b> What’s the need for dependency management?</a></li>
+<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a></li>
 <li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a></li>
 <li class="chapter" data-level="15" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>15</b> Introduction to Geospatial Data in R</a></li>
@@ -308,8 +352,153 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="renv" class="section level1">
-<h1><span class="header-section-number">Chapter 12</span> Working Environments in R</h1>
+<h1><span class="header-section-number">Chapter 12</span> Dependency Management in R</h1>
+<p>The next two Chapters will be focused on the tidyverse, so we will be
+introducing R packages. This is the first time we’ll be using external packages
+in this course, so this seems like a great time to introduce dependency
+management systems.</p>
+<div id="whats-the-need-for-dependency-management" class="section level2">
+<h2><span class="header-section-number">12.1</span> What’s the need for dependency management?</h2>
+<p>An external R package is any software library that is not included with base R
+(it doesn’t just come automatically with the R installation.) Packages are one
+of the biggest advantages of using R: there are so many packages available to
+allow us to do so many different things without having to code the functions
+ourselves. However, using packages can result in some headaches, too.</p>
+<p>Using packages in our code means that the code <em>depends</em> on those packages to
+run correctly as it was meant to. If someone else wants to run our code, they
+will have to install the necessary packages first. But what happens if the code
+was written using a long time ago using an old version of a package, and by
+doing <code>install.packages</code> that person gets a newer version that does not work the
+same way? This can also happen when we try to run our own code a year after we
+have written it, after having reinstalled R, or after changing computers.
+Packages are constantly maintained and they can change. Functions can be
+re-written and behave differently than they did when we first wrote the code.
+Sometimes our code can break even if something changes in a package that we
+are not loading directly, but that the package we’re using depends on.
+Even though it’s good practice to keep our software up-to-date, updating
+packages can break things and generate a lot of frustration.</p>
+<p>These frustrations can be greatly reduced by adopting a dependency management
+system. Dependency management is the process of keeping track of dependencies
+in our code. This means keeping track of which packages we are loading, which
+packages those packages depend on, and which version of each package we are
+using.</p>
+</div>
+<div id="the-renv-package" class="section level2">
+<h2><span class="header-section-number">12.2</span> The <code>renv</code> package</h2>
+<p>The <code>renv</code> package is a dependency management system for R. Normally, when you
+install an R package, this gets saved in your user library, which is centralized
+somewhere in your computer (find out where using <code>.libPaths()</code>). Each time you
+load a package in an R session, the package will be loaded from that centralized
+library. The basic concept behind <code>renv</code> is to de-centralize this process by
+having Project-specific libraries. This means that you can have different
+RStudio Projects each with their own version of the same package. The library
+and all your package dependencies are a property of an RStudio Project. However,
+because <code>renv</code> uses a global package cache that is shared across all the
+projects that use <code>renv</code>, packages are not physically duplicated (which would be
+very inefficient in terms of space.)</p>
+<p>Having Project-specific libraries means that installing a new version of a
+package in one Project won’t break any others that may rely on a different
+version. It also means that your RStudio Project is truly a portable unit, where
+it’s easy to get all your dependencies working if you transport the Project on
+a different computer. This also helps make your code reproducible because
+you can share your project environment alongside the code so that somebody else
+can automatically reproduce it on their computer.</p>
+<div id="usage" class="section level3">
+<h3><span class="header-section-number">12.2.1</span> Usage</h3>
+<p>When you create a new RStudio Project, you can initialize a project-local
+environment by using <code>renv::init()</code>. This will identify all the packages that
+are currently in use and install them into the project library. Initializing
+<code>renv</code> on a project will save four files to your project directory:</p>
+<ul>
+<li>An <code>.Rprofile</code> file, which will activate your environment each time you
+open a new project session;</li>
+<li>An <code>renv.lock</code> file, which describes the state of your project’s library (what packages are loaded and in what version) at some point in time;</li>
+<li>An <code>renv/activate.R</code> file which is the script run by <code>.Rprofile</code>;</li>
+<li>And an <code>renv/library</code> folder which is your local project library.</li>
+</ul>
+<p>The first three files should be put under version control. The library itself is
+automatically put in <code>.gitignore</code> by <code>renv</code> (it can’t hurt to double check).
+After your project-local environment is set up, you can keep working on your
+project normally.</p>
+<p>You can save a snapshot of the project library with <code>renv::snapshot()</code>. The
+current status of the library will be saved to <code>renv.loc</code>. You can always go
+back to a previous snapshot in time by using <code>renv::restore()</code>.</p>
+<p>Note: make sure you don’t save any of your <code>renv</code> commands in the script, only
+run them in the console. In general, you should never leave code to install
+any package in your script (or you will re-install packages that you already
+have any time you run your whole script at once). Only leave the <code>library()</code>
+loading command in your script. All the other <code>renv</code> commands should not be
+saved in the script either, because you or your collaborator are likely to
+accidentally modify your environment without realizing.</p>
+<p>Let’s go over the workflow you would follow in each of the following situations:</p>
+<ol style="list-style-type: decimal">
+<li>You want to start a new RStudio Project and you want to manage your
+dependencies with <code>renv</code>;</li>
+<li>You want to start using <code>renv</code> on an existing project;</li>
+<li>You want to share your project with somebody else making sure they get all the
+dependencies they need;</li>
+<li>Somebody shared a project with you using <code>renv</code> and you want to reproduce
+their environment.</li>
+</ol>
+<div id="case-1" class="section level4">
+<h4><span class="header-section-number">12.2.1.1</span> Case 1</h4>
+<p>You want to start a new RStudio Project and you want to manage your dependencies
+with <code>renv</code>.</p>
+<ul>
+<li>Step 1 of 5: install <code>renv</code> (<code>install.packages("renv")</code>; no need to load it
+using <code>library(renv)</code>);</li>
+<li>Step 2 of 5: initialize your project environment (<code>renv::init()</code> in the console);</li>
+<li>Step 3 of 5: whenever you need to use a package, you will need to reinstall it
+(even if it is already installed in your central user library);</li>
+<li>Step 4 of 5: whenever you write code to use a new package (e.g., <code>library(tidyverse)</code>), run <code>renv::snapshot()</code> in the console to save the status
+of your current environment in <code>renv.lock</code> (save your script first or <code>renv</code>
+won’t notice you added a new package). If you have installed or updated a
+package that breaks your code, run <code>renv::restore()</code> to go back to the previous
+snapshot;</li>
+<li>Step 5 of 5: work as you normally would.</li>
+</ul>
+</div>
+<div id="case-2" class="section level4">
+<h4><span class="header-section-number">12.2.1.2</span> Case 2</h4>
+<p>You want to start using <code>renv</code> on an existing project.</p>
+<ul>
+<li>Step 1 of 1: open your existing project and run <code>renv::init()</code>. Then proceed
+as above.</li>
+</ul>
+</div>
+<div id="case-3" class="section level4">
+<h4><span class="header-section-number">12.2.1.3</span> Case 3</h4>
+<p>You want to share your project with somebody else making sure they get all the
+dependencies they need.</p>
+<ul>
+<li>Step 1 of 1: in addition to sharing your code and data, also share your
+<code>renv.lock</code> file with your collaborator.</li>
+</ul>
+</div>
+<div id="case-4" class="section level4">
+<h4><span class="header-section-number">12.2.1.4</span> Case 4</h4>
+<p>Somebody shared a project with you using <code>renv</code> and you want to reproduce their
+environment.</p>
+<ul>
+<li>Step 1 of 4: save your collaborator’s files (RStudio Project, code, data,
+<code>renv.lock</code> in the same folder);</li>
+<li>Step 2 of 4: open the project and run <code>renv::init</code> (this will initialize your
+environment);</li>
+<li>Step 3 of 4: run <code>renv::restore()</code> (this will look in the <code>renv.lock</code> file and
+install any packages you need);</li>
+<li>Step 4 of 4: run the code normally.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="references" class="section level2">
+<h2><span class="header-section-number">12.3</span> References</h2>
+<ul>
+<li><a href="https://rstudio.github.io/renv/articles/renv.html" class="uri">https://rstudio.github.io/renv/articles/renv.html</a></li>
+<li><a href="https://rpubs.com/glennwithtwons/reproducible-r-toolbox" class="uri">https://rpubs.com/glennwithtwons/reproducible-r-toolbox</a></li>
+</ul>
 
+</div>
 </div>
             </section>
 

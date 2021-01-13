@@ -1,1 +1,146 @@
-# Working Environments in R {#renv}
+# Dependency Management in R {#renv}
+
+The next two Chapters will be focused on the tidyverse, so we will be 
+introducing R packages. This is the first time we'll be using external packages 
+in this course, so this seems like a great time to introduce dependency 
+management systems. 
+
+## What's the need for dependency management? 
+
+An external R package is any software library that is not included with base R 
+(it doesn't just come automatically with the R installation.) Packages are one
+of the biggest advantages of using R: there are so many packages available to
+allow us to do so many different things without having to code the functions 
+ourselves. However, using packages can result in some headaches, too.  
+  
+Using packages in our code means that the code *depends* on those packages to
+run correctly as it was meant to. If someone else wants to run our code, they 
+will have to install the necessary packages first. But what happens if the code
+was written using a long time ago using an old version of a package, and by
+doing `install.packages` that person gets a newer version that does not work the
+same way? This can also happen when we try to run our own code a year after we
+have written it, after having reinstalled R, or after changing computers. 
+Packages are constantly maintained and they can change. Functions can be 
+re-written and behave differently than they did when we first wrote the code. 
+Sometimes our code can break even if something changes in a package that we
+are not loading directly, but that the package we're using depends on.
+Even though it's good practice to keep our software up-to-date, updating 
+packages can break things and generate a lot of frustration.  
+  
+These frustrations can be greatly reduced by adopting a dependency management 
+system. Dependency management is the process of keeping track of dependencies 
+in our code. This means keeping track of which packages we are loading, which 
+packages those packages depend on, and which version of each package we are 
+using. 
+
+## The `renv` package
+
+The `renv` package is a dependency management system for R. Normally, when you
+install an R package, this gets saved in your user library, which is centralized
+somewhere in your computer (find out where using `.libPaths()`). Each time you 
+load a package in an R session, the package will be loaded from that centralized 
+library. The basic concept behind `renv` is to de-centralize this process by 
+having Project-specific libraries. This means that you can have different 
+RStudio Projects each with their own version of the same package. The library 
+and all your package dependencies are a property of an RStudio Project. However,
+because `renv` uses a global package cache that is shared across all the 
+projects that use `renv`, packages are not physically duplicated (which would be 
+very inefficient in terms of space.)     
+  
+Having Project-specific libraries means that installing a new version of a 
+package in one Project won't break any others that may rely on a different
+version. It also means that your RStudio Project is truly a portable unit, where
+it's easy to get all your dependencies working if you transport the Project on
+a different computer. This also helps make your code reproducible because
+you can share your project environment alongside the code so that somebody else 
+can automatically reproduce it on their computer.  
+
+### Usage 
+
+When you create a new RStudio Project, you can initialize a project-local
+environment by using `renv::init()`. This will identify all the packages that
+are currently in use and install them into the project library. Initializing
+`renv` on a project will save four files to your project directory:
+
+* An `.Rprofile` file, which will activate your environment each time you
+open a new project session;
+* An `renv.lock` file, which describes the state of your project's library (what packages are loaded and in what version) at some point in time;
+* An `renv/activate.R` file which is the script run by `.Rprofile`;
+* And an `renv/library` folder which is your local project library.
+
+The first three files should be put under version control. The library itself is
+automatically put in `.gitignore` by `renv` (it can't hurt to double check). 
+After your project-local environment is set up, you can keep working on your 
+project normally.  
+  
+You can save a snapshot of the project library with `renv::snapshot()`. The 
+current status of the library will be saved to `renv.loc`. You can always go 
+back to a previous snapshot in time by using `renv::restore()`. 
+
+Note: make sure you don't save any of your `renv` commands in the script, only
+run them in the console. In general, you should never leave code to install
+any package in your script (or you will re-install packages that you already
+have any time you run your whole script at once). Only leave the `library()` 
+loading command in your script. All the other `renv` commands should not be 
+saved in the script either, because you or your collaborator are likely to 
+accidentally modify your environment without realizing. 
+
+Let's go over the workflow you would follow in each of the following situations:
+
+1. You want to start a new RStudio Project and you want to manage your 
+dependencies with `renv`;
+2. You want to start using `renv` on an existing project;
+3. You want to share your project with somebody else making sure they get all the
+dependencies they need;
+4. Somebody shared a project with you using `renv` and you want to reproduce 
+their environment.
+
+#### Case 1
+
+You want to start a new RStudio Project and you want to manage your dependencies 
+with `renv`.
+
+* Step 1 of 5: install `renv` (`install.packages("renv")`; no need to load it 
+using `library(renv)`);
+* Step 2 of 5: initialize your project environment (`renv::init()` in the console); 
+* Step 3 of 5: whenever you need to use a package, you will need to reinstall it 
+(even if it is already installed in your central user library);
+* Step 4 of 5: whenever you write code to use a new package (e.g., `library(tidyverse)`), run `renv::snapshot()` in the console to save the status 
+of your current environment in `renv.lock` (save your script first or `renv` 
+won't notice you added a new package). If you have installed or updated a 
+package that breaks your code, run `renv::restore()` to go back to the previous
+snapshot;
+* Step 5 of 5: work as you normally would. 
+
+#### Case 2
+
+You want to start using `renv` on an existing project. 
+
+* Step 1 of 1: open your existing project and run `renv::init()`. Then proceed 
+as above. 
+
+#### Case 3
+
+You want to share your project with somebody else making sure they get all the
+dependencies they need.
+
+* Step 1 of 1: in addition to sharing your code and data, also share your 
+`renv.lock` file with your collaborator. 
+
+#### Case 4
+
+Somebody shared a project with you using `renv` and you want to reproduce their 
+environment. 
+
+* Step 1 of 4: save your collaborator's files (RStudio Project, code, data, 
+`renv.lock` in the same folder);
+* Step 2 of 4: open the project and run `renv::init` (this will initialize your
+environment);
+* Step 3 of 4: run `renv::restore()` (this will look in the `renv.lock` file and 
+install any packages you need);
+* Step 4 of 4: run the code normally. 
+
+## References
+
+* https://rstudio.github.io/renv/articles/renv.html 
+* https://rpubs.com/glennwithtwons/reproducible-r-toolbox
