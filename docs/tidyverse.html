@@ -24,7 +24,7 @@
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-12" />
+<meta name="date" content="2021-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -327,7 +327,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a></li>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
+<li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
+<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-columns"><i class="fa fa-check"></i><b>13.2.1</b> Subsetting columns</a></li>
+<li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
+<li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
+<li class="chapter" data-level="13.2.4" data-path="tidyverse.html"><a href="tidyverse.html#creating-new-columns"><i class="fa fa-check"></i><b>13.2.4</b> Creating new columns</a></li>
+<li class="chapter" data-level="13.2.5" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>13.2.5</b> Limiting results</a></li>
+<li class="chapter" data-level="13.2.6" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>13.2.6</b> Tibbles</a></li>
+<li class="chapter" data-level="13.2.7" data-path="tidyverse.html"><a href="tidyverse.html#joining-tables"><i class="fa fa-check"></i><b>13.2.7</b> Joining tables</a></li>
+<li class="chapter" data-level="13.2.8" data-path="tidyverse.html"><a href="tidyverse.html#changing-the-order-of-columns"><i class="fa fa-check"></i><b>13.2.8</b> Changing the order of columns</a></li>
+<li class="chapter" data-level="13.2.9" data-path="tidyverse.html"><a href="tidyverse.html#calculations-by-group"><i class="fa fa-check"></i><b>13.2.9</b> Calculations by group</a></li>
+<li class="chapter" data-level="13.2.10" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>13.2.10</b> Sorting results</a></li>
+<li class="chapter" data-level="13.2.11" data-path="tidyverse.html"><a href="tidyverse.html#extracting-columns-as-vectors"><i class="fa fa-check"></i><b>13.2.11</b> Extracting columns as vectors</a></li>
+<li class="chapter" data-level="13.2.12" data-path="tidyverse.html"><a href="tidyverse.html#conditional-value-assignment"><i class="fa fa-check"></i><b>13.2.12</b> Conditional value assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
+<li class="chapter" data-level="13.4" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
+</ul></li>
 <li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a></li>
 <li class="chapter" data-level="15" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>15</b> Introduction to Geospatial Data in R</a></li>
 <li class="chapter" data-level="16" data-path="problem-decomposition.html"><a href="problem-decomposition.html"><i class="fa fa-check"></i><b>16</b> Problem Decomposition</a></li>
@@ -353,7 +371,658 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tidyverse" class="section level1">
 <h1><span class="header-section-number">Chapter 13</span> Data Wrangling with tidyverse</h1>
+<div id="welcome-to-the-tidyverse" class="section level2">
+<h2><span class="header-section-number">13.1</span> Welcome to the tidyverse</h2>
+<div class="figure" style="text-align: center"><span id="fig:tidy1"></span>
+<img src="img/tidyverse_celestial.png" alt="Artwork by Allison Horst" width="80%" />
+<p class="caption">
+Figure 13.1: Artwork by Allison Horst
+</p>
+</div>
+<p>The tidyverse is a collection of R packages designed to facilitate data science.
+The so-called <em>core</em> tidyverse includes the following packages:</p>
+<ul>
+<li><code>dplyr</code> for data manipulation;</li>
+<li><code>tidyr</code> for tidying data;</li>
+<li><code>ggplot2</code> for plotting;</li>
+<li><code>readr</code> for reading in data files of various formats;</li>
+<li><code>stringr</code> for manipulating character strings;</li>
+<li><code>tibble</code> for a re-engineered alternative to data frames;</li>
+<li><code>purrr</code> for functional programming;</li>
+<li><code>forcats</code> for better handling categorical variables.</li>
+</ul>
+<p>While these are distinct packages and can be installed and loaded separately,
+they share common grammar, syntax, and data structures. Most of the functions we
+are going to see in this and the following Chapter are from <code>dplyr</code> and
+<code>ggplot2</code>, but we’ll sprinkle some <code>tidyr</code>, <code>stringr</code>, and <code>tibble</code> here and
+there. On top of the core packages, there are several other <em>non-core</em>
+packages that are installed together with the tidyverse but are not
+automatically loaded. These package are specialized on a few niche roles that
+users may not always need.</p>
+<p>To install the tidyverse, go ahead and run the following line:</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="tidyverse.html#cb372-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>Then load the package using:</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="tidyverse.html#cb373-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## -- Attaching packages ---------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.3     v dplyr   1.0.1
+## v tidyr   1.1.1     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.5.0</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div id="tidyverse-functions" class="section level2">
+<h2><span class="header-section-number">13.2</span> Tidyverse functions</h2>
+<p>To demonstrate the use of tidyverse functions, we are going to work on the
+dragons dataset we used in Chapters <a href="relational-databases.html#relational-databases">5</a>,
+<a href="sql.html#sql">6</a>, and <a href="rsqlite.html#rsqlite">7</a>. Let’s load our data in
+using RSQLite like we learned in Chapter <a href="rsqlite.html#rsqlite">7</a>:</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="tidyverse.html#cb377-1"></a><span class="kw">library</span>(RSQLite)</span></code></pre></div>
+<pre><code>## Warning: package &#39;RSQLite&#39; was built under R version 4.0.3</code></pre>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="tidyverse.html#cb379-1"></a>dragons_db &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RSQLite<span class="op">::</span><span class="kw">SQLite</span>(), <span class="st">&quot;../../Course Material/Data/dragons/dragons.db&quot;</span>)</span></code></pre></div>
+<p>And let’s load all the tables:</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="tidyverse.html#cb380-1"></a>dragons &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons;&quot;</span>)</span>
+<span id="cb380-2"><a href="tidyverse.html#cb380-2"></a>capture_sites &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span>
+<span id="cb380-3"><a href="tidyverse.html#cb380-3"></a>captures &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures;&quot;</span>)</span>
+<span id="cb380-4"><a href="tidyverse.html#cb380-4"></a>morphometrics &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics;&quot;</span>)</span>
+<span id="cb380-5"><a href="tidyverse.html#cb380-5"></a>diet &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet;&quot;</span>)</span>
+<span id="cb380-6"><a href="tidyverse.html#cb380-6"></a>tags &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags;&quot;</span>)</span>
+<span id="cb380-7"><a href="tidyverse.html#cb380-7"></a>deployments &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments;&quot;</span>)</span>
+<span id="cb380-8"><a href="tidyverse.html#cb380-8"></a>telemetry &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data;&quot;</span>)</span></code></pre></div>
+<div id="subsetting-columns" class="section level3">
+<h3><span class="header-section-number">13.2.1</span> Subsetting columns</h3>
+<p>Let’s start practicing on the morphometrics table.</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="tidyverse.html#cb381-1"></a><span class="kw">class</span>(morphometrics)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="tidyverse.html#cb383-1"></a><span class="kw">head</span>(morphometrics)</span></code></pre></div>
+<pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1              1       D96 2012-10-10            1069.8965   1389.5527
+## 2              2      D400 2003-07-03             333.4600    634.9109
+## 3              3      D316 2017-09-08             866.8935   1052.3702
+## 4              4      D317 2016-09-05            1146.9708   1356.8084
+## 5              5      D484 2016-12-04            1032.0520   1720.8641
+## 6              6      D149 2012-02-13             919.9908   1533.5991
+##   tail_length_cm tarsus_length_cm claw_length_cm
+## 1       595.2706        121.65175      15.596219
+## 2       104.2241         38.10844       4.305086
+## 3       373.7619         68.16869      12.719697
+## 4       542.5670        172.43663      14.809363
+## 5       596.4419        114.05057      11.985672
+## 6       563.9201        134.18051      11.005070</code></pre>
+<p>We can subset columns of interest from a table using the <code>select</code> function. The
+function takes as arguments 1. the data and 2. the name/s of one or more
+columns that we want to keep:</p>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="tidyverse.html#cb385-1"></a>body_wing &lt;-<span class="st"> </span><span class="kw">select</span>(morphometrics, dragon_id, date, total_body_length_cm, wingspan_cm)</span>
+<span id="cb385-2"><a href="tidyverse.html#cb385-2"></a></span>
+<span id="cb385-3"><a href="tidyverse.html#cb385-3"></a><span class="kw">head</span>(body_wing)</span></code></pre></div>
+<pre><code>##   dragon_id       date total_body_length_cm wingspan_cm
+## 1       D96 2012-10-10            1069.8965   1389.5527
+## 2      D400 2003-07-03             333.4600    634.9109
+## 3      D316 2017-09-08             866.8935   1052.3702
+## 4      D317 2016-09-05            1146.9708   1356.8084
+## 5      D484 2016-12-04            1032.0520   1720.8641
+## 6      D149 2012-02-13             919.9908   1533.5991</code></pre>
+<p>The <code>measurement_id</code> column is the primary key of the morphometrics table. This
+was important to have in the database but we may not want to keep that column
+now that we are processing the data in R. We could drop that column by
+selecting all the other ones, but that would be a lot of typing. There is a more
+convenient way: we can use <code>select</code> to discard columns by adding a <code>-</code> in front
+of their name:</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="tidyverse.html#cb387-1"></a>no_pkey &lt;-<span class="st"> </span><span class="kw">select</span>(morphometrics, <span class="op">-</span>measurement_id)</span>
+<span id="cb387-2"><a href="tidyverse.html#cb387-2"></a></span>
+<span id="cb387-3"><a href="tidyverse.html#cb387-3"></a><span class="kw">head</span>(no_pkey)</span></code></pre></div>
+<pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
+## 1       D96 2012-10-10            1069.8965   1389.5527       595.2706
+## 2      D400 2003-07-03             333.4600    634.9109       104.2241
+## 3      D316 2017-09-08             866.8935   1052.3702       373.7619
+## 4      D317 2016-09-05            1146.9708   1356.8084       542.5670
+## 5      D484 2016-12-04            1032.0520   1720.8641       596.4419
+## 6      D149 2012-02-13             919.9908   1533.5991       563.9201
+##   tarsus_length_cm claw_length_cm
+## 1        121.65175      15.596219
+## 2         38.10844       4.305086
+## 3         68.16869      12.719697
+## 4        172.43663      14.809363
+## 5        114.05057      11.985672
+## 6        134.18051      11.005070</code></pre>
+</div>
+<div id="subsetting-rows-with-logical-conditions" class="section level3">
+<h3><span class="header-section-number">13.2.2</span> Subsetting rows with logical conditions</h3>
+<p>To subset rows of a table based on certain conditions, we can use the <code>filter</code>
+function. For example, to filter only wingspans larger than 10 m:</p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="tidyverse.html#cb389-1"></a>larger_than_10m &lt;-<span class="st"> </span><span class="kw">filter</span>(morphometrics, wingspan_cm <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>)</span>
+<span id="cb389-2"><a href="tidyverse.html#cb389-2"></a></span>
+<span id="cb389-3"><a href="tidyverse.html#cb389-3"></a><span class="kw">head</span>(larger_than_10m)</span></code></pre></div>
+<pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1              1       D96 2012-10-10            1069.8965    1389.553
+## 2              3      D316 2017-09-08             866.8935    1052.370
+## 3              4      D317 2016-09-05            1146.9708    1356.808
+## 4              5      D484 2016-12-04            1032.0520    1720.864
+## 5              6      D149 2012-02-13             919.9908    1533.599
+## 6              9      D283 2007-06-21            1698.1918    1387.194
+##   tail_length_cm tarsus_length_cm claw_length_cm
+## 1       595.2706        121.65175       15.59622
+## 2       373.7619         68.16869       12.71970
+## 3       542.5670        172.43663       14.80936
+## 4       596.4419        114.05057       11.98567
+## 5       563.9201        134.18051       11.00507
+## 6       666.4246        147.44219       13.18923</code></pre>
+</div>
+<div id="concatenating-operations-with-pipes" class="section level3">
+<h3><span class="header-section-number">13.2.3</span> Concatenating operations with pipes</h3>
+<p>One of the most revolutionary innovations that the tidyverse brings to R is this
+operator: <code>%&gt;%</code>, the pipe. A pipe is a connector that allows you to concatenate
+subsequent actions into one single chunk of code. For instance, if we wanted to
+drop the <code>measurement_id</code> column from the morphometrics table <strong>and</strong> filter
+rows where <code>wingspan_cm</code> is larger than 10 m, this is what we would do without
+the pipe:</p>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="tidyverse.html#cb391-1"></a>no_pkey &lt;-<span class="st"> </span><span class="kw">select</span>(morphometrics, <span class="op">-</span>measurement_id)</span>
+<span id="cb391-2"><a href="tidyverse.html#cb391-2"></a></span>
+<span id="cb391-3"><a href="tidyverse.html#cb391-3"></a>larger_than_10m &lt;-<span class="st"> </span><span class="kw">filter</span>(no_pkey, wingspan_cm <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>)</span></code></pre></div>
+<p>Instead, we can concatenate the two actions:</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="tidyverse.html#cb392-1"></a>larger_than_10m &lt;-<span class="st"> </span>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb392-2"><a href="tidyverse.html#cb392-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>measurement_id) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb392-3"><a href="tidyverse.html#cb392-3"></a><span class="st">  </span><span class="kw">filter</span>(wingspan_cm <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>)</span>
+<span id="cb392-4"><a href="tidyverse.html#cb392-4"></a></span>
+<span id="cb392-5"><a href="tidyverse.html#cb392-5"></a><span class="kw">head</span>(larger_than_10m) </span></code></pre></div>
+<pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
+## 1       D96 2012-10-10            1069.8965    1389.553       595.2706
+## 2      D316 2017-09-08             866.8935    1052.370       373.7619
+## 3      D317 2016-09-05            1146.9708    1356.808       542.5670
+## 4      D484 2016-12-04            1032.0520    1720.864       596.4419
+## 5      D149 2012-02-13             919.9908    1533.599       563.9201
+## 6      D283 2007-06-21            1698.1918    1387.194       666.4246
+##   tarsus_length_cm claw_length_cm
+## 1        121.65175       15.59622
+## 2         68.16869       12.71970
+## 3        172.43663       14.80936
+## 4        114.05057       11.98567
+## 5        134.18051       11.00507
+## 6        147.44219       13.18923</code></pre>
+<p>The pipe takes the output of the previous line and feeds it as input into the
+next one. Notice that you don’t have to repeat the name of the data object,
+because the data is whatever the pipe is feeding into the function. There are
+several advantages to using pipes compared to traditional syntax. First, by
+using a pipe in the example above, we avoided saving intermediate objects (e.g.,
+<code>no_pkey</code>) to the environment: we only saved the final result we wanted. Second,
+we typed less. Third, our code is more readable because the syntax of our code
+reflects the logical structure of what we are doing. You can read the pipe as
+<em>then</em>: take the morphometrics table, <em>then</em> drop the measurement ID, <em>then</em>
+filter records with wingspan larger than 10 m. The shortcut for inserting a pipe
+is <code>Ctrl + Shift + M</code> on Windows and <code>Cmd + Shift + M</code> on Mac.</p>
+</div>
+<div id="creating-new-columns" class="section level3">
+<h3><span class="header-section-number">13.2.4</span> Creating new columns</h3>
+<div class="figure" style="text-align: center"><span id="fig:tidyfig2"></span>
+<img src="img/dplyr_mutate.png" alt="Artwork by Allison Horst" width="80%" />
+<p class="caption">
+Figure 13.2: Artwork by Allison Horst
+</p>
+</div>
+<p>The filtering we did above was pretty inconvenient because we had to calculate
+the conversion between meters and centimeters in our head before applying the
+wingspan filter. It would be easier to convert the column to meters to begin
+with. We can create a new column using <code>mutate</code>:</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="tidyverse.html#cb394-1"></a>larger_than_10m &lt;-<span class="st"> </span>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb394-2"><a href="tidyverse.html#cb394-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>measurement_id) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb394-3"><a href="tidyverse.html#cb394-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wingspan_m =</span> wingspan_cm<span class="op">/</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb394-4"><a href="tidyverse.html#cb394-4"></a><span class="st">  </span><span class="kw">filter</span>(wingspan_m <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>)</span>
+<span id="cb394-5"><a href="tidyverse.html#cb394-5"></a></span>
+<span id="cb394-6"><a href="tidyverse.html#cb394-6"></a><span class="kw">head</span>(larger_than_10m)</span></code></pre></div>
+<pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
+## 1       D96 2012-10-10            1069.8965    1389.553       595.2706
+## 2      D316 2017-09-08             866.8935    1052.370       373.7619
+## 3      D317 2016-09-05            1146.9708    1356.808       542.5670
+## 4      D484 2016-12-04            1032.0520    1720.864       596.4419
+## 5      D149 2012-02-13             919.9908    1533.599       563.9201
+## 6      D283 2007-06-21            1698.1918    1387.194       666.4246
+##   tarsus_length_cm claw_length_cm wingspan_m
+## 1        121.65175       15.59622   13.89553
+## 2         68.16869       12.71970   10.52370
+## 3        172.43663       14.80936   13.56808
+## 4        114.05057       11.98567   17.20864
+## 5        134.18051       11.00507   15.33599
+## 6        147.44219       13.18923   13.87194</code></pre>
+</div>
+<div id="limiting-results" class="section level3">
+<h3><span class="header-section-number">13.2.5</span> Limiting results</h3>
+<p>I have been saving each of my queries as an object and then doing <code>head()</code> to
+show the first 6 rows of the result. Instead, I can save myself some typing and
+space in my environment (and make everything look cleaner) by adding another
+pipe at the end with the <code>slice</code> function. The <code>slice</code> function selects rows
+based on position, so if I want to look at the first 6 I can do:</p>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="tidyverse.html#cb396-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb396-2"><a href="tidyverse.html#cb396-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>measurement_id) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb396-3"><a href="tidyverse.html#cb396-3"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wingspan_m =</span> wingspan_cm<span class="op">/</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb396-4"><a href="tidyverse.html#cb396-4"></a><span class="st">  </span><span class="kw">filter</span>(wingspan_m <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb396-5"><a href="tidyverse.html#cb396-5"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</span></code></pre></div>
+<pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
+## 1       D96 2012-10-10            1069.8965    1389.553       595.2706
+## 2      D316 2017-09-08             866.8935    1052.370       373.7619
+## 3      D317 2016-09-05            1146.9708    1356.808       542.5670
+## 4      D484 2016-12-04            1032.0520    1720.864       596.4419
+## 5      D149 2012-02-13             919.9908    1533.599       563.9201
+## 6      D283 2007-06-21            1698.1918    1387.194       666.4246
+##   tarsus_length_cm claw_length_cm wingspan_m
+## 1        121.65175       15.59622   13.89553
+## 2         68.16869       12.71970   10.52370
+## 3        172.43663       14.80936   13.56808
+## 4        114.05057       11.98567   17.20864
+## 5        134.18051       11.00507   15.33599
+## 6        147.44219       13.18923   13.87194</code></pre>
+<p>More generally, <code>slice</code> can be used as the equivalent of selecting rows from a
+data frame using indexes like we did in Chapter <a href="intro-to-r.html#intro-to-r">10</a>. If I want
+row 38 of the morphometrics table, I can do:</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="tidyverse.html#cb398-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb398-2"><a href="tidyverse.html#cb398-2"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">38</span>)</span></code></pre></div>
+<pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1             38      D367 2006-06-12             1129.259     1315.82
+##   tail_length_cm tarsus_length_cm claw_length_cm
+## 1       578.4428         133.3162       24.20511</code></pre>
+<p>This works with multiple rows too, and they don’t need to be consecutive:</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="tidyverse.html#cb400-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb400-2"><a href="tidyverse.html#cb400-2"></a><span class="st">  </span><span class="kw">slice</span>(<span class="kw">c</span>(<span class="dv">38</span>, <span class="dv">12</span>, <span class="dv">84</span>))</span></code></pre></div>
+<pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
+## 1             38      D367 2006-06-12            1129.2590   1315.8203
+## 2             12      D322 2009-03-09             309.3959    595.7932
+## 3             84      D351 2015-10-04            1439.1528   1213.9245
+##   tail_length_cm tarsus_length_cm claw_length_cm
+## 1       578.4428        133.31621      24.205108
+## 2       137.9718         40.53882       4.273016
+## 3       610.6215        110.42981      12.502822</code></pre>
+</div>
+<div id="tibbles" class="section level3">
+<h3><span class="header-section-number">13.2.6</span> Tibbles</h3>
+<p>Another way to limit the output that gets printed to the console is to use
+tibbles instead of data frames. A tibble is tidyverse’s data structure for
+tabular data, so it is the tidyverse equivalent of a data frame. Tibbles
+implement some functionalities that make working with them a bit more foolproof
+than working with data frames (e.g., they’ll return an error instead of <code>NULL</code>
+if you try to access a column that does not exist), but 99% of the time you
+won’t notice the difference. This is because all tidyverse functions (as well as
+some base R ones) work just the same with data frames and tibbles. However,
+tibbles do have an advantage: when printing a tibble to the console, only the
+first 10 records will show up, which is convenient because it means you don’t
+need to use <code>head()</code> to prevent your console from being flooded with output.
+Case in point:</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="tidyverse.html#cb402-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb402-2"><a href="tidyverse.html#cb402-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb402-3"><a href="tidyverse.html#cb402-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>measurement_id) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb402-4"><a href="tidyverse.html#cb402-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wingspan_m =</span> wingspan_cm<span class="op">/</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb402-5"><a href="tidyverse.html#cb402-5"></a><span class="st">  </span><span class="kw">filter</span>(wingspan_m <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) </span></code></pre></div>
+<pre><code>## # A tibble: 192 x 8
+##    dragon_id date  total_body_leng~ wingspan_cm tail_length_cm tarsus_length_cm
+##    &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
+##  1 D96       2012~            1070.       1390.           595.            122. 
+##  2 D316      2017~             867.       1052.           374.             68.2
+##  3 D317      2016~            1147.       1357.           543.            172. 
+##  4 D484      2016~            1032.       1721.           596.            114. 
+##  5 D149      2012~             920.       1534.           564.            134. 
+##  6 D283      2007~            1698.       1387.           666.            147. 
+##  7 D485      2002~             957.       1780.           561.            131. 
+##  8 D343      2016~            1521.       1538.           618.            152. 
+##  9 D237      2009~            1205.       2120.           656.            135. 
+## 10 D312      2001~             927.       1268.           453.            109. 
+## # ... with 182 more rows, and 2 more variables: claw_length_cm &lt;dbl&gt;,
+## #   wingspan_m &lt;dbl&gt;</code></pre>
+<p>As you can see, the appearance of a tibble is very similar to the one of a
+data frame. In fact, objects can be of multiple classes in R, and tibbles are
+also data frames under the hood!</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="tidyverse.html#cb404-1"></a><span class="kw">class</span>(<span class="kw">as_tibble</span>(morphometrics))</span></code></pre></div>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<p>Converting between tibble and data frame is also super easy, so you can switch
+back and forth between them whenever you need:</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="tidyverse.html#cb406-1"></a>morph_tib &lt;-<span class="st"> </span><span class="kw">as_tibble</span>(morphometrics)</span>
+<span id="cb406-2"><a href="tidyverse.html#cb406-2"></a>morph_df &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(morph_tib)</span></code></pre></div>
+<p>This last bit is useful to know especially when you are using other packages
+that were not written using tidyverse and strictly require data frames as input.</p>
+</div>
+<div id="joining-tables" class="section level3">
+<h3><span class="header-section-number">13.2.7</span> Joining tables</h3>
+<p>In Chapter <a href="sql.html#sql">6</a>, we talked about SQL joins. The concept of a join is not
+exclusive to SQL, and in fact the tidyverse has functions that serve the same
+exact purpose of SQL joins. Let’s get familiar with the one you’ll use most
+often, <code>left_join</code>. As a reminder, a left join keeps all the rows of the left
+table (the one you mention first) while attaching information from the right
+table (the second one) whenever available. If no information is available, the
+columns coming from the right table will have <code>NA</code> but the row will be retained.
+To join two tables, these need to share at least one column. Let’s join the
+morphometrics table with the dragons table:</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="tidyverse.html#cb407-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb407-2"><a href="tidyverse.html#cb407-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb407-3"><a href="tidyverse.html#cb407-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) </span></code></pre></div>
+<pre><code>## # A tibble: 327 x 11
+##    measurement_id dragon_id date  total_body_leng~ wingspan_cm tail_length_cm
+##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+##  1              1 D96       2012~            1070.       1390.           595.
+##  2              2 D400      2003~             333.        635.           104.
+##  3              3 D316      2017~             867.       1052.           374.
+##  4              4 D317      2016~            1147.       1357.           543.
+##  5              5 D484      2016~            1032.       1721.           596.
+##  6              6 D149      2012~             920.       1534.           564.
+##  7              7 D285      2016~             305.        699.           116.
+##  8              8 D256      2013~             359.        652.           148.
+##  9              9 D283      2007~            1698.       1387.           666.
+## 10             10 D213      2001~             354.        671.           140.
+## # ... with 317 more rows, and 5 more variables: tarsus_length_cm &lt;dbl&gt;,
+## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+<p>In this case the shared column has the same name in the two tables. If it
+doesn’t, you can still join based on that column. Let’s demonstrate how:</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="tidyverse.html#cb409-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb409-2"><a href="tidyverse.html#cb409-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb409-3"><a href="tidyverse.html#cb409-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">dragon =</span> dragon_id) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># now the dragon_id column is called &quot;dragon&quot;</span></span>
+<span id="cb409-4"><a href="tidyverse.html#cb409-4"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;dragon&quot;</span> =<span class="st"> &quot;dragon_id&quot;</span>)) </span></code></pre></div>
+<pre><code>## # A tibble: 327 x 11
+##    measurement_id dragon date  total_body_leng~ wingspan_cm tail_length_cm
+##             &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+##  1              1 D96    2012~            1070.       1390.           595.
+##  2              2 D400   2003~             333.        635.           104.
+##  3              3 D316   2017~             867.       1052.           374.
+##  4              4 D317   2016~            1147.       1357.           543.
+##  5              5 D484   2016~            1032.       1721.           596.
+##  6              6 D149   2012~             920.       1534.           564.
+##  7              7 D285   2016~             305.        699.           116.
+##  8              8 D256   2013~             359.        652.           148.
+##  9              9 D283   2007~            1698.       1387.           666.
+## 10             10 D213   2001~             354.        671.           140.
+## # ... with 317 more rows, and 5 more variables: tarsus_length_cm &lt;dbl&gt;,
+## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+<p>So the syntax in the <code>by</code> argument when the names are different is
+<code>column_name_in_left_table = column_name_in_right_table</code>.</p>
+</div>
+<div id="changing-the-order-of-columns" class="section level3">
+<h3><span class="header-section-number">13.2.8</span> Changing the order of columns</h3>
+<p>Incidentally, I have just shown how to change the name of a column by using
+<code>rename</code>. We can also change the order in which columns appear in our table
+using <code>relocate</code>. For example, say that we want to move the age class column
+to right after the dragon ID:</p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="tidyverse.html#cb411-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb411-2"><a href="tidyverse.html#cb411-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb411-3"><a href="tidyverse.html#cb411-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb411-4"><a href="tidyverse.html#cb411-4"></a><span class="st">  </span><span class="kw">relocate</span>(age_class, <span class="dt">.after =</span> dragon_id)</span></code></pre></div>
+<pre><code>## # A tibble: 327 x 11
+##    measurement_id dragon_id age_class date  total_body_leng~ wingspan_cm
+##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;
+##  1              1 D96       Adult     2012~            1070.       1390.
+##  2              2 D400      Juvenile  2003~             333.        635.
+##  3              3 D316      Subadult  2017~             867.       1052.
+##  4              4 D317      Adult     2016~            1147.       1357.
+##  5              5 D484      Adult     2016~            1032.       1721.
+##  6              6 D149      Adult     2012~             920.       1534.
+##  7              7 D285      Juvenile  2016~             305.        699.
+##  8              8 D256      Juvenile  2013~             359.        652.
+##  9              9 D283      Adult     2007~            1698.       1387.
+## 10             10 D213      Juvenile  2001~             354.        671.
+## # ... with 317 more rows, and 5 more variables: tail_length_cm &lt;dbl&gt;,
+## #   tarsus_length_cm &lt;dbl&gt;, claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+</div>
+<div id="calculations-by-group" class="section level3">
+<h3><span class="header-section-number">13.2.9</span> Calculations by group</h3>
+<p>Now that we know how to join the morphometrics table to the dragons table we can
+calculate some summary statistics based on different groups. To do so, we use
+the function <code>group_by</code> together with the function <code>summarize</code>. For instance,
+let’s calculate minimum, maximum, and mean tail length for dragons of different
+age classes:</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="tidyverse.html#cb413-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb413-2"><a href="tidyverse.html#cb413-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb413-3"><a href="tidyverse.html#cb413-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb413-4"><a href="tidyverse.html#cb413-4"></a><span class="st">  </span><span class="kw">group_by</span>(age_class) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb413-5"><a href="tidyverse.html#cb413-5"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">min_tail_length_cm =</span> <span class="kw">min</span>(tail_length_cm),</span>
+<span id="cb413-6"><a href="tidyverse.html#cb413-6"></a>            <span class="dt">mean_tail_length_cm =</span> <span class="kw">mean</span>(tail_length_cm),</span>
+<span id="cb413-7"><a href="tidyverse.html#cb413-7"></a>            <span class="dt">max_tail_length_cm =</span> <span class="kw">max</span>(tail_length_cm))</span></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##   age_class min_tail_length_cm mean_tail_length_cm max_tail_length_cm
+##   &lt;chr&gt;                  &lt;dbl&gt;               &lt;dbl&gt;              &lt;dbl&gt;
+## 1 Adult                  502.                 600.               686.
+## 2 Juvenile                84.0                119.               148.
+## 3 Subadult               338.                 435.               544.</code></pre>
+<p>We can also use <code>group_by</code> to count how many records we have for each group.
+Let’s say we want to know how many dragons of each species we captured:</p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="tidyverse.html#cb416-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb416-2"><a href="tidyverse.html#cb416-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb416-3"><a href="tidyverse.html#cb416-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb416-4"><a href="tidyverse.html#cb416-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb416-5"><a href="tidyverse.html#cb416-5"></a><span class="st">  </span><span class="kw">tally</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+##    species                 n
+##    &lt;chr&gt;               &lt;int&gt;
+##  1 Antipodean Opaleye     16
+##  2 Chinese Fireball       16
+##  3 Common Welsh Green     51
+##  4 Hebridean Black        42
+##  5 Hungarian Horntail     29
+##  6 Norwegian Ridgeback    59
+##  7 Peruvian Vipertooth    39
+##  8 Romanian Longhorn      44
+##  9 Swedish Short-Snout    14
+## 10 Ukrainian Ironbelly    17</code></pre>
+</div>
+<div id="sorting-results" class="section level3">
+<h3><span class="header-section-number">13.2.10</span> Sorting results</h3>
+<p>Let’s sort results of our count by species in decreasing order:</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="tidyverse.html#cb418-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb418-2"><a href="tidyverse.html#cb418-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb418-3"><a href="tidyverse.html#cb418-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb418-4"><a href="tidyverse.html#cb418-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb418-5"><a href="tidyverse.html#cb418-5"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb418-6"><a href="tidyverse.html#cb418-6"></a><span class="st">  </span><span class="kw">arrange</span>(n)</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+##    species                 n
+##    &lt;chr&gt;               &lt;int&gt;
+##  1 Swedish Short-Snout    14
+##  2 Antipodean Opaleye     16
+##  3 Chinese Fireball       16
+##  4 Ukrainian Ironbelly    17
+##  5 Hungarian Horntail     29
+##  6 Peruvian Vipertooth    39
+##  7 Hebridean Black        42
+##  8 Romanian Longhorn      44
+##  9 Common Welsh Green     51
+## 10 Norwegian Ridgeback    59</code></pre>
+<p>Nope, that didn’t do it. The species are sorted from the least to the most
+numerous (the default). We need to specify that we want to sort results in
+descending order:</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="tidyverse.html#cb420-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb420-2"><a href="tidyverse.html#cb420-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb420-3"><a href="tidyverse.html#cb420-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb420-4"><a href="tidyverse.html#cb420-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb420-5"><a href="tidyverse.html#cb420-5"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb420-6"><a href="tidyverse.html#cb420-6"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n))</span></code></pre></div>
+<pre><code>## # A tibble: 10 x 2
+##    species                 n
+##    &lt;chr&gt;               &lt;int&gt;
+##  1 Norwegian Ridgeback    59
+##  2 Common Welsh Green     51
+##  3 Romanian Longhorn      44
+##  4 Hebridean Black        42
+##  5 Peruvian Vipertooth    39
+##  6 Hungarian Horntail     29
+##  7 Ukrainian Ironbelly    17
+##  8 Antipodean Opaleye     16
+##  9 Chinese Fireball       16
+## 10 Swedish Short-Snout    14</code></pre>
+</div>
+<div id="extracting-columns-as-vectors" class="section level3">
+<h3><span class="header-section-number">13.2.11</span> Extracting columns as vectors</h3>
+<p>Now say that we want to only keep morphometric measurements for dragons of
+species for which we have at least 30 individuals. We need to filter those whose
+species falls within that group. So this task can be divided in two steps:
+first, identify the group and store the result; second, filter the table based
+on records from those groups. Let’s see:</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="tidyverse.html#cb422-1"></a>(species_over30 &lt;-<span class="st"> </span>dragons <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb422-2"><a href="tidyverse.html#cb422-2"></a><span class="st">   </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb422-3"><a href="tidyverse.html#cb422-3"></a><span class="st">   </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb422-4"><a href="tidyverse.html#cb422-4"></a><span class="st">   </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb422-5"><a href="tidyverse.html#cb422-5"></a><span class="st">   </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb422-6"><a href="tidyverse.html#cb422-6"></a><span class="st">   </span><span class="kw">pull</span>(species))</span></code></pre></div>
+<pre><code>## [1] &quot;Norwegian Ridgeback&quot; &quot;Common Welsh Green&quot;  &quot;Romanian Longhorn&quot;  
+## [4] &quot;Hebridean Black&quot;     &quot;Peruvian Vipertooth&quot; &quot;Hungarian Horntail&quot;</code></pre>
+<p>The function <code>pull</code> at the end extracts the values in my column of interest and
+returns them as a vector.</p>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>If I used select instead, the result would be a tibble:</p>
+<pre><code>## # A tibble: 6 x 1
+##   species            
+##   &lt;chr&gt;              
+## 1 Norwegian Ridgeback
+## 2 Common Welsh Green 
+## 3 Romanian Longhorn  
+## 4 Hebridean Black    
+## 5 Peruvian Vipertooth
+## 6 Hungarian Horntail</code></pre>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<p>Now that we have a vector with the species that we want to retain, we can apply
+our filter:</p>
+<pre><code>## # A tibble: 264 x 11
+##    measurement_id dragon_id date  total_body_leng~ wingspan_cm tail_length_cm
+##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+##  1              1 D96       2012~            1070.       1390.           595.
+##  2              2 D400      2003~             333.        635.           104.
+##  3              3 D316      2017~             867.       1052.           374.
+##  4              5 D484      2016~            1032.       1721.           596.
+##  5              6 D149      2012~             920.       1534.           564.
+##  6              7 D285      2016~             305.        699.           116.
+##  7              8 D256      2013~             359.        652.           148.
+##  8              9 D283      2007~            1698.       1387.           666.
+##  9             10 D213      2001~             354.        671.           140.
+## 10             11 D485      2002~             957.       1780.           561.
+## # ... with 254 more rows, and 5 more variables: tarsus_length_cm &lt;dbl&gt;,
+## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+</div>
+<div id="conditional-value-assignment" class="section level3">
+<h3><span class="header-section-number">13.2.12</span> Conditional value assignment</h3>
+<div class="figure" style="text-align: center"><span id="fig:tidyfig3"></span>
+<img src="img/dplyr_case_when.png" alt="Artwork by Allison Horst" width="80%" />
+<p class="caption">
+Figure 13.3: Artwork by Allison Horst
+</p>
+</div>
+<p>The last function we are going to look at is <code>case_when</code>. This function allows
+to do conditional value assignment by vectorizing multiple statements of the
+kind: <code>if</code> … <code>else</code> …. Let’s look at an example to understand what this
+means. The dragons table includes information on sex and on age class. Say that
+we wanted to create a composite variable combining sex and age class, with
+possible categories “adult female”, “adult male”, “juvenile female”, etc. We can
+gather the information from the two existing column and create a new column
+assigning the appropriate category to each individual using <code>case_when</code>:</p>
+<pre><code>## # A tibble: 327 x 4
+##    dragon_id sex   age_class sex_age_combo   
+##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           
+##  1 D96       F     Adult     Adult Female    
+##  2 D400      &lt;NA&gt;  Juvenile  Juvenile Unknown
+##  3 D316      M     Subadult  Subadult Male   
+##  4 D317      F     Adult     Adult Female    
+##  5 D484      M     Adult     Adult Male      
+##  6 D149      M     Adult     Adult Male      
+##  7 D285      &lt;NA&gt;  Juvenile  Juvenile Unknown
+##  8 D256      &lt;NA&gt;  Juvenile  Juvenile Unknown
+##  9 D283      F     Adult     Adult Female    
+## 10 D213      &lt;NA&gt;  Juvenile  Juvenile Unknown
+## # ... with 317 more rows</code></pre>
+<p>Let’s break down the syntax I used in the <code>case_when</code> statement. Each entry has
+the form <em>logical condition</em> ~ <em>value to assign</em>. Let’s isolate the left-hand
+side of the first entry:</p>
+<pre><code>## [1] FALSE FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
+<p>There can be as many entries as we want, but they should fully cover the
+logical domain of the statement. In other words, we need to account for every
+possibility. If, say, we left out the male subadult combination, <code>case_when</code> is
+going to automatically assign <code>NA</code>:</p>
+<pre><code>## # A tibble: 327 x 4
+##    dragon_id sex   age_class sex_age_combo   
+##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           
+##  1 D96       F     Adult     Adult Female    
+##  2 D400      &lt;NA&gt;  Juvenile  Juvenile Unknown
+##  3 D316      M     Subadult  &lt;NA&gt;            
+##  4 D317      F     Adult     Adult Female    
+##  5 D484      M     Adult     Adult Male      
+##  6 D149      M     Adult     Adult Male      
+##  7 D285      &lt;NA&gt;  Juvenile  Juvenile Unknown
+##  8 D256      &lt;NA&gt;  Juvenile  Juvenile Unknown
+##  9 D283      F     Adult     Adult Female    
+## 10 D213      &lt;NA&gt;  Juvenile  Juvenile Unknown
+## # ... with 317 more rows</code></pre>
+<p>Once we’ve covered all of the possibilities except one, we can leave the last
+one implicit by using <code>TRUE</code> on the left-hand side of the last entry of the
+<code>case_when</code> statement. For example, if an individual does not fall in the first
+six categories it means its sex is unknown. We could lump these all together in
+one “Unknown” category:</p>
+<pre><code>## # A tibble: 327 x 4
+##    dragon_id sex   age_class sex_age_combo
+##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        
+##  1 D96       F     Adult     Adult Female 
+##  2 D400      &lt;NA&gt;  Juvenile  Unknown      
+##  3 D316      M     Subadult  Subadult Male
+##  4 D317      F     Adult     Adult Female 
+##  5 D484      M     Adult     Adult Male   
+##  6 D149      M     Adult     Adult Male   
+##  7 D285      &lt;NA&gt;  Juvenile  Unknown      
+##  8 D256      &lt;NA&gt;  Juvenile  Unknown      
+##  9 D283      F     Adult     Adult Female 
+## 10 D213      &lt;NA&gt;  Juvenile  Unknown      
+## # ... with 317 more rows</code></pre>
+<p>Or we could decide that if sex is unknown we just simply assign the value of
+<code>age_class</code>:</p>
+<pre><code>## # A tibble: 327 x 4
+##    dragon_id sex   age_class sex_age_combo
+##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        
+##  1 D96       F     Adult     Adult Female 
+##  2 D400      &lt;NA&gt;  Juvenile  Juvenile     
+##  3 D316      M     Subadult  Subadult Male
+##  4 D317      F     Adult     Adult Female 
+##  5 D484      M     Adult     Adult Male   
+##  6 D149      M     Adult     Adult Male   
+##  7 D285      &lt;NA&gt;  Juvenile  Juvenile     
+##  8 D256      &lt;NA&gt;  Juvenile  Juvenile     
+##  9 D283      F     Adult     Adult Female 
+## 10 D213      &lt;NA&gt;  Juvenile  Juvenile     
+## # ... with 317 more rows</code></pre>
+</div>
+</div>
+<div id="style" class="section level2">
+<h2><span class="header-section-number">13.3</span> Style</h2>
+<p>Tidyverse syntax helps to make code readable, but half of the deal with
+readability has to do with style. Hadley Whickham, the inventor of the tidyverse,
+has put together a handy <a href="https://style.tidyverse.org/">style guide</a> that lists
+things to pay attention to when writing code and best practices to adopt. Style
+is not so much about making things aesthetically pleasing (although it certainly
+does), but about making the code easy for your eyes to navigate through and
+understand. R already uses a type of font for which each character occupies the
+same amount of pixels, which makes things align nicely across rows. This makes
+it easy to recognize structure in the code at a glance, and this physical
+structure corresponds to logical structure so it helps you understand how the
+pieces fit together. But these qualities are no good if the user doesn’t put in
+the effort to take advantage of them. Here are my favorite style tips to make
+sure your code looks clean and reads easily:</p>
+<ul>
+<li>Always put spaces after your commas, on both sides of equal signs and other
+operators (e.g., do <code>x &lt;- 1</code>, not <code>x&lt;-1</code>);</li>
+<li>Do not exceed 80 characters per line in your script (you can check how many
+characters you’ve used at the bottom-left corner of the script panel, and recent
+versions of RStudio also have a handy gray vertical line that marks the 80
+character limit);</li>
+<li>Be consistent in your variable names: don’t use <code>CamelCase</code> for some and
+<code>lowercase_with_underscores</code> for others. Actually, stick to <code>lowercase_with_underscores</code>.</li>
+<li>Start a new line after each pipe <code>%&gt;%</code>;</li>
+<li>I like to start a new line even after each column listed in a <code>select</code>
+statement, or even after each argument of a function (for sure whenever the code
+would overflow past 80 characters otherwise);</li>
+<li>Tidyverse automatically indents your code when you go to a new line (e.g.,
+after a pipe), but if you happen to mess with the alignment while you’re editing
+the code, make sure to reindent it and realign it at the end (you don’t have to
+do it manually, just highlight the chunk of code you want to reindent and go to
+<em>Code</em> &gt; <em>Reindent lines</em> in RStudio, or press <code>Ctrl</code> + <code>I</code>).</li>
+</ul>
+</div>
+<div id="references" class="section level2">
+<h2><span class="header-section-number">13.4</span> References</h2>
+<ul>
+<li><a href="https://datacarpentry.org/R-ecology-lesson/" class="uri">https://datacarpentry.org/R-ecology-lesson/</a></li>
+<li><a href="https://style.tidyverse.org/" class="uri">https://style.tidyverse.org/</a></li>
+</ul>
 
+</div>
 </div>
             </section>
 

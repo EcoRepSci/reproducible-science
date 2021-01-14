@@ -231,6 +231,10 @@ what both situations have in common is that the number of spaces to be filled
 is not the same as the number of items to fill them with. So now I know that my
 problem must be that I have too many (or too few) values to fit in my column. 
 
+```{r debugging, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/debugging.jpg")
+```
+
 ## How to troubleshoot a loop
 
 Consider the following loop:

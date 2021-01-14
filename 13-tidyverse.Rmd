@@ -1,1 +1,545 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Data Wrangling with tidyverse {#tidyverse}
+
+## Welcome to the tidyverse
+
+```{r tidy1, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/tidyverse_celestial.png")
+```
+
+The tidyverse is a collection of R packages designed to facilitate data science. 
+The so-called *core* tidyverse includes the following packages:
+
+* `dplyr` for data manipulation;
+* `tidyr` for tidying data;
+* `ggplot2` for plotting;
+* `readr` for reading in data files of various formats;
+* `stringr` for manipulating character strings;
+* `tibble` for a re-engineered alternative to data frames;
+* `purrr` for functional programming;
+* `forcats` for better handling categorical variables. 
+
+While these are distinct packages and can be installed and loaded separately, 
+they share common grammar, syntax, and data structures. Most of the functions we 
+are going to see in this and the following Chapter are from `dplyr` and 
+`ggplot2`, but we'll sprinkle some `tidyr`, `stringr`, and `tibble` here and 
+there. On top of the core packages, there are several other *non-core* 
+packages that are installed together with the tidyverse but are not 
+automatically loaded. These package are specialized on a few niche roles that
+users may not always need. 
+  
+To install the tidyverse, go ahead and run the following line:
+
+```{r tidy2, eval = FALSE, echo = TRUE}
+install.packages("tidyverse")
+```
+
+Then load the package using:
+
+```{r tidy3, eval = TRUE, echo = TRUE}
+library(tidyverse)
+```
+
+## Tidyverse functions
+
+To demonstrate the use of tidyverse functions, we are going to work on the 
+dragons dataset we used in Chapters \@ref(relational-databases), 
+\@ref(sql), and \@ref(rsqlite). Let's load our data in
+using RSQLite like we learned in Chapter \@ref(rsqlite):
+
+```{r tidy4, eval = TRUE, echo = TRUE}
+library(RSQLite)
+
+dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+```
+
+And let's load all the tables:
+
+```{r tidy5, eval = TRUE, echo = TRUE}
+dragons <- dbGetQuery(dragons_db, "SELECT * FROM dragons;")
+capture_sites <- dbGetQuery(dragons_db, "SELECT * FROM capture_sites;")
+captures <- dbGetQuery(dragons_db, "SELECT * FROM captures;")
+morphometrics <- dbGetQuery(dragons_db, "SELECT * FROM morphometrics;")
+diet <- dbGetQuery(dragons_db, "SELECT * FROM diet;")
+tags <- dbGetQuery(dragons_db, "SELECT * FROM tags;")
+deployments <- dbGetQuery(dragons_db, "SELECT * FROM deployments;")
+telemetry <- dbGetQuery(dragons_db, "SELECT * FROM gps_data;")
+```
+
+### Subsetting columns
+
+Let's start practicing on the morphometrics table.
+
+```{r tidy6, eval = TRUE, echo = TRUE}
+class(morphometrics)
+head(morphometrics)
+```
+
+We can subset columns of interest from a table using the `select` function. The
+function takes as arguments 1. the data and 2. the name/s of one or more 
+columns that we want to keep:
+
+```{r tidy7, eval = TRUE, echo = TRUE}
+body_wing <- select(morphometrics, dragon_id, date, total_body_length_cm, wingspan_cm)
+
+head(body_wing)
+```
+
+The `measurement_id` column is the primary key of the morphometrics table. This
+was important to have in the database but we may not want to keep that column
+now that we are processing the data in R. We could drop that column by 
+selecting all the other ones, but that would be a lot of typing. There is a more 
+convenient way: we can use `select` to discard columns by adding a `-` in front
+of their name:
+
+```{r tidy8, eval = TRUE, echo = TRUE}
+no_pkey <- select(morphometrics, -measurement_id)
+
+head(no_pkey)
+```
+
+### Subsetting rows with logical conditions
+
+To subset rows of a table based on certain conditions, we can use the `filter`
+function. For example, to filter only wingspans larger than 10 m:
+
+```{r tidy9, eval = TRUE, echo = TRUE}
+larger_than_10m <- filter(morphometrics, wingspan_cm > 1000)
+
+head(larger_than_10m)
+```
+
+### Concatenating operations with pipes
+
+One of the most revolutionary innovations that the tidyverse brings to R is this
+operator: `%>%`, the pipe. A pipe is a connector that allows you to concatenate
+subsequent actions into one single chunk of code. For instance, if we wanted to
+drop the `measurement_id` column from the morphometrics table **and** filter
+rows where `wingspan_cm` is larger than 10 m, this is what we would do without 
+the pipe:
+
+```{r tidy10, eval = TRUE, echo = TRUE}
+no_pkey <- select(morphometrics, -measurement_id)
+
+larger_than_10m <- filter(no_pkey, wingspan_cm > 1000)
+
+```
+
+Instead, we can concatenate the two actions:
+
+```{r tidy11, eval = TRUE, echo = TRUE}
+larger_than_10m <- morphometrics %>% 
+  select(-measurement_id) %>% 
+  filter(wingspan_cm > 1000)
+
+head(larger_than_10m) 
+```
+
+The pipe takes the output of the previous line and feeds it as input into the 
+next one. Notice that you don't have to repeat the name of the data object,
+because the data is whatever the pipe is feeding into the function. There are 
+several advantages to using pipes compared to traditional syntax. First, by 
+using a pipe in the example above, we avoided saving intermediate objects (e.g., 
+`no_pkey`) to the environment: we only saved the final result we wanted. Second,
+we typed less. Third, our code is more readable because the syntax of our code
+reflects the logical structure of what we are doing. You can read the pipe as 
+*then*: take the morphometrics table, *then* drop the measurement ID, *then*
+filter records with wingspan larger than 10 m. The shortcut for inserting a pipe
+is `Ctrl + Shift + M` on Windows and `Cmd + Shift + M` on Mac.
+
+### Creating new columns
+
+```{r tidyfig2, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/dplyr_mutate.png")
+```
+
+The filtering we did above was pretty inconvenient because we had to calculate 
+the conversion between meters and centimeters in our head before applying the
+wingspan filter. It would be easier to convert the column to meters to begin
+with. We can create a new column using `mutate`:
+
+```{r tidy12, eval = TRUE, echo = TRUE}
+larger_than_10m <- morphometrics %>% 
+  select(-measurement_id) %>% 
+  mutate(wingspan_m = wingspan_cm/100) %>% 
+  filter(wingspan_m > 10)
+
+head(larger_than_10m)
+
+```
+
+### Limiting results
+
+I have been saving each of my queries as an object and then doing `head()` to
+show the first 6 rows of the result. Instead, I can save myself some typing and
+space in my environment (and make everything look cleaner) by adding another 
+pipe at the end with the `slice` function. The `slice` function selects rows
+based on position, so if I want to look at the first 6 I can do:
+
+```{r tidy13, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  select(-measurement_id) %>% 
+  mutate(wingspan_m = wingspan_cm/100) %>% 
+  filter(wingspan_m > 10) %>% 
+  slice(1:6)
+
+```
+
+More generally, `slice` can be used as the equivalent of selecting rows from a
+data frame using indexes like we did in Chapter \@ref(intro-to-r). If I want
+row 38 of the morphometrics table, I can do:
+
+```{r tidy14, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  slice(38)
+```
+
+This works with multiple rows too, and they don't need to be consecutive:
+
+```{r tidy15, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  slice(c(38, 12, 84))
+```
+
+### Tibbles
+
+Another way to limit the output that gets printed to the console is to use 
+tibbles instead of data frames. A tibble is tidyverse's data structure for 
+tabular data, so it is the tidyverse equivalent of a data frame. Tibbles 
+implement some functionalities that make working with them a bit more foolproof
+than working with data frames (e.g., they'll return an error instead of `NULL` 
+if you try to access a column that does not exist), but 99% of the time you
+won't notice the difference. This is because all tidyverse functions (as well as
+some base R ones) work just the same with data frames and tibbles. However, 
+tibbles do have an advantage: when printing a tibble to the console, only the
+first 10 records will show up, which is convenient because it means you don't
+need to use `head()` to prevent your console from being flooded with output. 
+Case in point:
+
+```{r tiy16, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  select(-measurement_id) %>% 
+  mutate(wingspan_m = wingspan_cm/100) %>% 
+  filter(wingspan_m > 10) 
+```
+
+As you can see, the appearance of a tibble is very similar to the one of a 
+data frame. In fact, objects can be of multiple classes in R, and tibbles are
+also data frames under the hood!
+
+```{r tidy17, eval = TRUE, echo = TRUE}
+class(as_tibble(morphometrics))
+```
+
+Converting between tibble and data frame is also super easy, so you can switch
+back and forth between them whenever you need:
+
+```{r tidy18, eval = TRUE, echo = TRUE}
+morph_tib <- as_tibble(morphometrics)
+morph_df <- as.data.frame(morph_tib)
+```
+
+This last bit is useful to know especially when you are using other packages 
+that were not written using tidyverse and strictly require data frames as input. 
+
+### Joining tables 
+
+In Chapter \@ref(sql), we talked about SQL joins. The concept of a join is not
+exclusive to SQL, and in fact the tidyverse has functions that serve the same
+exact purpose of SQL joins. Let's get familiar with the one you'll use most
+often, `left_join`. As a reminder, a left join keeps all the rows of the left
+table (the one you mention first) while attaching information from the right 
+table (the second one) whenever available. If no information is available, the
+columns coming from the right table will have `NA` but the row will be retained. 
+To join two tables, these need to share at least one column. Let's join the 
+morphometrics table with the dragons table:
+
+```{r tidy19, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") 
+```
+
+In this case the shared column has the same name in the two tables. If it
+doesn't, you can still join based on that column. Let's demonstrate how:
+
+```{r tidy20, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  rename(dragon = dragon_id) %>% # now the dragon_id column is called "dragon"
+  left_join(dragons, by = c("dragon" = "dragon_id")) 
+  
+```
+
+So the syntax in the `by` argument when the names are different is 
+`column_name_in_left_table = column_name_in_right_table`.
+
+### Changing the order of columns 
+
+Incidentally, I have just shown how to change the name of a column by using
+`rename`. We can also change the order in which columns appear in our table
+using `relocate`. For example, say that we want to move the age class column
+to right after the dragon ID:
+
+```{r tidy22, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>%  
+  relocate(age_class, .after = dragon_id)
+```
+
+### Calculations by group
+
+Now that we know how to join the morphometrics table to the dragons table we can 
+calculate some summary statistics based on different groups. To do so, we use
+the function `group_by` together with the function `summarize`. For instance,
+let's calculate minimum, maximum, and mean tail length for dragons of different
+age classes:
+
+```{r tidy23, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>%  
+  group_by(age_class) %>% 
+  summarize(min_tail_length_cm = min(tail_length_cm),
+            mean_tail_length_cm = mean(tail_length_cm),
+            max_tail_length_cm = max(tail_length_cm))
+```
+
+We can also use `group_by` to count how many records we have for each group.
+Let's say we want to know how many dragons of each species we captured:
+
+```{r tidy24, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>%  
+  group_by(species) %>%
+  tally()
+```
+
+### Sorting results
+
+Let's sort results of our count by species in decreasing order:
+
+```{r tidy25, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>%  
+  group_by(species) %>%
+  tally() %>% 
+  arrange(n)
+```
+
+Nope, that didn't do it. The species are sorted from the least to the most 
+numerous (the default). We need to specify that we want to sort results in 
+descending order:
+
+```{r tidy26, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>%  
+  group_by(species) %>%
+  tally() %>% 
+  arrange(desc(n))
+```
+
+### Extracting columns as vectors
+
+Now say that we want to only keep morphometric measurements for dragons of 
+species for which we have at least 30 individuals. We need to filter those whose 
+species falls within that group. So this task can be divided in two steps: 
+first, identify the group and store the result; second, filter the table based 
+on records from those groups. Let's see:
+
+```{r tidy27, eval = TRUE, echo = TRUE}
+(species_over30 <- dragons %>% 
+   group_by(species) %>%
+   tally() %>% 
+   arrange(desc(n)) %>% 
+   filter(n > 30) %>% 
+   pull(species))
+```
+
+The function `pull` at the end extracts the values in my column of interest and
+returns them as a vector. 
+
+```{r tidy28, eval = TRUE, echo = FALSE}
+class(species_over30) # this is a character vector
+```
+
+If I used select instead, the result would be a tibble:
+
+```{r tidy29, eval = TRUE, echo = FALSE}
+dragons %>% 
+  group_by(species) %>%
+  tally() %>% 
+  arrange(desc(n)) %>% 
+  filter(n > 30) %>% 
+  select(species)
+
+dragons %>% 
+  group_by(species) %>%
+  tally() %>% 
+  arrange(desc(n)) %>% 
+  filter(n > 30) %>% 
+  select(species) %>% 
+  class()
+```
+
+Now that we have a vector with the species that we want to retain, we can apply
+our filter:
+
+```{r tidy30, eval = TRUE, echo = FALSE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  filter(species %in% species_over30)
+```
+
+### Conditional value assignment
+
+```{r tidyfig3, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/dplyr_case_when.png")
+```
+
+The last function we are going to look at is `case_when`. This function allows
+to do conditional value assignment by vectorizing multiple statements of the 
+kind: `if` ... `else` .... Let's look at an example to understand what this 
+means. The dragons table includes information on sex and on age class. Say that
+we wanted to create a composite variable combining sex and age class, with
+possible categories "adult female", "adult male", "juvenile female", etc. We can
+gather the information from the two existing column and create a new column 
+assigning the appropriate category to each individual using `case_when`:
+
+```{r tidy31, eval = TRUE, echo = FALSE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(sex_age_combo = case_when(
+    sex == "F" & age_class == "Adult" ~ "Adult Female",
+    sex == "M" & age_class == "Adult" ~ "Adult Male",
+    sex == "F" & age_class == "Subadult" ~ "Subadult Female",
+    sex == "M" & age_class == "Subadult" ~ "Subadult Male",
+    sex == "F" & age_class == "Juvenile" ~ "Juvenile Female",
+    sex == "M" & age_class == "Juvenile" ~ "Juvenile Female",
+    is.na(sex) & age_class == "Adult" ~ "Adult Unknown",
+    is.na(sex) & age_class == "Subadult" ~ "Subadult Unknown",
+    is.na(sex) & age_class == "Juvenile" ~ "Juvenile Unknown"
+    )) %>% 
+  select(dragon_id, sex, age_class, sex_age_combo)
+```
+
+Let's break down the syntax I used in the `case_when` statement. Each entry has
+the form *logical condition* ~ *value to assign*. Let's isolate the left-hand 
+side of the first entry:
+
+```{r tidy32, eval = TRUE, echo = FALSE}
+head(dragons$sex == "F" & dragons$age_class == "Adult")
+```
+
+There can be as many entries as we want, but they should fully cover the
+logical domain of the statement. In other words, we need to account for every 
+possibility. If, say, we left out the male subadult combination, `case_when` is
+going to automatically assign `NA`:
+
+```{r tidy33, eval = TRUE, echo = FALSE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(sex_age_combo = case_when(
+    sex == "F" & age_class == "Adult" ~ "Adult Female",
+    sex == "M" & age_class == "Adult" ~ "Adult Male",
+    sex == "F" & age_class == "Subadult" ~ "Subadult Female",
+    sex == "F" & age_class == "Juvenile" ~ "Juvenile Female",
+    sex == "M" & age_class == "Juvenile" ~ "Juvenile Female",
+    is.na(sex) & age_class == "Adult" ~ "Adult Unknown",
+    is.na(sex) & age_class == "Subadult" ~ "Subadult Unknown",
+    is.na(sex) & age_class == "Juvenile" ~ "Juvenile Unknown"
+    )) %>% 
+  select(dragon_id, sex, age_class, sex_age_combo)
+```
+
+Once we've covered all of the possibilities except one, we can leave the last
+one implicit by using `TRUE` on the left-hand side of the last entry of the
+`case_when` statement. For example, if an individual does not fall in the first 
+six categories it means its sex is unknown. We could lump these all together in
+one "Unknown" category: 
+
+```{r tidy34, eval = TRUE, echo = FALSE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(sex_age_combo = case_when(
+    sex == "F" & age_class == "Adult" ~ "Adult Female",
+    sex == "M" & age_class == "Adult" ~ "Adult Male",
+    sex == "F" & age_class == "Subadult" ~ "Subadult Female",
+    sex == "M" & age_class == "Subadult" ~ "Subadult Male",
+    sex == "F" & age_class == "Juvenile" ~ "Juvenile Female",
+    sex == "M" & age_class == "Juvenile" ~ "Juvenile Female",
+    TRUE ~ "Unknown"
+    )) %>% 
+  select(dragon_id, sex, age_class, sex_age_combo)
+```
+
+Or we could decide that if sex is unknown we just simply assign the value of
+`age_class`:
+
+```{r tidy35, eval = TRUE, echo = FALSE}
+morphometrics %>% 
+  as_tibble() %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(sex_age_combo = case_when(
+    sex == "F" & age_class == "Adult" ~ "Adult Female",
+    sex == "M" & age_class == "Adult" ~ "Adult Male",
+    sex == "F" & age_class == "Subadult" ~ "Subadult Female",
+    sex == "M" & age_class == "Subadult" ~ "Subadult Male",
+    sex == "F" & age_class == "Juvenile" ~ "Juvenile Female",
+    sex == "M" & age_class == "Juvenile" ~ "Juvenile Female",
+    TRUE ~ age_class
+    )) %>% 
+  select(dragon_id, sex, age_class, sex_age_combo)
+```
+
+## Style
+
+Tidyverse syntax helps to make code readable, but half of the deal with 
+readability has to do with style. Hadley Whickham, the inventor of the tidyverse,
+has put together a handy [style guide](https://style.tidyverse.org/) that lists
+things to pay attention to when writing code and best practices to adopt. Style
+is not so much about making things aesthetically pleasing (although it certainly
+does), but about making the code easy for your eyes to navigate through and 
+understand. R already uses a type of font for which each character occupies the
+same amount of pixels, which makes things align nicely across rows. This makes 
+it easy to recognize structure in the code at a glance, and this physical 
+structure corresponds to logical structure so it helps you understand how the
+pieces fit together. But these qualities are no good if the user doesn't put in
+the effort to take advantage of them. Here are my favorite style tips to make 
+sure your code looks clean and reads easily:
+
+* Always put spaces after your commas, on both sides of equal signs and other
+operators (e.g., do `x <- 1`, not `x<-1`);
+* Do not exceed 80 characters per line in your script (you can check how many
+characters you've used at the bottom-left corner of the script panel, and recent
+versions of RStudio also have a handy gray vertical line that marks the 80 
+character limit);
+* Be consistent in your variable names: don't use `CamelCase` for some and 
+`lowercase_with_underscores` for others. Actually, stick to `lowercase_with_underscores`.
+* Start a new line after each pipe `%>%`;
+* I like to start a new line even after each column listed in a `select` 
+statement, or even after each argument of a function (for sure whenever the code 
+would overflow past 80 characters otherwise);
+* Tidyverse automatically indents your code when you go to a new line (e.g., 
+after a pipe), but if you happen to mess with the alignment while you're editing 
+the code, make sure to reindent it and realign it at the end (you don't have to
+do it manually, just highlight the chunk of code you want to reindent and go to
+*Code* > *Reindent lines* in RStudio, or press `Ctrl` + `I`).
+
+## References
+
+* https://datacarpentry.org/R-ecology-lesson/
+* https://style.tidyverse.org/
