@@ -1,1 +1,745 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Data Visualization with ggplot2 {#ggplot2}
+
+Data visualization and storytelling is one of the most important parts of the 
+scientific process, and arguably the most fun. In this Chapter, we are going to
+see how to make beautiful, elegant plots using the core `tidyverse` package
+`ggplot2`.
+
+```{r gg0, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/ggplot2_masterpiece.png")
+```
+
+```{r gg1, eval = TRUE, echo = TRUE}
+library(tidyverse)
+```
+
+We are going to practice using the dragon dataset again, so let's load it in:
+
+```{r gg2, eval = TRUE, echo = TRUE}
+library(DBI)
+
+dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+
+dragons <- dbGetQuery(dragons_db, "SELECT * FROM dragons;")
+capture_sites <- dbGetQuery(dragons_db, "SELECT * FROM capture_sites;")
+captures <- dbGetQuery(dragons_db, "SELECT * FROM captures;")
+morphometrics <- dbGetQuery(dragons_db, "SELECT * FROM morphometrics;")
+diet <- dbGetQuery(dragons_db, "SELECT * FROM diet;")
+tags <- dbGetQuery(dragons_db, "SELECT * FROM tags;")
+deployments <- dbGetQuery(dragons_db, "SELECT * FROM deployments;")
+telemetry <- dbGetQuery(dragons_db, "SELECT * FROM gps_data;")
+```
+
+## A Grammar of Graphics
+
+What makes data visualization in `ggplot2` different from data visualization
+using base R functions? Instead of having to manually combine raw elements like 
+points and lines to produce the figure you want, `ggplot2` allows you to use a 
+more structured approach so that a handful of commands will produce the plot you 
+have in mind with minimal hassle. 
+  
+The logic of `ggplot` follows the "Grammar of Graphics" framework, which was 
+first introduced in [a book by Leland Wilkinson](https://www.springer.com/in/book/9780387245447). This framework 
+concisely describes the different components of a graphic. At a minimum, a plot
+is composed by data, aesthetics, and geometries: 
+
+* Data: this is the data you want to represent in your plot;
+* Aesthetics: these are the variables that are represented on the plot (e.g., 
+what goes on the axes, or what is encoded with different symbols and colors);
+* Geometries: these are the actual symbols that appear on the plot (points,
+lines, etc.)
+
+On top of these fundamental components, there can be additional elements for 
+customization.  
+  
+Another major difference between `ggplot2` and plots in base R is that `ggplot2`
+works like a *declarative* language. Declarative means that the code to make the
+plot is evaluated and interpreted all at once, not one line at a time like in 
+base R, which by contrast is an *imperative* language. We are used to paying
+close attention to the order in which we run code in R, because if we run 
+commands in the wrong order things won't work, but as we'll see the order in 
+which we specify features of our plot is not as rigid in `ggplot2`. 
+
+## Building plots
+
+`ggplot` works in layers. Each layer specifies one or more components of the 
+plot, and layers can be added to progressively customize the final result. At a
+minimum, a plot has to contain layers for the three fundamental 
+components that we've seen above: data, aesthetics, and geometries. Everything
+else is optional. Layers are added using a `+` sign. 
+
+### Basic scatterplot 
+
+Let's say that we want to explore the correlation between total body length and
+wingspan in dragons. We may want to look at that using a scatterplot. This is 
+how to build one in `ggplot2`:
+
+```{r gg3, eval = TRUE, echo = TRUE}
+ggplot(data = morphometrics, 
+       mapping = aes(x = total_body_length_cm, y = wingspan_cm)) +
+  geom_point()
+```
+
+Let's break down the syntax of what I just wrote. First, we start with the
+function `ggplot`. This function takes as input 1. the data that we want to plot
+and 2. the aesthetics for the plot. At a minimum, these include the variables
+that we want to plot on the two axes. Here, I specified that I want to plot the
+data frame called `morphometrics` and that I want to plot total body length on
+the x axis and wingspan on the y axis. Then there's a `+` sign, which means that
+we're adding a layer. The next layer describes the geometry we want to plot. A
+scatterplot is made of points, so the function to use is `geom_point`. So 
+essentially you could read that whole code as, "make a scatterplot with the 
+morphometrics table where total body length is on the x axis and wingspan is on 
+the y axis."  
+  
+Note that, if you look at the help file for `geom_point` or any other `geom_`
+function, you'll see that the first two arguments are `mapping` and `data`. 
+These are the same as the ones we specified in `ggplot`. What's up with that?
+The `data` and `mapping` options that we specify in `ggplot` are global plot
+settings that will be implicitly assumed for every layer downstream. If we don't
+specify anything for these two arguments in the `geom_` function, the geometries
+will inherit the global plot settings. But it's possible to override the global
+plot settings by specifying different ones in a certain layer, for example if 
+we want to overlay two different datasets.
+
+### Basic histogram
+
+What if we wanted to look at the distribution of total body length instead? We
+may want to use a histogram for that:
+
+```{r gg4, eval = TRUE, echo = TRUE}
+ggplot(data = morphometrics, 
+       mapping = aes(x = total_body_length_cm)) +
+  geom_histogram()
+```
+
+In this case we only have one aesthetic, because the y axis on a histogram is 
+the bin frequency (by default, `ggplot2` shows the absolute frequency). We can
+choose other options within `geom_histogram`, such as changing the number of
+bins:
+
+```{r gg5, eval = TRUE, echo = TRUE}
+ggplot(data = morphometrics, 
+       mapping = aes(x = total_body_length_cm)) +
+  geom_histogram(bins = 100)
+```
+
+### Basic density plot
+
+Perhaps a better way to visualize the distribution of a variable is to use a
+density plot rather than a histogram. 
+
+```{r gg5b, eval = TRUE, echo = TRUE}
+ggplot(data = morphometrics, 
+       mapping = aes(x = total_body_length_cm)) +
+  geom_density()
+```
+
+### Other `geom` functions
+
+The ones above are just four common examples of functions in the `geom` family,
+but there are many others that you may find yourself using (and we'll see some 
+of these in action throughout the rest of this Chapter and in class):
+
+* `geom_line` for lines connecting observations based on their value (useful for
+time series plots and regression lines);
+* `geom_path` for lines connecting observations based on the order they appear 
+in (useful for movement data);
+* `geom_ribbon` for shaded envelopes around lines (useful for representing
+confidence intervals);
+* `geom_hline` and `geom_vline`, for horizontal and vertical intercepts, 
+respectively;
+* `geom_boxplot` and `geom_violin` for distributions of continuous variables;
+* `geom_pointrange` for point estimates with uncertainty ranges; 
+* and many many more...
+
+## Customizing plots
+
+Now that we got the gist of how to build a basic plot in `ggplot2`, let's start
+to learn how to make them pretty. 
+
+### Changing axis labels
+
+Let's go back to our scatterplot and fix some 
+details. First, let's change the axis labels. There are several ways to do this;
+one of them is this:
+
+```{r gg6, eval = TRUE, echo = TRUE}
+ggplot(data = morphometrics, 
+       mapping = aes(x = total_body_length_cm, y = wingspan_cm)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)")
+```
+
+An alternative way is:
+
+```{r gg7, eval = TRUE, echo = TRUE}
+ggplot(data = morphometrics, 
+       mapping = aes(x = total_body_length_cm, y = wingspan_cm)) +
+  geom_point() +
+  xlab("Total body length (cm)") +
+  ylab("Wingspan (cm)")
+```
+
+### Changing colors
+
+See that cluster of points in the bottom-left of the scatterplot? It seems like 
+there's a lot less variation in terms of body measurements in that cluster 
+compared to the larger cloud on the right. Could that be because of an age 
+effect? Perhaps young dragons are more consistent in their measurements, and as
+they reach adulthood their body size varies much more between individuals. 
+Let's try to get a clue to verify this hypothesis by coloring the dots on the
+scatterplot based on age. We are going to use some of the tools we learned in
+Chapter \@ref(tidyverse) to associate age information from the dragons table
+to the morphometrics table:
+
+```{r gg8, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  # note that I am feeding the results of the pipe directly into ggplot:
+  # whatever comes out of that pipe is used as the data argument for the plot
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)")
+```
+
+### Modifying legends
+
+Looks like our hypothesis was correct: that cluster of points includes 
+measurements for juvenile dragons. Let's make that legend a little prettier:
+
+```{r gg9, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class")
+```
+
+Besides changing the title of the legend, we can also change the labels on each
+of the categories that appear in it. For example, if we wanted to add age 
+ranges to correspond to each age class:
+
+```{r gg10, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Adult (> 3 years)",
+                                 "Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)"))
+```
+
+What if we want to reorder legend items so that they appear in order of age?
+That is not something that we can do within the plot itself, it's a change that
+needs to be done in the data before we plot. We need to change the order of the 
+levels in the factor `age_class`. Once that's done, we need to remember to also
+change the order of the labels to reflect the new order:
+
+```{r gg11, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) 
+```
+
+We can also change the position of the legend:
+
+```{r gg11b, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme(legend.position = "bottom")
+```
+
+### Themes
+
+The `theme` function that we just used to move the legend to the bottom can do
+so much more than just that! It has arguments that allow you to customize the
+appearance of your plot in pretty much any way you want. Things like the plot
+title and subtitle, the labels that appear on the axes (and you can have two
+y axis, one on the right and one on the left, or two x axis, one on the top and
+one on the bottom), the numbers or words that appear on axis ticks as well as 
+their size and orientation, the length of the ticks themselves, legend size, 
+spacing, alignment, the look of the background of the plot...   
+  
+You can create your own theme by saving it as an object and then adding it to
+a plot as a new layer:
+
+```{r gg12, eval = TRUE, echo = TRUE}
+
+# This theme adds a gray box around the legend and 
+# alternates the size of the lines in the background grid
+my_theme <- theme(legend.background = element_rect(fill = "gray90",
+                                                   size = 0.5,
+                                                   linetype = "solid",
+                                                   color = "black"),
+                  panel.grid.major = element_line(color = "white",
+                                                  size = 1.5))
+
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme(legend.position = "bottom") +
+  my_theme
+```
+
+Ugly. I know.  
+  
+If you're not a graphic designer and your plots look as ugly as mine when you 
+manipulate the theme yourself, `ggplot2` also offers a variety of pre-set themes.
+For example, here is the "minimal" theme:
+
+```{r gg13, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_minimal() +
+  theme(legend.position = "bottom") 
+```
+
+Here is the "black and white" theme:
+
+```{r gg14, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+```
+
+Here is the "void" theme:
+
+```{r gg15, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_void() +
+  theme(legend.position = "bottom") 
+```
+
+If you use a pre-set theme, make sure you add that layer before you add any
+other tweaks using `theme`, because if you add `theme` first, the pre-set theme
+will override whatever settings you specified in `theme`. For instance, if I put
+`theme_void` at the end in the previous example, the legend does not get moved
+to the bottom:
+
+```{r gg16, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme(legend.position = "bottom") +
+  theme_void() 
+```
+
+### Adding transparency
+
+We could decide that we want to make the points transparent on this plot so
+that we can actually get a better feel for the amount of data points within
+very clumpy clusters. We can do that by adding the argument `alpha` in our
+geometry layer:
+
+```{r gg16b, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point(alpha = 0.2) +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+```
+
+### Overlaying plots with different aesthetics
+
+From the plot we made, it seems clear that there is a correlation between the
+total body length of a dragon and its wingspan. We could actually model that 
+correlation using linear regression. And then we may want to overlay the 
+regression line to the raw data on our existing plot. Let's see how to do just
+that:
+
+```{r gg17, eval = TRUE, echo = TRUE}
+
+# Fit linear regression
+(reg <- lm(formula = wingspan_cm ~ total_body_length_cm, 
+          data = morphometrics))
+
+# Let's grab the value of the intercept and slope
+coefs <- reg$coefficients
+
+# Now we can plot
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  geom_abline(aes(slope = coefs[2], intercept = coefs[1])) + 
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+```
+
+I added a new layer to the plot with `geom_abline`. Instead of the global
+aesthetics (the ones I specify at the beginning in `ggplot`), I need to provide
+a slope and an intercept. This is what I meant when I said that sometimes a
+certain geometry layer can use different aesthetics than the global ones.
+By specifying different aesthetics in that geometry layer, the global aesthetics
+get overridden for that layer only.  
+
+### Modifying symbol appearance
+  
+We can now play around with size, color, and line type of our regression line:
+
+```{r gg18, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  geom_abline(aes(slope = coefs[2], intercept = coefs[1]), 
+              size = 2,
+              color = "gray70",
+              linetype = "dashed") + 
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+```
+
+We can also change the symbols for the point data:
+
+```{r gg19, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point(size = 2, shape = 8) +
+  geom_abline(aes(slope = coefs[2], intercept = coefs[1]), 
+              size = 2,
+              color = "gray70",
+              linetype = "dashed") + 
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+```
+
+### Fill vs. color
+
+Shapes that are one-dimensional (points and lines) are colored using the 
+argument `color` in `ggplot2`. Shapes that are two-dimensional (polygons,
+bars in a barplot, ecc.) are colored inside using the argument `fill`, and
+around the border with `color`. Let's make an example with some boxplots, which
+are two-dimensional. This is what happens if we use `color` instead of `fill`:
+
+```{r gg20, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(y = wingspan_cm, color = age_class)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_minimal() +
+  theme(legend.position = "bottom") 
+```
+
+If we use fill, the border of the boxplots will be black and the inside will
+be colored (note that we need to change it in three places: the global 
+aesthetics, the legend title in `labs`, and the name of the function to add
+legend labels becomes `scale_fill_discrete`):
+
+```{r gg21, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(y = wingspan_cm, fill = age_class)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Wingspan (cm)", fill = "Age class") +
+  scale_fill_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_minimal() +
+  theme(legend.position = "bottom") 
+```
+
+### Modifying axis values
+
+The values on the x axis don't mean anything in this case because this is a
+boxplot. Let's get rid of them in `theme`:
+
+```{r gg22, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(y = wingspan_cm, fill = age_class)) +
+  geom_boxplot() +
+  labs(x = " ", y = "Wingspan (cm)", fill = "Age class") +
+  scale_fill_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_blank()) 
+```
+
+### Adding an extra dimension with facets
+
+Dragon size might also depend on species. What if we wanted to look at the 
+correlation between wingspan and total body length broken down by species as
+well as age class? That means we need to add another dimension to our scatterplot
+which is already showing 3: the x axis, the y axis, and the different colors.
+Facets expand the amount of information we can convey in a plot. Let's see how
+they work:
+
+```{r gg23b, eval = TRUE, echo = TRUE}
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  facet_wrap(~ species) +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+```
+
+The function I used to break down the plot into facets is `facet_wrap`. This
+function takes as input a one-sided formula: `~ variable/s`. What goes on the 
+right hand side of the formula is the categorical variable based on which we 
+want to break down the plot. These can also be multiple categorical variables,
+in which case there will be as many facets as the possible level combinations.  
+  
+The labels that appear on the facets are verbatim the factor levels that 
+appear in the data frame. If we weren't happy with them (say, they are too long,
+or they are all lowercase and we want title case) we could change them. Let's
+try to replace the full species names with just the initials. We need to define
+a labeller, which is a vector associating each label the way it appears in the
+current plot with the label that we want instead:
+
+```{r gg23, eval = TRUE, echo = TRUE}
+species_labels <- c("Hebridean Black" = "HB",
+                    "Romanian Longhorn" = "RL",
+                    "Peruvian Vipertooth" = "PV",
+                    "Ukrainian Ironbelly" = "UI",
+                    "Norwegian Ridgeback" = "NR",
+                    "Common Welsh Green" = "CWG",
+                    "Swedish Short-Snout" = "SSS",
+                    "Chinese Fireball" = "CF",
+                    "Hungarian Horntail" = "HH",
+                    "Antipodean Opaleye" = "AO")
+  
+morphometrics %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  mutate(age_class = factor(age_class, levels = c("Juvenile",
+                                                  "Subadult",
+                                                  "Adult"))) %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm, color = age_class)) +
+  geom_point() +
+  facet_wrap(~ species, labeller = labeller(species_labels, 
+                                            species = species_labels)) +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)", color = "Age class") +
+  scale_color_discrete(labels = c("Juvenile (< 1 year)",
+                                 "Subadult (2-3 years)",
+                                 "Adult (> 3 years)")) +
+  theme_bw() +
+  theme(legend.position = "bottom") 
+```
+
+### Error bars
+
+Let's look at the content of some dragon diet samples, for a change. What do
+dragons like to eat most? 
+
+```{r gg24, eval = TRUE, echo = TRUE}
+ggplot(diet, aes(x = item)) +
+  geom_bar(fill = "orange") + 
+  labs(x = " ", y = "Count") +
+  theme_bw()
+```
+
+Looks like they really like to eat domestic goats, huh? Let's look at that in 
+terms of relative frequency rather than count:
+
+```{r gg25, eval = TRUE, echo = TRUE}
+ggplot(diet, aes(x = item)) +
+  geom_bar(aes(y = ..prop.., group = 1), fill = "orange") + 
+  labs(x = " ", y = "Relative frequency") +
+  theme_bw()
+```
+
+Do different species like to eat different things? 
+
+```{r gg26, eval = TRUE, echo = TRUE}
+diet %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+ggplot(aes(x = item)) +
+  geom_bar(aes(y = ..prop.., group = 1), fill = "orange") + 
+  facet_wrap(~ species) +
+  labs(x = " ", y = "Relative frequency") +
+  theme_bw()
+```
+
+For each diet item, we can summarize the mean relative frequency in diet samples
+across species, calculate a standard deviation, and plot it as an error bar. 
+Because we are plotting values that we calculate manually instead of using
+`geom_bar` to count **and** plot, we need to use `geom_col` instead:
+
+```{r gg27, eval = TRUE, echo = TRUE}
+# This is the count by item for each species
+item_count <- diet %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  group_by(species, item) %>% 
+  tally()
+
+# This is the total number of items per species
+tot_items <- diet %>% 
+  left_join(dragons, by = "dragon_id") %>% 
+  group_by(species) %>% 
+  tally()
+
+# Divide to get relative frequency
+item_count <- item_count %>% 
+  left_join(tot_items, by = "species") %>% 
+  mutate(rel_freq = n.x/n.y)
+
+# Calculate mean and sd for each item across species
+rf <- item_count %>% 
+  group_by(item) %>% 
+  summarize(mean_rf = mean(rel_freq), sd_rf = sd(rel_freq))
+
+ggplot(rf, aes(x = item, y = mean_rf)) +
+  geom_col(fill = "orange") + 
+  geom_errorbar(aes(ymin = mean_rf - sd_rf,
+                    ymax = mean_rf + sd_rf),
+                width = 0.3) +
+  labs(x = " ", y = "Relative frequency") +
+  theme_bw()
+```
+
+We can also change the color to match the bars so that only the top part of the
+error bar is visible:
+
+```{r gg28, eval = TRUE, echo = TRUE}
+ggplot(rf, aes(x = item, y = mean_rf)) +
+  geom_col(fill = "orange") + 
+  geom_errorbar(aes(ymin = mean_rf - sd_rf,
+                    ymax = mean_rf + sd_rf),
+                width = 0.3,
+                color = "orange") +
+  labs(x = " ", y = "Relative frequency") +
+  theme_bw()
+```
+
+We can also represent these as points with error bars:
+
+```{r gg29, eval = TRUE, echo = TRUE}
+ggplot(rf, aes(x = item, y = mean_rf)) +
+  geom_pointrange(aes(ymin = mean_rf - sd_rf,
+                    ymax = mean_rf + sd_rf),
+                color = "orange") +
+  labs(x = " ", y = "Relative frequency") +
+  theme_bw()
+```
+
+### Plot model predictions with uncertainty
+
+### Plot paths of ordered observations
+
+## Colorblind-friendly plots with `viridis`
+
+## Arranging multiple plots together with `patchwork`
+
+## Saving plots
