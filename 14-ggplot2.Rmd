@@ -736,10 +736,214 @@ ggplot(rf, aes(x = item, y = mean_rf)) +
 
 ### Plot model predictions with uncertainty
 
+Oftentimes you'll find yourself wanting to make a plot with predictions from
+some kind of linear model, showing the confidence intervals around the mean
+estimate. This can be done by combining the `geom_line` function with `geom_ribbon`.
+Let's go back to the linear regression model that we ran to quantify the 
+correlation between total body length and wingspan. We can get model predictions
+for that model, calculate 95% confidence intervals using the standard error,
+and make a plot where the model predictions are overlaid to the raw data points:
+
+```{r gg30, eval = TRUE, echo = TRUE}
+# Get model predictions for the original values of x
+mod_pred <- predict(reg, 
+        se.fit = TRUE)
+
+# Calculate 95% CIs from std error
+preds <- data.frame(mean = mod_pred$fit,
+                    upr = mod_pred$fit + 1.96 * mod_pred$se.fit,
+                    lwr = mod_pred$fit - 1.96 * mod_pred$se.fit)
+
+# Plot
+morphometrics %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm)) +
+  geom_ribbon(aes(ymin = preds$lwr, ymax = preds$upr), 
+              fill = "gray90") +
+  geom_line(aes(y = preds$mean), color = "darkmagenta", size = 0.8) + 
+  geom_point(color = "darkmagenta", alpha = 0.5) +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)") +
+  theme_minimal() 
+
+```
+
+The global aesthetics that I'm using here are those for the raw data. Then in 
+`geom_line` I override the y aesthetic by replacing it with the mean model 
+prediction for wingspan. `geom_ribbon` does not take as input a y aesthetic 
+because it's a range, not a single line, so the required aesthetics here are 
+`ymin` and `ymax`. Notice that the order in which I put the layers determines
+what goes on the background and what's in the foreground: I wanted the ribbon to
+be in the back, the line to be on top of the ribbon (not hidden behind it), and
+the points on top (or the ribbon would cover them) with some transparency.
+
 ### Plot paths of ordered observations
+
+In our last plot, we used `geom_line` to plot our prediction curve. The 
+counterpart of `geom_line` is `geom_path`, which also plots lines but in the
+order in which they appear in the data, not based on consecutive values of x. 
+This is helpful in some situations, for example to plot movement tracks from
+telemetry data. Let's plot the dragon GPS data:
+
+```{r gg31, eval = FALSE, echo = FALSE}
+telemetry %>% 
+  ggplot(aes(x = utm_x, y = utm_y, color = dragon_id)) +
+  geom_path() +
+  labs(x = "UTM Easting", y = "UTM Northing") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
 
 ## Colorblind-friendly plots with `viridis`
 
+Making plots accessible and readable to everyone is an important part of 
+communicating science. The package `viridis` makes it easy to make your plots 
+colorblind-friendly. It includes several different color palettes that have been
+carefully engineered so that colorblind people can tell apart all the colors 
+and the variation in hue scales linearly with the variation in the underlying
+numerical values. `ggplot2` integrates with `viridis` seamlessly so it's easy
+to transform your plots using `viridis` color palettes. Let's demonstrate it 
+with the telemetry plot we just made:
+
+```{r gg31b, eval = FALSE, echo = FALSE}
+telemetry %>% 
+  ggplot(aes(x = utm_x, y = utm_y, color = dragon_id)) +
+  geom_path() +
+  labs(x = "UTM Easting", y = "UTM Northing") +
+  scale_color_viridis_d() +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+To change the color palette to viridis, I added another layer to my plot with
+the function `scale_color_viridis_d`. The "d" at the end stands for "discrete",
+because in this case the colors are assigned based on a categorical variable 
+(the dragon ID). If I were using a continuous variable, I would have used the
+function `scale_color_viridis_c`. If I wanted to apply the palette to a fill
+parameter rather than a color parameter, I would have used the function
+`scale_fill_viridis_d`. The one I plotted is the standard viridis palette, but
+there are others to choose from (check out the viridis vignette!) For instance,
+this one is called `plasma`:
+
+```{r gg32, eval = FALSE, echo = FALSE}
+telemetry %>% 
+  ggplot(aes(x = utm_x, y = utm_y, color = dragon_id)) +
+  geom_path() +
+  labs(x = "UTM Easting", y = "UTM Northing") +
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
 ## Arranging multiple plots together with `patchwork`
 
+```{r gg33, fig.cap="Artwork by Allison Horst", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/patchwork_1.jpg")
+```
+
+The package `patchwork` allows you to combine and arrange multiple plots into
+a single plot with several panels. Let's load in the package (after installing
+it):
+
+```{r ggpatchwork, eval = TRUE, echo = TRUE}
+library(patchwork)
+```
+
+The first step to combine different plots is
+to save each plot by assigning it its own name. Each will be stored in the 
+environment as a `ggplot2` object. For example, let's take our diet barplot,
+our regression prediction plot, and our telemetry one. We'll call these `p1`,
+`p2`, and `p3`:
+
+```{r gg34, eval = TRUE, echo = TRUE}
+p1 <- ggplot(rf, aes(x = item, y = mean_rf)) +
+  geom_col(fill = "orange") + 
+  geom_errorbar(aes(ymin = mean_rf - sd_rf,
+                    ymax = mean_rf + sd_rf),
+                width = 0.3,
+                color = "orange") +
+  labs(x = " ", y = "Relative frequency") +
+  theme_minimal()
+
+p2 <- morphometrics %>% 
+ggplot(mapping = aes(x = total_body_length_cm, y = wingspan_cm)) +
+  geom_ribbon(aes(ymin = preds$lwr, ymax = preds$upr), 
+              fill = "gray90") +
+  geom_line(aes(y = preds$mean), color = "darkmagenta", size = 0.8) + 
+  geom_point(color = "darkmagenta", alpha = 0.5) +
+  labs(x = "Total body length (cm)", y = "Wingspan (cm)") +
+  theme_minimal() 
+
+p3 <- telemetry %>% 
+  ggplot(aes(x = utm_x, y = utm_y, color = dragon_id)) +
+  geom_path() +
+  labs(x = "UTM Easting", y = "UTM Northing") +
+  scale_color_viridis_d(option = "plasma") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+Now we can decide on the arrangement for these plots. The syntax for arranging 
+plots uses combinations of three symbols: `+`, `/`, and `|`. Using `+` is the
+simplest option and it can be combined with the `plot_layout` function to tweak
+how many rows and columns the plots are arranged on. If no layout is specified, 
+plots are aligned in row order:
+
+```{r gg35, eval = TRUE, echo = TRUE}
+p1 + p2 + p3 
+```
+
+But we can specify that we want them in 2 rows, in which case patchwork will
+fill the first row before starting the next:
+
+```{r gg36, eval = TRUE, echo = TRUE}
+p1 + p2 + p3 + plot_layout(nrow = 2)
+```
+
+If we want the first plot to appear alone on the first row and the last two on
+the second row, we can enforce hierarchy with parentheses:
+
+```{r gg37, eval = TRUE, echo = TRUE}
+p1 + (p2 + p3) + plot_layout(nrow = 2)
+```
+
+The symbol `|` means "side by side" and the symbol `/` means "one on top of
+each other". We can combine these to obtain any layout we want:
+
+```{r gg38, eval = TRUE, echo = TRUE}
+p1 | p2 / p3
+
+(p1 | p2) / p3
+
+(p1 / p2) | p3
+
+```
+
 ## Saving plots
+
+Rule number 1: never, EVER, save a plot by clicking *Export* on the RStudio plot
+panel. You will have so little control over the resolution, scale, aspect ratio,
+and format of your plot that the result is guaranteed to be disappointing. 
+Instead, use `ggsave`! `ggsave` is the `ggplot2` function that allows you to
+save your plots controlling and fine-tuning every detail of how they will appear 
+in the end. By default, if you don't assign a name to a plot and specify its
+name in `ggsave`, it will assume you want to save the last plot you ran. You'll
+need to give it a path to the folder where you want the file saved, including
+the name you want to give to the file:
+
+```{r gg39, echo = TRUE, eval = FALSE}
+ggsave(filename = "img/patchwork1.tiff", 
+       device = "tiff", # tiff is the best format for saving publication-quality figures
+       width = 14, # define the width of the plot in your units of choice
+       height = 8, # define the height of the plot in your units of choice
+       units = "in", # define your units of choice ("in" stands for inches)
+       dpi = 400) # you can control exactly how many dots per inches your plot has, which comes in handy when the journal guidelines have a specific requirement
+```
+
+Saving plots always requires a bit of back and forth: first, you guesstimate
+the right width and height, then you save the file, then you open it and look at
+it, then you go back to the code with any tweaks until you're happy with it. 
+
+## References 
+
+* https://ggplot2.tidyverse.org/
+* https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+* https://patchwork.data-imaginist.com/
