@@ -1083,6 +1083,13 @@ counterpart of <code>geom_line</code> is <code>geom_path</code>, which also plot
 order in which they appear in the data, not based on consecutive values of x.
 This is helpful in some situations, for example to plot movement tracks from
 telemetry data. Let’s plot the dragon GPS data:</p>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="ggplot2.html#cb470-1"></a>telemetry <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb470-2"><a href="ggplot2.html#cb470-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> utm_x, <span class="dt">y =</span> utm_y, <span class="dt">color =</span> dragon_id)) <span class="op">+</span></span>
+<span id="cb470-3"><a href="ggplot2.html#cb470-3"></a><span class="st">  </span><span class="kw">geom_path</span>() <span class="op">+</span></span>
+<span id="cb470-4"><a href="ggplot2.html#cb470-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="op">+</span></span>
+<span id="cb470-5"><a href="ggplot2.html#cb470-5"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb470-6"><a href="ggplot2.html#cb470-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg31-1.png" width="672" /></p>
 </div>
 </div>
 <div id="colorblind-friendly-plots-with-viridis" class="section level2">
@@ -1095,6 +1102,14 @@ and the variation in hue scales linearly with the variation in the underlying
 numerical values. <code>ggplot2</code> integrates with <code>viridis</code> seamlessly so it’s easy
 to transform your plots using <code>viridis</code> color palettes. Let’s demonstrate it
 with the telemetry plot we just made:</p>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="ggplot2.html#cb471-1"></a>telemetry <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb471-2"><a href="ggplot2.html#cb471-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> utm_x, <span class="dt">y =</span> utm_y, <span class="dt">color =</span> dragon_id)) <span class="op">+</span></span>
+<span id="cb471-3"><a href="ggplot2.html#cb471-3"></a><span class="st">  </span><span class="kw">geom_path</span>() <span class="op">+</span></span>
+<span id="cb471-4"><a href="ggplot2.html#cb471-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="op">+</span></span>
+<span id="cb471-5"><a href="ggplot2.html#cb471-5"></a><span class="st">  </span><span class="kw">scale_color_viridis_d</span>() <span class="op">+</span></span>
+<span id="cb471-6"><a href="ggplot2.html#cb471-6"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb471-7"><a href="ggplot2.html#cb471-7"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg31b-1.png" width="672" /></p>
 <p>To change the color palette to viridis, I added another layer to my plot with
 the function <code>scale_color_viridis_d</code>. The “d” at the end stands for “discrete”,
 because in this case the colors are assigned based on a categorical variable
@@ -1104,6 +1119,14 @@ parameter rather than a color parameter, I would have used the function
 <code>scale_fill_viridis_d</code>. The one I plotted is the standard viridis palette, but
 there are others to choose from (check out the viridis vignette!) For instance,
 this one is called <code>plasma</code>:</p>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="ggplot2.html#cb472-1"></a>telemetry <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb472-2"><a href="ggplot2.html#cb472-2"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> utm_x, <span class="dt">y =</span> utm_y, <span class="dt">color =</span> dragon_id)) <span class="op">+</span></span>
+<span id="cb472-3"><a href="ggplot2.html#cb472-3"></a><span class="st">  </span><span class="kw">geom_path</span>() <span class="op">+</span></span>
+<span id="cb472-4"><a href="ggplot2.html#cb472-4"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="op">+</span></span>
+<span id="cb472-5"><a href="ggplot2.html#cb472-5"></a><span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="op">+</span></span>
+<span id="cb472-6"><a href="ggplot2.html#cb472-6"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb472-7"><a href="ggplot2.html#cb472-7"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg32-1.png" width="672" /></p>
 </div>
 <div id="arranging-multiple-plots-together-with-patchwork" class="section level2">
 <h2><span class="header-section-number">14.5</span> Arranging multiple plots together with <code>patchwork</code></h2>
@@ -1116,59 +1139,59 @@ Figure 14.2: Artwork by Allison Horst
 <p>The package <code>patchwork</code> allows you to combine and arrange multiple plots into
 a single plot with several panels. Let’s load in the package (after installing
 it):</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="ggplot2.html#cb470-1"></a><span class="kw">library</span>(patchwork)</span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="ggplot2.html#cb473-1"></a><span class="kw">library</span>(patchwork)</span></code></pre></div>
 <p>The first step to combine different plots is
 to save each plot by assigning it its own name. Each will be stored in the
 environment as a <code>ggplot2</code> object. For example, let’s take our diet barplot,
 our regression prediction plot, and our telemetry one. We’ll call these <code>p1</code>,
 <code>p2</code>, and <code>p3</code>:</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="ggplot2.html#cb471-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(rf, <span class="kw">aes</span>(<span class="dt">x =</span> item, <span class="dt">y =</span> mean_rf)) <span class="op">+</span></span>
-<span id="cb471-2"><a href="ggplot2.html#cb471-2"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb471-3"><a href="ggplot2.html#cb471-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean_rf <span class="op">-</span><span class="st"> </span>sd_rf,</span>
-<span id="cb471-4"><a href="ggplot2.html#cb471-4"></a>                    <span class="dt">ymax =</span> mean_rf <span class="op">+</span><span class="st"> </span>sd_rf),</span>
-<span id="cb471-5"><a href="ggplot2.html#cb471-5"></a>                <span class="dt">width =</span> <span class="fl">0.3</span>,</span>
-<span id="cb471-6"><a href="ggplot2.html#cb471-6"></a>                <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
-<span id="cb471-7"><a href="ggplot2.html#cb471-7"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot; &quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="op">+</span></span>
-<span id="cb471-8"><a href="ggplot2.html#cb471-8"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span>
-<span id="cb471-9"><a href="ggplot2.html#cb471-9"></a></span>
-<span id="cb471-10"><a href="ggplot2.html#cb471-10"></a>p2 &lt;-<span class="st"> </span>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb471-11"><a href="ggplot2.html#cb471-11"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> total_body_length_cm, <span class="dt">y =</span> wingspan_cm)) <span class="op">+</span></span>
-<span id="cb471-12"><a href="ggplot2.html#cb471-12"></a><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> preds<span class="op">$</span>lwr, <span class="dt">ymax =</span> preds<span class="op">$</span>upr), </span>
-<span id="cb471-13"><a href="ggplot2.html#cb471-13"></a>              <span class="dt">fill =</span> <span class="st">&quot;gray90&quot;</span>) <span class="op">+</span></span>
-<span id="cb471-14"><a href="ggplot2.html#cb471-14"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> preds<span class="op">$</span>mean), <span class="dt">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb471-15"><a href="ggplot2.html#cb471-15"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
-<span id="cb471-16"><a href="ggplot2.html#cb471-16"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>) <span class="op">+</span></span>
-<span id="cb471-17"><a href="ggplot2.html#cb471-17"></a><span class="st">  </span><span class="kw">theme_minimal</span>() </span>
-<span id="cb471-18"><a href="ggplot2.html#cb471-18"></a></span>
-<span id="cb471-19"><a href="ggplot2.html#cb471-19"></a>p3 &lt;-<span class="st"> </span>telemetry <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb471-20"><a href="ggplot2.html#cb471-20"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> utm_x, <span class="dt">y =</span> utm_y, <span class="dt">color =</span> dragon_id)) <span class="op">+</span></span>
-<span id="cb471-21"><a href="ggplot2.html#cb471-21"></a><span class="st">  </span><span class="kw">geom_path</span>() <span class="op">+</span></span>
-<span id="cb471-22"><a href="ggplot2.html#cb471-22"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="op">+</span></span>
-<span id="cb471-23"><a href="ggplot2.html#cb471-23"></a><span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="op">+</span></span>
-<span id="cb471-24"><a href="ggplot2.html#cb471-24"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
-<span id="cb471-25"><a href="ggplot2.html#cb471-25"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="ggplot2.html#cb474-1"></a>p1 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(rf, <span class="kw">aes</span>(<span class="dt">x =</span> item, <span class="dt">y =</span> mean_rf)) <span class="op">+</span></span>
+<span id="cb474-2"><a href="ggplot2.html#cb474-2"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb474-3"><a href="ggplot2.html#cb474-3"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean_rf <span class="op">-</span><span class="st"> </span>sd_rf,</span>
+<span id="cb474-4"><a href="ggplot2.html#cb474-4"></a>                    <span class="dt">ymax =</span> mean_rf <span class="op">+</span><span class="st"> </span>sd_rf),</span>
+<span id="cb474-5"><a href="ggplot2.html#cb474-5"></a>                <span class="dt">width =</span> <span class="fl">0.3</span>,</span>
+<span id="cb474-6"><a href="ggplot2.html#cb474-6"></a>                <span class="dt">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="op">+</span></span>
+<span id="cb474-7"><a href="ggplot2.html#cb474-7"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot; &quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="op">+</span></span>
+<span id="cb474-8"><a href="ggplot2.html#cb474-8"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span>
+<span id="cb474-9"><a href="ggplot2.html#cb474-9"></a></span>
+<span id="cb474-10"><a href="ggplot2.html#cb474-10"></a>p2 &lt;-<span class="st"> </span>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb474-11"><a href="ggplot2.html#cb474-11"></a><span class="kw">ggplot</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> total_body_length_cm, <span class="dt">y =</span> wingspan_cm)) <span class="op">+</span></span>
+<span id="cb474-12"><a href="ggplot2.html#cb474-12"></a><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> preds<span class="op">$</span>lwr, <span class="dt">ymax =</span> preds<span class="op">$</span>upr), </span>
+<span id="cb474-13"><a href="ggplot2.html#cb474-13"></a>              <span class="dt">fill =</span> <span class="st">&quot;gray90&quot;</span>) <span class="op">+</span></span>
+<span id="cb474-14"><a href="ggplot2.html#cb474-14"></a><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> preds<span class="op">$</span>mean), <span class="dt">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb474-15"><a href="ggplot2.html#cb474-15"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></span>
+<span id="cb474-16"><a href="ggplot2.html#cb474-16"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>) <span class="op">+</span></span>
+<span id="cb474-17"><a href="ggplot2.html#cb474-17"></a><span class="st">  </span><span class="kw">theme_minimal</span>() </span>
+<span id="cb474-18"><a href="ggplot2.html#cb474-18"></a></span>
+<span id="cb474-19"><a href="ggplot2.html#cb474-19"></a>p3 &lt;-<span class="st"> </span>telemetry <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb474-20"><a href="ggplot2.html#cb474-20"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> utm_x, <span class="dt">y =</span> utm_y, <span class="dt">color =</span> dragon_id)) <span class="op">+</span></span>
+<span id="cb474-21"><a href="ggplot2.html#cb474-21"></a><span class="st">  </span><span class="kw">geom_path</span>() <span class="op">+</span></span>
+<span id="cb474-22"><a href="ggplot2.html#cb474-22"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="op">+</span></span>
+<span id="cb474-23"><a href="ggplot2.html#cb474-23"></a><span class="st">  </span><span class="kw">scale_color_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="op">+</span></span>
+<span id="cb474-24"><a href="ggplot2.html#cb474-24"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb474-25"><a href="ggplot2.html#cb474-25"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p>Now we can decide on the arrangement for these plots. The syntax for arranging
 plots uses combinations of three symbols: <code>+</code>, <code>/</code>, and <code>|</code>. Using <code>+</code> is the
 simplest option and it can be combined with the <code>plot_layout</code> function to tweak
 how many rows and columns the plots are arranged on. If no layout is specified,
 plots are aligned in row order:</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="ggplot2.html#cb472-1"></a>p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3 </span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="ggplot2.html#cb475-1"></a>p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3 </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg35-1.png" width="672" /></p>
 <p>But we can specify that we want them in 2 rows, in which case patchwork will
 fill the first row before starting the next:</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="ggplot2.html#cb473-1"></a>p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3 <span class="op">+</span><span class="st"> </span><span class="kw">plot_layout</span>(<span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="ggplot2.html#cb476-1"></a>p1 <span class="op">+</span><span class="st"> </span>p2 <span class="op">+</span><span class="st"> </span>p3 <span class="op">+</span><span class="st"> </span><span class="kw">plot_layout</span>(<span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg36-1.png" width="672" /></p>
 <p>If we want the first plot to appear alone on the first row and the last two on
 the second row, we can enforce hierarchy with parentheses:</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="ggplot2.html#cb474-1"></a>p1 <span class="op">+</span><span class="st"> </span>(p2 <span class="op">+</span><span class="st"> </span>p3) <span class="op">+</span><span class="st"> </span><span class="kw">plot_layout</span>(<span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="ggplot2.html#cb477-1"></a>p1 <span class="op">+</span><span class="st"> </span>(p2 <span class="op">+</span><span class="st"> </span>p3) <span class="op">+</span><span class="st"> </span><span class="kw">plot_layout</span>(<span class="dt">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg37-1.png" width="672" /></p>
 <p>The symbol <code>|</code> means “side by side” and the symbol <code>/</code> means “one on top of
 each other”. We can combine these to obtain any layout we want:</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="ggplot2.html#cb475-1"></a>p1 <span class="op">|</span><span class="st"> </span>p2 <span class="op">/</span><span class="st"> </span>p3</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="ggplot2.html#cb478-1"></a>p1 <span class="op">|</span><span class="st"> </span>p2 <span class="op">/</span><span class="st"> </span>p3</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg38-1.png" width="672" /></p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="ggplot2.html#cb476-1"></a>(p1 <span class="op">|</span><span class="st"> </span>p2) <span class="op">/</span><span class="st"> </span>p3</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="ggplot2.html#cb479-1"></a>(p1 <span class="op">|</span><span class="st"> </span>p2) <span class="op">/</span><span class="st"> </span>p3</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg38-2.png" width="672" /></p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="ggplot2.html#cb477-1"></a>(p1 <span class="op">/</span><span class="st"> </span>p2) <span class="op">|</span><span class="st"> </span>p3</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="ggplot2.html#cb480-1"></a>(p1 <span class="op">/</span><span class="st"> </span>p2) <span class="op">|</span><span class="st"> </span>p3</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg38-3.png" width="672" /></p>
 </div>
 <div id="saving-plots" class="section level2">
@@ -1182,12 +1205,12 @@ in the end. By default, if you don’t assign a name to a plot and specify its
 name in <code>ggsave</code>, it will assume you want to save the last plot you ran. You’ll
 need to give it a path to the folder where you want the file saved, including
 the name you want to give to the file:</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="ggplot2.html#cb478-1"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;img/patchwork1.tiff&quot;</span>, </span>
-<span id="cb478-2"><a href="ggplot2.html#cb478-2"></a>       <span class="dt">device =</span> <span class="st">&quot;tiff&quot;</span>, <span class="co"># tiff is the best format for saving publication-quality figures</span></span>
-<span id="cb478-3"><a href="ggplot2.html#cb478-3"></a>       <span class="dt">width =</span> <span class="dv">14</span>, <span class="co"># define the width of the plot in your units of choice</span></span>
-<span id="cb478-4"><a href="ggplot2.html#cb478-4"></a>       <span class="dt">height =</span> <span class="dv">8</span>, <span class="co"># define the height of the plot in your units of choice</span></span>
-<span id="cb478-5"><a href="ggplot2.html#cb478-5"></a>       <span class="dt">units =</span> <span class="st">&quot;in&quot;</span>, <span class="co"># define your units of choice (&quot;in&quot; stands for inches)</span></span>
-<span id="cb478-6"><a href="ggplot2.html#cb478-6"></a>       <span class="dt">dpi =</span> <span class="dv">400</span>) <span class="co"># you can control exactly how many dots per inches your plot has, which comes in handy when the journal guidelines have a specific requirement</span></span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="ggplot2.html#cb481-1"></a><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;img/patchwork1.tiff&quot;</span>, </span>
+<span id="cb481-2"><a href="ggplot2.html#cb481-2"></a>       <span class="dt">device =</span> <span class="st">&quot;tiff&quot;</span>, <span class="co"># tiff is the best format for saving publication-quality figures</span></span>
+<span id="cb481-3"><a href="ggplot2.html#cb481-3"></a>       <span class="dt">width =</span> <span class="dv">14</span>, <span class="co"># define the width of the plot in your units of choice</span></span>
+<span id="cb481-4"><a href="ggplot2.html#cb481-4"></a>       <span class="dt">height =</span> <span class="dv">8</span>, <span class="co"># define the height of the plot in your units of choice</span></span>
+<span id="cb481-5"><a href="ggplot2.html#cb481-5"></a>       <span class="dt">units =</span> <span class="st">&quot;in&quot;</span>, <span class="co"># define your units of choice (&quot;in&quot; stands for inches)</span></span>
+<span id="cb481-6"><a href="ggplot2.html#cb481-6"></a>       <span class="dt">dpi =</span> <span class="dv">400</span>) <span class="co"># you can control exactly how many dots per inches your plot has, which comes in handy when the journal guidelines have a specific requirement</span></span></code></pre></div>
 <p>Saving plots always requires a bit of back and forth: first, you guesstimate
 the right width and height, then you save the file, then you open it and look at
 it, then you go back to the code with any tweaks until you’re happy with it.</p>

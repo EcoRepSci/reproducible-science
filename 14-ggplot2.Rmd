@@ -783,7 +783,7 @@ order in which they appear in the data, not based on consecutive values of x.
 This is helpful in some situations, for example to plot movement tracks from
 telemetry data. Let's plot the dragon GPS data:
 
-```{r gg31, eval = FALSE, echo = FALSE}
+```{r gg31, eval = TRUE, echo = TRUE}
 telemetry %>% 
   ggplot(aes(x = utm_x, y = utm_y, color = dragon_id)) +
   geom_path() +
@@ -803,7 +803,7 @@ numerical values. `ggplot2` integrates with `viridis` seamlessly so it's easy
 to transform your plots using `viridis` color palettes. Let's demonstrate it 
 with the telemetry plot we just made:
 
-```{r gg31b, eval = FALSE, echo = FALSE}
+```{r gg31b, eval = TRUE, echo = TRUE}
 telemetry %>% 
   ggplot(aes(x = utm_x, y = utm_y, color = dragon_id)) +
   geom_path() +
@@ -823,7 +823,7 @@ parameter rather than a color parameter, I would have used the function
 there are others to choose from (check out the viridis vignette!) For instance,
 this one is called `plasma`:
 
-```{r gg32, eval = FALSE, echo = FALSE}
+```{r gg32, eval = TRUE, echo = TRUE}
 telemetry %>% 
   ggplot(aes(x = utm_x, y = utm_y, color = dragon_id)) +
   geom_path() +
