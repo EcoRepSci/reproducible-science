@@ -33,6 +33,7 @@ course WILD 6900: Computational Tools for Reproducible Science. The aim of the c
 * Chapter \@ref(renv), Working Environments in R
 * Chapter \@ref(tidyverse), Data Wrangling with tidyverse
 * Chapter \@ref(ggplot2), Data Visualization with ggplot2
+* Chapter \@ref(lubridate), Dates and Times in R
 * Chapter \@ref(geospatial), Introduction to Geospatial Data in R
 * Chapter \@ref(problem-decomposition), Problem Decomposition
 
