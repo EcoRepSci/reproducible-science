@@ -1,7 +1,8 @@
 --- 
 title: "Computational Tools for Reproducible Science"
-author: "Simona Picardi"
-date: "`r Sys.Date()`"
+author: 
+  - Simona Picardi^[Utah State University, simona.picardi@usu.edu]
+date: "2021-01-15"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]

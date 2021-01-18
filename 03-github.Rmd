@@ -32,7 +32,8 @@ To check that the remote was added correctly you can view the list of remotes as
 > git remote -v
 ```
 
-We'll talk about branches later in this chapter, and we'll see that a repository can have multiple branches. At a minimum, each repository includes one main branch, which is created by default when you create your repository. By default, this branch is called `master`. Starting in 2020, GitHub has started to switch to using `main` instead of `master` to remove unnecessary references to slavery. So we'll go ahead and rename the `master` branch to `main`:
+We'll talk about branches later in this chapter, and we'll see that a repository can have multiple branches. At a minimum, each repository includes one main branch, which is created by default when you create your repository. By default, this branch is called `master`. Starting in 2020, GitHub has started to switch to using `main` instead of `master` to remove unnecessary references to slavery. We like this change,
+because Black Lives Matter. So we'll go ahead and rename the `master` branch to `main`:
 
 ```{sh}
 > git branch -M main

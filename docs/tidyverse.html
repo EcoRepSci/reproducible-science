@@ -431,12 +431,12 @@ users may not always need.</p>
 <div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="tidyverse.html#cb372-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>Then load the package using:</p>
 <div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="tidyverse.html#cb373-1"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
-<pre><code>## -- Attaching packages ----------- tidyverse 1.3.0 --</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## v ggplot2 3.3.2     v purrr   0.3.4
-## v tibble  3.0.3     v dplyr   1.0.1
+## v tibble  3.0.5     v dplyr   1.0.3
 ## v tidyr   1.1.1     v stringr 1.4.0
 ## v readr   1.3.1     v forcats 0.5.0</code></pre>
-<pre><code>## -- Conflicts -------------- tidyverse_conflicts() --
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 </div>
@@ -799,23 +799,22 @@ age classes:</p>
 <span id="cb411-5"><a href="tidyverse.html#cb411-5"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">min_tail_length_cm =</span> <span class="kw">min</span>(tail_length_cm),</span>
 <span id="cb411-6"><a href="tidyverse.html#cb411-6"></a>            <span class="dt">mean_tail_length_cm =</span> <span class="kw">mean</span>(tail_length_cm),</span>
 <span id="cb411-7"><a href="tidyverse.html#cb411-7"></a>            <span class="dt">max_tail_length_cm =</span> <span class="kw">max</span>(tail_length_cm))</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 3 x 4
 ##   age_class min_tail_length_cm mean_tail_length_cm max_tail_length_cm
-##   &lt;chr&gt;                  &lt;dbl&gt;               &lt;dbl&gt;              &lt;dbl&gt;
+## * &lt;chr&gt;                  &lt;dbl&gt;               &lt;dbl&gt;              &lt;dbl&gt;
 ## 1 Adult                  502.                 600.               686.
 ## 2 Juvenile                84.0                119.               148.
 ## 3 Subadult               338.                 435.               544.</code></pre>
 <p>We can also use <code>group_by</code> to count how many records we have for each group.
 Let’s say we want to know how many dragons of each species we captured:</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="tidyverse.html#cb414-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb414-2"><a href="tidyverse.html#cb414-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb414-3"><a href="tidyverse.html#cb414-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb414-4"><a href="tidyverse.html#cb414-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
-<span id="cb414-5"><a href="tidyverse.html#cb414-5"></a><span class="st">  </span><span class="kw">tally</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="tidyverse.html#cb413-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb413-2"><a href="tidyverse.html#cb413-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb413-3"><a href="tidyverse.html#cb413-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb413-4"><a href="tidyverse.html#cb413-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb413-5"><a href="tidyverse.html#cb413-5"></a><span class="st">  </span><span class="kw">tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 2
 ##    species                 n
-##    &lt;chr&gt;               &lt;int&gt;
+##  * &lt;chr&gt;               &lt;int&gt;
 ##  1 Antipodean Opaleye     16
 ##  2 Chinese Fireball       16
 ##  3 Common Welsh Green     51
@@ -830,12 +829,12 @@ Let’s say we want to know how many dragons of each species we captured:</p>
 <div id="sorting-results" class="section level3">
 <h3><span class="header-section-number">13.2.10</span> Sorting results</h3>
 <p>Let’s sort results of our count by species in decreasing order:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="tidyverse.html#cb416-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb416-2"><a href="tidyverse.html#cb416-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb416-3"><a href="tidyverse.html#cb416-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb416-4"><a href="tidyverse.html#cb416-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
-<span id="cb416-5"><a href="tidyverse.html#cb416-5"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb416-6"><a href="tidyverse.html#cb416-6"></a><span class="st">  </span><span class="kw">arrange</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="tidyverse.html#cb415-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb415-2"><a href="tidyverse.html#cb415-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb415-3"><a href="tidyverse.html#cb415-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb415-4"><a href="tidyverse.html#cb415-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb415-5"><a href="tidyverse.html#cb415-5"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb415-6"><a href="tidyverse.html#cb415-6"></a><span class="st">  </span><span class="kw">arrange</span>(n)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 2
 ##    species                 n
 ##    &lt;chr&gt;               &lt;int&gt;
@@ -852,12 +851,12 @@ Let’s say we want to know how many dragons of each species we captured:</p>
 <p>Nope, that didn’t do it. The species are sorted from the least to the most
 numerous (the default). We need to specify that we want to sort results in
 descending order:</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="tidyverse.html#cb418-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb418-2"><a href="tidyverse.html#cb418-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb418-3"><a href="tidyverse.html#cb418-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb418-4"><a href="tidyverse.html#cb418-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
-<span id="cb418-5"><a href="tidyverse.html#cb418-5"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb418-6"><a href="tidyverse.html#cb418-6"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="tidyverse.html#cb417-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb417-2"><a href="tidyverse.html#cb417-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb417-3"><a href="tidyverse.html#cb417-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb417-4"><a href="tidyverse.html#cb417-4"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb417-5"><a href="tidyverse.html#cb417-5"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb417-6"><a href="tidyverse.html#cb417-6"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 2
 ##    species                 n
 ##    &lt;chr&gt;               &lt;int&gt;
@@ -879,12 +878,12 @@ species for which we have at least 30 individuals. We need to filter those whose
 species falls within that group. So this task can be divided in two steps:
 first, identify the group and store the result; second, filter the table based
 on records from those groups. Let’s see:</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="tidyverse.html#cb420-1"></a>(species_over30 &lt;-<span class="st"> </span>dragons <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb420-2"><a href="tidyverse.html#cb420-2"></a><span class="st">   </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
-<span id="cb420-3"><a href="tidyverse.html#cb420-3"></a><span class="st">   </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb420-4"><a href="tidyverse.html#cb420-4"></a><span class="st">   </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb420-5"><a href="tidyverse.html#cb420-5"></a><span class="st">   </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb420-6"><a href="tidyverse.html#cb420-6"></a><span class="st">   </span><span class="kw">pull</span>(species))</span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="tidyverse.html#cb419-1"></a>(species_over30 &lt;-<span class="st"> </span>dragons <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb419-2"><a href="tidyverse.html#cb419-2"></a><span class="st">   </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb419-3"><a href="tidyverse.html#cb419-3"></a><span class="st">   </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb419-4"><a href="tidyverse.html#cb419-4"></a><span class="st">   </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb419-5"><a href="tidyverse.html#cb419-5"></a><span class="st">   </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb419-6"><a href="tidyverse.html#cb419-6"></a><span class="st">   </span><span class="kw">pull</span>(species))</span></code></pre></div>
 <pre><code>## [1] &quot;Norwegian Ridgeback&quot; &quot;Common Welsh Green&quot;  &quot;Romanian Longhorn&quot;  
 ## [4] &quot;Hebridean Black&quot;     &quot;Peruvian Vipertooth&quot; &quot;Hungarian Horntail&quot;</code></pre>
 <p>The function <code>pull</code> at the end extracts the values in my column of interest and
