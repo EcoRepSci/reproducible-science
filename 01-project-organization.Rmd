@@ -48,19 +48,19 @@ Whichever directory structure you choose for a project, there are some universal
 
 2. The processed, clean version of your data will go into a dedicated "processed_data" folder. 
 
-3. Anything that can be generated from code goes into its own folder. This includes basically everything but the raw data and the code itself. You can have an "output" folder, or separate folders for output files and figures (e.g., "output" and "figures".) 
+3. Anything that can be generated from code goes into its own folder. This includes basically everything but the raw data and the code itself. You can have an "output" folder, or separate folders for output files and figures (e.g., "output" and "figures") 
 
 4. If there are text documents, put them in their own folder (e.g., "docs")
 
 5. Code also has its own folder. If you write a lot of functions, it can be helpful to have a "funs" folder to store those and a "src" (for 'source') folder to save processing/analysis code. 
 
-6. If processing/analysis scripts are meant to be used in a certain order, you can number them (more on this in a minute.) Sometimes the pipeline is not linear but branched, so numbering may not always make sense. Function scripts should not be numbered. 
+6. If processing/analysis scripts are meant to be used in a certain order, you can number them (more on this in a minute). Sometimes the pipeline is not linear but branched, so numbering may not always make sense. Function scripts should not be numbered. 
 
 7. Modularize your code: instead of having a giant script to run your entire analysis from data cleaning to final figures, break up your workflow into several short, single-purpose scripts with well-defined inputs and outputs. 
 
 ## Be flexible
 
-It can be challenging to anticipate the structure of a project that is just about to start (especially the first time you start thinking through optimal directory structures.) It helps to be flexible and allow some room for adjustments. For example, you can start with a basic directory structure where you have a "data" folder, a "code" folder, and an "output" folder, and then you may decide to split the "code" folder into "src" and "funs", or to further split the "output" folder into "output" and "figures", etc. Sometimes these changes can break your code and become frustrating, but these problems are easy to fix.
+It can be challenging to anticipate the structure of a project that is just about to start (especially the first time you start thinking through optimal directory structures). It helps to be flexible and allow some room for adjustments. For example, you can start with a basic directory structure where you have a "data" folder, a "code" folder, and an "output" folder, and then you may decide to split the "code" folder into "src" and "funs", or to further split the "output" folder into "output" and "figures", etc. Sometimes these changes can break your code and become frustrating, but these problems are easy to fix.
 
 Similarly, it can be challenging to have the long-term vision to know where it's best to break a script and start a new one. It's easy to tunnel vision into an analysis and keep adding lines and lines of code without thinking about break points that make sense. One good way to deal with this is to reserve some time at the end of your coding session to look at your script and notice if there are any intermediate products that you can save and use as input of the next step of the workflow. Then you can make the necessary adjustments in terms of code compartmentalization, paths to input and output files, etc.
   
@@ -96,7 +96,7 @@ The example file name above is not only computer-readable, it's also human-reada
 
 ### File names that work well with default ordering
 
-If you sort your files alphabetically in a folder, you want them to be ordered in a way that makes sense. Whether you sort your files by date or by a sequential number, the number always goes first. For dates, use the YMD format, or your files created in April of 1984 and 2020 will be closer than the ones created in March and April 2020. If you are using sequential numbering, add a sensible amount of zeros in front based on how many files of that category you expect to have in the future. If you expect to have more than 10 but not more than 99 files, you can add a single leading zero (e.g., "data_analysis_01.R" instead of "data_analysis_1.R"), whereas if you expect to have between 100 and 999 you can add two (e.g., "Photo_001.jpeg" instead of "Photo_1.jpeg" or "Photo_01.jpeg".)
+If you sort your files alphabetically in a folder, you want them to be ordered in a way that makes sense. Whether you sort your files by date or by a sequential number, the number always goes first. For dates, use the YMD format, or your files created in April of 1984 and 2020 will be closer than the ones created in March and April 2020. If you are using sequential numbering, add a sensible amount of zeros in front based on how many files of that category you expect to have in the future. If you expect to have more than 10 but not more than 99 files, you can add a single leading zero (e.g., "data_analysis_01.R" instead of "data_analysis_1.R"), whereas if you expect to have between 100 and 999 you can add two (e.g., "Photo_001.jpeg" instead of "Photo_1.jpeg" or "Photo_01.jpeg").
 
 ## RStudio Projects 
 
@@ -106,7 +106,7 @@ RStudio Projects are a great tool to help you stay organized. The concept behind
 knitr::include_graphics("img/rstudio-project.jpg")
 ```
 
-You may be familiar with the concept of a working directory in R. The working directory is the place where, unless otherwise specified, all of your outputs are saved. All relative paths are also interpreted relative to the working directory (more on relative paths in a minute.)  
+You may be familiar with the concept of a working directory in R. The working directory is the place where, unless otherwise specified, all of your outputs are saved. All relative paths are also interpreted relative to the working directory (more on relative paths in a minute).  
 
 The cool thing about an RStudio Project is that it automatically makes sure that your project directory is set as the working directory. All the clunkiness of having to set, change, or double check which directory you're working in is forgotten: all you do is open up your Project and then the paths you use to load or save data are already, by default, relative to your project directory. 
 
@@ -124,7 +124,7 @@ If our working directory was "Planning", this would be the relative path to the 
 
 > schedule_2021.csv
 
-To work across subfolders of our working directory, we can just use relative paths to navigate and locate files. But relative paths also work to navigate across folders that are outside of the working directory, if need be. Using "../" in front of a folder name navigates to the parent of that folder ("parent" means the folder where that is contained.) Let's consider the following directory structure:
+To work across subfolders of our working directory, we can just use relative paths to navigate and locate files. But relative paths also work to navigate across folders that are outside of the working directory, if need be. Using "../" in front of a folder name navigates to the parent of that folder ("parent" means the folder where that is contained). Let's consider the following directory structure:
 
 ```{r dir-example, fig.cap="Example directory structure", fig.align='center', echo = FALSE}
 knitr::include_graphics("img/directory-tree.png")
