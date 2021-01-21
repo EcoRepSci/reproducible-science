@@ -18,7 +18,9 @@ I haven't mentioned anything yet about the benefits of version control for colla
 
 You can use Git from the command line in the computer's terminal. The command line can be intimidating if you haven't used it before, but using Git only requires basic familiarity with it. Commands are slightly different between operating systems, so I'll assume Windows is the most commonly used and specify the Mac/Linux alternative when applicable. 
 
-When you open up the terminal (or command prompt) on your computer, you'll see a symbol, on many computers it is a "$" or ">", followed by a blinking cursor. That symbol is called the prompt, and it means the terminal is waiting for your input. If you copy-paste any code from this chapter into your terminal, make sure you only copy the part after the prompt. Also, if Ctrl+V does not work in the terminal, you can right-click to paste.
+When you open up the terminal (or command prompt) on your computer, you'll see a symbol, on many computers it is a "$" or ">", followed by a blinking cursor. That symbol is called the prompt, and it means the terminal is waiting for your input. If you copy-paste any code from this chapter into your terminal, 
+**make sure you only copy the part after the prompt** (don't copy the >). 
+Also, if Ctrl+V does not work in the terminal, you can right-click to paste.
 
 When you open the terminal, you should automatically be located in the root directory of your file system (or your home directory, if you have a computer with multiple users). The name of the folder you're in appears right before the prompt. For example, this is what my prompt looks like:
 
@@ -32,13 +34,13 @@ If you are not in your root directory when you first open up the terminal, you c
 > cd \
 ```
 
-This command stands for "change directory". The "\" symbol indicates the root directory. On Mac/Linux, you can navigate to the root directory by simply typing "cd" or:
+This command stands for "change directory". The "\\" symbol indicates the root directory. On Mac/Linux, you can navigate to the root directory by simply typing "cd" or:
 
 ```{sh}
 > cd ~
 ```
 
-If you want to go to a specific directory other than the root, you can type its path (relative to the folder you're currently in) after "cd". To go from Users\Simona to Users\Simona\Documents:
+If you want to go to a specific directory other than the root, you can type its path (relative to the folder you're currently in) after "cd". To go from Users\\Simona to Users\\Simona\\Documents:
 
 ```{sh}
 > cd Documents
@@ -139,27 +141,27 @@ You can create a text file called ".gitignore" in our repository by using your d
 
 Once .gitignore is created, we can start adding rules. Nothing prevents us from listing files in .gitignore one by one, but this approach is not efficient:
 
-> stacked_barplot_diet_composition.jpg <\br>
-> predicted_population_trends.jpg <\br>
-> individual_movement_tracks.jpg <\br>
-> capture_locations.jpg <\br>
-> green_frog_diet_manuscript.docx <\br>
-> green_frog_movement_manuscript.docx <\br>
-> green_frog_demography_manuscript.docx
+> stacked_barplot_diet_composition.jpg  
+> predicted_population_trends.jpg   
+> individual_movement_tracks.jpg  
+> capture_locations.jpg  
+> green_frog_diet_manuscript.docx  
+> green_frog_movement_manuscript.docx  
+> green_frog_demography_manuscript.docx  
 
 Instead, we can use pattern matching to kill many birds with one stone. What all these files have in common is they are all either .jpg's or .docx's. We can use the wildcard '*' to signify "any character" before the file extension:
 
-> *.jpg <\br>
-> *.docx 
+> \*.jpg  
+> \*.docx  
 
-This will exclude any .png or .docx file from being tracked by Git in this repository. Since the images are conveniently located all together in one folder, we can also just do this:
+This will exclude any .jpg or .docx file from being tracked by Git in this repository. Since the images are conveniently located all together in one folder, we can also just do this:
 
 > figures/
 
 We should also add the following rules to ignore the user-specific R project files:
 
-> *.Rhistory  
-> /.Rproj.user/
+> \*.Rhistory   
+> /.Rproj.user/  
 
 We can add as many rules as we like, then save the .gitignore text file when we're done. Now, if we didn't forget to include anything that needed to be ignored, we can safely add all our files in one go:
 

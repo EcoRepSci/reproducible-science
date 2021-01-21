@@ -411,14 +411,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="command-line-basics" class="section level2">
 <h2><span class="header-section-number">2.1</span> Command line basics</h2>
 <p>You can use Git from the command line in the computer’s terminal. The command line can be intimidating if you haven’t used it before, but using Git only requires basic familiarity with it. Commands are slightly different between operating systems, so I’ll assume Windows is the most commonly used and specify the Mac/Linux alternative when applicable.</p>
-<p>When you open up the terminal (or command prompt) on your computer, you’ll see a symbol, on many computers it is a “$” or “&gt;”, followed by a blinking cursor. That symbol is called the prompt, and it means the terminal is waiting for your input. If you copy-paste any code from this chapter into your terminal, make sure you only copy the part after the prompt. Also, if Ctrl+V does not work in the terminal, you can right-click to paste.</p>
+<p>When you open up the terminal (or command prompt) on your computer, you’ll see a symbol, on many computers it is a “$” or “&gt;”, followed by a blinking cursor. That symbol is called the prompt, and it means the terminal is waiting for your input. If you copy-paste any code from this chapter into your terminal,
+<strong>make sure you only copy the part after the prompt</strong> (don’t copy the &gt;).
+Also, if Ctrl+V does not work in the terminal, you can right-click to paste.</p>
 <p>When you open the terminal, you should automatically be located in the root directory of your file system (or your home directory, if you have a computer with multiple users). The name of the folder you’re in appears right before the prompt. For example, this is what my prompt looks like:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="version-control-git.html#cb8-1"></a><span class="ex">C</span>:\Users\Simona<span class="op">&gt;</span></span></code></pre></div>
 <p>If you are not in your root directory when you first open up the terminal, you can use the following command to navigate to it:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="version-control-git.html#cb9-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> \</span></code></pre></div>
-<p>This command stands for “change directory”. The “" symbol indicates the root directory. On Mac/Linux, you can navigate to the root directory by simply typing”cd" or:</p>
+<p>This command stands for “change directory”. The “\” symbol indicates the root directory. On Mac/Linux, you can navigate to the root directory by simply typing “cd” or:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="version-control-git.html#cb10-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> ~</span></code></pre></div>
-<p>If you want to go to a specific directory other than the root, you can type its path (relative to the folder you’re currently in) after “cd”. To go from Usersto Users:</p>
+<p>If you want to go to a specific directory other than the root, you can type its path (relative to the folder you’re currently in) after “cd”. To go from Users\Simona to Users\Simona\Documents:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="version-control-git.html#cb11-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> Documents</span></code></pre></div>
 <p>If you want to go back to the parent of the current directory (the folder that contains it), you can use:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="version-control-git.html#cb12-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> ..</span></code></pre></div>
@@ -472,20 +474,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can create a text file called “.gitignore” in our repository by using your default text editor (Notepad for Windows, TextEdit for MacOS, etc). The name must be exactly “.gitignore” for Git to recognize it. The file must have no extension (i.e., .txt) so go ahead and delete that (don’t worry about any warnings).</p>
 <p>Once .gitignore is created, we can start adding rules. Nothing prevents us from listing files in .gitignore one by one, but this approach is not efficient:</p>
 <blockquote>
-<p>stacked_barplot_diet_composition.jpg &lt;&gt;
-predicted_population_trends.jpg &lt;&gt;
-individual_movement_tracks.jpg &lt;&gt;
-capture_locations.jpg &lt;&gt;
-green_frog_diet_manuscript.docx &lt;&gt;
-green_frog_movement_manuscript.docx &lt;&gt;
+<p>stacked_barplot_diet_composition.jpg<br />
+predicted_population_trends.jpg<br />
+individual_movement_tracks.jpg<br />
+capture_locations.jpg<br />
+green_frog_diet_manuscript.docx<br />
+green_frog_movement_manuscript.docx<br />
 green_frog_demography_manuscript.docx</p>
 </blockquote>
 <p>Instead, we can use pattern matching to kill many birds with one stone. What all these files have in common is they are all either .jpg’s or .docx’s. We can use the wildcard ’*’ to signify “any character” before the file extension:</p>
 <blockquote>
-<p><em>.jpg &lt;&gt;
-</em>.docx</p>
+<p>*.jpg<br />
+*.docx</p>
 </blockquote>
-<p>This will exclude any .png or .docx file from being tracked by Git in this repository. Since the images are conveniently located all together in one folder, we can also just do this:</p>
+<p>This will exclude any .jpg or .docx file from being tracked by Git in this repository. Since the images are conveniently located all together in one folder, we can also just do this:</p>
 <blockquote>
 <p>figures/</p>
 </blockquote>
