@@ -26,19 +26,25 @@ In practice, what are some common habits that contradict the principles of tidy 
 
 Putting information for two separate variables into one column contradicts the "one column per variable" principle. A classic example of this is merging age class and sex into one -- for example "adult female", "juvenile male", etc. If, for instance, later on we wanted to filter based on age only, we would have to first separate the information within the column and then apply a filter. It is much more straightforward to combine information than to split it, so the structure of our data should always follow a reductionist approach where each table unit (cell) contains a single data unit (value).
 
-img
+```{r ss1, fig.cap=" ", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/spreadsheets_01.png")
+```
 
 ### Rows for variables, columns for observation
 
 While the choice of using rows for observations and columns for variables may seem arbitrary -- after all, why can't it be the other way around? -- consider this: the most commonly used data structure in R, the data frame, is a collection of vectors stored as columns. A property of vectors is that they contain data of a single type (for instance, you can't have both numbers and characters in the same vector, they either have to be all numbers or all characters). Now imagine a situation where a dataset includes weight measurements of individual green frogs captured in different ponds: for each frog, we'd have a weight value (a number) and the name of the pond where it was captured (a character string). If each frog gets a row, we get a column for weight (all numbers) and a column for pond (all characters). If each frog gets a column and weight and pond go in different rows, each column would contain a number and a character, which is not compatible with R. This is valid not only for R, but for other vector-based programming languages too. The tidy data format makes sure your data integrates well with your analysis software which means less work for you getting the data cleaned and ready.
 
-img
+```{r ss2, fig.cap=" ", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/spreadsheets_02.png")
+```
 
 ### Multiple tables in a single spreadsheet
 
 Creating multiple tables in a single spreadsheet is problematic because, while a human can see the layout (empty cells to visually separate different tables, borders, etc.) and interpret the tables as separate, the computer doesn't have eyes and won't understand that these are separate. Two values on the same row will be interpreted as belonging to the same experimental unit. Having multiple tables within a single spreadsheet draws false associations between values in the data. Starting from this format will invariably require some manual steps to get the data into a format the computer will read. Not good for reproducibility!
 
-img
+```{r ss3, fig.cap=" ", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/spreadsheets_03.png")
+```
 
 ### Multiple sheets
 
@@ -46,25 +52,33 @@ This one may seem innocuous, but actually it can be problematic as well. For sta
 
 Using multiple sheets becomes even more of a problem when you are saving the same type of information into separate sheets, like for example the same type of data collected during different surveys or years. This contradicts another principle of tidy data, which is **each type of observational unit forms a table**. There's no reason to split a table into multiple ones if they all contain the same type of observational unit (e.g., morphometric measurements of frogs from different ponds). Instead, you can just add an extra column for the survey number or year. This way you avoid inadvertently introducing inconsistencies in format when entering data, and you save yourself the work of having to merge multiple sheets into one when you start processing and analyzing.
 
-img
+```{r ss4, fig.cap=" ", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/spreadsheets_04.png")
+```
 
 ### Using formatting to convey information 
 
 Anything that has to do with visual formatting is not computer-readable. This includes borders, merging cells, colors, etc. When you load the data into an analysis software, all the graphical features are lost and all that is left is... rows and columns. Resisting the temptation to merge cells, and instead repeating the value across all rows/columns that it applies to, is making your data computer-friendly. Resisting the urge to color-code your data, and instead adding an additional column to encode the information you want to convey with the different colors, is making your data computer-friendly. Columns are cheap and there's no such thing as too many of them.
 
-img
+```{r ss5, fig.cap=" ", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/spreadsheets_05.png")
+```
 
 ### Putting units in cells
 
 Ideally, each measurement of a variable should be recorded in the same units. In this case, you can add the unit to the column name. But even if a column includes measurements in different units, these units should never go after the values in the cells. Adding units will make your processing/analysis software read that column as a character rather than as a numeric variable. Instead, if you need to specify which unit each measurement was taken in, add a new column called "*variable*_unit" and report it there. Remember, columns are cheap!
 
-img
+```{r ss6, fig.cap=" ", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/spreadsheets_06.png")
+```
 
 ### Using problematic column names
 
 Problematic column names are a lot like the problematic file names from Chapter \@ref(project-organization). They are non-descriptive, they contain spaces or special characters -- in short, they are human-readable but not computer-readable. Whether you separate words in column names using camel case or underscores, avoid using spaces. It's a good idea to include units in the column names, e.g., "weight_g", "distance_km", etc. Also, just like for file names, be consistent in your capitalization pattern and choice of delimiters.
 
-img
+```{r ss7, fig.cap=" ", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/spreadsheets_07.png")
+```
 
 ### Conflating zeros and missing values
 

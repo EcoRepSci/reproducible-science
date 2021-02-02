@@ -424,38 +424,66 @@ Figure 4.1: Artwork by Allison Horst
 <div id="multiple-variables-in-a-single-column" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Multiple variables in a single column</h3>
 <p>Putting information for two separate variables into one column contradicts the “one column per variable” principle. A classic example of this is merging age class and sex into one – for example “adult female”, “juvenile male”, etc. If, for instance, later on we wanted to filter based on age only, we would have to first separate the information within the column and then apply a filter. It is much more straightforward to combine information than to split it, so the structure of our data should always follow a reductionist approach where each table unit (cell) contains a single data unit (value).</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/spreadsheets_01.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
 </div>
 <div id="rows-for-variables-columns-for-observation" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Rows for variables, columns for observation</h3>
 <p>While the choice of using rows for observations and columns for variables may seem arbitrary – after all, why can’t it be the other way around? – consider this: the most commonly used data structure in R, the data frame, is a collection of vectors stored as columns. A property of vectors is that they contain data of a single type (for instance, you can’t have both numbers and characters in the same vector, they either have to be all numbers or all characters). Now imagine a situation where a dataset includes weight measurements of individual green frogs captured in different ponds: for each frog, we’d have a weight value (a number) and the name of the pond where it was captured (a character string). If each frog gets a row, we get a column for weight (all numbers) and a column for pond (all characters). If each frog gets a column and weight and pond go in different rows, each column would contain a number and a character, which is not compatible with R. This is valid not only for R, but for other vector-based programming languages too. The tidy data format makes sure your data integrates well with your analysis software which means less work for you getting the data cleaned and ready.</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/spreadsheets_02.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
 </div>
 <div id="multiple-tables-in-a-single-spreadsheet" class="section level3">
 <h3><span class="header-section-number">4.4.3</span> Multiple tables in a single spreadsheet</h3>
 <p>Creating multiple tables in a single spreadsheet is problematic because, while a human can see the layout (empty cells to visually separate different tables, borders, etc.) and interpret the tables as separate, the computer doesn’t have eyes and won’t understand that these are separate. Two values on the same row will be interpreted as belonging to the same experimental unit. Having multiple tables within a single spreadsheet draws false associations between values in the data. Starting from this format will invariably require some manual steps to get the data into a format the computer will read. Not good for reproducibility!</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/spreadsheets_03.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
 </div>
 <div id="multiple-sheets" class="section level3">
 <h3><span class="header-section-number">4.4.4</span> Multiple sheets</h3>
 <p>This one may seem innocuous, but actually it can be problematic as well. For starters, you can’t load multiple sheets into R at the same time (by multiple sheets, I mean the tabs at the bottom). If you’re only using base R functions, you can’t even load a .xslx file (although you can using packages such as <code>readxl</code>), so you’re going to have to save your spreadsheets as .csv before importing. When saving as .csv, you’ll only be able to save one sheet at a time. If you’re not aware of this, you end up losing track of the data that was in the other sheets. Even if you are aware, it just makes it more work for you to save each of the sheets separately.</p>
 <p>Using multiple sheets becomes even more of a problem when you are saving the same type of information into separate sheets, like for example the same type of data collected during different surveys or years. This contradicts another principle of tidy data, which is <strong>each type of observational unit forms a table</strong>. There’s no reason to split a table into multiple ones if they all contain the same type of observational unit (e.g., morphometric measurements of frogs from different ponds). Instead, you can just add an extra column for the survey number or year. This way you avoid inadvertently introducing inconsistencies in format when entering data, and you save yourself the work of having to merge multiple sheets into one when you start processing and analyzing.</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/spreadsheets_04.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
 </div>
 <div id="using-formatting-to-convey-information" class="section level3">
 <h3><span class="header-section-number">4.4.5</span> Using formatting to convey information</h3>
 <p>Anything that has to do with visual formatting is not computer-readable. This includes borders, merging cells, colors, etc. When you load the data into an analysis software, all the graphical features are lost and all that is left is… rows and columns. Resisting the temptation to merge cells, and instead repeating the value across all rows/columns that it applies to, is making your data computer-friendly. Resisting the urge to color-code your data, and instead adding an additional column to encode the information you want to convey with the different colors, is making your data computer-friendly. Columns are cheap and there’s no such thing as too many of them.</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/spreadsheets_05.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
 </div>
 <div id="putting-units-in-cells" class="section level3">
 <h3><span class="header-section-number">4.4.6</span> Putting units in cells</h3>
 <p>Ideally, each measurement of a variable should be recorded in the same units. In this case, you can add the unit to the column name. But even if a column includes measurements in different units, these units should never go after the values in the cells. Adding units will make your processing/analysis software read that column as a character rather than as a numeric variable. Instead, if you need to specify which unit each measurement was taken in, add a new column called “<em>variable</em>_unit” and report it there. Remember, columns are cheap!</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/spreadsheets_06.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
 </div>
 <div id="using-problematic-column-names" class="section level3">
 <h3><span class="header-section-number">4.4.7</span> Using problematic column names</h3>
 <p>Problematic column names are a lot like the problematic file names from Chapter <a href="project-organization.html#project-organization">1</a>. They are non-descriptive, they contain spaces or special characters – in short, they are human-readable but not computer-readable. Whether you separate words in column names using camel case or underscores, avoid using spaces. It’s a good idea to include units in the column names, e.g., “weight_g”, “distance_km”, etc. Also, just like for file names, be consistent in your capitalization pattern and choice of delimiters.</p>
-<p>img</p>
+<div class="figure" style="text-align: center">
+<img src="img/spreadsheets_07.png" alt=" " width="100%" />
+<p class="caption">
+</p>
+</div>
 </div>
 <div id="conflating-zeros-and-missing-values" class="section level3">
 <h3><span class="header-section-number">4.4.8</span> Conflating zeros and missing values</h3>
