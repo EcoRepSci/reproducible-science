@@ -17,8 +17,8 @@ dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/d
 The acronym SQL stands for Structured Query Language. It is the most used 
 language worldwide for relational database management systems. Whenever you 
 interact with a database in your daily life (for example, any time you browse an 
-online shopping website, or any time you look up something on Google), you can 
-bet that it was written in SQL. 
+online shopping website, or any time you look up something on StackOverflow!), 
+there's a good chance it was written in SQL. 
 
 SQL is a language that is used and understood by different database management
 systems, such as Oracle, PostgreSQL, MySQL, or SQLite. While all these programs
