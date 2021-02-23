@@ -65,7 +65,7 @@ install.packages("knitr")
 In RStudio, we create a new RMarkdown document by clicking on the *File* tab
 and selecting *New File* > *R Markdown*. 
 
-```{r rmarkdown1, fig.cap="Create a new RMarkdown file", fig.align='center', out.width='60%', eval = TRUE, echo = FALSE}
+```{r rmarkdown1, fig.cap="Create a new RMarkdown file", fig.align='center', out.width='100%', eval = TRUE, echo = FALSE}
 knitr::include_graphics("img/rmarkdown1.png")
 ```
 
@@ -75,7 +75,7 @@ page, you will select HTML. Even if you want to produce a PDF or other type of
 document, it's still a good idea to select HTML here, because you can easily
 switch from HTML to PDF or others but not the other way around. 
 
-```{r rmarkdown2, fig.cap="Create a new RMarkdown file", fig.align='center', out.width='60%', eval = TRUE, echo = FALSE}
+```{r rmarkdown2, fig.cap="Create a new RMarkdown file", fig.align='center', out.width='100%', eval = TRUE, echo = FALSE}
 knitr::include_graphics("img/rmarkdown2.png")
 ```
 
@@ -230,7 +230,7 @@ When you are done composing your document and you want to see the rendered
 version, it's time to knit. You can click *Knit* on the RStudio script toolbar
 and the process will start. 
 
-```{r rmarkdown3, fig.cap="Knitting an RMarkdown file", fig.align='center', out.width='60%', eval = TRUE, echo = FALSE}
+```{r rmarkdown3, fig.cap="Knitting an RMarkdown file", fig.align='center', out.width='100%', eval = TRUE, echo = FALSE}
 knitr::include_graphics("img/rmarkdown3.png")
 ```
 

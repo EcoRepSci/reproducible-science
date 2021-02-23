@@ -456,17 +456,17 @@ current table with whatever is in the .csv, and any constraints we have enforced
 correctly. Because this is a query that retrieves data, not a query that
 modifies the database, we use <code>dbGetQuery</code> instead of <code>dbExecute</code>:</p>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="rsqlite.html#cb139-1"></a><span class="kw">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons LIMIT 10;&quot;</span>)</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D1    F  Subadult     Hebridean Black
-## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 3         D3    F     Adult     Hebridean Black
-## 4         D4    F     Adult Peruvian Vipertooth
-## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 6         D6    F     Adult Norwegian Ridgeback
-## 7         D7    M     Adult     Hebridean Black
-## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 9         D9    F     Adult Norwegian Ridgeback
-## 10       D10    F     Adult  Common Welsh Green</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D1    F  Subadult     Hebridean Black             &lt;NA&gt;
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn             &lt;NA&gt;
+## 3         D3    F     Adult     Hebridean Black             &lt;NA&gt;
+## 4         D4    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 6         D6    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 7         D7    M     Adult     Hebridean Black             &lt;NA&gt;
+## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 9         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 10       D10    F     Adult  Common Welsh Green             &lt;NA&gt;</code></pre>
 <p>Now we can repeat this process with the other tables:</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="rsqlite.html#cb141-1"></a><span class="kw">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE tags (</span></span>
 <span id="cb141-2"><a href="rsqlite.html#cb141-2"></a><span class="st">tag_id char(6) NOT NULL PRIMARY KEY,</span></span>

@@ -927,7 +927,8 @@ talking. For example:</p>
 ## 497       D96
 ## 498       D97
 ## 499       D98
-## 500       D99</code></pre>
+## 500       D99
+## 501      D999</code></pre>
 <p>The verb <code>SELECT</code> is one we’ll be using over and over again. Any time you want
 to select data you also have to specify which table you want it from, so the
 <code>SELECT</code> clause is always followed by a <code>FROM</code> clause. In this case, we asked
@@ -1436,512 +1437,514 @@ right?</p>
 ## 497      D497    F
 ## 498      D498    F
 ## 499      D499    F
-## 500      D500    F</code></pre>
+## 500      D500    F
+## 501      D999    F</code></pre>
 <p>And if we want to see the whole table (not specific columns), we can use a
 wildcard:</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb51-1"><a href="sql.html#cb51-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb51-2"><a href="sql.html#cb51-2"></a><span class="kw">FROM</span> dragons;</span></code></pre></div>
-<pre><code>##     dragon_id  sex age_class             species
-## 1          D1    F  Subadult     Hebridean Black
-## 2          D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 3          D3    F     Adult     Hebridean Black
-## 4          D4    F     Adult Peruvian Vipertooth
-## 5          D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 6          D6    F     Adult Norwegian Ridgeback
-## 7          D7    M     Adult     Hebridean Black
-## 8          D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 9          D9    F     Adult Norwegian Ridgeback
-## 10        D10    F     Adult  Common Welsh Green
-## 11        D11    F     Adult Peruvian Vipertooth
-## 12        D12    F     Adult Swedish Short-Snout
-## 13        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 14        D14 &lt;NA&gt;  Juvenile     Hebridean Black
-## 15        D15 &lt;NA&gt;  Juvenile    Chinese Fireball
-## 16        D16    F     Adult    Chinese Fireball
-## 17        D17    F     Adult Peruvian Vipertooth
-## 18        D18    F     Adult Norwegian Ridgeback
-## 19        D19    F     Adult  Common Welsh Green
-## 20        D20    M  Subadult    Chinese Fireball
-## 21        D21    F     Adult Ukrainian Ironbelly
-## 22        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 23        D23    M     Adult Swedish Short-Snout
-## 24        D24 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 25        D25    M     Adult Peruvian Vipertooth
-## 26        D26 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 27        D27    F     Adult Norwegian Ridgeback
-## 28        D28    M     Adult  Common Welsh Green
-## 29        D29    F     Adult Norwegian Ridgeback
-## 30        D30    F     Adult    Chinese Fireball
-## 31        D31 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 32        D32    M     Adult Ukrainian Ironbelly
-## 33        D33    F     Adult   Romanian Longhorn
-## 34        D34    F     Adult Norwegian Ridgeback
-## 35        D35    F     Adult Ukrainian Ironbelly
-## 36        D36 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 37        D37    F  Subadult  Common Welsh Green
-## 38        D38    F     Adult  Hungarian Horntail
-## 39        D39 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 40        D40 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 41        D41 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 42        D42    M     Adult Swedish Short-Snout
-## 43        D43    F  Subadult  Antipodean Opaleye
-## 44        D44    M     Adult   Romanian Longhorn
-## 45        D45    F     Adult Peruvian Vipertooth
-## 46        D46    M  Subadult     Hebridean Black
-## 47        D47    F     Adult Ukrainian Ironbelly
-## 48        D48    M     Adult Ukrainian Ironbelly
-## 49        D49 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 50        D50    F     Adult    Chinese Fireball
-## 51        D51    F  Subadult Norwegian Ridgeback
-## 52        D52    M     Adult  Common Welsh Green
-## 53        D53 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 54        D54    F     Adult Norwegian Ridgeback
-## 55        D55 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 56        D56    F  Subadult Norwegian Ridgeback
-## 57        D57    F     Adult  Common Welsh Green
-## 58        D58    M     Adult     Hebridean Black
-## 59        D59    F     Adult Peruvian Vipertooth
-## 60        D60    F     Adult     Hebridean Black
-## 61        D61    M  Subadult   Romanian Longhorn
-## 62        D62    F     Adult  Hungarian Horntail
-## 63        D63    F     Adult  Antipodean Opaleye
-## 64        D64 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 65        D65 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 66        D66 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 67        D67    M     Adult Norwegian Ridgeback
-## 68        D68    M     Adult  Antipodean Opaleye
-## 69        D69    F  Subadult     Hebridean Black
-## 70        D70    F     Adult Norwegian Ridgeback
-## 71        D71    M     Adult     Hebridean Black
-## 72        D72 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 73        D73    F     Adult   Romanian Longhorn
-## 74        D74 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 75        D75    M     Adult Swedish Short-Snout
-## 76        D76    M     Adult   Romanian Longhorn
-## 77        D77 &lt;NA&gt;  Juvenile     Hebridean Black
-## 78        D78 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 79        D79    M     Adult  Common Welsh Green
-## 80        D80    F     Adult   Romanian Longhorn
-## 81        D81 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 82        D82    F     Adult     Hebridean Black
-## 83        D83 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 84        D84    M     Adult Norwegian Ridgeback
-## 85        D85    F     Adult     Hebridean Black
-## 86        D86    F     Adult     Hebridean Black
-## 87        D87    M     Adult  Hungarian Horntail
-## 88        D88    M     Adult Swedish Short-Snout
-## 89        D89    F     Adult Norwegian Ridgeback
-## 90        D90    M     Adult Peruvian Vipertooth
-## 91        D91    F     Adult     Hebridean Black
-## 92        D92    M     Adult     Hebridean Black
-## 93        D93    M  Subadult Peruvian Vipertooth
-## 94        D94    M     Adult   Romanian Longhorn
-## 95        D95    M     Adult   Romanian Longhorn
-## 96        D96    F     Adult  Common Welsh Green
-## 97        D97 &lt;NA&gt;  Juvenile    Chinese Fireball
-## 98        D98 &lt;NA&gt;  Juvenile     Hebridean Black
-## 99        D99    F     Adult     Hebridean Black
-## 100      D100 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 101      D101 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 102      D102    F  Subadult  Hungarian Horntail
-## 103      D103    F     Adult     Hebridean Black
-## 104      D104    F     Adult     Hebridean Black
-## 105      D105    M     Adult  Common Welsh Green
-## 106      D106 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 107      D107 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 108      D108    F     Adult Norwegian Ridgeback
-## 109      D109    M     Adult Swedish Short-Snout
-## 110      D110    F     Adult Peruvian Vipertooth
-## 111      D111    M     Adult Norwegian Ridgeback
-## 112      D112    F     Adult Peruvian Vipertooth
-## 113      D113 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 114      D114 &lt;NA&gt;  Juvenile    Chinese Fireball
-## 115      D115    F     Adult  Common Welsh Green
-## 116      D116    F     Adult Norwegian Ridgeback
-## 117      D117 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 118      D118 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 119      D119    F     Adult Norwegian Ridgeback
-## 120      D120    F     Adult     Hebridean Black
-## 121      D121 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 122      D122    F     Adult Ukrainian Ironbelly
-## 123      D123 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 124      D124    M     Adult    Chinese Fireball
-## 125      D125 &lt;NA&gt;  Juvenile Swedish Short-Snout
-## 126      D126    M     Adult Swedish Short-Snout
-## 127      D127    M  Subadult Ukrainian Ironbelly
-## 128      D128 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 129      D129    M     Adult   Romanian Longhorn
-## 130      D130 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 131      D131 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 132      D132    F     Adult Norwegian Ridgeback
-## 133      D133    F     Adult Ukrainian Ironbelly
-## 134      D134    F     Adult     Hebridean Black
-## 135      D135 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 136      D136    F  Subadult    Chinese Fireball
-## 137      D137    F     Adult  Antipodean Opaleye
-## 138      D138    F     Adult  Common Welsh Green
-## 139      D139    F     Adult     Hebridean Black
-## 140      D140 &lt;NA&gt;  Juvenile     Hebridean Black
-## 141      D141    F     Adult   Romanian Longhorn
-## 142      D142    M  Subadult  Common Welsh Green
-## 143      D143    F     Adult  Antipodean Opaleye
-## 144      D144    M     Adult Norwegian Ridgeback
-## 145      D145    M     Adult Norwegian Ridgeback
-## 146      D146    M     Adult Norwegian Ridgeback
-## 147      D147 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 148      D148 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 149      D149    M     Adult Norwegian Ridgeback
-## 150      D150    F     Adult  Hungarian Horntail
-## 151      D151 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 152      D152    F  Subadult Peruvian Vipertooth
-## 153      D153    M     Adult  Antipodean Opaleye
-## 154      D154    F     Adult     Hebridean Black
-## 155      D155    F     Adult  Common Welsh Green
-## 156      D156    M     Adult Peruvian Vipertooth
-## 157      D157    F  Subadult Swedish Short-Snout
-## 158      D158 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 159      D159 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 160      D160    F     Adult  Common Welsh Green
-## 161      D161    F     Adult    Chinese Fireball
-## 162      D162    F     Adult  Hungarian Horntail
-## 163      D163 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 164      D164 &lt;NA&gt;  Juvenile    Chinese Fireball
-## 165      D165    M     Adult  Hungarian Horntail
-## 166      D166 &lt;NA&gt;  Juvenile Swedish Short-Snout
-## 167      D167    M     Adult Norwegian Ridgeback
-## 168      D168    F     Adult Swedish Short-Snout
-## 169      D169    F     Adult     Hebridean Black
-## 170      D170 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 171      D171    M  Subadult Ukrainian Ironbelly
-## 172      D172    M     Adult Peruvian Vipertooth
-## 173      D173    F     Adult Swedish Short-Snout
-## 174      D174 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 175      D175    M     Adult    Chinese Fireball
-## 176      D176    F     Adult Ukrainian Ironbelly
-## 177      D177    F     Adult   Romanian Longhorn
-## 178      D178    F     Adult     Hebridean Black
-## 179      D179 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 180      D180    F     Adult Norwegian Ridgeback
-## 181      D181    F     Adult  Common Welsh Green
-## 182      D182    F     Adult  Common Welsh Green
-## 183      D183    F     Adult  Common Welsh Green
-## 184      D184    F     Adult Norwegian Ridgeback
-## 185      D185    M     Adult    Chinese Fireball
-## 186      D186 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 187      D187 &lt;NA&gt;  Juvenile     Hebridean Black
-## 188      D188    M     Adult  Hungarian Horntail
-## 189      D189    F     Adult  Hungarian Horntail
-## 190      D190    F     Adult     Hebridean Black
-## 191      D191    M     Adult Peruvian Vipertooth
-## 192      D192    M     Adult Norwegian Ridgeback
-## 193      D193    M     Adult Peruvian Vipertooth
-## 194      D194 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 195      D195    F     Adult   Romanian Longhorn
-## 196      D196    F     Adult   Romanian Longhorn
-## 197      D197    F     Adult  Hungarian Horntail
-## 198      D198    M     Adult Ukrainian Ironbelly
-## 199      D199 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 200      D200 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 201      D201 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 202      D202    M     Adult  Common Welsh Green
-## 203      D203 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 204      D204    M     Adult   Romanian Longhorn
-## 205      D205    F     Adult  Hungarian Horntail
-## 206      D206    F     Adult  Hungarian Horntail
-## 207      D207 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 208      D208    M     Adult Norwegian Ridgeback
-## 209      D209 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 210      D210    M     Adult Norwegian Ridgeback
-## 211      D211    F     Adult     Hebridean Black
-## 212      D212    F     Adult  Antipodean Opaleye
-## 213      D213 &lt;NA&gt;  Juvenile     Hebridean Black
-## 214      D214    F  Subadult  Hungarian Horntail
-## 215      D215    F     Adult Norwegian Ridgeback
-## 216      D216 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 217      D217    F     Adult Peruvian Vipertooth
-## 218      D218    F     Adult     Hebridean Black
-## 219      D219    M     Adult Peruvian Vipertooth
-## 220      D220    F     Adult  Common Welsh Green
-## 221      D221    M     Adult Peruvian Vipertooth
-## 222      D222    M  Subadult  Hungarian Horntail
-## 223      D223    M     Adult  Antipodean Opaleye
-## 224      D224 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 225      D225    M     Adult Norwegian Ridgeback
-## 226      D226 &lt;NA&gt;  Juvenile Swedish Short-Snout
-## 227      D227    F     Adult   Romanian Longhorn
-## 228      D228    F     Adult     Hebridean Black
-## 229      D229 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 230      D230    M     Adult Norwegian Ridgeback
-## 231      D231    M     Adult Norwegian Ridgeback
-## 232      D232    F  Subadult     Hebridean Black
-## 233      D233    F  Subadult   Romanian Longhorn
-## 234      D234    F     Adult Norwegian Ridgeback
-## 235      D235 &lt;NA&gt;  Juvenile     Hebridean Black
-## 236      D236    F     Adult  Hungarian Horntail
-## 237      D237    M     Adult  Hungarian Horntail
-## 238      D238    F     Adult Swedish Short-Snout
-## 239      D239    F     Adult     Hebridean Black
-## 240      D240    F     Adult Ukrainian Ironbelly
-## 241      D241 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 242      D242    M     Adult   Romanian Longhorn
-## 243      D243 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 244      D244    F     Adult  Hungarian Horntail
-## 245      D245 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 246      D246 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 247      D247    M     Adult Norwegian Ridgeback
-## 248      D248    M  Subadult  Common Welsh Green
-## 249      D249 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 250      D250    F     Adult   Romanian Longhorn
-## 251      D251 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 252      D252 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 253      D253    F     Adult Norwegian Ridgeback
-## 254      D254    F     Adult   Romanian Longhorn
-## 255      D255 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 256      D256 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 257      D257 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 258      D258 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 259      D259    F     Adult     Hebridean Black
-## 260      D260    F     Adult  Common Welsh Green
-## 261      D261 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 262      D262    M     Adult Peruvian Vipertooth
-## 263      D263    M     Adult     Hebridean Black
-## 264      D264    F  Subadult Norwegian Ridgeback
-## 265      D265    M     Adult     Hebridean Black
-## 266      D266 &lt;NA&gt;  Juvenile Swedish Short-Snout
-## 267      D267 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 268      D268    F     Adult   Romanian Longhorn
-## 269      D269    F     Adult Swedish Short-Snout
-## 270      D270 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 271      D271    F     Adult   Romanian Longhorn
-## 272      D272    F     Adult   Romanian Longhorn
-## 273      D273 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 274      D274    F     Adult Norwegian Ridgeback
-## 275      D275    F     Adult     Hebridean Black
-## 276      D276    M     Adult Norwegian Ridgeback
-## 277      D277    F  Subadult Swedish Short-Snout
-## 278      D278    F     Adult  Common Welsh Green
-## 279      D279 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 280      D280    M     Adult Ukrainian Ironbelly
-## 281      D281    F     Adult   Romanian Longhorn
-## 282      D282    F     Adult Peruvian Vipertooth
-## 283      D283    F     Adult  Common Welsh Green
-## 284      D284    F     Adult   Romanian Longhorn
-## 285      D285 &lt;NA&gt;  Juvenile     Hebridean Black
-## 286      D286    F     Adult Ukrainian Ironbelly
-## 287      D287    M     Adult Norwegian Ridgeback
-## 288      D288    M  Subadult     Hebridean Black
-## 289      D289 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 290      D290 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 291      D291    F     Adult     Hebridean Black
-## 292      D292 &lt;NA&gt;  Juvenile     Hebridean Black
-## 293      D293    F     Adult    Chinese Fireball
-## 294      D294    F     Adult  Common Welsh Green
-## 295      D295    M  Subadult  Antipodean Opaleye
-## 296      D296 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 297      D297 &lt;NA&gt;  Juvenile     Hebridean Black
-## 298      D298    M     Adult Peruvian Vipertooth
-## 299      D299    F     Adult   Romanian Longhorn
-## 300      D300    F     Adult Peruvian Vipertooth
-## 301      D301    F  Subadult  Common Welsh Green
-## 302      D302    F     Adult Ukrainian Ironbelly
-## 303      D303 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 304      D304    F  Subadult   Romanian Longhorn
-## 305      D305    M     Adult  Common Welsh Green
-## 306      D306 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 307      D307 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 308      D308    F     Adult   Romanian Longhorn
-## 309      D309 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 310      D310 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 311      D311    M     Adult Norwegian Ridgeback
-## 312      D312    M  Subadult    Chinese Fireball
-## 313      D313    F     Adult  Antipodean Opaleye
-## 314      D314    M     Adult   Romanian Longhorn
-## 315      D315    F     Adult  Common Welsh Green
-## 316      D316    M  Subadult     Hebridean Black
-## 317      D317    F     Adult  Antipodean Opaleye
-## 318      D318 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 319      D319 &lt;NA&gt;  Juvenile Swedish Short-Snout
-## 320      D320 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 321      D321    M     Adult Norwegian Ridgeback
-## 322      D322 &lt;NA&gt;  Juvenile    Chinese Fireball
-## 323      D323    M     Adult   Romanian Longhorn
-## 324      D324 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 325      D325    F     Adult Norwegian Ridgeback
-## 326      D326    F     Adult Ukrainian Ironbelly
-## 327      D327    M  Subadult   Romanian Longhorn
-## 328      D328 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 329      D329    M     Adult   Romanian Longhorn
-## 330      D330    F     Adult Peruvian Vipertooth
-## 331      D331 &lt;NA&gt;  Juvenile Swedish Short-Snout
-## 332      D332    F  Subadult  Common Welsh Green
-## 333      D333 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 334      D334 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 335      D335    F     Adult   Romanian Longhorn
-## 336      D336 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 337      D337    M     Adult Peruvian Vipertooth
-## 338      D338 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 339      D339 &lt;NA&gt;  Juvenile    Chinese Fireball
-## 340      D340 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 341      D341    F     Adult Norwegian Ridgeback
-## 342      D342 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 343      D343    F     Adult  Antipodean Opaleye
-## 344      D344 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 345      D345    M     Adult Swedish Short-Snout
-## 346      D346    F     Adult   Romanian Longhorn
-## 347      D347    F  Subadult  Common Welsh Green
-## 348      D348 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 349      D349    M     Adult Peruvian Vipertooth
-## 350      D350    M     Adult     Hebridean Black
-## 351      D351    M     Adult Peruvian Vipertooth
-## 352      D352    M     Adult   Romanian Longhorn
-## 353      D353 &lt;NA&gt;  Juvenile     Hebridean Black
-## 354      D354    F     Adult Norwegian Ridgeback
-## 355      D355 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 356      D356    F     Adult   Romanian Longhorn
-## 357      D357    F  Subadult   Romanian Longhorn
-## 358      D358 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 359      D359    F     Adult     Hebridean Black
-## 360      D360    M     Adult Norwegian Ridgeback
-## 361      D361    M     Adult Swedish Short-Snout
-## 362      D362    F  Subadult Norwegian Ridgeback
-## 363      D363 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 364      D364 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 365      D365    M     Adult   Romanian Longhorn
-## 366      D366    M     Adult Norwegian Ridgeback
-## 367      D367    M     Adult Peruvian Vipertooth
-## 368      D368    F     Adult  Common Welsh Green
-## 369      D369    M     Adult Norwegian Ridgeback
-## 370      D370 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 371      D371 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 372      D372    M     Adult Peruvian Vipertooth
-## 373      D373    F     Adult Peruvian Vipertooth
-## 374      D374    M     Adult Swedish Short-Snout
-## 375      D375    M     Adult Norwegian Ridgeback
-## 376      D376 &lt;NA&gt;  Juvenile Swedish Short-Snout
-## 377      D377    F     Adult     Hebridean Black
-## 378      D378    M     Adult   Romanian Longhorn
-## 379      D379    F     Adult  Antipodean Opaleye
-## 380      D380 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 381      D381    M     Adult  Common Welsh Green
-## 382      D382    F     Adult Norwegian Ridgeback
-## 383      D383    F     Adult     Hebridean Black
-## 384      D384    M     Adult  Hungarian Horntail
-## 385      D385    F     Adult  Common Welsh Green
-## 386      D386 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 387      D387    M     Adult     Hebridean Black
-## 388      D388    F  Subadult  Common Welsh Green
-## 389      D389    F     Adult     Hebridean Black
-## 390      D390    F     Adult  Common Welsh Green
-## 391      D391 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 392      D392    M     Adult Peruvian Vipertooth
-## 393      D393    M     Adult     Hebridean Black
-## 394      D394    M     Adult Swedish Short-Snout
-## 395      D395 &lt;NA&gt;  Juvenile  Antipodean Opaleye
-## 396      D396    F  Subadult Norwegian Ridgeback
-## 397      D397 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 398      D398    F     Adult  Common Welsh Green
-## 399      D399    F     Adult   Romanian Longhorn
-## 400      D400 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 401      D401    M  Subadult Norwegian Ridgeback
-## 402      D402    F     Adult  Common Welsh Green
-## 403      D403 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 404      D404    F     Adult  Common Welsh Green
-## 405      D405    M     Adult   Romanian Longhorn
-## 406      D406    M     Adult     Hebridean Black
-## 407      D407    M     Adult  Antipodean Opaleye
-## 408      D408    F     Adult  Common Welsh Green
-## 409      D409 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 410      D410    F     Adult     Hebridean Black
-## 411      D411 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 412      D412 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 413      D413    F     Adult   Romanian Longhorn
-## 414      D414    F     Adult Peruvian Vipertooth
-## 415      D415    F     Adult   Romanian Longhorn
-## 416      D416    F     Adult   Romanian Longhorn
-## 417      D417    M     Adult Norwegian Ridgeback
-## 418      D418    M  Subadult  Common Welsh Green
-## 419      D419    F     Adult Norwegian Ridgeback
-## 420      D420 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 421      D421 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 422      D422    F     Adult Norwegian Ridgeback
-## 423      D423    M     Adult  Common Welsh Green
-## 424      D424    F     Adult     Hebridean Black
-## 425      D425    M     Adult   Romanian Longhorn
-## 426      D426    F     Adult Norwegian Ridgeback
-## 427      D427    F     Adult Peruvian Vipertooth
-## 428      D428 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 429      D429 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 430      D430    F     Adult  Hungarian Horntail
-## 431      D431 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 432      D432    M     Adult  Antipodean Opaleye
-## 433      D433    M     Adult Peruvian Vipertooth
-## 434      D434 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 435      D435 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 436      D436 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 437      D437    M     Adult  Common Welsh Green
-## 438      D438 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 439      D439    F  Subadult  Hungarian Horntail
-## 440      D440    M     Adult  Common Welsh Green
-## 441      D441    F     Adult Norwegian Ridgeback
-## 442      D442    M     Adult   Romanian Longhorn
-## 443      D443    F     Adult     Hebridean Black
-## 444      D444    M     Adult     Hebridean Black
-## 445      D445    M     Adult Norwegian Ridgeback
-## 446      D446    F     Adult Swedish Short-Snout
-## 447      D447 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 448      D448    F     Adult Peruvian Vipertooth
-## 449      D449    M     Adult    Chinese Fireball
-## 450      D450    F     Adult Peruvian Vipertooth
-## 451      D451    F     Adult  Common Welsh Green
-## 452      D452    F     Adult Swedish Short-Snout
-## 453      D453    F     Adult  Antipodean Opaleye
-## 454      D454    M     Adult   Romanian Longhorn
-## 455      D455    F     Adult  Common Welsh Green
-## 456      D456    F     Adult Peruvian Vipertooth
-## 457      D457    F     Adult  Antipodean Opaleye
-## 458      D458    F     Adult   Romanian Longhorn
-## 459      D459    F  Subadult Swedish Short-Snout
-## 460      D460    F     Adult Norwegian Ridgeback
-## 461      D461    M     Adult     Hebridean Black
-## 462      D462 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 463      D463    M     Adult Peruvian Vipertooth
-## 464      D464    F     Adult     Hebridean Black
-## 465      D465    M     Adult  Hungarian Horntail
-## 466      D466 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 467      D467 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 468      D468    M     Adult Peruvian Vipertooth
-## 469      D469    F     Adult   Romanian Longhorn
-## 470      D470    F     Adult  Hungarian Horntail
-## 471      D471    F     Adult Peruvian Vipertooth
-## 472      D472    M     Adult  Hungarian Horntail
-## 473      D473    M     Adult Peruvian Vipertooth
-## 474      D474    F     Adult Ukrainian Ironbelly
-## 475      D475    M  Subadult Norwegian Ridgeback
-## 476      D476    F     Adult Norwegian Ridgeback
-## 477      D477    M     Adult Norwegian Ridgeback
-## 478      D478    M     Adult  Common Welsh Green
-## 479      D479    F     Adult    Chinese Fireball
-## 480      D480    F     Adult     Hebridean Black
-## 481      D481    F     Adult  Hungarian Horntail
-## 482      D482    M  Subadult   Romanian Longhorn
-## 483      D483 &lt;NA&gt;  Juvenile     Hebridean Black
-## 484      D484    M     Adult     Hebridean Black
-## 485      D485    M     Adult     Hebridean Black
-## 486      D486 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 487      D487    F     Adult  Hungarian Horntail
-## 488      D488 &lt;NA&gt;  Juvenile  Hungarian Horntail
-## 489      D489    F     Adult  Common Welsh Green
-## 490      D490    F     Adult   Romanian Longhorn
-## 491      D491    F     Adult     Hebridean Black
-## 492      D492    F     Adult  Hungarian Horntail
-## 493      D493    F     Adult     Hebridean Black
-## 494      D494    F     Adult    Chinese Fireball
-## 495      D495    M     Adult   Romanian Longhorn
-## 496      D496    F     Adult   Romanian Longhorn
-## 497      D497    F     Adult  Hungarian Horntail
-## 498      D498    F     Adult  Common Welsh Green
-## 499      D499    F     Adult Peruvian Vipertooth
-## 500      D500    F     Adult  Common Welsh Green</code></pre>
+<pre><code>##     dragon_id  sex age_class             species    update_timestamp
+## 1          D1    F  Subadult     Hebridean Black                &lt;NA&gt;
+## 2          D2 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 3          D3    F     Adult     Hebridean Black                &lt;NA&gt;
+## 4          D4    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 5          D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 6          D6    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 7          D7    M     Adult     Hebridean Black                &lt;NA&gt;
+## 8          D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 9          D9    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 10        D10    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 11        D11    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 12        D12    F     Adult Swedish Short-Snout                &lt;NA&gt;
+## 13        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 14        D14 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 15        D15 &lt;NA&gt;  Juvenile    Chinese Fireball                &lt;NA&gt;
+## 16        D16    F     Adult    Chinese Fireball                &lt;NA&gt;
+## 17        D17    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 18        D18    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 19        D19    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 20        D20    M  Subadult    Chinese Fireball                &lt;NA&gt;
+## 21        D21    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 22        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 23        D23    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 24        D24 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 25        D25    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 26        D26 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 27        D27    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 28        D28    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 29        D29    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 30        D30    F     Adult    Chinese Fireball                &lt;NA&gt;
+## 31        D31 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 32        D32    M     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 33        D33    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 34        D34    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 35        D35    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 36        D36 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 37        D37    F  Subadult  Common Welsh Green                &lt;NA&gt;
+## 38        D38    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 39        D39 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 40        D40 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 41        D41 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 42        D42    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 43        D43    F  Subadult  Antipodean Opaleye                &lt;NA&gt;
+## 44        D44    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 45        D45    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 46        D46    M  Subadult     Hebridean Black                &lt;NA&gt;
+## 47        D47    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 48        D48    M     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 49        D49 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 50        D50    F     Adult    Chinese Fireball                &lt;NA&gt;
+## 51        D51    F  Subadult Norwegian Ridgeback                &lt;NA&gt;
+## 52        D52    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 53        D53 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 54        D54    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 55        D55 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 56        D56    F  Subadult Norwegian Ridgeback                &lt;NA&gt;
+## 57        D57    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 58        D58    M     Adult     Hebridean Black                &lt;NA&gt;
+## 59        D59    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 60        D60    F     Adult     Hebridean Black                &lt;NA&gt;
+## 61        D61    M  Subadult   Romanian Longhorn                &lt;NA&gt;
+## 62        D62    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 63        D63    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 64        D64 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 65        D65 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 66        D66 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 67        D67    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 68        D68    M     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 69        D69    F  Subadult     Hebridean Black                &lt;NA&gt;
+## 70        D70    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 71        D71    M     Adult     Hebridean Black                &lt;NA&gt;
+## 72        D72 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 73        D73    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 74        D74 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 75        D75    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 76        D76    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 77        D77 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 78        D78 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 79        D79    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 80        D80    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 81        D81 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 82        D82    F     Adult     Hebridean Black                &lt;NA&gt;
+## 83        D83 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 84        D84    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 85        D85    F     Adult     Hebridean Black                &lt;NA&gt;
+## 86        D86    F     Adult     Hebridean Black                &lt;NA&gt;
+## 87        D87    M     Adult  Hungarian Horntail                &lt;NA&gt;
+## 88        D88    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 89        D89    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 90        D90    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 91        D91    F     Adult     Hebridean Black                &lt;NA&gt;
+## 92        D92    M     Adult     Hebridean Black                &lt;NA&gt;
+## 93        D93    M  Subadult Peruvian Vipertooth                &lt;NA&gt;
+## 94        D94    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 95        D95    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 96        D96    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 97        D97 &lt;NA&gt;  Juvenile    Chinese Fireball                &lt;NA&gt;
+## 98        D98 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 99        D99    F     Adult     Hebridean Black                &lt;NA&gt;
+## 100      D100 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 101      D101 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 102      D102    F  Subadult  Hungarian Horntail                &lt;NA&gt;
+## 103      D103    F     Adult     Hebridean Black                &lt;NA&gt;
+## 104      D104    F     Adult     Hebridean Black                &lt;NA&gt;
+## 105      D105    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 106      D106 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 107      D107 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 108      D108    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 109      D109    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 110      D110    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 111      D111    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 112      D112    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 113      D113 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 114      D114 &lt;NA&gt;  Juvenile    Chinese Fireball                &lt;NA&gt;
+## 115      D115    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 116      D116    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 117      D117 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 118      D118 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 119      D119    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 120      D120    F     Adult     Hebridean Black                &lt;NA&gt;
+## 121      D121 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 122      D122    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 123      D123 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 124      D124    M     Adult    Chinese Fireball                &lt;NA&gt;
+## 125      D125 &lt;NA&gt;  Juvenile Swedish Short-Snout                &lt;NA&gt;
+## 126      D126    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 127      D127    M  Subadult Ukrainian Ironbelly                &lt;NA&gt;
+## 128      D128 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 129      D129    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 130      D130 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 131      D131 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 132      D132    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 133      D133    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 134      D134    F     Adult     Hebridean Black                &lt;NA&gt;
+## 135      D135 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 136      D136    F  Subadult    Chinese Fireball                &lt;NA&gt;
+## 137      D137    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 138      D138    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 139      D139    F     Adult     Hebridean Black                &lt;NA&gt;
+## 140      D140 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 141      D141    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 142      D142    M  Subadult  Common Welsh Green                &lt;NA&gt;
+## 143      D143    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 144      D144    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 145      D145    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 146      D146    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 147      D147 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 148      D148 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 149      D149    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 150      D150    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 151      D151 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 152      D152    F  Subadult Peruvian Vipertooth                &lt;NA&gt;
+## 153      D153    M     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 154      D154    F     Adult     Hebridean Black                &lt;NA&gt;
+## 155      D155    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 156      D156    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 157      D157    F  Subadult Swedish Short-Snout                &lt;NA&gt;
+## 158      D158 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 159      D159 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 160      D160    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 161      D161    F     Adult    Chinese Fireball                &lt;NA&gt;
+## 162      D162    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 163      D163 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 164      D164 &lt;NA&gt;  Juvenile    Chinese Fireball                &lt;NA&gt;
+## 165      D165    M     Adult  Hungarian Horntail                &lt;NA&gt;
+## 166      D166 &lt;NA&gt;  Juvenile Swedish Short-Snout                &lt;NA&gt;
+## 167      D167    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 168      D168    F     Adult Swedish Short-Snout                &lt;NA&gt;
+## 169      D169    F     Adult     Hebridean Black                &lt;NA&gt;
+## 170      D170 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 171      D171    M  Subadult Ukrainian Ironbelly                &lt;NA&gt;
+## 172      D172    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 173      D173    F     Adult Swedish Short-Snout                &lt;NA&gt;
+## 174      D174 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 175      D175    M     Adult    Chinese Fireball                &lt;NA&gt;
+## 176      D176    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 177      D177    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 178      D178    F     Adult     Hebridean Black                &lt;NA&gt;
+## 179      D179 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 180      D180    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 181      D181    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 182      D182    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 183      D183    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 184      D184    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 185      D185    M     Adult    Chinese Fireball                &lt;NA&gt;
+## 186      D186 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 187      D187 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 188      D188    M     Adult  Hungarian Horntail                &lt;NA&gt;
+## 189      D189    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 190      D190    F     Adult     Hebridean Black                &lt;NA&gt;
+## 191      D191    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 192      D192    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 193      D193    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 194      D194 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 195      D195    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 196      D196    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 197      D197    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 198      D198    M     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 199      D199 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 200      D200 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 201      D201 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 202      D202    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 203      D203 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 204      D204    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 205      D205    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 206      D206    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 207      D207 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 208      D208    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 209      D209 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 210      D210    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 211      D211    F     Adult     Hebridean Black                &lt;NA&gt;
+## 212      D212    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 213      D213 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 214      D214    F  Subadult  Hungarian Horntail                &lt;NA&gt;
+## 215      D215    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 216      D216 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 217      D217    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 218      D218    F     Adult     Hebridean Black                &lt;NA&gt;
+## 219      D219    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 220      D220    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 221      D221    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 222      D222    M  Subadult  Hungarian Horntail                &lt;NA&gt;
+## 223      D223    M     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 224      D224 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 225      D225    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 226      D226 &lt;NA&gt;  Juvenile Swedish Short-Snout                &lt;NA&gt;
+## 227      D227    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 228      D228    F     Adult     Hebridean Black                &lt;NA&gt;
+## 229      D229 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 230      D230    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 231      D231    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 232      D232    F  Subadult     Hebridean Black                &lt;NA&gt;
+## 233      D233    F  Subadult   Romanian Longhorn                &lt;NA&gt;
+## 234      D234    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 235      D235 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 236      D236    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 237      D237    M     Adult  Hungarian Horntail                &lt;NA&gt;
+## 238      D238    F     Adult Swedish Short-Snout                &lt;NA&gt;
+## 239      D239    F     Adult     Hebridean Black                &lt;NA&gt;
+## 240      D240    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 241      D241 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 242      D242    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 243      D243 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 244      D244    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 245      D245 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 246      D246 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 247      D247    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 248      D248    M  Subadult  Common Welsh Green                &lt;NA&gt;
+## 249      D249 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 250      D250    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 251      D251 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 252      D252 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 253      D253    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 254      D254    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 255      D255 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 256      D256 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 257      D257 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 258      D258 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 259      D259    F     Adult     Hebridean Black                &lt;NA&gt;
+## 260      D260    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 261      D261 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 262      D262    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 263      D263    M     Adult     Hebridean Black                &lt;NA&gt;
+## 264      D264    F  Subadult Norwegian Ridgeback                &lt;NA&gt;
+## 265      D265    M     Adult     Hebridean Black                &lt;NA&gt;
+## 266      D266 &lt;NA&gt;  Juvenile Swedish Short-Snout                &lt;NA&gt;
+## 267      D267 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 268      D268    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 269      D269    F     Adult Swedish Short-Snout                &lt;NA&gt;
+## 270      D270 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 271      D271    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 272      D272    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 273      D273 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 274      D274    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 275      D275    F     Adult     Hebridean Black                &lt;NA&gt;
+## 276      D276    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 277      D277    F  Subadult Swedish Short-Snout                &lt;NA&gt;
+## 278      D278    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 279      D279 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 280      D280    M     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 281      D281    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 282      D282    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 283      D283    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 284      D284    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 285      D285 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 286      D286    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 287      D287    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 288      D288    M  Subadult     Hebridean Black                &lt;NA&gt;
+## 289      D289 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 290      D290 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 291      D291    F     Adult     Hebridean Black                &lt;NA&gt;
+## 292      D292 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 293      D293    F     Adult    Chinese Fireball                &lt;NA&gt;
+## 294      D294    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 295      D295    M  Subadult  Antipodean Opaleye                &lt;NA&gt;
+## 296      D296 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 297      D297 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 298      D298    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 299      D299    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 300      D300    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 301      D301    F  Subadult  Common Welsh Green                &lt;NA&gt;
+## 302      D302    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 303      D303 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 304      D304    F  Subadult   Romanian Longhorn                &lt;NA&gt;
+## 305      D305    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 306      D306 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 307      D307 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 308      D308    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 309      D309 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 310      D310 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 311      D311    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 312      D312    M  Subadult    Chinese Fireball                &lt;NA&gt;
+## 313      D313    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 314      D314    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 315      D315    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 316      D316    M  Subadult     Hebridean Black                &lt;NA&gt;
+## 317      D317    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 318      D318 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 319      D319 &lt;NA&gt;  Juvenile Swedish Short-Snout                &lt;NA&gt;
+## 320      D320 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 321      D321    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 322      D322 &lt;NA&gt;  Juvenile    Chinese Fireball                &lt;NA&gt;
+## 323      D323    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 324      D324 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 325      D325    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 326      D326    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 327      D327    M  Subadult   Romanian Longhorn                &lt;NA&gt;
+## 328      D328 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 329      D329    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 330      D330    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 331      D331 &lt;NA&gt;  Juvenile Swedish Short-Snout                &lt;NA&gt;
+## 332      D332    F  Subadult  Common Welsh Green                &lt;NA&gt;
+## 333      D333 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 334      D334 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 335      D335    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 336      D336 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 337      D337    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 338      D338 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 339      D339 &lt;NA&gt;  Juvenile    Chinese Fireball                &lt;NA&gt;
+## 340      D340 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 341      D341    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 342      D342 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 343      D343    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 344      D344 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 345      D345    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 346      D346    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 347      D347    F  Subadult  Common Welsh Green                &lt;NA&gt;
+## 348      D348 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 349      D349    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 350      D350    M     Adult     Hebridean Black                &lt;NA&gt;
+## 351      D351    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 352      D352    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 353      D353 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 354      D354    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 355      D355 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 356      D356    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 357      D357    F  Subadult   Romanian Longhorn                &lt;NA&gt;
+## 358      D358 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 359      D359    F     Adult     Hebridean Black                &lt;NA&gt;
+## 360      D360    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 361      D361    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 362      D362    F  Subadult Norwegian Ridgeback                &lt;NA&gt;
+## 363      D363 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 364      D364 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 365      D365    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 366      D366    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 367      D367    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 368      D368    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 369      D369    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 370      D370 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 371      D371 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 372      D372    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 373      D373    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 374      D374    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 375      D375    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 376      D376 &lt;NA&gt;  Juvenile Swedish Short-Snout                &lt;NA&gt;
+## 377      D377    F     Adult     Hebridean Black                &lt;NA&gt;
+## 378      D378    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 379      D379    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 380      D380 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 381      D381    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 382      D382    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 383      D383    F     Adult     Hebridean Black                &lt;NA&gt;
+## 384      D384    M     Adult  Hungarian Horntail                &lt;NA&gt;
+## 385      D385    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 386      D386 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 387      D387    M     Adult     Hebridean Black                &lt;NA&gt;
+## 388      D388    F  Subadult  Common Welsh Green                &lt;NA&gt;
+## 389      D389    F     Adult     Hebridean Black                &lt;NA&gt;
+## 390      D390    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 391      D391 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 392      D392    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 393      D393    M     Adult     Hebridean Black                &lt;NA&gt;
+## 394      D394    M     Adult Swedish Short-Snout                &lt;NA&gt;
+## 395      D395 &lt;NA&gt;  Juvenile  Antipodean Opaleye                &lt;NA&gt;
+## 396      D396    F  Subadult Norwegian Ridgeback                &lt;NA&gt;
+## 397      D397 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 398      D398    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 399      D399    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 400      D400 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 401      D401    M  Subadult Norwegian Ridgeback                &lt;NA&gt;
+## 402      D402    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 403      D403 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 404      D404    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 405      D405    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 406      D406    M     Adult     Hebridean Black                &lt;NA&gt;
+## 407      D407    M     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 408      D408    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 409      D409 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 410      D410    F     Adult     Hebridean Black                &lt;NA&gt;
+## 411      D411 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 412      D412 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 413      D413    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 414      D414    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 415      D415    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 416      D416    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 417      D417    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 418      D418    M  Subadult  Common Welsh Green                &lt;NA&gt;
+## 419      D419    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 420      D420 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 421      D421 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 422      D422    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 423      D423    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 424      D424    F     Adult     Hebridean Black                &lt;NA&gt;
+## 425      D425    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 426      D426    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 427      D427    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 428      D428 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 429      D429 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 430      D430    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 431      D431 &lt;NA&gt;  Juvenile Ukrainian Ironbelly                &lt;NA&gt;
+## 432      D432    M     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 433      D433    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 434      D434 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 435      D435 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 436      D436 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 437      D437    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 438      D438 &lt;NA&gt;  Juvenile Norwegian Ridgeback                &lt;NA&gt;
+## 439      D439    F  Subadult  Hungarian Horntail                &lt;NA&gt;
+## 440      D440    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 441      D441    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 442      D442    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 443      D443    F     Adult     Hebridean Black                &lt;NA&gt;
+## 444      D444    M     Adult     Hebridean Black                &lt;NA&gt;
+## 445      D445    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 446      D446    F     Adult Swedish Short-Snout                &lt;NA&gt;
+## 447      D447 &lt;NA&gt;  Juvenile   Romanian Longhorn                &lt;NA&gt;
+## 448      D448    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 449      D449    M     Adult    Chinese Fireball                &lt;NA&gt;
+## 450      D450    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 451      D451    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 452      D452    F     Adult Swedish Short-Snout                &lt;NA&gt;
+## 453      D453    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 454      D454    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 455      D455    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 456      D456    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 457      D457    F     Adult  Antipodean Opaleye                &lt;NA&gt;
+## 458      D458    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 459      D459    F  Subadult Swedish Short-Snout                &lt;NA&gt;
+## 460      D460    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 461      D461    M     Adult     Hebridean Black                &lt;NA&gt;
+## 462      D462 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 463      D463    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 464      D464    F     Adult     Hebridean Black                &lt;NA&gt;
+## 465      D465    M     Adult  Hungarian Horntail                &lt;NA&gt;
+## 466      D466 &lt;NA&gt;  Juvenile Peruvian Vipertooth                &lt;NA&gt;
+## 467      D467 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 468      D468    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 469      D469    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 470      D470    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 471      D471    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 472      D472    M     Adult  Hungarian Horntail                &lt;NA&gt;
+## 473      D473    M     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 474      D474    F     Adult Ukrainian Ironbelly                &lt;NA&gt;
+## 475      D475    M  Subadult Norwegian Ridgeback                &lt;NA&gt;
+## 476      D476    F     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 477      D477    M     Adult Norwegian Ridgeback                &lt;NA&gt;
+## 478      D478    M     Adult  Common Welsh Green                &lt;NA&gt;
+## 479      D479    F     Adult    Chinese Fireball                &lt;NA&gt;
+## 480      D480    F     Adult     Hebridean Black                &lt;NA&gt;
+## 481      D481    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 482      D482    M  Subadult   Romanian Longhorn                &lt;NA&gt;
+## 483      D483 &lt;NA&gt;  Juvenile     Hebridean Black                &lt;NA&gt;
+## 484      D484    M     Adult     Hebridean Black                &lt;NA&gt;
+## 485      D485    M     Adult     Hebridean Black                &lt;NA&gt;
+## 486      D486 &lt;NA&gt;  Juvenile  Common Welsh Green                &lt;NA&gt;
+## 487      D487    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 488      D488 &lt;NA&gt;  Juvenile  Hungarian Horntail                &lt;NA&gt;
+## 489      D489    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 490      D490    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 491      D491    F     Adult     Hebridean Black                &lt;NA&gt;
+## 492      D492    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 493      D493    F     Adult     Hebridean Black                &lt;NA&gt;
+## 494      D494    F     Adult    Chinese Fireball                &lt;NA&gt;
+## 495      D495    M     Adult   Romanian Longhorn                &lt;NA&gt;
+## 496      D496    F     Adult   Romanian Longhorn                &lt;NA&gt;
+## 497      D497    F     Adult  Hungarian Horntail                &lt;NA&gt;
+## 498      D498    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 499      D499    F     Adult Peruvian Vipertooth                &lt;NA&gt;
+## 500      D500    F     Adult  Common Welsh Green                &lt;NA&gt;
+## 501      D999    F     Adult Norwegian Ridgeback 2021-02-23 17:14:21</code></pre>
 <div id="limiting-results" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Limiting results</h3>
 <p>If the whole table is too big and we only want to take a look at the first, say,
@@ -1949,17 +1952,17 @@ wildcard:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb53-1"><a href="sql.html#cb53-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb53-2"><a href="sql.html#cb53-2"></a><span class="kw">FROM</span> dragons </span>
 <span id="cb53-3"><a href="sql.html#cb53-3"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D1    F  Subadult     Hebridean Black
-## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 3         D3    F     Adult     Hebridean Black
-## 4         D4    F     Adult Peruvian Vipertooth
-## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 6         D6    F     Adult Norwegian Ridgeback
-## 7         D7    M     Adult     Hebridean Black
-## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 9         D9    F     Adult Norwegian Ridgeback
-## 10       D10    F     Adult  Common Welsh Green</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D1    F  Subadult     Hebridean Black             &lt;NA&gt;
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn             &lt;NA&gt;
+## 3         D3    F     Adult     Hebridean Black             &lt;NA&gt;
+## 4         D4    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 6         D6    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 7         D7    M     Adult     Hebridean Black             &lt;NA&gt;
+## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 9         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 10       D10    F     Adult  Common Welsh Green             &lt;NA&gt;</code></pre>
 </div>
 <div id="sorting-results" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Sorting results</h3>
@@ -1971,34 +1974,34 @@ want the data ordered, you can add an <code>ORDER BY</code> clause:</p>
 <span id="cb55-2"><a href="sql.html#cb55-2"></a><span class="kw">FROM</span> dragons </span>
 <span id="cb55-3"><a href="sql.html#cb55-3"></a><span class="kw">ORDER</span> <span class="kw">BY</span> species</span>
 <span id="cb55-4"><a href="sql.html#cb55-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class            species
-## 1        D39 &lt;NA&gt;  Juvenile Antipodean Opaleye
-## 2        D43    F  Subadult Antipodean Opaleye
-## 3        D63    F     Adult Antipodean Opaleye
-## 4        D68    M     Adult Antipodean Opaleye
-## 5        D74 &lt;NA&gt;  Juvenile Antipodean Opaleye
-## 6       D117 &lt;NA&gt;  Juvenile Antipodean Opaleye
-## 7       D137    F     Adult Antipodean Opaleye
-## 8       D143    F     Adult Antipodean Opaleye
-## 9       D153    M     Adult Antipodean Opaleye
-## 10      D212    F     Adult Antipodean Opaleye</code></pre>
+<pre><code>##    dragon_id  sex age_class            species update_timestamp
+## 1        D39 &lt;NA&gt;  Juvenile Antipodean Opaleye             &lt;NA&gt;
+## 2        D43    F  Subadult Antipodean Opaleye             &lt;NA&gt;
+## 3        D63    F     Adult Antipodean Opaleye             &lt;NA&gt;
+## 4        D68    M     Adult Antipodean Opaleye             &lt;NA&gt;
+## 5        D74 &lt;NA&gt;  Juvenile Antipodean Opaleye             &lt;NA&gt;
+## 6       D117 &lt;NA&gt;  Juvenile Antipodean Opaleye             &lt;NA&gt;
+## 7       D137    F     Adult Antipodean Opaleye             &lt;NA&gt;
+## 8       D143    F     Adult Antipodean Opaleye             &lt;NA&gt;
+## 9       D153    M     Adult Antipodean Opaleye             &lt;NA&gt;
+## 10      D212    F     Adult Antipodean Opaleye             &lt;NA&gt;</code></pre>
 <p>The default ordering will be ascending. If we want descending ordering instead,
 we can specify that as follows:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb57-1"><a href="sql.html#cb57-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb57-2"><a href="sql.html#cb57-2"></a><span class="kw">FROM</span> dragons </span>
 <span id="cb57-3"><a href="sql.html#cb57-3"></a><span class="kw">ORDER</span> <span class="kw">BY</span> species <span class="kw">DESC</span></span>
 <span id="cb57-4"><a href="sql.html#cb57-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 2        D21    F     Adult Ukrainian Ironbelly
-## 3        D32    M     Adult Ukrainian Ironbelly
-## 4        D35    F     Adult Ukrainian Ironbelly
-## 5        D41 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 6        D47    F     Adult Ukrainian Ironbelly
-## 7        D48    M     Adult Ukrainian Ironbelly
-## 8        D66 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 9       D122    F     Adult Ukrainian Ironbelly
-## 10      D127    M  Subadult Ukrainian Ironbelly</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 2        D21    F     Adult Ukrainian Ironbelly             &lt;NA&gt;
+## 3        D32    M     Adult Ukrainian Ironbelly             &lt;NA&gt;
+## 4        D35    F     Adult Ukrainian Ironbelly             &lt;NA&gt;
+## 5        D41 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 6        D47    F     Adult Ukrainian Ironbelly             &lt;NA&gt;
+## 7        D48    M     Adult Ukrainian Ironbelly             &lt;NA&gt;
+## 8        D66 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 9       D122    F     Adult Ukrainian Ironbelly             &lt;NA&gt;
+## 10      D127    M  Subadult Ukrainian Ironbelly             &lt;NA&gt;</code></pre>
 </div>
 <div id="finding-unique-values" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Finding unique values</h3>
@@ -2026,34 +2029,34 @@ instance, say that we we only want Norwegian Ridgebacks:</p>
 <span id="cb61-2"><a href="sql.html#cb61-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb61-3"><a href="sql.html#cb61-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span></span>
 <span id="cb61-4"><a href="sql.html#cb61-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D6    F     Adult Norwegian Ridgeback
-## 2         D9    F     Adult Norwegian Ridgeback
-## 3        D18    F     Adult Norwegian Ridgeback
-## 4        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 5        D27    F     Adult Norwegian Ridgeback
-## 6        D29    F     Adult Norwegian Ridgeback
-## 7        D34    F     Adult Norwegian Ridgeback
-## 8        D51    F  Subadult Norwegian Ridgeback
-## 9        D53 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 10       D54    F     Adult Norwegian Ridgeback</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D6    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 2         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 3        D18    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 4        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback             &lt;NA&gt;
+## 5        D27    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 6        D29    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 7        D34    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 8        D51    F  Subadult Norwegian Ridgeback             &lt;NA&gt;
+## 9        D53 &lt;NA&gt;  Juvenile Norwegian Ridgeback             &lt;NA&gt;
+## 10       D54    F     Adult Norwegian Ridgeback             &lt;NA&gt;</code></pre>
 <p>We can specify multiple conditions at once. For example, if we want only female
 Norwegian Ridgebacks:</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb63-1"><a href="sql.html#cb63-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb63-2"><a href="sql.html#cb63-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb63-3"><a href="sql.html#cb63-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span> <span class="kw">AND</span> sex <span class="op">=</span> <span class="st">&#39;F&#39;</span></span>
 <span id="cb63-4"><a href="sql.html#cb63-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id sex age_class             species
-## 1         D6   F     Adult Norwegian Ridgeback
-## 2         D9   F     Adult Norwegian Ridgeback
-## 3        D18   F     Adult Norwegian Ridgeback
-## 4        D27   F     Adult Norwegian Ridgeback
-## 5        D29   F     Adult Norwegian Ridgeback
-## 6        D34   F     Adult Norwegian Ridgeback
-## 7        D51   F  Subadult Norwegian Ridgeback
-## 8        D54   F     Adult Norwegian Ridgeback
-## 9        D56   F  Subadult Norwegian Ridgeback
-## 10       D70   F     Adult Norwegian Ridgeback</code></pre>
+<pre><code>##    dragon_id sex age_class             species update_timestamp
+## 1         D6   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 2         D9   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 3        D18   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 4        D27   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 5        D29   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 6        D34   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 7        D51   F  Subadult Norwegian Ridgeback             &lt;NA&gt;
+## 8        D54   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 9        D56   F  Subadult Norwegian Ridgeback             &lt;NA&gt;
+## 10       D70   F     Adult Norwegian Ridgeback             &lt;NA&gt;</code></pre>
 <p>In the example above, both conditions have to be satisfied at once – dragons
 have to be Norwegian Ridgeback <strong>and</strong> females to appear in the results. What if
 we want to return data where <strong>at least</strong> one of two conditions is satisfied?
@@ -2063,50 +2066,50 @@ Peruvian Vipertooths:</p>
 <span id="cb65-2"><a href="sql.html#cb65-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb65-3"><a href="sql.html#cb65-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span> <span class="kw">OR</span> species <span class="op">=</span> <span class="st">&#39;Peruvian Vipertooth&#39;</span></span>
 <span id="cb65-4"><a href="sql.html#cb65-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D4    F     Adult Peruvian Vipertooth
-## 2         D6    F     Adult Norwegian Ridgeback
-## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 4         D9    F     Adult Norwegian Ridgeback
-## 5        D11    F     Adult Peruvian Vipertooth
-## 6        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 7        D17    F     Adult Peruvian Vipertooth
-## 8        D18    F     Adult Norwegian Ridgeback
-## 9        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 10       D25    M     Adult Peruvian Vipertooth</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D4    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 2         D6    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 4         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 5        D11    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 6        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 7        D17    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 8        D18    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 9        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback             &lt;NA&gt;
+## 10       D25    M     Adult Peruvian Vipertooth             &lt;NA&gt;</code></pre>
 <p>A more concise way to write the same query would be:</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb67-1"><a href="sql.html#cb67-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb67-2"><a href="sql.html#cb67-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb67-3"><a href="sql.html#cb67-3"></a><span class="kw">WHERE</span> species <span class="kw">IN</span> (<span class="st">&#39;Norwegian Ridgeback&#39;</span>, <span class="st">&#39;Peruvian Vipertooth&#39;</span>)</span>
 <span id="cb67-4"><a href="sql.html#cb67-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D4    F     Adult Peruvian Vipertooth
-## 2         D6    F     Adult Norwegian Ridgeback
-## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 4         D9    F     Adult Norwegian Ridgeback
-## 5        D11    F     Adult Peruvian Vipertooth
-## 6        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 7        D17    F     Adult Peruvian Vipertooth
-## 8        D18    F     Adult Norwegian Ridgeback
-## 9        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 10       D25    M     Adult Peruvian Vipertooth</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D4    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 2         D6    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 4         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 5        D11    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 6        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 7        D17    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 8        D18    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 9        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback             &lt;NA&gt;
+## 10       D25    M     Adult Peruvian Vipertooth             &lt;NA&gt;</code></pre>
 <p>Logical conditions also include “greater than”, “less than”, “not equal to”.
 For instance, we can exclude Norwegian Ridgeback like so:</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb69-1"><a href="sql.html#cb69-1"></a><span class="kw">SELECT</span> <span class="op">*</span> </span>
 <span id="cb69-2"><a href="sql.html#cb69-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb69-3"><a href="sql.html#cb69-3"></a><span class="kw">WHERE</span> species <span class="op">!=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span></span>
 <span id="cb69-4"><a href="sql.html#cb69-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D1    F  Subadult     Hebridean Black
-## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 3         D3    F     Adult     Hebridean Black
-## 4         D4    F     Adult Peruvian Vipertooth
-## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 6         D7    M     Adult     Hebridean Black
-## 7         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 8        D10    F     Adult  Common Welsh Green
-## 9        D11    F     Adult Peruvian Vipertooth
-## 10       D12    F     Adult Swedish Short-Snout</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D1    F  Subadult     Hebridean Black             &lt;NA&gt;
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn             &lt;NA&gt;
+## 3         D3    F     Adult     Hebridean Black             &lt;NA&gt;
+## 4         D4    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 6         D7    M     Adult     Hebridean Black             &lt;NA&gt;
+## 7         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 8        D10    F     Adult  Common Welsh Green             &lt;NA&gt;
+## 9        D11    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 10       D12    F     Adult Swedish Short-Snout             &lt;NA&gt;</code></pre>
 <p>Let’s see some examples with numbers using the morphometrics table. The
 following query returns any dragons with wingspan greater than 8 meters
 (incidentally, you can include comments in SQL is by using a double dash):</p>
@@ -2210,7 +2213,7 @@ use:</p>
 <span id="cb77-2"><a href="sql.html#cb77-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb77-3"><a href="sql.html#cb77-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
 <pre><code>##   COUNT(*)
-## 1       86</code></pre>
+## 1       87</code></pre>
 <p>The dragons table has no repeated IDs, so we shouldn’t have counted anybody
 twice. However, let’s double check if that’s true by specifying that we want
 to only count distinct IDs:</p>
@@ -2218,7 +2221,7 @@ to only count distinct IDs:</p>
 <span id="cb79-2"><a href="sql.html#cb79-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb79-3"><a href="sql.html#cb79-3"></a><span class="kw">WHERE</span> species <span class="op">=</span> <span class="st">&#39;Norwegian Ridgeback&#39;</span>;</span></code></pre></div>
 <pre><code>##   COUNT(DISTINCT dragon_id)
-## 1                        86</code></pre>
+## 1                        87</code></pre>
 <p>Now let’s see how to calculate some summary stats on dragon morphometrics. What
 is the mean total body length of dragons in our sample?</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb81-1"><a href="sql.html#cb81-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(total_body_length_cm)</span>
@@ -2253,7 +2256,7 @@ sort them from the most numerous to the least numerous):</p>
 <span id="cb87-3"><a href="sql.html#cb87-3"></a><span class="kw">GROUP</span> <span class="kw">BY</span> species</span>
 <span id="cb87-4"><a href="sql.html#cb87-4"></a><span class="kw">ORDER</span> <span class="kw">BY</span> n_dragons <span class="kw">DESC</span>;</span></code></pre></div>
 <pre><code>##                species n_dragons
-## 1  Norwegian Ridgeback        86
+## 1  Norwegian Ridgeback        87
 ## 2   Common Welsh Green        81
 ## 3    Romanian Longhorn        69
 ## 4      Hebridean Black        66
@@ -2282,7 +2285,7 @@ The following query counts how many individual dragons we have for each species:
 ## 3         81  Common Welsh Green
 ## 4         66     Hebridean Black
 ## 5         40  Hungarian Horntail
-## 6         86 Norwegian Ridgeback
+## 6         87 Norwegian Ridgeback
 ## 7         60 Peruvian Vipertooth
 ## 8         69   Romanian Longhorn
 ## 9         27 Swedish Short-Snout
@@ -2296,7 +2299,7 @@ The following query counts how many individual dragons we have for each species:
 <pre><code>##   n_dragons             species
 ## 1        81  Common Welsh Green
 ## 2        66     Hebridean Black
-## 3        86 Norwegian Ridgeback
+## 3        87 Norwegian Ridgeback
 ## 4        60 Peruvian Vipertooth
 ## 5        69   Romanian Longhorn</code></pre>
 </div>
@@ -2308,17 +2311,17 @@ these values using the <code>IS NULL</code> operator:</p>
 <span id="cb93-2"><a href="sql.html#cb93-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb93-3"><a href="sql.html#cb93-3"></a><span class="kw">WHERE</span> sex <span class="kw">IS</span> <span class="kw">NULL</span></span>
 <span id="cb93-4"><a href="sql.html#cb93-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 2         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 4        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 5        D14 &lt;NA&gt;  Juvenile     Hebridean Black
-## 6        D15 &lt;NA&gt;  Juvenile    Chinese Fireball
-## 7        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback
-## 8        D24 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 9        D26 &lt;NA&gt;  Juvenile  Common Welsh Green
-## 10       D31 &lt;NA&gt;  Juvenile  Common Welsh Green</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn             &lt;NA&gt;
+## 2         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 3         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 4        D13 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 5        D14 &lt;NA&gt;  Juvenile     Hebridean Black             &lt;NA&gt;
+## 6        D15 &lt;NA&gt;  Juvenile    Chinese Fireball             &lt;NA&gt;
+## 7        D22 &lt;NA&gt;  Juvenile Norwegian Ridgeback             &lt;NA&gt;
+## 8        D24 &lt;NA&gt;  Juvenile  Common Welsh Green             &lt;NA&gt;
+## 9        D26 &lt;NA&gt;  Juvenile  Common Welsh Green             &lt;NA&gt;
+## 10       D31 &lt;NA&gt;  Juvenile  Common Welsh Green             &lt;NA&gt;</code></pre>
 <p>The query above returns all the dragons for which sex is unknown. If we want to
 exclude any individuals for which sex is unknown, then we can add the <code>NOT</code>
 operator to our statement:</p>
@@ -2326,17 +2329,17 @@ operator to our statement:</p>
 <span id="cb95-2"><a href="sql.html#cb95-2"></a><span class="kw">FROM</span> dragons</span>
 <span id="cb95-3"><a href="sql.html#cb95-3"></a><span class="kw">WHERE</span> sex <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
 <span id="cb95-4"><a href="sql.html#cb95-4"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id sex age_class             species
-## 1         D1   F  Subadult     Hebridean Black
-## 2         D3   F     Adult     Hebridean Black
-## 3         D4   F     Adult Peruvian Vipertooth
-## 4         D6   F     Adult Norwegian Ridgeback
-## 5         D7   M     Adult     Hebridean Black
-## 6         D9   F     Adult Norwegian Ridgeback
-## 7        D10   F     Adult  Common Welsh Green
-## 8        D11   F     Adult Peruvian Vipertooth
-## 9        D12   F     Adult Swedish Short-Snout
-## 10       D16   F     Adult    Chinese Fireball</code></pre>
+<pre><code>##    dragon_id sex age_class             species update_timestamp
+## 1         D1   F  Subadult     Hebridean Black             &lt;NA&gt;
+## 2         D3   F     Adult     Hebridean Black             &lt;NA&gt;
+## 3         D4   F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 4         D6   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 5         D7   M     Adult     Hebridean Black             &lt;NA&gt;
+## 6         D9   F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 7        D10   F     Adult  Common Welsh Green             &lt;NA&gt;
+## 8        D11   F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 9        D12   F     Adult Swedish Short-Snout             &lt;NA&gt;
+## 10       D16   F     Adult    Chinese Fireball             &lt;NA&gt;</code></pre>
 </div>
 <div id="joins" class="section level3">
 <h3><span class="header-section-number">6.2.11</span> Joins</h3>
@@ -2783,17 +2786,17 @@ encoded in the .csv.) Click <em>Finish</em>.</p>
 <p>To check if the table was imported correctly, go back into the query editor and
 try to look at the first 10 rows:</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb115-1"><a href="sql.html#cb115-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> dragons <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code></pre></div>
-<pre><code>##    dragon_id  sex age_class             species
-## 1         D1    F  Subadult     Hebridean Black
-## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn
-## 3         D3    F     Adult     Hebridean Black
-## 4         D4    F     Adult Peruvian Vipertooth
-## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly
-## 6         D6    F     Adult Norwegian Ridgeback
-## 7         D7    M     Adult     Hebridean Black
-## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth
-## 9         D9    F     Adult Norwegian Ridgeback
-## 10       D10    F     Adult  Common Welsh Green</code></pre>
+<pre><code>##    dragon_id  sex age_class             species update_timestamp
+## 1         D1    F  Subadult     Hebridean Black             &lt;NA&gt;
+## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn             &lt;NA&gt;
+## 3         D3    F     Adult     Hebridean Black             &lt;NA&gt;
+## 4         D4    F     Adult Peruvian Vipertooth             &lt;NA&gt;
+## 5         D5 &lt;NA&gt;  Juvenile Ukrainian Ironbelly             &lt;NA&gt;
+## 6         D6    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 7         D7    M     Adult     Hebridean Black             &lt;NA&gt;
+## 8         D8 &lt;NA&gt;  Juvenile Peruvian Vipertooth             &lt;NA&gt;
+## 9         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
+## 10       D10    F     Adult  Common Welsh Green             &lt;NA&gt;</code></pre>
 <p>If everything looks good, we can go ahead and import data in the other two
 tables.</p>
 </div>

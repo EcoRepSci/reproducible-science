@@ -720,7 +720,7 @@ morphometrics table with the dragons table:</p>
 <div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="tidyverse.html#cb405-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb405-2"><a href="tidyverse.html#cb405-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb405-3"><a href="tidyverse.html#cb405-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) </span></code></pre></div>
-<pre><code>## # A tibble: 327 x 11
+<pre><code>## # A tibble: 327 x 12
 ##    measurement_id dragon_id date  total_body_leng~ wingspan_cm tail_length_cm
 ##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
 ##  1              1 D96       2012~            1070.       1390.           595.
@@ -733,15 +733,16 @@ morphometrics table with the dragons table:</p>
 ##  8              8 D256      2013~             359.        652.           148.
 ##  9              9 D283      2007~            1698.       1387.           666.
 ## 10             10 D213      2001~             354.        671.           140.
-## # ... with 317 more rows, and 5 more variables: tarsus_length_cm &lt;dbl&gt;,
-## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+## # ... with 317 more rows, and 6 more variables: tarsus_length_cm &lt;dbl&gt;,
+## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;,
+## #   update_timestamp &lt;chr&gt;</code></pre>
 <p>In this case the shared column has the same name in the two tables. If it
 doesn’t, you can still join based on that column. Let’s demonstrate how:</p>
 <div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="tidyverse.html#cb407-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb407-2"><a href="tidyverse.html#cb407-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb407-3"><a href="tidyverse.html#cb407-3"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">dragon =</span> dragon_id) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># now the dragon_id column is called &quot;dragon&quot;</span></span>
 <span id="cb407-4"><a href="tidyverse.html#cb407-4"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;dragon&quot;</span> =<span class="st"> &quot;dragon_id&quot;</span>)) </span></code></pre></div>
-<pre><code>## # A tibble: 327 x 11
+<pre><code>## # A tibble: 327 x 12
 ##    measurement_id dragon date  total_body_leng~ wingspan_cm tail_length_cm
 ##             &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
 ##  1              1 D96    2012~            1070.       1390.           595.
@@ -754,8 +755,9 @@ doesn’t, you can still join based on that column. Let’s demonstrate how:</p>
 ##  8              8 D256   2013~             359.        652.           148.
 ##  9              9 D283   2007~            1698.       1387.           666.
 ## 10             10 D213   2001~             354.        671.           140.
-## # ... with 317 more rows, and 5 more variables: tarsus_length_cm &lt;dbl&gt;,
-## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+## # ... with 317 more rows, and 6 more variables: tarsus_length_cm &lt;dbl&gt;,
+## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;,
+## #   update_timestamp &lt;chr&gt;</code></pre>
 <p>So the syntax in the <code>by</code> argument when the names are different is
 <code>column_name_in_left_table = column_name_in_right_table</code>.</p>
 </div>
@@ -769,7 +771,7 @@ to right after the dragon ID:</p>
 <span id="cb409-2"><a href="tidyverse.html#cb409-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb409-3"><a href="tidyverse.html#cb409-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st">  </span></span>
 <span id="cb409-4"><a href="tidyverse.html#cb409-4"></a><span class="st">  </span><span class="kw">relocate</span>(age_class, <span class="dt">.after =</span> dragon_id)</span></code></pre></div>
-<pre><code>## # A tibble: 327 x 11
+<pre><code>## # A tibble: 327 x 12
 ##    measurement_id dragon_id age_class date  total_body_leng~ wingspan_cm
 ##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;
 ##  1              1 D96       Adult     2012~            1070.       1390.
@@ -782,8 +784,9 @@ to right after the dragon ID:</p>
 ##  8              8 D256      Juvenile  2013~             359.        652.
 ##  9              9 D283      Adult     2007~            1698.       1387.
 ## 10             10 D213      Juvenile  2001~             354.        671.
-## # ... with 317 more rows, and 5 more variables: tail_length_cm &lt;dbl&gt;,
-## #   tarsus_length_cm &lt;dbl&gt;, claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+## # ... with 317 more rows, and 6 more variables: tail_length_cm &lt;dbl&gt;,
+## #   tarsus_length_cm &lt;dbl&gt;, claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, species &lt;chr&gt;,
+## #   update_timestamp &lt;chr&gt;</code></pre>
 </div>
 <div id="calculations-by-group" class="section level3">
 <h3><span class="header-section-number">13.2.9</span> Calculations by group</h3>
@@ -902,7 +905,7 @@ returns them as a vector.</p>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 <p>Now that we have a vector with the species that we want to retain, we can apply
 our filter:</p>
-<pre><code>## # A tibble: 264 x 11
+<pre><code>## # A tibble: 264 x 12
 ##    measurement_id dragon_id date  total_body_leng~ wingspan_cm tail_length_cm
 ##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
 ##  1              1 D96       2012~            1070.       1390.           595.
@@ -915,8 +918,9 @@ our filter:</p>
 ##  8              9 D283      2007~            1698.       1387.           666.
 ##  9             10 D213      2001~             354.        671.           140.
 ## 10             11 D485      2002~             957.       1780.           561.
-## # ... with 254 more rows, and 5 more variables: tarsus_length_cm &lt;dbl&gt;,
-## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;</code></pre>
+## # ... with 254 more rows, and 6 more variables: tarsus_length_cm &lt;dbl&gt;,
+## #   claw_length_cm &lt;dbl&gt;, sex &lt;chr&gt;, age_class &lt;chr&gt;, species &lt;chr&gt;,
+## #   update_timestamp &lt;chr&gt;</code></pre>
 </div>
 <div id="conditional-value-assignment" class="section level3">
 <h3><span class="header-section-number">13.2.12</span> Conditional value assignment</h3>
