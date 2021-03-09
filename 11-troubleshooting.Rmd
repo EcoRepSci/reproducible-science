@@ -421,6 +421,6 @@ have a rubber duck, people have reportedly been successful using their cat, dog,
 or other pet instead. While this debugging technique may sound laughable at 
 first, it goes to show that verbalizing out loud what the code is supposed to
 do in each step (and what it does instead) may force us to recognize connections
-and details that were not clear in our mind to the point that the solution 
+and details that were not clear in our mind, to the point that the solution 
 becomes apparent. On a similar note, never underestimate the power of reading 
 your code aloud. 
