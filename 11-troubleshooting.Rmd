@@ -411,7 +411,7 @@ sessionInfo()
 
 ## The rubber duck
 
-```{r rubber-duck, fig.cap=" ", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+```{r rubber-duck, fig.cap=" ", fig.align='center', out.width='50%', echo = FALSE, eval = TRUE}
 knitr::include_graphics("img/rubber-duck.png")
 ```
 
