@@ -411,6 +411,10 @@ sessionInfo()
 
 ## The rubber duck
 
+```{r rubber-duck, fig.cap=" ", fig.align='center', out.width='80%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/rubber-duck.png")
+```
+
 The rubber duck is a method of debugging code introduced by software engineers. 
 It consists of explaining code, line by line, to a rubber duck. If you don't 
 have a rubber duck, people have reportedly been successful using their cat, dog,
