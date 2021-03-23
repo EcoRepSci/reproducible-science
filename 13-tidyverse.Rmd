@@ -368,13 +368,13 @@ on records from those groups. Let's see:
 The function `pull` at the end extracts the values in my column of interest and
 returns them as a vector. 
 
-```{r tidy28, eval = TRUE, echo = FALSE}
+```{r tidy28, eval = TRUE, echo = TRUE}
 class(species_over30) # this is a character vector
 ```
 
 If I used select instead, the result would be a tibble:
 
-```{r tidy29, eval = TRUE, echo = FALSE}
+```{r tidy29, eval = TRUE, echo = TRUE}
 dragons %>% 
   group_by(species) %>%
   tally() %>% 
@@ -394,7 +394,7 @@ dragons %>%
 Now that we have a vector with the species that we want to retain, we can apply
 our filter:
 
-```{r tidy30, eval = TRUE, echo = FALSE}
+```{r tidy30, eval = TRUE, echo = TRUE}
 morphometrics %>% 
   as_tibble() %>% 
   left_join(dragons, by = "dragon_id") %>% 
@@ -416,7 +416,7 @@ possible categories "adult female", "adult male", "juvenile female", etc. We can
 gather the information from the two existing column and create a new column 
 assigning the appropriate category to each individual using `case_when`:
 
-```{r tidy31, eval = TRUE, echo = FALSE}
+```{r tidy31, eval = TRUE, echo = TRUE}
 morphometrics %>% 
   as_tibble() %>% 
   left_join(dragons, by = "dragon_id") %>% 
@@ -438,7 +438,7 @@ Let's break down the syntax I used in the `case_when` statement. Each entry has
 the form *logical condition* ~ *value to assign*. Let's isolate the left-hand 
 side of the first entry:
 
-```{r tidy32, eval = TRUE, echo = FALSE}
+```{r tidy32, eval = TRUE, echo = TRUE}
 head(dragons$sex == "F" & dragons$age_class == "Adult")
 ```
 
@@ -447,7 +447,7 @@ logical domain of the statement. In other words, we need to account for every
 possibility. If, say, we left out the male subadult combination, `case_when` is
 going to automatically assign `NA`:
 
-```{r tidy33, eval = TRUE, echo = FALSE}
+```{r tidy33, eval = TRUE, echo = TRUE}
 morphometrics %>% 
   as_tibble() %>% 
   left_join(dragons, by = "dragon_id") %>% 
@@ -470,7 +470,7 @@ one implicit by using `TRUE` on the left-hand side of the last entry of the
 six categories it means its sex is unknown. We could lump these all together in
 one "Unknown" category: 
 
-```{r tidy34, eval = TRUE, echo = FALSE}
+```{r tidy34, eval = TRUE, echo = TRUE}
 morphometrics %>% 
   as_tibble() %>% 
   left_join(dragons, by = "dragon_id") %>% 
@@ -489,7 +489,7 @@ morphometrics %>%
 Or we could decide that if sex is unknown we just simply assign the value of
 `age_class`:
 
-```{r tidy35, eval = TRUE, echo = FALSE}
+```{r tidy35, eval = TRUE, echo = TRUE}
 morphometrics %>% 
   as_tibble() %>% 
   left_join(dragons, by = "dragon_id") %>% 

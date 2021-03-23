@@ -891,8 +891,15 @@ on records from those groups. Let’s see:</p>
 ## [4] &quot;Hebridean Black&quot;     &quot;Peruvian Vipertooth&quot; &quot;Hungarian Horntail&quot;</code></pre>
 <p>The function <code>pull</code> at the end extracts the values in my column of interest and
 returns them as a vector.</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="tidyverse.html#cb421-1"></a><span class="kw">class</span>(species_over30) <span class="co"># this is a character vector</span></span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>If I used select instead, the result would be a tibble:</p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="tidyverse.html#cb423-1"></a>dragons <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb423-2"><a href="tidyverse.html#cb423-2"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb423-3"><a href="tidyverse.html#cb423-3"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb423-4"><a href="tidyverse.html#cb423-4"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb423-5"><a href="tidyverse.html#cb423-5"></a><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb423-6"><a href="tidyverse.html#cb423-6"></a><span class="st">  </span><span class="kw">select</span>(species)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 1
 ##   species            
 ##   &lt;chr&gt;              
@@ -902,9 +909,20 @@ returns them as a vector.</p>
 ## 4 Hebridean Black    
 ## 5 Peruvian Vipertooth
 ## 6 Hungarian Horntail</code></pre>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="tidyverse.html#cb425-1"></a>dragons <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb425-2"><a href="tidyverse.html#cb425-2"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb425-3"><a href="tidyverse.html#cb425-3"></a><span class="st">  </span><span class="kw">tally</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb425-4"><a href="tidyverse.html#cb425-4"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(n)) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb425-5"><a href="tidyverse.html#cb425-5"></a><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb425-6"><a href="tidyverse.html#cb425-6"></a><span class="st">  </span><span class="kw">select</span>(species) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb425-7"><a href="tidyverse.html#cb425-7"></a><span class="st">  </span><span class="kw">class</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 <p>Now that we have a vector with the species that we want to retain, we can apply
 our filter:</p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="tidyverse.html#cb427-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb427-2"><a href="tidyverse.html#cb427-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb427-3"><a href="tidyverse.html#cb427-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb427-4"><a href="tidyverse.html#cb427-4"></a><span class="st">  </span><span class="kw">filter</span>(species <span class="op">%in%</span><span class="st"> </span>species_over30)</span></code></pre></div>
 <pre><code>## # A tibble: 264 x 12
 ##    measurement_id dragon_id date  total_body_leng~ wingspan_cm tail_length_cm
 ##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
@@ -938,6 +956,21 @@ we wanted to create a composite variable combining sex and age class, with
 possible categories “adult female”, “adult male”, “juvenile female”, etc. We can
 gather the information from the two existing column and create a new column
 assigning the appropriate category to each individual using <code>case_when</code>:</p>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="tidyverse.html#cb429-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb429-2"><a href="tidyverse.html#cb429-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb429-3"><a href="tidyverse.html#cb429-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb429-4"><a href="tidyverse.html#cb429-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sex_age_combo =</span> <span class="kw">case_when</span>(</span>
+<span id="cb429-5"><a href="tidyverse.html#cb429-5"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Female&quot;</span>,</span>
+<span id="cb429-6"><a href="tidyverse.html#cb429-6"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Male&quot;</span>,</span>
+<span id="cb429-7"><a href="tidyverse.html#cb429-7"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Female&quot;</span>,</span>
+<span id="cb429-8"><a href="tidyverse.html#cb429-8"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Male&quot;</span>,</span>
+<span id="cb429-9"><a href="tidyverse.html#cb429-9"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb429-10"><a href="tidyverse.html#cb429-10"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb429-11"><a href="tidyverse.html#cb429-11"></a>    <span class="kw">is.na</span>(sex) <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Unknown&quot;</span>,</span>
+<span id="cb429-12"><a href="tidyverse.html#cb429-12"></a>    <span class="kw">is.na</span>(sex) <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Unknown&quot;</span>,</span>
+<span id="cb429-13"><a href="tidyverse.html#cb429-13"></a>    <span class="kw">is.na</span>(sex) <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Unknown&quot;</span></span>
+<span id="cb429-14"><a href="tidyverse.html#cb429-14"></a>    )) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb429-15"><a href="tidyverse.html#cb429-15"></a><span class="st">  </span><span class="kw">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 x 4
 ##    dragon_id sex   age_class sex_age_combo   
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           
@@ -955,11 +988,26 @@ assigning the appropriate category to each individual using <code>case_when</cod
 <p>Let’s break down the syntax I used in the <code>case_when</code> statement. Each entry has
 the form <em>logical condition</em> ~ <em>value to assign</em>. Let’s isolate the left-hand
 side of the first entry:</p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="tidyverse.html#cb431-1"></a><span class="kw">head</span>(dragons<span class="op">$</span>sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>dragons<span class="op">$</span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
 <p>There can be as many entries as we want, but they should fully cover the
 logical domain of the statement. In other words, we need to account for every
 possibility. If, say, we left out the male subadult combination, <code>case_when</code> is
 going to automatically assign <code>NA</code>:</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="tidyverse.html#cb433-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb433-2"><a href="tidyverse.html#cb433-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb433-3"><a href="tidyverse.html#cb433-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb433-4"><a href="tidyverse.html#cb433-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sex_age_combo =</span> <span class="kw">case_when</span>(</span>
+<span id="cb433-5"><a href="tidyverse.html#cb433-5"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Female&quot;</span>,</span>
+<span id="cb433-6"><a href="tidyverse.html#cb433-6"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Male&quot;</span>,</span>
+<span id="cb433-7"><a href="tidyverse.html#cb433-7"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Female&quot;</span>,</span>
+<span id="cb433-8"><a href="tidyverse.html#cb433-8"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb433-9"><a href="tidyverse.html#cb433-9"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb433-10"><a href="tidyverse.html#cb433-10"></a>    <span class="kw">is.na</span>(sex) <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Unknown&quot;</span>,</span>
+<span id="cb433-11"><a href="tidyverse.html#cb433-11"></a>    <span class="kw">is.na</span>(sex) <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Unknown&quot;</span>,</span>
+<span id="cb433-12"><a href="tidyverse.html#cb433-12"></a>    <span class="kw">is.na</span>(sex) <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Unknown&quot;</span></span>
+<span id="cb433-13"><a href="tidyverse.html#cb433-13"></a>    )) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb433-14"><a href="tidyverse.html#cb433-14"></a><span class="st">  </span><span class="kw">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 x 4
 ##    dragon_id sex   age_class sex_age_combo   
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           
@@ -979,6 +1027,19 @@ one implicit by using <code>TRUE</code> on the left-hand side of the last entry 
 <code>case_when</code> statement. For example, if an individual does not fall in the first
 six categories it means its sex is unknown. We could lump these all together in
 one “Unknown” category:</p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="tidyverse.html#cb435-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb435-2"><a href="tidyverse.html#cb435-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb435-3"><a href="tidyverse.html#cb435-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb435-4"><a href="tidyverse.html#cb435-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sex_age_combo =</span> <span class="kw">case_when</span>(</span>
+<span id="cb435-5"><a href="tidyverse.html#cb435-5"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Female&quot;</span>,</span>
+<span id="cb435-6"><a href="tidyverse.html#cb435-6"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Male&quot;</span>,</span>
+<span id="cb435-7"><a href="tidyverse.html#cb435-7"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Female&quot;</span>,</span>
+<span id="cb435-8"><a href="tidyverse.html#cb435-8"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Male&quot;</span>,</span>
+<span id="cb435-9"><a href="tidyverse.html#cb435-9"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb435-10"><a href="tidyverse.html#cb435-10"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb435-11"><a href="tidyverse.html#cb435-11"></a>    <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> &quot;Unknown&quot;</span></span>
+<span id="cb435-12"><a href="tidyverse.html#cb435-12"></a>    )) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb435-13"><a href="tidyverse.html#cb435-13"></a><span class="st">  </span><span class="kw">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 x 4
 ##    dragon_id sex   age_class sex_age_combo
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        
@@ -995,6 +1056,19 @@ one “Unknown” category:</p>
 ## # ... with 317 more rows</code></pre>
 <p>Or we could decide that if sex is unknown we just simply assign the value of
 <code>age_class</code>:</p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="tidyverse.html#cb437-1"></a>morphometrics <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb437-2"><a href="tidyverse.html#cb437-2"></a><span class="st">  </span><span class="kw">as_tibble</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb437-3"><a href="tidyverse.html#cb437-3"></a><span class="st">  </span><span class="kw">left_join</span>(dragons, <span class="dt">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb437-4"><a href="tidyverse.html#cb437-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sex_age_combo =</span> <span class="kw">case_when</span>(</span>
+<span id="cb437-5"><a href="tidyverse.html#cb437-5"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Female&quot;</span>,</span>
+<span id="cb437-6"><a href="tidyverse.html#cb437-6"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Adult&quot;</span> <span class="op">~</span><span class="st"> &quot;Adult Male&quot;</span>,</span>
+<span id="cb437-7"><a href="tidyverse.html#cb437-7"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Female&quot;</span>,</span>
+<span id="cb437-8"><a href="tidyverse.html#cb437-8"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Subadult&quot;</span> <span class="op">~</span><span class="st"> &quot;Subadult Male&quot;</span>,</span>
+<span id="cb437-9"><a href="tidyverse.html#cb437-9"></a>    sex <span class="op">==</span><span class="st"> &quot;F&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb437-10"><a href="tidyverse.html#cb437-10"></a>    sex <span class="op">==</span><span class="st"> &quot;M&quot;</span> <span class="op">&amp;</span><span class="st"> </span>age_class <span class="op">==</span><span class="st"> &quot;Juvenile&quot;</span> <span class="op">~</span><span class="st"> &quot;Juvenile Female&quot;</span>,</span>
+<span id="cb437-11"><a href="tidyverse.html#cb437-11"></a>    <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span>age_class</span>
+<span id="cb437-12"><a href="tidyverse.html#cb437-12"></a>    )) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb437-13"><a href="tidyverse.html#cb437-13"></a><span class="st">  </span><span class="kw">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 x 4
 ##    dragon_id sex   age_class sex_age_combo
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        
