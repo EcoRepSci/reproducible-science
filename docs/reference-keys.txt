@@ -3,6 +3,10 @@ fig:proj-based
 fig:act-based
 fig:rstudio-proj
 fig:dir-example
+fig:github01
+fig:github02
+fig:github03
+fig:github04
 fig:art2
 fig:db-diagram
 fig:sql-joins

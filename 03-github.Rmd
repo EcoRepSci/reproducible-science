@@ -12,11 +12,15 @@ There are two ways to set up your local and remote repositories to interact. One
 
 Starting from an existing Git repository on your computer, you can link this to its GitHub counterpart by adding a remote URL. To set up a URL, go on the GitHub website, click on the '+' sign in the top-right corner and select 'New Repository'. 
 
-img 
+```{r github01, fig.cap="Create new GitHub repository", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/github-01.PNG")
+```
 
 You can choose any name for your repository, but I find it intuitive to give it the same name as the folder where my local Git repository is. Since the remote repository will need to be connected to a local one, it needs to be completely empty: if there are conflicts in the content of the two repositories to begin with, Git won't be able to link them. Therefore, do not add a README, a .gitignore file, or a license.
 
-img
+```{r github02, fig.cap="Create new GitHub repository", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/github-02.PNG")
+```
 
 To connect the local and remote repositories, you can copy the URL of the remote repository and paste it in the following command in the terminal:
 
@@ -173,7 +177,9 @@ The cool thing about forking is that, if the owner makes changes to their reposi
 
 Unlike all the other functionalities we have seen so far, which are Git commands, forking is a GitHub functionality. There is no built-in Git function to fork a repository from the command line. To fork a repository, go to the web page of that repository and click "Fork" in the top-right corner. This will create a copy of the repository on your GitHub account. 
 
-img
+```{r github03, fig.cap="Fork GitHub repository", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/github-03.PNG")
+```
 
 Now, if you also want a local copy of this repository on your computer, you can clone your fork. For example, if I forked octocat's Spoon-Knife repository onto my GitHub account, I could then clone it onto my computer like so:
 
@@ -195,7 +201,9 @@ Pull requests are the way to ask that the edits you made in a fork (or a branch)
 
 The most straightforward way to submit a pull request is from the GitHub website. To start a pull request, you must have some changes committed to the repository or branch where you want to merge them. Then you can go to the repository page on GitHub and click on the 'Pull requests' tab, then click 'New pull request'. Choose your target branch, enter a title and description, and then click 'Send pull request'. Once the pull request is open, everyone can write comments on it, see all the commits it includes, and look at the changes it proposes within files. 
 
-img
+```{r github04, fig.cap="Pull request", fig.align='center', out.width='100%', echo = FALSE, eval = TRUE}
+knitr::include_graphics("img/github-04.PNG")
+```
 
 Once everyone is happy with the proposed changes, you are ready to merge the pull request. If there are no merge conflicts, you will see a 'Merge pull request' button. 
 

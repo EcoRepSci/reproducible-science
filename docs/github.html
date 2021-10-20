@@ -417,9 +417,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="adding-a-remote-to-a-local-repository" class="section level2">
 <h2><span class="header-section-number">3.1</span> Adding a remote to a local repository</h2>
 <p>Starting from an existing Git repository on your computer, you can link this to its GitHub counterpart by adding a remote URL. To set up a URL, go on the GitHub website, click on the ‘+’ sign in the top-right corner and select ‘New Repository’.</p>
-<p>img</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:github01"></span>
+<img src="img/github-01.PNG" alt="Create new GitHub repository" width="100%" />
+<p class="caption">
+Figure 3.1: Create new GitHub repository
+</p>
+</div>
 <p>You can choose any name for your repository, but I find it intuitive to give it the same name as the folder where my local Git repository is. Since the remote repository will need to be connected to a local one, it needs to be completely empty: if there are conflicts in the content of the two repositories to begin with, Git won’t be able to link them. Therefore, do not add a README, a .gitignore file, or a license.</p>
-<p>img</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:github02"></span>
+<img src="img/github-02.PNG" alt="Create new GitHub repository" width="100%" />
+<p class="caption">
+Figure 3.2: Create new GitHub repository
+</p>
+</div>
 <p>To connect the local and remote repositories, you can copy the URL of the remote repository and paste it in the following command in the terminal:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="github.html#cb30-1"></a><span class="op">&gt;</span> <span class="fu">git</span> remote add origin https://github.com/picardis/myrepo.git</span></code></pre></div>
 <p>‘Origin’ is the conventional name given to a remote repository. You could use any other name, but since GitHub uses ‘origin’ as the default name when creating a repository from the website, using this convention will make things easier later. You’d need a very good reason to use a different name.</p>
@@ -504,7 +514,12 @@ because Black Lives Matter. So we’ll go ahead and rename the <code>master</cod
 <p>Forking a repository means creating a copy of an existing repository where you can make changes without affecting the original repository. You can technically fork your own repository, but forking is mostly used to get a copy of somebody else’s repository. For example, if you want to contribute to a project that was created by a person you don’t know, or if you want to build off of their code because it does something similar to what you need to do, you can fork their repository and work on it without their copy being affected.</p>
 <p>The cool thing about forking is that, if the owner makes changes to their repository, you can pull those changes to your fork so that your copy of the repository stays in sync with the original. Also, you can contribute your own changes by submitting them to the original repository through pull requests. This is the main difference between forking and cloning somebody else’s repository: by cloning, you won’t be able to update your copy to include new changes made in the original and you won’t be able to contribute back unless you’re added as a collaborator.</p>
 <p>Unlike all the other functionalities we have seen so far, which are Git commands, forking is a GitHub functionality. There is no built-in Git function to fork a repository from the command line. To fork a repository, go to the web page of that repository and click “Fork” in the top-right corner. This will create a copy of the repository on your GitHub account.</p>
-<p>img</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:github03"></span>
+<img src="img/github-03.PNG" alt="Fork GitHub repository" width="100%" />
+<p class="caption">
+Figure 3.3: Fork GitHub repository
+</p>
+</div>
 <p>Now, if you also want a local copy of this repository on your computer, you can clone your fork. For example, if I forked octocat’s Spoon-Knife repository onto my GitHub account, I could then clone it onto my computer like so:</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb45-1"><a href="github.html#cb45-1"></a><span class="op">&gt;</span> <span class="fu">git</span> clone https://github.com/picardis/Spoon-Knife</span></code></pre></div>
 <p>To keep my fork up-to-date with the original repository, I can configure it as follows:</p>
@@ -515,7 +530,12 @@ because Black Lives Matter. So we’ll go ahead and rename the <code>master</cod
 <h2><span class="header-section-number">3.9</span> Pull requests</h2>
 <p>Pull requests are the way to ask that the edits you made in a fork (or a branch) get merged into the original repository (or main branch). To ask the owner of a repository to view and potentially integrate the changes you made in your own forked version, you submit a pull request. Similarly, to let your collaborators know about the edits you made and let them review them before they get merged, you submit a pull request. There is a key difference here: while as an external agent you have no other choice but submitting a pull request to merge a fork into a repository, as a collaborator you could simply merge your edits if you wanted to. If you are working on your own repository by yourself, there is no need to go through pull requests to merge a branch. But if you are collaborating with people, it is still good and courteous practice to use pull requests as a heads-up before you merge your changes, so that others on the project can review and approve them.</p>
 <p>The most straightforward way to submit a pull request is from the GitHub website. To start a pull request, you must have some changes committed to the repository or branch where you want to merge them. Then you can go to the repository page on GitHub and click on the ‘Pull requests’ tab, then click ‘New pull request’. Choose your target branch, enter a title and description, and then click ‘Send pull request’. Once the pull request is open, everyone can write comments on it, see all the commits it includes, and look at the changes it proposes within files.</p>
-<p>img</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:github04"></span>
+<img src="img/github-04.PNG" alt="Pull request" width="100%" />
+<p class="caption">
+Figure 3.4: Pull request
+</p>
+</div>
 <p>Once everyone is happy with the proposed changes, you are ready to merge the pull request. If there are no merge conflicts, you will see a ‘Merge pull request’ button.</p>
 </div>
 <div id="references-2" class="section level2">
