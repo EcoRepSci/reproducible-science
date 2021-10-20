@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Automatically Generated Websites with GitHub Pages | Computational Tools for Reproducible Science</title>
-  <meta name="description" content="WILD 6900: Computational Tools for Reproducible Science" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <title>Chapter 9 Automatically Generated Websites with GitHub Pages | Reproducible Data Science</title>
+  <meta name="description" content="WILD 6900: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Automatically Generated Websites with GitHub Pages | Computational Tools for Reproducible Science" />
+  <meta property="og:title" content="Chapter 9 Automatically Generated Websites with GitHub Pages | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="WILD 6900: Computational Tools for Reproducible Science" />
+  <meta property="og:description" content="WILD 6900: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Automatically Generated Websites with GitHub Pages | Computational Tools for Reproducible Science" />
+  <meta name="twitter:title" content="Chapter 9 Automatically Generated Websites with GitHub Pages | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WILD 6900: Computational Tools for Reproducible Science" />
+  <meta name="twitter:description" content="WILD 6900: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
@@ -33,7 +33,8 @@
   
 <link rel="prev" href="rmarkdown.html"/>
 <link rel="next" href="intro-to-r.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,8 +50,9 @@
 
 
 
-
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -118,6 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -177,7 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.9" data-path="version-control-git.html"><a href="version-control-git.html#recovering-a-previous-version-of-a-file"><i class="fa fa-check"></i><b>2.9</b> Recovering a previous version of a file</a></li>
 <li class="chapter" data-level="2.10" data-path="version-control-git.html"><a href="version-control-git.html#removing-git"><i class="fa fa-check"></i><b>2.10</b> Removing Git</a></li>
 <li class="chapter" data-level="2.11" data-path="version-control-git.html"><a href="version-control-git.html#git-everyday"><i class="fa fa-check"></i><b>2.11</b> Git everyday</a></li>
-<li class="chapter" data-level="2.12" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
+<li class="chapter" data-level="2.12" data-path="version-control-git.html"><a href="version-control-git.html#references-1"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a><ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#adding-a-remote-to-a-local-repository"><i class="fa fa-check"></i><b>3.1</b> Adding a remote to a local repository</a></li>
@@ -189,7 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.7" data-path="github.html"><a href="github.html#working-with-branches"><i class="fa fa-check"></i><b>3.7</b> Working with branches</a></li>
 <li class="chapter" data-level="3.8" data-path="github.html"><a href="github.html#forking-a-repository"><i class="fa fa-check"></i><b>3.8</b> Forking a repository</a></li>
 <li class="chapter" data-level="3.9" data-path="github.html"><a href="github.html#pull-requests"><i class="fa fa-check"></i><b>3.9</b> Pull requests</a></li>
-<li class="chapter" data-level="3.10" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
+<li class="chapter" data-level="3.10" data-path="github.html"><a href="github.html#references-2"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a><ul>
 <li class="chapter" data-level="4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#what-are-spreadsheets-good-for"><i class="fa fa-check"></i><b>4.1</b> What are spreadsheets good for?</a></li>
@@ -207,7 +210,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.9" data-path="spreadsheets.html"><a href="spreadsheets.html#using-problematic-null-values"><i class="fa fa-check"></i><b>4.4.9</b> Using problematic null values</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="spreadsheets.html"><a href="spreadsheets.html#document-document-document"><i class="fa fa-check"></i><b>4.5</b> Document, document, document!</a></li>
-<li class="chapter" data-level="4.6" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
+<li class="chapter" data-level="4.6" data-path="spreadsheets.html"><a href="spreadsheets.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a><ul>
 <li class="chapter" data-level="5.1" data-path="relational-databases.html"><a href="relational-databases.html#what-is-a-relational-database"><i class="fa fa-check"></i><b>5.1</b> What is a relational database?</a></li>
@@ -278,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.4" data-path="github-pages.html"><a href="github-pages.html#step-4-enable-github-pages"><i class="fa fa-check"></i><b>9.2.4</b> Step 4: Enable GitHub Pages</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
-<li class="chapter" data-level="9.4" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
+<li class="chapter" data-level="9.4" data-path="github-pages.html"><a href="github-pages.html#references-4"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
 <li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
@@ -289,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.4" data-path="intro-to-r.html"><a href="intro-to-r.html#navigating-through-the-script"><i class="fa fa-check"></i><b>10.2.4</b> Navigating through the script</a></li>
 <li class="chapter" data-level="10.2.5" data-path="intro-to-r.html"><a href="intro-to-r.html#functions-and-their-arguments"><i class="fa fa-check"></i><b>10.2.5</b> Functions and their arguments</a></li>
 <li class="chapter" data-level="10.2.6" data-path="intro-to-r.html"><a href="intro-to-r.html#writing-functions"><i class="fa fa-check"></i><b>10.2.6</b> Writing functions</a></li>
-<li class="chapter" data-level="10.2.7" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>10.2.7</b> Data types</a></li>
+<li class="chapter" data-level="10.2.7" data-path="intro-to-r.html"><a href="intro-to-r.html#data-types-1"><i class="fa fa-check"></i><b>10.2.7</b> Data types</a></li>
 <li class="chapter" data-level="10.2.8" data-path="intro-to-r.html"><a href="intro-to-r.html#vectors"><i class="fa fa-check"></i><b>10.2.8</b> Vectors</a></li>
 <li class="chapter" data-level="10.2.9" data-path="intro-to-r.html"><a href="intro-to-r.html#factors"><i class="fa fa-check"></i><b>10.2.9</b> Factors</a></li>
 <li class="chapter" data-level="10.2.10" data-path="intro-to-r.html"><a href="intro-to-r.html#data-frames"><i class="fa fa-check"></i><b>10.2.10</b> Data frames</a></li>
@@ -300,7 +303,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.15" data-path="intro-to-r.html"><a href="intro-to-r.html#control-structures"><i class="fa fa-check"></i><b>10.2.15</b> Control structures</a></li>
 <li class="chapter" data-level="10.2.16" data-path="intro-to-r.html"><a href="intro-to-r.html#repeating-operations"><i class="fa fa-check"></i><b>10.2.16</b> Repeating operations</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
+<li class="chapter" data-level="10.3" data-path="intro-to-r.html"><a href="intro-to-r.html#references-5"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
 <li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
@@ -325,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
 <li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
+<li class="chapter" data-level="12.3" data-path="renv.html"><a href="renv.html#references-6"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
 <li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
@@ -334,17 +337,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
 <li class="chapter" data-level="13.2.4" data-path="tidyverse.html"><a href="tidyverse.html#creating-new-columns"><i class="fa fa-check"></i><b>13.2.4</b> Creating new columns</a></li>
-<li class="chapter" data-level="13.2.5" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>13.2.5</b> Limiting results</a></li>
+<li class="chapter" data-level="13.2.5" data-path="tidyverse.html"><a href="tidyverse.html#limiting-results-1"><i class="fa fa-check"></i><b>13.2.5</b> Limiting results</a></li>
 <li class="chapter" data-level="13.2.6" data-path="tidyverse.html"><a href="tidyverse.html#tibbles"><i class="fa fa-check"></i><b>13.2.6</b> Tibbles</a></li>
 <li class="chapter" data-level="13.2.7" data-path="tidyverse.html"><a href="tidyverse.html#joining-tables"><i class="fa fa-check"></i><b>13.2.7</b> Joining tables</a></li>
 <li class="chapter" data-level="13.2.8" data-path="tidyverse.html"><a href="tidyverse.html#changing-the-order-of-columns"><i class="fa fa-check"></i><b>13.2.8</b> Changing the order of columns</a></li>
 <li class="chapter" data-level="13.2.9" data-path="tidyverse.html"><a href="tidyverse.html#calculations-by-group"><i class="fa fa-check"></i><b>13.2.9</b> Calculations by group</a></li>
-<li class="chapter" data-level="13.2.10" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>13.2.10</b> Sorting results</a></li>
+<li class="chapter" data-level="13.2.10" data-path="tidyverse.html"><a href="tidyverse.html#sorting-results-1"><i class="fa fa-check"></i><b>13.2.10</b> Sorting results</a></li>
 <li class="chapter" data-level="13.2.11" data-path="tidyverse.html"><a href="tidyverse.html#extracting-columns-as-vectors"><i class="fa fa-check"></i><b>13.2.11</b> Extracting columns as vectors</a></li>
 <li class="chapter" data-level="13.2.12" data-path="tidyverse.html"><a href="tidyverse.html#conditional-value-assignment"><i class="fa fa-check"></i><b>13.2.12</b> Conditional value assignment</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
-<li class="chapter" data-level="13.4" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
+<li class="chapter" data-level="13.4" data-path="tidyverse.html"><a href="tidyverse.html#references-7"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a><ul>
 <li class="chapter" data-level="14.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>14.1</b> A Grammar of Graphics</a></li>
@@ -372,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.4" data-path="ggplot2.html"><a href="ggplot2.html#colorblind-friendly-plots-with-viridis"><i class="fa fa-check"></i><b>14.4</b> Colorblind-friendly plots with <code>viridis</code></a></li>
 <li class="chapter" data-level="14.5" data-path="ggplot2.html"><a href="ggplot2.html#arranging-multiple-plots-together-with-patchwork"><i class="fa fa-check"></i><b>14.5</b> Arranging multiple plots together with <code>patchwork</code></a></li>
 <li class="chapter" data-level="14.6" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>14.6</b> Saving plots</a></li>
-<li class="chapter" data-level="14.7" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
+<li class="chapter" data-level="14.7" data-path="ggplot2.html"><a href="ggplot2.html#references-8"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a><ul>
 <li class="chapter" data-level="15.1" data-path="lubridate.html"><a href="lubridate.html#what-makes-dates-and-times-special"><i class="fa fa-check"></i><b>15.1</b> What makes dates and times special</a></li>
@@ -384,7 +387,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.4.3" data-path="lubridate.html"><a href="lubridate.html#time-zones"><i class="fa fa-check"></i><b>15.4.3</b> Time zones</a></li>
 <li class="chapter" data-level="15.4.4" data-path="lubridate.html"><a href="lubridate.html#time-spans"><i class="fa fa-check"></i><b>15.4.4</b> Time spans</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>15.5</b> References</a></li>
+<li class="chapter" data-level="15.5" data-path="lubridate.html"><a href="lubridate.html#references-9"><i class="fa fa-check"></i><b>15.5</b> References</a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="geospatial.html"><a href="geospatial.html"><i class="fa fa-check"></i><b>16</b> Introduction to Geospatial Data in R</a></li>
 <li class="divider"></li>
@@ -399,7 +402,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Computational Tools for Reproducible Science</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Reproducible Data Science</a>
           </h1>
         </div>
 
@@ -492,7 +495,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.3</span> Maintaining the website</h2>
 <p>Once the website is live, it will be automatically updated any time we push updates to the .html files in the docs folder. Remember that modifying the .Rmd files is not enough for the website to update: we also need to knit the book so that <code>bookdown</code> will update the .html files. This is also a great reminder that you can play around with edits without them showing up on the website if you’re not ready to broadcast them: until you knit the book and push to the remote, the website won’t be updated.</p>
 </div>
-<div id="references" class="section level2">
+<div id="references-4" class="section level2">
 <h2><span class="header-section-number">9.4</span> References</h2>
 <ul>
 <li><a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a></li>
@@ -510,7 +513,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -529,6 +531,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -549,6 +552,10 @@ gitbook.start({
 "text": null
 },
 "download": ["reproducible-science.pdf", "reproducible-science.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
