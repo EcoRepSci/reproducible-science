@@ -1,5 +1,5 @@
 --- 
-title: "Computational Tools for Reproducible Science"
+title: "Reproducible Data Science"
 author: 
   - Simona Picardi^[Utah State University, simona.picardi@usu.edu]
 date: "2021-01-15"
@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-description: "WILD 6900: Computational Tools for Reproducible Science"
+description: "WILD 6900: Reproducible Data Science"
 ---
 
 # Overview {-}
