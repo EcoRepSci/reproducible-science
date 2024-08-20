@@ -1,14 +1,14 @@
 --- 
 title: "Reproducible Data Science"
 author: 
-  - Simona Picardi^[Utah State University, simona.picardi@usu.edu]
-date: "2021-01-15"
+  - Simona Picardi^[University of Idaho, spicardi@uidaho.edu]
+date: "2024-08-20"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-description: "WILD 6900: Reproducible Data Science"
+description: "WLF 553: Reproducible Data Science"
 ---
 
 # Overview {-}
@@ -17,8 +17,7 @@ description: "WILD 6900: Reproducible Data Science"
 knitr::include_graphics("img/environmental-data-science-r4ds-general.png")
 ```
 
-This digital book contains the material for the Graduate Special Topics
-course WILD 6900: Reproducible Data Science. The aim of the course is to provide students with practical skills to manage and process their data throughout their life cycle, from the moment they are entered into a computer to the moment they are used in a publication, document, presentation, etc. The content is organized in the following Chapters:
+This digital book contains the material for the Graduate Course WLF 553 Reproducible Data Science that I teach at the University of Idaho. The aim of the course is to provide students with practical skills to manage and process their data throughout their life cycle, from the moment they are entered into a computer to the moment they are used in a publication, document, presentation, etc. The content is organized in the following Chapters:
 
 * Chapter \@ref(project-organization), Project Organization
 * Chapter \@ref(version-control-git), Version Control with Git
