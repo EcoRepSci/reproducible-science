@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Dates and Times in R | Reproducible Data Science</title>
-  <meta name="description" content="WILD 6900: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 553: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Dates and Times in R | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="WILD 6900: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 15 Dates and Times in R | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WILD 6900: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-15" />
+<meta name="date" content="2024-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,24 +49,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,13 +86,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -137,8 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/EcoRepSci/reproducible-science">Course Material</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#git"><i class="fa fa-check"></i><b>0.1.1</b> Git</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#spreadsheet-editor"><i class="fa fa-check"></i><b>0.1.2</b> Spreadsheet Editor</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#sqlite"><i class="fa fa-check"></i><b>0.1.3</b> SQLite</a></li>
@@ -147,8 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#required-r-packages"><i class="fa fa-check"></i><b>0.1.6</b> Required R Packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a><ul>
-<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a><ul>
+<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="project-organization.html"><a href="project-organization.html#overlap"><i class="fa fa-check"></i><b>1.1.1</b> Overlap</a></li>
 <li class="chapter" data-level="1.1.2" data-path="project-organization.html"><a href="project-organization.html#minimizing-duplication"><i class="fa fa-check"></i><b>1.1.2</b> Minimizing duplication</a></li>
 <li class="chapter" data-level="1.1.3" data-path="project-organization.html"><a href="project-organization.html#self-containedness"><i class="fa fa-check"></i><b>1.1.3</b> Self-containedness</a></li>
@@ -157,18 +164,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="project-organization.html"><a href="project-organization.html#golden-rules"><i class="fa fa-check"></i><b>1.2</b> Golden rules</a></li>
 <li class="chapter" data-level="1.3" data-path="project-organization.html"><a href="project-organization.html#be-flexible"><i class="fa fa-check"></i><b>1.3</b> Be flexible</a></li>
 <li class="chapter" data-level="1.4" data-path="project-organization.html"><a href="project-organization.html#documentation"><i class="fa fa-check"></i><b>1.4</b> Documentation</a></li>
-<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a><ul>
+<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="project-organization.html"><a href="project-organization.html#computer-readable-file-names"><i class="fa fa-check"></i><b>1.5.1</b> Computer-readable file names</a></li>
 <li class="chapter" data-level="1.5.2" data-path="project-organization.html"><a href="project-organization.html#human-readable-file-names"><i class="fa fa-check"></i><b>1.5.2</b> Human-readable file names</a></li>
 <li class="chapter" data-level="1.5.3" data-path="project-organization.html"><a href="project-organization.html#file-names-that-work-well-with-default-ordering"><i class="fa fa-check"></i><b>1.5.3</b> File names that work well with default ordering</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="project-organization.html"><a href="project-organization.html#rstudio-projects"><i class="fa fa-check"></i><b>1.6</b> RStudio Projects</a></li>
-<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a><ul>
+<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="project-organization.html"><a href="project-organization.html#path-separators"><i class="fa fa-check"></i><b>1.7.1</b> Path separators</a></li>
 <li class="chapter" data-level="1.7.2" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>1.7.2</b> References</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a><ul>
+<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="version-control-git.html"><a href="version-control-git.html#command-line-basics"><i class="fa fa-check"></i><b>2.1</b> Command line basics</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control-git.html"><a href="version-control-git.html#configuring-git"><i class="fa fa-check"></i><b>2.2</b> Configuring Git</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control-git.html"><a href="version-control-git.html#getting-help"><i class="fa fa-check"></i><b>2.3</b> Getting help</a></li>
@@ -182,7 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11" data-path="version-control-git.html"><a href="version-control-git.html#git-everyday"><i class="fa fa-check"></i><b>2.11</b> Git everyday</a></li>
 <li class="chapter" data-level="2.12" data-path="version-control-git.html"><a href="version-control-git.html#references-1"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a><ul>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#adding-a-remote-to-a-local-repository"><i class="fa fa-check"></i><b>3.1</b> Adding a remote to a local repository</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#pushing-to-a-remote-repository"><i class="fa fa-check"></i><b>3.2</b> Pushing to a remote repository</a></li>
 <li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#cloning-a-repository"><i class="fa fa-check"></i><b>3.3</b> Cloning a repository</a></li>
@@ -194,11 +205,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="github.html"><a href="github.html#pull-requests"><i class="fa fa-check"></i><b>3.9</b> Pull requests</a></li>
 <li class="chapter" data-level="3.10" data-path="github.html"><a href="github.html#references-2"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a><ul>
+<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#what-are-spreadsheets-good-for"><i class="fa fa-check"></i><b>4.1</b> What are spreadsheets good for?</a></li>
 <li class="chapter" data-level="4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#human-readable-vs.-computer-readable-data"><i class="fa fa-check"></i><b>4.2</b> Human-readable vs. computer-readable data</a></li>
 <li class="chapter" data-level="4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#tidydata"><i class="fa fa-check"></i><b>4.3</b> Tidy data</a></li>
-<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a><ul>
+<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-variables-in-a-single-column"><i class="fa fa-check"></i><b>4.4.1</b> Multiple variables in a single column</a></li>
 <li class="chapter" data-level="4.4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#rows-for-variables-columns-for-observation"><i class="fa fa-check"></i><b>4.4.2</b> Rows for variables, columns for observation</a></li>
 <li class="chapter" data-level="4.4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-tables-in-a-single-spreadsheet"><i class="fa fa-check"></i><b>4.4.3</b> Multiple tables in a single spreadsheet</a></li>
@@ -212,7 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="spreadsheets.html"><a href="spreadsheets.html#document-document-document"><i class="fa fa-check"></i><b>4.5</b> Document, document, document!</a></li>
 <li class="chapter" data-level="4.6" data-path="spreadsheets.html"><a href="spreadsheets.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a><ul>
+<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="relational-databases.html"><a href="relational-databases.html#what-is-a-relational-database"><i class="fa fa-check"></i><b>5.1</b> What is a relational database?</a></li>
 <li class="chapter" data-level="5.2" data-path="relational-databases.html"><a href="relational-databases.html#why-bothering-with-relational-databases"><i class="fa fa-check"></i><b>5.2</b> Why bothering with relational databases?</a></li>
 <li class="chapter" data-level="5.3" data-path="relational-databases.html"><a href="relational-databases.html#database-components"><i class="fa fa-check"></i><b>5.3</b> Database components</a></li>
@@ -220,9 +234,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>5.5</b> Data types</a></li>
 <li class="chapter" data-level="5.6" data-path="relational-databases.html"><a href="relational-databases.html#a-first-look-at-our-practice-database"><i class="fa fa-check"></i><b>5.6</b> A first look at our practice database</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a><ul>
+<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="sql.html"><a href="sql.html#the-sql-language"><i class="fa fa-check"></i><b>6.1</b> The SQL language</a></li>
-<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a><ul>
+<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>6.2.1</b> Limiting results</a></li>
 <li class="chapter" data-level="6.2.2" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>6.2.2</b> Sorting results</a></li>
 <li class="chapter" data-level="6.2.3" data-path="sql.html"><a href="sql.html#finding-unique-values"><i class="fa fa-check"></i><b>6.2.3</b> Finding unique values</a></li>
@@ -237,7 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.12" data-path="sql.html"><a href="sql.html#nested-select-statements"><i class="fa fa-check"></i><b>6.2.12</b> Nested <code>SELECT</code> statements</a></li>
 <li class="chapter" data-level="6.2.13" data-path="sql.html"><a href="sql.html#order-of-operations"><i class="fa fa-check"></i><b>6.2.13</b> Order of operations</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a><ul>
+<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="sql.html"><a href="sql.html#creating-a-new-database-in-sqlite-studio"><i class="fa fa-check"></i><b>6.3.1</b> Creating a new database in SQLite Studio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="sql.html"><a href="sql.html#creating-tables"><i class="fa fa-check"></i><b>6.3.2</b> Creating tables</a></li>
 <li class="chapter" data-level="6.3.3" data-path="sql.html"><a href="sql.html#adding-constraints"><i class="fa fa-check"></i><b>6.3.3</b> Adding constraints</a></li>
@@ -248,17 +265,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
 <li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
 <li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
 <li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
 <li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
 <li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
-<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
 <li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
 <li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
@@ -270,11 +290,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
-<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
+<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a><ul>
+<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="github-pages.html"><a href="github-pages.html#step-1-set-up-compatibility-with-github-pages"><i class="fa fa-check"></i><b>9.2.1</b> Step 1: Set up compatibility with GitHub Pages</a></li>
 <li class="chapter" data-level="9.2.2" data-path="github-pages.html"><a href="github-pages.html#step-2-set-up-git-repository"><i class="fa fa-check"></i><b>9.2.2</b> Step 2: Set up Git repository</a></li>
 <li class="chapter" data-level="9.2.3" data-path="github-pages.html"><a href="github-pages.html#step-3-link-git-repository-to-remote-github-repository"><i class="fa fa-check"></i><b>9.2.3</b> Step 3: Link Git repository to remote GitHub repository</a></li>
@@ -283,9 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
 <li class="chapter" data-level="9.4" data-path="github-pages.html"><a href="github-pages.html#references-4"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
-<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a><ul>
+<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#assigning-objects"><i class="fa fa-check"></i><b>10.2.1</b> Assigning objects</a></li>
 <li class="chapter" data-level="10.2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#adding-comments"><i class="fa fa-check"></i><b>10.2.2</b> Adding comments</a></li>
 <li class="chapter" data-level="10.2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#headers-and-description"><i class="fa fa-check"></i><b>10.2.3</b> Headers and description</a></li>
@@ -305,15 +330,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="intro-to-r.html"><a href="intro-to-r.html#references-5"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
-<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="troubleshooting.html"><a href="troubleshooting.html#locating-the-problematic-piece-of-code"><i class="fa fa-check"></i><b>11.1.1</b> Locating the problematic piece of code</a></li>
 <li class="chapter" data-level="11.1.2" data-path="troubleshooting.html"><a href="troubleshooting.html#isolating-the-error"><i class="fa fa-check"></i><b>11.1.2</b> Isolating the error</a></li>
 <li class="chapter" data-level="11.1.3" data-path="troubleshooting.html"><a href="troubleshooting.html#deciphering-error-messages"><i class="fa fa-check"></i><b>11.1.3</b> Deciphering error messages</a></li>
 <li class="chapter" data-level="11.1.4" data-path="troubleshooting.html"><a href="troubleshooting.html#syntax-errors"><i class="fa fa-check"></i><b>11.1.4</b> Syntax errors</a></li>
 <li class="chapter" data-level="11.1.5" data-path="troubleshooting.html"><a href="troubleshooting.html#errors-from-using-package-functions"><i class="fa fa-check"></i><b>11.1.5</b> Errors from using package functions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a><ul>
+<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="troubleshooting.html"><a href="troubleshooting.html#r-documentation"><i class="fa fa-check"></i><b>11.2.1</b> R documentation</a></li>
 <li class="chapter" data-level="11.2.2" data-path="troubleshooting.html"><a href="troubleshooting.html#google"><i class="fa fa-check"></i><b>11.2.2</b> Google</a></li>
 <li class="chapter" data-level="11.2.3" data-path="troubleshooting.html"><a href="troubleshooting.html#stackoverflow-et-al."><i class="fa fa-check"></i><b>11.2.3</b> StackOverflow et al.</a></li>
@@ -323,16 +351,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="troubleshooting.html"><a href="troubleshooting.html#reproducible-examples"><i class="fa fa-check"></i><b>11.5</b> Reproducible examples</a></li>
 <li class="chapter" data-level="11.6" data-path="troubleshooting.html"><a href="troubleshooting.html#the-rubber-duck"><i class="fa fa-check"></i><b>11.6</b> The rubber duck</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a><ul>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="renv.html"><a href="renv.html#whats-the-need-for-dependency-management"><i class="fa fa-check"></i><b>12.1</b> What’s the need for dependency management?</a></li>
-<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
+<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="renv.html"><a href="renv.html#references-6"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
-<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a><ul>
+<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-columns"><i class="fa fa-check"></i><b>13.2.1</b> Subsetting columns</a></li>
 <li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
@@ -349,15 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
 <li class="chapter" data-level="13.4" data-path="tidyverse.html"><a href="tidyverse.html#references-7"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a><ul>
+<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>14.1</b> A Grammar of Graphics</a></li>
-<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a><ul>
+<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="ggplot2.html"><a href="ggplot2.html#basic-scatterplot"><i class="fa fa-check"></i><b>14.2.1</b> Basic scatterplot</a></li>
 <li class="chapter" data-level="14.2.2" data-path="ggplot2.html"><a href="ggplot2.html#basic-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Basic histogram</a></li>
 <li class="chapter" data-level="14.2.3" data-path="ggplot2.html"><a href="ggplot2.html#basic-density-plot"><i class="fa fa-check"></i><b>14.2.3</b> Basic density plot</a></li>
 <li class="chapter" data-level="14.2.4" data-path="ggplot2.html"><a href="ggplot2.html#other-geom-functions"><i class="fa fa-check"></i><b>14.2.4</b> Other <code>geom</code> functions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a><ul>
+<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="ggplot2.html"><a href="ggplot2.html#changing-axis-labels"><i class="fa fa-check"></i><b>14.3.1</b> Changing axis labels</a></li>
 <li class="chapter" data-level="14.3.2" data-path="ggplot2.html"><a href="ggplot2.html#changing-colors"><i class="fa fa-check"></i><b>14.3.2</b> Changing colors</a></li>
 <li class="chapter" data-level="14.3.3" data-path="ggplot2.html"><a href="ggplot2.html#modifying-legends"><i class="fa fa-check"></i><b>14.3.3</b> Modifying legends</a></li>
@@ -377,11 +412,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>14.6</b> Saving plots</a></li>
 <li class="chapter" data-level="14.7" data-path="ggplot2.html"><a href="ggplot2.html#references-8"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a><ul>
+<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="lubridate.html"><a href="lubridate.html#what-makes-dates-and-times-special"><i class="fa fa-check"></i><b>15.1</b> What makes dates and times special</a></li>
 <li class="chapter" data-level="15.2" data-path="lubridate.html"><a href="lubridate.html#definitions"><i class="fa fa-check"></i><b>15.2</b> Definitions</a></li>
 <li class="chapter" data-level="15.3" data-path="lubridate.html"><a href="lubridate.html#under-the-hood"><i class="fa fa-check"></i><b>15.3</b> Under the hood</a></li>
-<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="lubridate.html"><a href="lubridate.html#parsing-dates-and-times"><i class="fa fa-check"></i><b>15.4.1</b> Parsing dates and times</a></li>
 <li class="chapter" data-level="15.4.2" data-path="lubridate.html"><a href="lubridate.html#extracting-components-of-a-date-time-object"><i class="fa fa-check"></i><b>15.4.2</b> Extracting components of a date-time object</a></li>
 <li class="chapter" data-level="15.4.3" data-path="lubridate.html"><a href="lubridate.html#time-zones"><i class="fa fa-check"></i><b>15.4.3</b> Time zones</a></li>
@@ -410,10 +447,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lubridate" class="section level1">
-<h1><span class="header-section-number">Chapter 15</span> Dates and Times in R</h1>
-<div id="what-makes-dates-and-times-special" class="section level2">
-<h2><span class="header-section-number">15.1</span> What makes dates and times special</h2>
+<div id="lubridate" class="section level1 hasAnchor" number="15">
+<h1><span class="header-section-number">Chapter 15</span> Dates and Times in R<a href="lubridate.html#lubridate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-makes-dates-and-times-special" class="section level2 hasAnchor" number="15.1">
+<h2><span class="header-section-number">15.1</span> What makes dates and times special<a href="lubridate.html#what-makes-dates-and-times-special" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Dates and times can be a headache to work with. They may look just like numbers, but they don’t follow regular number rules. Here’s just a handful of things that make dates and times different:</p>
 <ul>
 <li>There’s no 61 after 60 when working with seconds and minutes;</li>
@@ -425,8 +462,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Keeping track of these rules manually would be a nightmare, especially when working with large datasets. In this Chapter we’re going to learn how to reproducibly deal with dates and times in R by treating these data types as the special kind that they are.</p>
 </div>
-<div id="definitions" class="section level2">
-<h2><span class="header-section-number">15.2</span> Definitions</h2>
+<div id="definitions" class="section level2 hasAnchor" number="15.2">
+<h2><span class="header-section-number">15.2</span> Definitions<a href="lubridate.html#definitions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s start with some definitions that I’ll use throughout this Chapter:</p>
 <ul>
 <li>Date: this type of data contains information on day, month, and year;</li>
@@ -435,88 +472,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Date-time: a generic term I use to refer to anything that is either a date, a time, or a timestamp.</li>
 </ul>
 </div>
-<div id="under-the-hood" class="section level2">
-<h2><span class="header-section-number">15.3</span> Under the hood</h2>
+<div id="under-the-hood" class="section level2 hasAnchor" number="15.3">
+<h2><span class="header-section-number">15.3</span> Under the hood<a href="lubridate.html#under-the-hood" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As you may remember from Chapter <a href="spreadsheets.html#spreadsheets">4</a>, Excel stores dates and times in a spreadsheet as numbers. While what you see may be something of the format “2021-04-15”, the actual data stored under the hood is a number: specifically, the number of days between a reference date (which is 12/31/1899 on Windows and 12/31/1903 on Mac) and the date in the spreadsheet. In R, something similar happens. Base R has two basic classes for date/times, called <code>POSIXct</code> and <code>POSIXlt</code>. <code>POSIXct</code> is the number of seconds since 1/1/1970 00:00:00 (this can be negative for dates before that day, so any dates are supported). <code>POSIXlt</code> is a named list of vectors representing second, minute, hour, day of the month, months since January, years since 1900, day of the week, day of the year, and a flag defining whether it’s daylight savings time or not. For instance:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="lubridate.html#cb488-1"></a>d &lt;-<span class="st"> &quot;2021-04-15&quot;</span></span>
-<span id="cb488-2"><a href="lubridate.html#cb488-2"></a></span>
-<span id="cb488-3"><a href="lubridate.html#cb488-3"></a><span class="kw">class</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="lubridate.html#cb492-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="st">&quot;2021-04-15&quot;</span></span>
+<span id="cb492-2"><a href="lubridate.html#cb492-2" tabindex="-1"></a></span>
+<span id="cb492-3"><a href="lubridate.html#cb492-3" tabindex="-1"></a><span class="fu">class</span>(d)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>If I just write out a date in quotes, this is still just a character string.</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="lubridate.html#cb490-1"></a>d &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(d)</span>
-<span id="cb490-2"><a href="lubridate.html#cb490-2"></a></span>
-<span id="cb490-3"><a href="lubridate.html#cb490-3"></a><span class="kw">class</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="lubridate.html#cb494-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(d)</span>
+<span id="cb494-2"><a href="lubridate.html#cb494-2" tabindex="-1"></a></span>
+<span id="cb494-3"><a href="lubridate.html#cb494-3" tabindex="-1"></a><span class="fu">class</span>(d)</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="lubridate.html#cb492-1"></a>d</span></code></pre></div>
-<pre><code>## [1] &quot;2021-04-15 MDT&quot;</code></pre>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="lubridate.html#cb496-1" tabindex="-1"></a>d</span></code></pre></div>
+<pre><code>## [1] &quot;2021-04-15 PDT&quot;</code></pre>
 <p>But if I convert that character string into POSIXct, now R understands it is a date. What is displayed is the date in my current time zone (which R knows):</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="lubridate.html#cb494-1"></a><span class="kw">Sys.timezone</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;America/Denver&quot;</code></pre>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="lubridate.html#cb498-1" tabindex="-1"></a><span class="fu">Sys.timezone</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;America/Los_Angeles&quot;</code></pre>
 <p>But what’s actually hiding under that date is the number of seconds from 1/1/1970. Let’s see what happens if I convert my date to <code>POSIXlt</code> instead:</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="lubridate.html#cb496-1"></a>d &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(d)</span>
-<span id="cb496-2"><a href="lubridate.html#cb496-2"></a></span>
-<span id="cb496-3"><a href="lubridate.html#cb496-3"></a><span class="kw">class</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="lubridate.html#cb500-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(d)</span>
+<span id="cb500-2"><a href="lubridate.html#cb500-2" tabindex="-1"></a></span>
+<span id="cb500-3"><a href="lubridate.html#cb500-3" tabindex="-1"></a><span class="fu">class</span>(d)</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXlt&quot; &quot;POSIXt&quot;</code></pre>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="lubridate.html#cb498-1"></a>d</span></code></pre></div>
-<pre><code>## [1] &quot;2021-04-15 MDT&quot;</code></pre>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="lubridate.html#cb502-1" tabindex="-1"></a>d</span></code></pre></div>
+<pre><code>## [1] &quot;2021-04-15 PDT&quot;</code></pre>
 <p>What’s displayed doesn’t change, but the way R is storing the information under the hood is different.</p>
 <p>You may have noticed that each time I converted to <code>POSIXct</code> or <code>POSIXlt</code> R also added the class <code>POSIXt</code> to the object. <code>POSIXt</code> is a class that inherits some properties from both <code>POSIXct</code> and <code>POSIXlt</code>, and it makes operations between the two possible.</p>
 <p>Here is how to do the same thing with a date-time string:</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="lubridate.html#cb500-1"></a>dt &lt;-<span class="st"> &quot;2021-04-15 13:20:00&quot;</span></span>
-<span id="cb500-2"><a href="lubridate.html#cb500-2"></a></span>
-<span id="cb500-3"><a href="lubridate.html#cb500-3"></a><span class="kw">as.POSIXct</span>(dt)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-04-15 13:20:00 MDT&quot;</code></pre>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="lubridate.html#cb502-1"></a><span class="kw">as.POSIXlt</span>(dt)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-04-15 13:20:00 MDT&quot;</code></pre>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="lubridate.html#cb504-1" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="st">&quot;2021-04-15 13:20:00&quot;</span></span>
+<span id="cb504-2"><a href="lubridate.html#cb504-2" tabindex="-1"></a></span>
+<span id="cb504-3"><a href="lubridate.html#cb504-3" tabindex="-1"></a><span class="fu">as.POSIXct</span>(dt)</span></code></pre></div>
+<pre><code>## [1] &quot;2021-04-15 13:20:00 PDT&quot;</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="lubridate.html#cb506-1" tabindex="-1"></a><span class="fu">as.POSIXlt</span>(dt)</span></code></pre></div>
+<pre><code>## [1] &quot;2021-04-15 13:20:00 PDT&quot;</code></pre>
 <p>Besides <code>POSIXct</code> and <code>POSIXlt</code>, R also support a data type called <code>Date</code>. This is equivalent to Excel’s handling of dates, i.e., the number of days since 1/1/1970:</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="lubridate.html#cb504-1"></a>d &lt;-<span class="st"> &quot;2021-04-15&quot;</span></span>
-<span id="cb504-2"><a href="lubridate.html#cb504-2"></a></span>
-<span id="cb504-3"><a href="lubridate.html#cb504-3"></a><span class="kw">as.Date</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="lubridate.html#cb508-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="st">&quot;2021-04-15&quot;</span></span>
+<span id="cb508-2"><a href="lubridate.html#cb508-2" tabindex="-1"></a></span>
+<span id="cb508-3"><a href="lubridate.html#cb508-3" tabindex="-1"></a><span class="fu">as.Date</span>(d)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15&quot;</code></pre>
 <p>This data type makes no assumptions about time zones. However, it can only support dates, not times:</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb506-1"><a href="lubridate.html#cb506-1"></a>dt &lt;-<span class="st"> &quot;2021-04-15 13:20:00&quot;</span></span>
-<span id="cb506-2"><a href="lubridate.html#cb506-2"></a></span>
-<span id="cb506-3"><a href="lubridate.html#cb506-3"></a><span class="kw">as.Date</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="lubridate.html#cb510-1" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="st">&quot;2021-04-15 13:20:00&quot;</span></span>
+<span id="cb510-2"><a href="lubridate.html#cb510-2" tabindex="-1"></a></span>
+<span id="cb510-3"><a href="lubridate.html#cb510-3" tabindex="-1"></a><span class="fu">as.Date</span>(dt)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15&quot;</code></pre>
 <p>When we convert a date-time string into <code>Date</code>, the time information is lost.</p>
 <p>What if our date was in a different format than “2021-04-15”?</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb508-1"><a href="lubridate.html#cb508-1"></a><span class="kw">as.Date</span>(<span class="st">&quot;04/15/2021&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="lubridate.html#cb512-1" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&quot;04/15/2021&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in charToDate(x): character string is not in a standard unambiguous format</code></pre>
-<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="lubridate.html#cb510-1"></a><span class="kw">as.POSIXct</span>(<span class="st">&quot;04/15/2021&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="lubridate.html#cb514-1" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;04/15/2021&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in as.POSIXlt.character(x, tz, ...): character string is not in a standard unambiguous format</code></pre>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="lubridate.html#cb512-1"></a><span class="kw">as.POSIXlt</span>(<span class="st">&quot;04/15/2021&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="lubridate.html#cb516-1" tabindex="-1"></a><span class="fu">as.POSIXlt</span>(<span class="st">&quot;04/15/2021&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in as.POSIXlt.character(&quot;04/15/2021&quot;): character string is not in a standard unambiguous format</code></pre>
 <p>None of the functions above work because they can’t understand the format of the date. To make this work, we would have to give R a template of how the object is formatted. In our case, the format is “month/day/4-digit year” which is encoded as <code>%m/%d/%Y</code>:</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="lubridate.html#cb514-1"></a><span class="kw">as.Date</span>(<span class="st">&quot;04/15/2021&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="lubridate.html#cb518-1" tabindex="-1"></a><span class="fu">as.Date</span>(<span class="st">&quot;04/15/2021&quot;</span>, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15&quot;</code></pre>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="lubridate.html#cb516-1"></a><span class="kw">as.POSIXct</span>(<span class="st">&quot;04/15/2021&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-04-15 MDT&quot;</code></pre>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="lubridate.html#cb518-1"></a><span class="kw">as.POSIXlt</span>(<span class="st">&quot;04/15/2021&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;2021-04-15 MDT&quot;</code></pre>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="lubridate.html#cb520-1" tabindex="-1"></a><span class="fu">as.POSIXct</span>(<span class="st">&quot;04/15/2021&quot;</span>, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;2021-04-15 PDT&quot;</code></pre>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="lubridate.html#cb522-1" tabindex="-1"></a><span class="fu">as.POSIXlt</span>(<span class="st">&quot;04/15/2021&quot;</span>, <span class="at">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;2021-04-15 PDT&quot;</code></pre>
 <p>What happens if we want to do some calculations on dates? For example, we want to know how many days went by between two dates. If our dates are formatted using a different data type, we may get some unexpected results:</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="lubridate.html#cb520-1"></a>d1 &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(<span class="st">&quot;2021-04-15&quot;</span>)</span>
-<span id="cb520-2"><a href="lubridate.html#cb520-2"></a>d2 &lt;-<span class="st"> </span><span class="kw">as.POSIXlt</span>(<span class="st">&quot;2021-04-16&quot;</span>)</span>
-<span id="cb520-3"><a href="lubridate.html#cb520-3"></a>d3 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2021-04-17&quot;</span>)</span>
-<span id="cb520-4"><a href="lubridate.html#cb520-4"></a></span>
-<span id="cb520-5"><a href="lubridate.html#cb520-5"></a>d3 <span class="op">-</span><span class="st"> </span>d1</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="lubridate.html#cb524-1" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2021-04-15&quot;</span>)</span>
+<span id="cb524-2"><a href="lubridate.html#cb524-2" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(<span class="st">&quot;2021-04-16&quot;</span>)</span>
+<span id="cb524-3"><a href="lubridate.html#cb524-3" tabindex="-1"></a>d3 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2021-04-17&quot;</span>)</span>
+<span id="cb524-4"><a href="lubridate.html#cb524-4" tabindex="-1"></a></span>
+<span id="cb524-5"><a href="lubridate.html#cb524-5" tabindex="-1"></a>d3 <span class="sc">-</span> d1</span></code></pre></div>
 <pre><code>## Warning: Incompatible methods (&quot;-.Date&quot;, &quot;-.POSIXt&quot;) for &quot;-&quot;</code></pre>
-<pre><code>## [1] &quot;-4429190-10-18&quot;</code></pre>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="lubridate.html#cb523-1"></a>d2 <span class="op">-</span><span class="st"> </span>d3</span></code></pre></div>
+<pre><code>## [1] &quot;-4429200-12-09&quot;</code></pre>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb527-1"><a href="lubridate.html#cb527-1" tabindex="-1"></a>d2 <span class="sc">-</span> d3</span></code></pre></div>
 <pre><code>## Warning: Incompatible methods (&quot;-.POSIXt&quot;, &quot;-.Date&quot;) for &quot;-&quot;</code></pre>
 <pre><code>## Error in d2 - d3: non-numeric argument to binary operator</code></pre>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="lubridate.html#cb526-1"></a>d3 <span class="op">-</span><span class="st"> </span>d1</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="lubridate.html#cb530-1" tabindex="-1"></a>d3 <span class="sc">-</span> d1</span></code></pre></div>
 <pre><code>## Warning: Incompatible methods (&quot;-.Date&quot;, &quot;-.POSIXt&quot;) for &quot;-&quot;</code></pre>
-<pre><code>## [1] &quot;-4429190-10-18&quot;</code></pre>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="lubridate.html#cb529-1"></a>d1 <span class="op">-</span><span class="st"> </span>d2</span></code></pre></div>
+<pre><code>## [1] &quot;-4429200-12-09&quot;</code></pre>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="lubridate.html#cb533-1" tabindex="-1"></a>d1 <span class="sc">-</span> d2</span></code></pre></div>
 <pre><code>## Time difference of -1 days</code></pre>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb531-1"><a href="lubridate.html#cb531-1"></a>d1 <span class="op">-</span><span class="st"> </span>d3</span></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="lubridate.html#cb535-1" tabindex="-1"></a>d1 <span class="sc">-</span> d3</span></code></pre></div>
 <pre><code>## Warning: Incompatible methods (&quot;-.POSIXt&quot;, &quot;-.Date&quot;) for &quot;-&quot;</code></pre>
-<pre><code>## [1] &quot;2021-04-14 18:47:46 MDT&quot;</code></pre>
+<pre><code>## [1] &quot;2021-04-14 18:47:46 PDT&quot;</code></pre>
 <p>Only one of the calculations above (<code>d1 - d2</code>, where we are subtracting a <code>POSIXlt</code> from a <code>POSIXct</code>) worked and returned the right output. All the other ones returned weird outputs and a warning that the methods are incompatible.</p>
 <p>The ones above are just a few examples to demonstrate how working with dates and times in R can still be complicated even using dedicated data types available within base R.</p>
 </div>
-<div id="the-lubridate-package" class="section level2">
-<h2><span class="header-section-number">15.4</span> The <code>lubridate</code> package</h2>
+<div id="the-lubridate-package" class="section level2 hasAnchor" number="15.4">
+<h2><span class="header-section-number">15.4</span> The <code>lubridate</code> package<a href="lubridate.html#the-lubridate-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:lub"></span>
 <img src="img/lubridate_ymd.png" alt="Artwork by Allison Horst" width="80%" />
 <p class="caption">
@@ -524,93 +561,92 @@ Figure 15.1: Artwork by Allison Horst
 </p>
 </div>
 <p>Working with dates and times in R becomes a whole lot easier when using the <code>lubridate</code> package. <code>lubridate</code> is part of the <code>tidyverse</code> and it is meant to make working with dates and time as straightforward as possible. For one, functions in <code>lubridate</code> are designed to behave consistently regardless of the underlying object. No need to keep track of what functions we can or cannot use on different date-time objects: the same handful of function work predictably on all of them. Using <code>lubridate</code> does not mean foregoing base R’s handling of date-time objects: the package works nicely with built-in objects, it just makes them more user-friendly. Let’s look at some of the functionalities of lubridate.</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="lubridate.html#cb534-1"></a><span class="kw">library</span>(lubridate)</span></code></pre></div>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.0.3</code></pre>
-<div id="parsing-dates-and-times" class="section level3">
-<h3><span class="header-section-number">15.4.1</span> Parsing dates and times</h3>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="lubridate.html#cb538-1" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span></code></pre></div>
+<div id="parsing-dates-and-times" class="section level3 hasAnchor" number="15.4.1">
+<h3><span class="header-section-number">15.4.1</span> Parsing dates and times<a href="lubridate.html#parsing-dates-and-times" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>lubridate</code> comes with a suite of different functions to parse (i.e., correctly interpret the components of) dates, times, and timestamp. These functions are:</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="lubridate.html#cb536-1"></a><span class="kw">ymd</span>()</span>
-<span id="cb536-2"><a href="lubridate.html#cb536-2"></a><span class="kw">mdy</span>()</span>
-<span id="cb536-3"><a href="lubridate.html#cb536-3"></a><span class="kw">dmy</span>()</span>
-<span id="cb536-4"><a href="lubridate.html#cb536-4"></a></span>
-<span id="cb536-5"><a href="lubridate.html#cb536-5"></a><span class="kw">ymd_hms</span>()</span>
-<span id="cb536-6"><a href="lubridate.html#cb536-6"></a><span class="kw">mdy_hms</span>()</span>
-<span id="cb536-7"><a href="lubridate.html#cb536-7"></a><span class="kw">dmy_hms</span>()</span>
-<span id="cb536-8"><a href="lubridate.html#cb536-8"></a></span>
-<span id="cb536-9"><a href="lubridate.html#cb536-9"></a><span class="kw">hms</span>()</span>
-<span id="cb536-10"><a href="lubridate.html#cb536-10"></a><span class="kw">hm</span>()</span>
-<span id="cb536-11"><a href="lubridate.html#cb536-11"></a><span class="kw">ms</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="lubridate.html#cb539-1" tabindex="-1"></a><span class="fu">ymd</span>()</span>
+<span id="cb539-2"><a href="lubridate.html#cb539-2" tabindex="-1"></a><span class="fu">mdy</span>()</span>
+<span id="cb539-3"><a href="lubridate.html#cb539-3" tabindex="-1"></a><span class="fu">dmy</span>()</span>
+<span id="cb539-4"><a href="lubridate.html#cb539-4" tabindex="-1"></a></span>
+<span id="cb539-5"><a href="lubridate.html#cb539-5" tabindex="-1"></a><span class="fu">ymd_hms</span>()</span>
+<span id="cb539-6"><a href="lubridate.html#cb539-6" tabindex="-1"></a><span class="fu">mdy_hms</span>()</span>
+<span id="cb539-7"><a href="lubridate.html#cb539-7" tabindex="-1"></a><span class="fu">dmy_hms</span>()</span>
+<span id="cb539-8"><a href="lubridate.html#cb539-8" tabindex="-1"></a></span>
+<span id="cb539-9"><a href="lubridate.html#cb539-9" tabindex="-1"></a><span class="fu">hms</span>()</span>
+<span id="cb539-10"><a href="lubridate.html#cb539-10" tabindex="-1"></a><span class="fu">hm</span>()</span>
+<span id="cb539-11"><a href="lubridate.html#cb539-11" tabindex="-1"></a><span class="fu">ms</span>()</span></code></pre></div>
 <p>Depending on what format our input data is in, all we need to do is pick the correct function to convert our string into a date-time object:</p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="lubridate.html#cb537-1"></a><span class="co"># This string follows the format &quot;year, month, day&quot;, so we use ymd()</span></span>
-<span id="cb537-2"><a href="lubridate.html#cb537-2"></a><span class="kw">ymd</span>(<span class="st">&quot;2021-04-15&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="lubridate.html#cb540-1" tabindex="-1"></a><span class="co"># This string follows the format &quot;year, month, day&quot;, so we use ymd()</span></span>
+<span id="cb540-2"><a href="lubridate.html#cb540-2" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2021-04-15&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15&quot;</code></pre>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="lubridate.html#cb539-1"></a><span class="co"># Separator doesn&#39;t matter! And neither do leading zeros.</span></span>
-<span id="cb539-2"><a href="lubridate.html#cb539-2"></a><span class="kw">ymd</span>(<span class="st">&quot;2021/4/15&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="lubridate.html#cb542-1" tabindex="-1"></a><span class="co"># Separator doesn&#39;t matter! And neither do leading zeros.</span></span>
+<span id="cb542-2"><a href="lubridate.html#cb542-2" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2021/4/15&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15&quot;</code></pre>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="lubridate.html#cb541-1"></a><span class="co"># This string follows the format &quot;month, day, year&quot;, so we use mdy()</span></span>
-<span id="cb541-2"><a href="lubridate.html#cb541-2"></a><span class="kw">mdy</span>(<span class="st">&quot;4/15/2021&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="lubridate.html#cb544-1" tabindex="-1"></a><span class="co"># This string follows the format &quot;month, day, year&quot;, so we use mdy()</span></span>
+<span id="cb544-2"><a href="lubridate.html#cb544-2" tabindex="-1"></a><span class="fu">mdy</span>(<span class="st">&quot;4/15/2021&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15&quot;</code></pre>
 <p>Note that all of these functions return the same identical output: the output format is always <code>yyyy-mm-dd</code> and the output data type is always <code>Date</code>.</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="lubridate.html#cb543-1"></a><span class="kw">class</span>(<span class="kw">ymd</span>(<span class="st">&quot;2021-04-15&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="lubridate.html#cb546-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">ymd</span>(<span class="st">&quot;2021-04-15&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="lubridate.html#cb545-1"></a><span class="kw">class</span>(<span class="kw">ymd</span>(<span class="st">&quot;2021/4/15&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="lubridate.html#cb548-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">ymd</span>(<span class="st">&quot;2021/4/15&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="lubridate.html#cb547-1"></a><span class="kw">class</span>(<span class="kw">mdy</span>(<span class="st">&quot;4/15/2021&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="lubridate.html#cb550-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">mdy</span>(<span class="st">&quot;4/15/2021&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Date&quot;</code></pre>
 <p>Let’s try with some timestamps:</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="lubridate.html#cb549-1"></a><span class="co"># This string follows the format &quot;year, month, day, hour, minute, second&quot;, </span></span>
-<span id="cb549-2"><a href="lubridate.html#cb549-2"></a><span class="co"># so we use ymd_hms()</span></span>
-<span id="cb549-3"><a href="lubridate.html#cb549-3"></a><span class="kw">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:53:00&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="lubridate.html#cb552-1" tabindex="-1"></a><span class="co"># This string follows the format &quot;year, month, day, hour, minute, second&quot;, </span></span>
+<span id="cb552-2"><a href="lubridate.html#cb552-2" tabindex="-1"></a><span class="co"># so we use ymd_hms()</span></span>
+<span id="cb552-3"><a href="lubridate.html#cb552-3" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:53:00&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 13:53:00 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="lubridate.html#cb551-1"></a><span class="co"># Separator doesn&#39;t matter! </span></span>
-<span id="cb551-2"><a href="lubridate.html#cb551-2"></a><span class="kw">ymd_hms</span>(<span class="st">&quot;2021/4/15 13 53 00&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="lubridate.html#cb554-1" tabindex="-1"></a><span class="co"># Separator doesn&#39;t matter! </span></span>
+<span id="cb554-2"><a href="lubridate.html#cb554-2" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="st">&quot;2021/4/15 13 53 00&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 13:53:00 UTC&quot;</code></pre>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="lubridate.html#cb553-1"></a><span class="co"># This string follows the format &quot;month, day, year, hour, minute&quot;, so we use mdy_hm()</span></span>
-<span id="cb553-2"><a href="lubridate.html#cb553-2"></a><span class="kw">mdy_hm</span>(<span class="st">&quot;4/15/2021 13:53&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="lubridate.html#cb556-1" tabindex="-1"></a><span class="co"># This string follows the format &quot;month, day, year, hour, minute&quot;, so we use mdy_hm()</span></span>
+<span id="cb556-2"><a href="lubridate.html#cb556-2" tabindex="-1"></a><span class="fu">mdy_hm</span>(<span class="st">&quot;4/15/2021 13:53&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 13:53:00 UTC&quot;</code></pre>
 <p>Again, the output format is always the same and the output class is too (this time it’s <code>POSIXct</code> because there’s a time component in addition to the date):</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="lubridate.html#cb555-1"></a><span class="kw">class</span>(<span class="kw">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:53:00&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="lubridate.html#cb558-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:53:00&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="lubridate.html#cb557-1"></a><span class="kw">class</span>(<span class="kw">ymd_hms</span>(<span class="st">&quot;2021/4/15 13 53 00&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="lubridate.html#cb560-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">ymd_hms</span>(<span class="st">&quot;2021/4/15 13 53 00&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="lubridate.html#cb559-1"></a><span class="kw">class</span>(<span class="kw">mdy_hm</span>(<span class="st">&quot;4/15/2021 13:53&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="lubridate.html#cb562-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">mdy_hm</span>(<span class="st">&quot;4/15/2021 13:53&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;POSIXct&quot; &quot;POSIXt&quot;</code></pre>
 <p>What happens if we use a function that doesn’t match the format we are providing in input?</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="lubridate.html#cb561-1"></a><span class="kw">ymd</span>(<span class="st">&quot;2021-04-15 13:56:00&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="lubridate.html#cb564-1" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2021-04-15 13:56:00&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: All formats failed to parse. No formats found.</code></pre>
 <pre><code>## [1] NA</code></pre>
 <p>The output is <code>NA</code> and we get a warning that the date failed to parse. That is because <code>ymd()</code> is expecting a year, a month, and a day only; instead, we are giving it a full timestamp (year, month, day, hour, minute, second).</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="lubridate.html#cb564-1"></a><span class="kw">ymd_hms</span>(<span class="st">&quot;04/15/2021 13:56:00&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="lubridate.html#cb567-1" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="st">&quot;04/15/2021 13:56:00&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: All formats failed to parse. No formats found.</code></pre>
 <pre><code>## [1] NA</code></pre>
 <p>This one failed because <code>ymd_hms()</code> is expecting the elements in this order: year, month, day, hour, minute, second, but we are giving it in a different order (month, day, year, hour, minute, second). So, whenever you get the warning, <code>All formats failed to parse. No formats found.</code> you’ll know that you either passed more components than the function expected, fewer components than the function expected, or you passed them in the wrong order.</p>
 <p>One misconception that I frequently see is that people tend to think that the different functions we’ve seen (<code>ymd()</code>, <code>mdy()</code>, <code>dmy()</code>, etc.) are used to tell <code>lubridate</code> what format we want <strong>in output</strong>; but actually, the output returned is always the same. Those different functions exist so that can choose the appropriate function to match the format of our <strong>input</strong>, so that the string can be parsed correctly.</p>
 </div>
-<div id="extracting-components-of-a-date-time-object" class="section level3">
-<h3><span class="header-section-number">15.4.2</span> Extracting components of a date-time object</h3>
+<div id="extracting-components-of-a-date-time-object" class="section level3 hasAnchor" number="15.4.2">
+<h3><span class="header-section-number">15.4.2</span> Extracting components of a date-time object<a href="lubridate.html#extracting-components-of-a-date-time-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The following functions in <code>lubridate</code> let you extract components of a date-time object:</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="lubridate.html#cb567-1"></a>dt &lt;-<span class="st"> </span><span class="kw">mdy_hms</span>(<span class="st">&quot;04/15/2021 13:56:00&quot;</span>)</span>
-<span id="cb567-2"><a href="lubridate.html#cb567-2"></a></span>
-<span id="cb567-3"><a href="lubridate.html#cb567-3"></a><span class="kw">day</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="lubridate.html#cb570-1" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">mdy_hms</span>(<span class="st">&quot;04/15/2021 13:56:00&quot;</span>)</span>
+<span id="cb570-2"><a href="lubridate.html#cb570-2" tabindex="-1"></a></span>
+<span id="cb570-3"><a href="lubridate.html#cb570-3" tabindex="-1"></a><span class="fu">day</span>(dt)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="lubridate.html#cb569-1"></a><span class="kw">month</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="lubridate.html#cb572-1" tabindex="-1"></a><span class="fu">month</span>(dt)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="lubridate.html#cb571-1"></a><span class="kw">year</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="lubridate.html#cb574-1" tabindex="-1"></a><span class="fu">year</span>(dt)</span></code></pre></div>
 <pre><code>## [1] 2021</code></pre>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="lubridate.html#cb573-1"></a><span class="kw">hour</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="lubridate.html#cb576-1" tabindex="-1"></a><span class="fu">hour</span>(dt)</span></code></pre></div>
 <pre><code>## [1] 13</code></pre>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="lubridate.html#cb575-1"></a><span class="kw">minute</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="lubridate.html#cb578-1" tabindex="-1"></a><span class="fu">minute</span>(dt)</span></code></pre></div>
 <pre><code>## [1] 56</code></pre>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="lubridate.html#cb577-1"></a><span class="kw">second</span>(dt)</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="lubridate.html#cb580-1" tabindex="-1"></a><span class="fu">second</span>(dt)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 </div>
-<div id="time-zones" class="section level3">
-<h3><span class="header-section-number">15.4.3</span> Time zones</h3>
+<div id="time-zones" class="section level3 hasAnchor" number="15.4.3">
+<h3><span class="header-section-number">15.4.3</span> Time zones<a href="lubridate.html#time-zones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>By default, when we create a new timestamp with <code>lubridate</code>, it will be assumed to be in UTC (Coordinated Universal Time):</p>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="lubridate.html#cb579-1"></a><span class="kw">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:56:00&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="lubridate.html#cb582-1" tabindex="-1"></a><span class="fu">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:56:00&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 13:56:00 UTC&quot;</code></pre>
 <p>What if the timestamp is actually in a different time zone than that? We can use the argument <code>tz</code> to specify what time zone the data are in when we create the object. For a list of available time zones, we can look up:</p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="lubridate.html#cb581-1"></a><span class="kw">OlsonNames</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="lubridate.html#cb584-1" tabindex="-1"></a><span class="fu">OlsonNames</span>()</span></code></pre></div>
 <pre><code>##   [1] &quot;Africa/Abidjan&quot;                   &quot;Africa/Accra&quot;                    
 ##   [3] &quot;Africa/Addis_Ababa&quot;               &quot;Africa/Algiers&quot;                  
 ##   [5] &quot;Africa/Asmara&quot;                    &quot;Africa/Asmera&quot;                   
@@ -658,278 +694,279 @@ Figure 15.1: Artwork by Allison Horst
 ##  [89] &quot;America/Cancun&quot;                   &quot;America/Caracas&quot;                 
 ##  [91] &quot;America/Catamarca&quot;                &quot;America/Cayenne&quot;                 
 ##  [93] &quot;America/Cayman&quot;                   &quot;America/Chicago&quot;                 
-##  [95] &quot;America/Chihuahua&quot;                &quot;America/Coral_Harbour&quot;           
-##  [97] &quot;America/Cordoba&quot;                  &quot;America/Costa_Rica&quot;              
-##  [99] &quot;America/Creston&quot;                  &quot;America/Cuiaba&quot;                  
-## [101] &quot;America/Curacao&quot;                  &quot;America/Danmarkshavn&quot;            
-## [103] &quot;America/Dawson&quot;                   &quot;America/Dawson_Creek&quot;            
-## [105] &quot;America/Denver&quot;                   &quot;America/Detroit&quot;                 
-## [107] &quot;America/Dominica&quot;                 &quot;America/Edmonton&quot;                
-## [109] &quot;America/Eirunepe&quot;                 &quot;America/El_Salvador&quot;             
-## [111] &quot;America/Ensenada&quot;                 &quot;America/Fort_Nelson&quot;             
-## [113] &quot;America/Fort_Wayne&quot;               &quot;America/Fortaleza&quot;               
-## [115] &quot;America/Glace_Bay&quot;                &quot;America/Godthab&quot;                 
-## [117] &quot;America/Goose_Bay&quot;                &quot;America/Grand_Turk&quot;              
-## [119] &quot;America/Grenada&quot;                  &quot;America/Guadeloupe&quot;              
-## [121] &quot;America/Guatemala&quot;                &quot;America/Guayaquil&quot;               
-## [123] &quot;America/Guyana&quot;                   &quot;America/Halifax&quot;                 
-## [125] &quot;America/Havana&quot;                   &quot;America/Hermosillo&quot;              
-## [127] &quot;America/Indiana/Indianapolis&quot;     &quot;America/Indiana/Knox&quot;            
-## [129] &quot;America/Indiana/Marengo&quot;          &quot;America/Indiana/Petersburg&quot;      
-## [131] &quot;America/Indiana/Tell_City&quot;        &quot;America/Indiana/Vevay&quot;           
-## [133] &quot;America/Indiana/Vincennes&quot;        &quot;America/Indiana/Winamac&quot;         
-## [135] &quot;America/Indianapolis&quot;             &quot;America/Inuvik&quot;                  
-## [137] &quot;America/Iqaluit&quot;                  &quot;America/Jamaica&quot;                 
-## [139] &quot;America/Jujuy&quot;                    &quot;America/Juneau&quot;                  
-## [141] &quot;America/Kentucky/Louisville&quot;      &quot;America/Kentucky/Monticello&quot;     
-## [143] &quot;America/Knox_IN&quot;                  &quot;America/Kralendijk&quot;              
-## [145] &quot;America/La_Paz&quot;                   &quot;America/Lima&quot;                    
-## [147] &quot;America/Los_Angeles&quot;              &quot;America/Louisville&quot;              
-## [149] &quot;America/Lower_Princes&quot;            &quot;America/Maceio&quot;                  
-## [151] &quot;America/Managua&quot;                  &quot;America/Manaus&quot;                  
-## [153] &quot;America/Marigot&quot;                  &quot;America/Martinique&quot;              
-## [155] &quot;America/Matamoros&quot;                &quot;America/Mazatlan&quot;                
-## [157] &quot;America/Mendoza&quot;                  &quot;America/Menominee&quot;               
-## [159] &quot;America/Merida&quot;                   &quot;America/Metlakatla&quot;              
-## [161] &quot;America/Mexico_City&quot;              &quot;America/Miquelon&quot;                
-## [163] &quot;America/Moncton&quot;                  &quot;America/Monterrey&quot;               
-## [165] &quot;America/Montevideo&quot;               &quot;America/Montreal&quot;                
-## [167] &quot;America/Montserrat&quot;               &quot;America/Nassau&quot;                  
-## [169] &quot;America/New_York&quot;                 &quot;America/Nipigon&quot;                 
-## [171] &quot;America/Nome&quot;                     &quot;America/Noronha&quot;                 
-## [173] &quot;America/North_Dakota/Beulah&quot;      &quot;America/North_Dakota/Center&quot;     
-## [175] &quot;America/North_Dakota/New_Salem&quot;   &quot;America/Nuuk&quot;                    
-## [177] &quot;America/Ojinaga&quot;                  &quot;America/Panama&quot;                  
-## [179] &quot;America/Pangnirtung&quot;              &quot;America/Paramaribo&quot;              
-## [181] &quot;America/Phoenix&quot;                  &quot;America/Port-au-Prince&quot;          
-## [183] &quot;America/Port_of_Spain&quot;            &quot;America/Porto_Acre&quot;              
-## [185] &quot;America/Porto_Velho&quot;              &quot;America/Puerto_Rico&quot;             
-## [187] &quot;America/Punta_Arenas&quot;             &quot;America/Rainy_River&quot;             
-## [189] &quot;America/Rankin_Inlet&quot;             &quot;America/Recife&quot;                  
-## [191] &quot;America/Regina&quot;                   &quot;America/Resolute&quot;                
-## [193] &quot;America/Rio_Branco&quot;               &quot;America/Rosario&quot;                 
-## [195] &quot;America/Santa_Isabel&quot;             &quot;America/Santarem&quot;                
-## [197] &quot;America/Santiago&quot;                 &quot;America/Santo_Domingo&quot;           
-## [199] &quot;America/Sao_Paulo&quot;                &quot;America/Scoresbysund&quot;            
-## [201] &quot;America/Shiprock&quot;                 &quot;America/Sitka&quot;                   
-## [203] &quot;America/St_Barthelemy&quot;            &quot;America/St_Johns&quot;                
-## [205] &quot;America/St_Kitts&quot;                 &quot;America/St_Lucia&quot;                
-## [207] &quot;America/St_Thomas&quot;                &quot;America/St_Vincent&quot;              
-## [209] &quot;America/Swift_Current&quot;            &quot;America/Tegucigalpa&quot;             
-## [211] &quot;America/Thule&quot;                    &quot;America/Thunder_Bay&quot;             
-## [213] &quot;America/Tijuana&quot;                  &quot;America/Toronto&quot;                 
-## [215] &quot;America/Tortola&quot;                  &quot;America/Vancouver&quot;               
-## [217] &quot;America/Virgin&quot;                   &quot;America/Whitehorse&quot;              
-## [219] &quot;America/Winnipeg&quot;                 &quot;America/Yakutat&quot;                 
-## [221] &quot;America/Yellowknife&quot;              &quot;Antarctica/Casey&quot;                
-## [223] &quot;Antarctica/Davis&quot;                 &quot;Antarctica/DumontDUrville&quot;       
-## [225] &quot;Antarctica/Macquarie&quot;             &quot;Antarctica/Mawson&quot;               
-## [227] &quot;Antarctica/McMurdo&quot;               &quot;Antarctica/Palmer&quot;               
-## [229] &quot;Antarctica/Rothera&quot;               &quot;Antarctica/South_Pole&quot;           
-## [231] &quot;Antarctica/Syowa&quot;                 &quot;Antarctica/Troll&quot;                
-## [233] &quot;Antarctica/Vostok&quot;                &quot;Arctic/Longyearbyen&quot;             
-## [235] &quot;Asia/Aden&quot;                        &quot;Asia/Almaty&quot;                     
-## [237] &quot;Asia/Amman&quot;                       &quot;Asia/Anadyr&quot;                     
-## [239] &quot;Asia/Aqtau&quot;                       &quot;Asia/Aqtobe&quot;                     
-## [241] &quot;Asia/Ashgabat&quot;                    &quot;Asia/Ashkhabad&quot;                  
-## [243] &quot;Asia/Atyrau&quot;                      &quot;Asia/Baghdad&quot;                    
-## [245] &quot;Asia/Bahrain&quot;                     &quot;Asia/Baku&quot;                       
-## [247] &quot;Asia/Bangkok&quot;                     &quot;Asia/Barnaul&quot;                    
-## [249] &quot;Asia/Beirut&quot;                      &quot;Asia/Bishkek&quot;                    
-## [251] &quot;Asia/Brunei&quot;                      &quot;Asia/Calcutta&quot;                   
-## [253] &quot;Asia/Chita&quot;                       &quot;Asia/Choibalsan&quot;                 
-## [255] &quot;Asia/Chongqing&quot;                   &quot;Asia/Chungking&quot;                  
-## [257] &quot;Asia/Colombo&quot;                     &quot;Asia/Dacca&quot;                      
-## [259] &quot;Asia/Damascus&quot;                    &quot;Asia/Dhaka&quot;                      
-## [261] &quot;Asia/Dili&quot;                        &quot;Asia/Dubai&quot;                      
-## [263] &quot;Asia/Dushanbe&quot;                    &quot;Asia/Famagusta&quot;                  
-## [265] &quot;Asia/Gaza&quot;                        &quot;Asia/Harbin&quot;                     
-## [267] &quot;Asia/Hebron&quot;                      &quot;Asia/Ho_Chi_Minh&quot;                
-## [269] &quot;Asia/Hong_Kong&quot;                   &quot;Asia/Hovd&quot;                       
-## [271] &quot;Asia/Irkutsk&quot;                     &quot;Asia/Istanbul&quot;                   
-## [273] &quot;Asia/Jakarta&quot;                     &quot;Asia/Jayapura&quot;                   
-## [275] &quot;Asia/Jerusalem&quot;                   &quot;Asia/Kabul&quot;                      
-## [277] &quot;Asia/Kamchatka&quot;                   &quot;Asia/Karachi&quot;                    
-## [279] &quot;Asia/Kashgar&quot;                     &quot;Asia/Kathmandu&quot;                  
-## [281] &quot;Asia/Katmandu&quot;                    &quot;Asia/Khandyga&quot;                   
-## [283] &quot;Asia/Kolkata&quot;                     &quot;Asia/Krasnoyarsk&quot;                
-## [285] &quot;Asia/Kuala_Lumpur&quot;                &quot;Asia/Kuching&quot;                    
-## [287] &quot;Asia/Kuwait&quot;                      &quot;Asia/Macao&quot;                      
-## [289] &quot;Asia/Macau&quot;                       &quot;Asia/Magadan&quot;                    
-## [291] &quot;Asia/Makassar&quot;                    &quot;Asia/Manila&quot;                     
-## [293] &quot;Asia/Muscat&quot;                      &quot;Asia/Nicosia&quot;                    
-## [295] &quot;Asia/Novokuznetsk&quot;                &quot;Asia/Novosibirsk&quot;                
-## [297] &quot;Asia/Omsk&quot;                        &quot;Asia/Oral&quot;                       
-## [299] &quot;Asia/Phnom_Penh&quot;                  &quot;Asia/Pontianak&quot;                  
-## [301] &quot;Asia/Pyongyang&quot;                   &quot;Asia/Qatar&quot;                      
-## [303] &quot;Asia/Qostanay&quot;                    &quot;Asia/Qyzylorda&quot;                  
-## [305] &quot;Asia/Rangoon&quot;                     &quot;Asia/Riyadh&quot;                     
-## [307] &quot;Asia/Saigon&quot;                      &quot;Asia/Sakhalin&quot;                   
-## [309] &quot;Asia/Samarkand&quot;                   &quot;Asia/Seoul&quot;                      
-## [311] &quot;Asia/Shanghai&quot;                    &quot;Asia/Singapore&quot;                  
-## [313] &quot;Asia/Srednekolymsk&quot;               &quot;Asia/Taipei&quot;                     
-## [315] &quot;Asia/Tashkent&quot;                    &quot;Asia/Tbilisi&quot;                    
-## [317] &quot;Asia/Tehran&quot;                      &quot;Asia/Tel_Aviv&quot;                   
-## [319] &quot;Asia/Thimbu&quot;                      &quot;Asia/Thimphu&quot;                    
-## [321] &quot;Asia/Tokyo&quot;                       &quot;Asia/Tomsk&quot;                      
-## [323] &quot;Asia/Ujung_Pandang&quot;               &quot;Asia/Ulaanbaatar&quot;                
-## [325] &quot;Asia/Ulan_Bator&quot;                  &quot;Asia/Urumqi&quot;                     
-## [327] &quot;Asia/Ust-Nera&quot;                    &quot;Asia/Vientiane&quot;                  
-## [329] &quot;Asia/Vladivostok&quot;                 &quot;Asia/Yakutsk&quot;                    
-## [331] &quot;Asia/Yangon&quot;                      &quot;Asia/Yekaterinburg&quot;              
-## [333] &quot;Asia/Yerevan&quot;                     &quot;Atlantic/Azores&quot;                 
-## [335] &quot;Atlantic/Bermuda&quot;                 &quot;Atlantic/Canary&quot;                 
-## [337] &quot;Atlantic/Cape_Verde&quot;              &quot;Atlantic/Faeroe&quot;                 
-## [339] &quot;Atlantic/Faroe&quot;                   &quot;Atlantic/Jan_Mayen&quot;              
-## [341] &quot;Atlantic/Madeira&quot;                 &quot;Atlantic/Reykjavik&quot;              
-## [343] &quot;Atlantic/South_Georgia&quot;           &quot;Atlantic/St_Helena&quot;              
-## [345] &quot;Atlantic/Stanley&quot;                 &quot;Australia/ACT&quot;                   
-## [347] &quot;Australia/Adelaide&quot;               &quot;Australia/Brisbane&quot;              
-## [349] &quot;Australia/Broken_Hill&quot;            &quot;Australia/Canberra&quot;              
-## [351] &quot;Australia/Currie&quot;                 &quot;Australia/Darwin&quot;                
-## [353] &quot;Australia/Eucla&quot;                  &quot;Australia/Hobart&quot;                
-## [355] &quot;Australia/LHI&quot;                    &quot;Australia/Lindeman&quot;              
-## [357] &quot;Australia/Lord_Howe&quot;              &quot;Australia/Melbourne&quot;             
-## [359] &quot;Australia/North&quot;                  &quot;Australia/NSW&quot;                   
-## [361] &quot;Australia/Perth&quot;                  &quot;Australia/Queensland&quot;            
-## [363] &quot;Australia/South&quot;                  &quot;Australia/Sydney&quot;                
-## [365] &quot;Australia/Tasmania&quot;               &quot;Australia/Victoria&quot;              
-## [367] &quot;Australia/West&quot;                   &quot;Australia/Yancowinna&quot;            
-## [369] &quot;Brazil/Acre&quot;                      &quot;Brazil/DeNoronha&quot;                
-## [371] &quot;Brazil/East&quot;                      &quot;Brazil/West&quot;                     
-## [373] &quot;Canada/Atlantic&quot;                  &quot;Canada/Central&quot;                  
-## [375] &quot;Canada/Eastern&quot;                   &quot;Canada/Mountain&quot;                 
-## [377] &quot;Canada/Newfoundland&quot;              &quot;Canada/Pacific&quot;                  
-## [379] &quot;Canada/Saskatchewan&quot;              &quot;Canada/Yukon&quot;                    
-## [381] &quot;CET&quot;                              &quot;Chile/Continental&quot;               
-## [383] &quot;Chile/EasterIsland&quot;               &quot;CST6CDT&quot;                         
-## [385] &quot;Cuba&quot;                             &quot;EET&quot;                             
-## [387] &quot;Egypt&quot;                            &quot;Eire&quot;                            
-## [389] &quot;EST&quot;                              &quot;EST5EDT&quot;                         
-## [391] &quot;Etc/GMT&quot;                          &quot;Etc/GMT-0&quot;                       
-## [393] &quot;Etc/GMT-1&quot;                        &quot;Etc/GMT-10&quot;                      
-## [395] &quot;Etc/GMT-11&quot;                       &quot;Etc/GMT-12&quot;                      
-## [397] &quot;Etc/GMT-13&quot;                       &quot;Etc/GMT-14&quot;                      
-## [399] &quot;Etc/GMT-2&quot;                        &quot;Etc/GMT-3&quot;                       
-## [401] &quot;Etc/GMT-4&quot;                        &quot;Etc/GMT-5&quot;                       
-## [403] &quot;Etc/GMT-6&quot;                        &quot;Etc/GMT-7&quot;                       
-## [405] &quot;Etc/GMT-8&quot;                        &quot;Etc/GMT-9&quot;                       
-## [407] &quot;Etc/GMT+0&quot;                        &quot;Etc/GMT+1&quot;                       
-## [409] &quot;Etc/GMT+10&quot;                       &quot;Etc/GMT+11&quot;                      
-## [411] &quot;Etc/GMT+12&quot;                       &quot;Etc/GMT+2&quot;                       
-## [413] &quot;Etc/GMT+3&quot;                        &quot;Etc/GMT+4&quot;                       
-## [415] &quot;Etc/GMT+5&quot;                        &quot;Etc/GMT+6&quot;                       
-## [417] &quot;Etc/GMT+7&quot;                        &quot;Etc/GMT+8&quot;                       
-## [419] &quot;Etc/GMT+9&quot;                        &quot;Etc/GMT0&quot;                        
-## [421] &quot;Etc/Greenwich&quot;                    &quot;Etc/UCT&quot;                         
-## [423] &quot;Etc/Universal&quot;                    &quot;Etc/UTC&quot;                         
-## [425] &quot;Etc/Zulu&quot;                         &quot;Europe/Amsterdam&quot;                
-## [427] &quot;Europe/Andorra&quot;                   &quot;Europe/Astrakhan&quot;                
-## [429] &quot;Europe/Athens&quot;                    &quot;Europe/Belfast&quot;                  
-## [431] &quot;Europe/Belgrade&quot;                  &quot;Europe/Berlin&quot;                   
-## [433] &quot;Europe/Bratislava&quot;                &quot;Europe/Brussels&quot;                 
-## [435] &quot;Europe/Bucharest&quot;                 &quot;Europe/Budapest&quot;                 
-## [437] &quot;Europe/Busingen&quot;                  &quot;Europe/Chisinau&quot;                 
-## [439] &quot;Europe/Copenhagen&quot;                &quot;Europe/Dublin&quot;                   
-## [441] &quot;Europe/Gibraltar&quot;                 &quot;Europe/Guernsey&quot;                 
-## [443] &quot;Europe/Helsinki&quot;                  &quot;Europe/Isle_of_Man&quot;              
-## [445] &quot;Europe/Istanbul&quot;                  &quot;Europe/Jersey&quot;                   
-## [447] &quot;Europe/Kaliningrad&quot;               &quot;Europe/Kiev&quot;                     
-## [449] &quot;Europe/Kirov&quot;                     &quot;Europe/Lisbon&quot;                   
-## [451] &quot;Europe/Ljubljana&quot;                 &quot;Europe/London&quot;                   
-## [453] &quot;Europe/Luxembourg&quot;                &quot;Europe/Madrid&quot;                   
-## [455] &quot;Europe/Malta&quot;                     &quot;Europe/Mariehamn&quot;                
-## [457] &quot;Europe/Minsk&quot;                     &quot;Europe/Monaco&quot;                   
-## [459] &quot;Europe/Moscow&quot;                    &quot;Europe/Nicosia&quot;                  
-## [461] &quot;Europe/Oslo&quot;                      &quot;Europe/Paris&quot;                    
-## [463] &quot;Europe/Podgorica&quot;                 &quot;Europe/Prague&quot;                   
-## [465] &quot;Europe/Riga&quot;                      &quot;Europe/Rome&quot;                     
-## [467] &quot;Europe/Samara&quot;                    &quot;Europe/San_Marino&quot;               
-## [469] &quot;Europe/Sarajevo&quot;                  &quot;Europe/Saratov&quot;                  
-## [471] &quot;Europe/Simferopol&quot;                &quot;Europe/Skopje&quot;                   
-## [473] &quot;Europe/Sofia&quot;                     &quot;Europe/Stockholm&quot;                
-## [475] &quot;Europe/Tallinn&quot;                   &quot;Europe/Tirane&quot;                   
-## [477] &quot;Europe/Tiraspol&quot;                  &quot;Europe/Ulyanovsk&quot;                
-## [479] &quot;Europe/Uzhgorod&quot;                  &quot;Europe/Vaduz&quot;                    
-## [481] &quot;Europe/Vatican&quot;                   &quot;Europe/Vienna&quot;                   
-## [483] &quot;Europe/Vilnius&quot;                   &quot;Europe/Volgograd&quot;                
-## [485] &quot;Europe/Warsaw&quot;                    &quot;Europe/Zagreb&quot;                   
-## [487] &quot;Europe/Zaporozhye&quot;                &quot;Europe/Zurich&quot;                   
-## [489] &quot;GB&quot;                               &quot;GB-Eire&quot;                         
-## [491] &quot;GMT&quot;                              &quot;GMT-0&quot;                           
-## [493] &quot;GMT+0&quot;                            &quot;GMT0&quot;                            
-## [495] &quot;Greenwich&quot;                        &quot;Hongkong&quot;                        
-## [497] &quot;HST&quot;                              &quot;Iceland&quot;                         
-## [499] &quot;Indian/Antananarivo&quot;              &quot;Indian/Chagos&quot;                   
-## [501] &quot;Indian/Christmas&quot;                 &quot;Indian/Cocos&quot;                    
-## [503] &quot;Indian/Comoro&quot;                    &quot;Indian/Kerguelen&quot;                
-## [505] &quot;Indian/Mahe&quot;                      &quot;Indian/Maldives&quot;                 
-## [507] &quot;Indian/Mauritius&quot;                 &quot;Indian/Mayotte&quot;                  
-## [509] &quot;Indian/Reunion&quot;                   &quot;Iran&quot;                            
-## [511] &quot;Israel&quot;                           &quot;Jamaica&quot;                         
-## [513] &quot;Japan&quot;                            &quot;Kwajalein&quot;                       
-## [515] &quot;Libya&quot;                            &quot;MET&quot;                             
-## [517] &quot;Mexico/BajaNorte&quot;                 &quot;Mexico/BajaSur&quot;                  
-## [519] &quot;Mexico/General&quot;                   &quot;MST&quot;                             
-## [521] &quot;MST7MDT&quot;                          &quot;Navajo&quot;                          
-## [523] &quot;NZ&quot;                               &quot;NZ-CHAT&quot;                         
-## [525] &quot;Pacific/Apia&quot;                     &quot;Pacific/Auckland&quot;                
-## [527] &quot;Pacific/Bougainville&quot;             &quot;Pacific/Chatham&quot;                 
-## [529] &quot;Pacific/Chuuk&quot;                    &quot;Pacific/Easter&quot;                  
-## [531] &quot;Pacific/Efate&quot;                    &quot;Pacific/Enderbury&quot;               
-## [533] &quot;Pacific/Fakaofo&quot;                  &quot;Pacific/Fiji&quot;                    
-## [535] &quot;Pacific/Funafuti&quot;                 &quot;Pacific/Galapagos&quot;               
-## [537] &quot;Pacific/Gambier&quot;                  &quot;Pacific/Guadalcanal&quot;             
-## [539] &quot;Pacific/Guam&quot;                     &quot;Pacific/Honolulu&quot;                
-## [541] &quot;Pacific/Johnston&quot;                 &quot;Pacific/Kiritimati&quot;              
-## [543] &quot;Pacific/Kosrae&quot;                   &quot;Pacific/Kwajalein&quot;               
-## [545] &quot;Pacific/Majuro&quot;                   &quot;Pacific/Marquesas&quot;               
-## [547] &quot;Pacific/Midway&quot;                   &quot;Pacific/Nauru&quot;                   
-## [549] &quot;Pacific/Niue&quot;                     &quot;Pacific/Norfolk&quot;                 
-## [551] &quot;Pacific/Noumea&quot;                   &quot;Pacific/Pago_Pago&quot;               
-## [553] &quot;Pacific/Palau&quot;                    &quot;Pacific/Pitcairn&quot;                
-## [555] &quot;Pacific/Pohnpei&quot;                  &quot;Pacific/Ponape&quot;                  
-## [557] &quot;Pacific/Port_Moresby&quot;             &quot;Pacific/Rarotonga&quot;               
-## [559] &quot;Pacific/Saipan&quot;                   &quot;Pacific/Samoa&quot;                   
-## [561] &quot;Pacific/Tahiti&quot;                   &quot;Pacific/Tarawa&quot;                  
-## [563] &quot;Pacific/Tongatapu&quot;                &quot;Pacific/Truk&quot;                    
-## [565] &quot;Pacific/Wake&quot;                     &quot;Pacific/Wallis&quot;                  
-## [567] &quot;Pacific/Yap&quot;                      &quot;Poland&quot;                          
-## [569] &quot;Portugal&quot;                         &quot;PRC&quot;                             
-## [571] &quot;PST8PDT&quot;                          &quot;ROC&quot;                             
-## [573] &quot;ROK&quot;                              &quot;Singapore&quot;                       
-## [575] &quot;Turkey&quot;                           &quot;UCT&quot;                             
-## [577] &quot;Universal&quot;                        &quot;US/Alaska&quot;                       
-## [579] &quot;US/Aleutian&quot;                      &quot;US/Arizona&quot;                      
-## [581] &quot;US/Central&quot;                       &quot;US/East-Indiana&quot;                 
-## [583] &quot;US/Eastern&quot;                       &quot;US/Hawaii&quot;                       
-## [585] &quot;US/Indiana-Starke&quot;                &quot;US/Michigan&quot;                     
-## [587] &quot;US/Mountain&quot;                      &quot;US/Pacific&quot;                      
-## [589] &quot;US/Pacific-New&quot;                   &quot;US/Samoa&quot;                        
-## [591] &quot;UTC&quot;                              &quot;W-SU&quot;                            
-## [593] &quot;WET&quot;                              &quot;Zulu&quot;                            
+##  [95] &quot;America/Chihuahua&quot;                &quot;America/Ciudad_Juarez&quot;           
+##  [97] &quot;America/Coral_Harbour&quot;            &quot;America/Cordoba&quot;                 
+##  [99] &quot;America/Costa_Rica&quot;               &quot;America/Creston&quot;                 
+## [101] &quot;America/Cuiaba&quot;                   &quot;America/Curacao&quot;                 
+## [103] &quot;America/Danmarkshavn&quot;             &quot;America/Dawson&quot;                  
+## [105] &quot;America/Dawson_Creek&quot;             &quot;America/Denver&quot;                  
+## [107] &quot;America/Detroit&quot;                  &quot;America/Dominica&quot;                
+## [109] &quot;America/Edmonton&quot;                 &quot;America/Eirunepe&quot;                
+## [111] &quot;America/El_Salvador&quot;              &quot;America/Ensenada&quot;                
+## [113] &quot;America/Fort_Nelson&quot;              &quot;America/Fort_Wayne&quot;              
+## [115] &quot;America/Fortaleza&quot;                &quot;America/Glace_Bay&quot;               
+## [117] &quot;America/Godthab&quot;                  &quot;America/Goose_Bay&quot;               
+## [119] &quot;America/Grand_Turk&quot;               &quot;America/Grenada&quot;                 
+## [121] &quot;America/Guadeloupe&quot;               &quot;America/Guatemala&quot;               
+## [123] &quot;America/Guayaquil&quot;                &quot;America/Guyana&quot;                  
+## [125] &quot;America/Halifax&quot;                  &quot;America/Havana&quot;                  
+## [127] &quot;America/Hermosillo&quot;               &quot;America/Indiana/Indianapolis&quot;    
+## [129] &quot;America/Indiana/Knox&quot;             &quot;America/Indiana/Marengo&quot;         
+## [131] &quot;America/Indiana/Petersburg&quot;       &quot;America/Indiana/Tell_City&quot;       
+## [133] &quot;America/Indiana/Vevay&quot;            &quot;America/Indiana/Vincennes&quot;       
+## [135] &quot;America/Indiana/Winamac&quot;          &quot;America/Indianapolis&quot;            
+## [137] &quot;America/Inuvik&quot;                   &quot;America/Iqaluit&quot;                 
+## [139] &quot;America/Jamaica&quot;                  &quot;America/Jujuy&quot;                   
+## [141] &quot;America/Juneau&quot;                   &quot;America/Kentucky/Louisville&quot;     
+## [143] &quot;America/Kentucky/Monticello&quot;      &quot;America/Knox_IN&quot;                 
+## [145] &quot;America/Kralendijk&quot;               &quot;America/La_Paz&quot;                  
+## [147] &quot;America/Lima&quot;                     &quot;America/Los_Angeles&quot;             
+## [149] &quot;America/Louisville&quot;               &quot;America/Lower_Princes&quot;           
+## [151] &quot;America/Maceio&quot;                   &quot;America/Managua&quot;                 
+## [153] &quot;America/Manaus&quot;                   &quot;America/Marigot&quot;                 
+## [155] &quot;America/Martinique&quot;               &quot;America/Matamoros&quot;               
+## [157] &quot;America/Mazatlan&quot;                 &quot;America/Mendoza&quot;                 
+## [159] &quot;America/Menominee&quot;                &quot;America/Merida&quot;                  
+## [161] &quot;America/Metlakatla&quot;               &quot;America/Mexico_City&quot;             
+## [163] &quot;America/Miquelon&quot;                 &quot;America/Moncton&quot;                 
+## [165] &quot;America/Monterrey&quot;                &quot;America/Montevideo&quot;              
+## [167] &quot;America/Montreal&quot;                 &quot;America/Montserrat&quot;              
+## [169] &quot;America/Nassau&quot;                   &quot;America/New_York&quot;                
+## [171] &quot;America/Nipigon&quot;                  &quot;America/Nome&quot;                    
+## [173] &quot;America/Noronha&quot;                  &quot;America/North_Dakota/Beulah&quot;     
+## [175] &quot;America/North_Dakota/Center&quot;      &quot;America/North_Dakota/New_Salem&quot;  
+## [177] &quot;America/Nuuk&quot;                     &quot;America/Ojinaga&quot;                 
+## [179] &quot;America/Panama&quot;                   &quot;America/Pangnirtung&quot;             
+## [181] &quot;America/Paramaribo&quot;               &quot;America/Phoenix&quot;                 
+## [183] &quot;America/Port-au-Prince&quot;           &quot;America/Port_of_Spain&quot;           
+## [185] &quot;America/Porto_Acre&quot;               &quot;America/Porto_Velho&quot;             
+## [187] &quot;America/Puerto_Rico&quot;              &quot;America/Punta_Arenas&quot;            
+## [189] &quot;America/Rainy_River&quot;              &quot;America/Rankin_Inlet&quot;            
+## [191] &quot;America/Recife&quot;                   &quot;America/Regina&quot;                  
+## [193] &quot;America/Resolute&quot;                 &quot;America/Rio_Branco&quot;              
+## [195] &quot;America/Rosario&quot;                  &quot;America/Santa_Isabel&quot;            
+## [197] &quot;America/Santarem&quot;                 &quot;America/Santiago&quot;                
+## [199] &quot;America/Santo_Domingo&quot;            &quot;America/Sao_Paulo&quot;               
+## [201] &quot;America/Scoresbysund&quot;             &quot;America/Shiprock&quot;                
+## [203] &quot;America/Sitka&quot;                    &quot;America/St_Barthelemy&quot;           
+## [205] &quot;America/St_Johns&quot;                 &quot;America/St_Kitts&quot;                
+## [207] &quot;America/St_Lucia&quot;                 &quot;America/St_Thomas&quot;               
+## [209] &quot;America/St_Vincent&quot;               &quot;America/Swift_Current&quot;           
+## [211] &quot;America/Tegucigalpa&quot;              &quot;America/Thule&quot;                   
+## [213] &quot;America/Thunder_Bay&quot;              &quot;America/Tijuana&quot;                 
+## [215] &quot;America/Toronto&quot;                  &quot;America/Tortola&quot;                 
+## [217] &quot;America/Vancouver&quot;                &quot;America/Virgin&quot;                  
+## [219] &quot;America/Whitehorse&quot;               &quot;America/Winnipeg&quot;                
+## [221] &quot;America/Yakutat&quot;                  &quot;America/Yellowknife&quot;             
+## [223] &quot;Antarctica/Casey&quot;                 &quot;Antarctica/Davis&quot;                
+## [225] &quot;Antarctica/DumontDUrville&quot;        &quot;Antarctica/Macquarie&quot;            
+## [227] &quot;Antarctica/Mawson&quot;                &quot;Antarctica/McMurdo&quot;              
+## [229] &quot;Antarctica/Palmer&quot;                &quot;Antarctica/Rothera&quot;              
+## [231] &quot;Antarctica/South_Pole&quot;            &quot;Antarctica/Syowa&quot;                
+## [233] &quot;Antarctica/Troll&quot;                 &quot;Antarctica/Vostok&quot;               
+## [235] &quot;Arctic/Longyearbyen&quot;              &quot;Asia/Aden&quot;                       
+## [237] &quot;Asia/Almaty&quot;                      &quot;Asia/Amman&quot;                      
+## [239] &quot;Asia/Anadyr&quot;                      &quot;Asia/Aqtau&quot;                      
+## [241] &quot;Asia/Aqtobe&quot;                      &quot;Asia/Ashgabat&quot;                   
+## [243] &quot;Asia/Ashkhabad&quot;                   &quot;Asia/Atyrau&quot;                     
+## [245] &quot;Asia/Baghdad&quot;                     &quot;Asia/Bahrain&quot;                    
+## [247] &quot;Asia/Baku&quot;                        &quot;Asia/Bangkok&quot;                    
+## [249] &quot;Asia/Barnaul&quot;                     &quot;Asia/Beirut&quot;                     
+## [251] &quot;Asia/Bishkek&quot;                     &quot;Asia/Brunei&quot;                     
+## [253] &quot;Asia/Calcutta&quot;                    &quot;Asia/Chita&quot;                      
+## [255] &quot;Asia/Choibalsan&quot;                  &quot;Asia/Chongqing&quot;                  
+## [257] &quot;Asia/Chungking&quot;                   &quot;Asia/Colombo&quot;                    
+## [259] &quot;Asia/Dacca&quot;                       &quot;Asia/Damascus&quot;                   
+## [261] &quot;Asia/Dhaka&quot;                       &quot;Asia/Dili&quot;                       
+## [263] &quot;Asia/Dubai&quot;                       &quot;Asia/Dushanbe&quot;                   
+## [265] &quot;Asia/Famagusta&quot;                   &quot;Asia/Gaza&quot;                       
+## [267] &quot;Asia/Harbin&quot;                      &quot;Asia/Hebron&quot;                     
+## [269] &quot;Asia/Ho_Chi_Minh&quot;                 &quot;Asia/Hong_Kong&quot;                  
+## [271] &quot;Asia/Hovd&quot;                        &quot;Asia/Irkutsk&quot;                    
+## [273] &quot;Asia/Istanbul&quot;                    &quot;Asia/Jakarta&quot;                    
+## [275] &quot;Asia/Jayapura&quot;                    &quot;Asia/Jerusalem&quot;                  
+## [277] &quot;Asia/Kabul&quot;                       &quot;Asia/Kamchatka&quot;                  
+## [279] &quot;Asia/Karachi&quot;                     &quot;Asia/Kashgar&quot;                    
+## [281] &quot;Asia/Kathmandu&quot;                   &quot;Asia/Katmandu&quot;                   
+## [283] &quot;Asia/Khandyga&quot;                    &quot;Asia/Kolkata&quot;                    
+## [285] &quot;Asia/Krasnoyarsk&quot;                 &quot;Asia/Kuala_Lumpur&quot;               
+## [287] &quot;Asia/Kuching&quot;                     &quot;Asia/Kuwait&quot;                     
+## [289] &quot;Asia/Macao&quot;                       &quot;Asia/Macau&quot;                      
+## [291] &quot;Asia/Magadan&quot;                     &quot;Asia/Makassar&quot;                   
+## [293] &quot;Asia/Manila&quot;                      &quot;Asia/Muscat&quot;                     
+## [295] &quot;Asia/Nicosia&quot;                     &quot;Asia/Novokuznetsk&quot;               
+## [297] &quot;Asia/Novosibirsk&quot;                 &quot;Asia/Omsk&quot;                       
+## [299] &quot;Asia/Oral&quot;                        &quot;Asia/Phnom_Penh&quot;                 
+## [301] &quot;Asia/Pontianak&quot;                   &quot;Asia/Pyongyang&quot;                  
+## [303] &quot;Asia/Qatar&quot;                       &quot;Asia/Qostanay&quot;                   
+## [305] &quot;Asia/Qyzylorda&quot;                   &quot;Asia/Rangoon&quot;                    
+## [307] &quot;Asia/Riyadh&quot;                      &quot;Asia/Saigon&quot;                     
+## [309] &quot;Asia/Sakhalin&quot;                    &quot;Asia/Samarkand&quot;                  
+## [311] &quot;Asia/Seoul&quot;                       &quot;Asia/Shanghai&quot;                   
+## [313] &quot;Asia/Singapore&quot;                   &quot;Asia/Srednekolymsk&quot;              
+## [315] &quot;Asia/Taipei&quot;                      &quot;Asia/Tashkent&quot;                   
+## [317] &quot;Asia/Tbilisi&quot;                     &quot;Asia/Tehran&quot;                     
+## [319] &quot;Asia/Tel_Aviv&quot;                    &quot;Asia/Thimbu&quot;                     
+## [321] &quot;Asia/Thimphu&quot;                     &quot;Asia/Tokyo&quot;                      
+## [323] &quot;Asia/Tomsk&quot;                       &quot;Asia/Ujung_Pandang&quot;              
+## [325] &quot;Asia/Ulaanbaatar&quot;                 &quot;Asia/Ulan_Bator&quot;                 
+## [327] &quot;Asia/Urumqi&quot;                      &quot;Asia/Ust-Nera&quot;                   
+## [329] &quot;Asia/Vientiane&quot;                   &quot;Asia/Vladivostok&quot;                
+## [331] &quot;Asia/Yakutsk&quot;                     &quot;Asia/Yangon&quot;                     
+## [333] &quot;Asia/Yekaterinburg&quot;               &quot;Asia/Yerevan&quot;                    
+## [335] &quot;Atlantic/Azores&quot;                  &quot;Atlantic/Bermuda&quot;                
+## [337] &quot;Atlantic/Canary&quot;                  &quot;Atlantic/Cape_Verde&quot;             
+## [339] &quot;Atlantic/Faeroe&quot;                  &quot;Atlantic/Faroe&quot;                  
+## [341] &quot;Atlantic/Jan_Mayen&quot;               &quot;Atlantic/Madeira&quot;                
+## [343] &quot;Atlantic/Reykjavik&quot;               &quot;Atlantic/South_Georgia&quot;          
+## [345] &quot;Atlantic/St_Helena&quot;               &quot;Atlantic/Stanley&quot;                
+## [347] &quot;Australia/ACT&quot;                    &quot;Australia/Adelaide&quot;              
+## [349] &quot;Australia/Brisbane&quot;               &quot;Australia/Broken_Hill&quot;           
+## [351] &quot;Australia/Canberra&quot;               &quot;Australia/Currie&quot;                
+## [353] &quot;Australia/Darwin&quot;                 &quot;Australia/Eucla&quot;                 
+## [355] &quot;Australia/Hobart&quot;                 &quot;Australia/LHI&quot;                   
+## [357] &quot;Australia/Lindeman&quot;               &quot;Australia/Lord_Howe&quot;             
+## [359] &quot;Australia/Melbourne&quot;              &quot;Australia/North&quot;                 
+## [361] &quot;Australia/NSW&quot;                    &quot;Australia/Perth&quot;                 
+## [363] &quot;Australia/Queensland&quot;             &quot;Australia/South&quot;                 
+## [365] &quot;Australia/Sydney&quot;                 &quot;Australia/Tasmania&quot;              
+## [367] &quot;Australia/Victoria&quot;               &quot;Australia/West&quot;                  
+## [369] &quot;Australia/Yancowinna&quot;             &quot;Brazil/Acre&quot;                     
+## [371] &quot;Brazil/DeNoronha&quot;                 &quot;Brazil/East&quot;                     
+## [373] &quot;Brazil/West&quot;                      &quot;Canada/Atlantic&quot;                 
+## [375] &quot;Canada/Central&quot;                   &quot;Canada/Eastern&quot;                  
+## [377] &quot;Canada/Mountain&quot;                  &quot;Canada/Newfoundland&quot;             
+## [379] &quot;Canada/Pacific&quot;                   &quot;Canada/Saskatchewan&quot;             
+## [381] &quot;Canada/Yukon&quot;                     &quot;CET&quot;                             
+## [383] &quot;Chile/Continental&quot;                &quot;Chile/EasterIsland&quot;              
+## [385] &quot;CST6CDT&quot;                          &quot;Cuba&quot;                            
+## [387] &quot;EET&quot;                              &quot;Egypt&quot;                           
+## [389] &quot;Eire&quot;                             &quot;EST&quot;                             
+## [391] &quot;EST5EDT&quot;                          &quot;Etc/GMT&quot;                         
+## [393] &quot;Etc/GMT-0&quot;                        &quot;Etc/GMT-1&quot;                       
+## [395] &quot;Etc/GMT-10&quot;                       &quot;Etc/GMT-11&quot;                      
+## [397] &quot;Etc/GMT-12&quot;                       &quot;Etc/GMT-13&quot;                      
+## [399] &quot;Etc/GMT-14&quot;                       &quot;Etc/GMT-2&quot;                       
+## [401] &quot;Etc/GMT-3&quot;                        &quot;Etc/GMT-4&quot;                       
+## [403] &quot;Etc/GMT-5&quot;                        &quot;Etc/GMT-6&quot;                       
+## [405] &quot;Etc/GMT-7&quot;                        &quot;Etc/GMT-8&quot;                       
+## [407] &quot;Etc/GMT-9&quot;                        &quot;Etc/GMT+0&quot;                       
+## [409] &quot;Etc/GMT+1&quot;                        &quot;Etc/GMT+10&quot;                      
+## [411] &quot;Etc/GMT+11&quot;                       &quot;Etc/GMT+12&quot;                      
+## [413] &quot;Etc/GMT+2&quot;                        &quot;Etc/GMT+3&quot;                       
+## [415] &quot;Etc/GMT+4&quot;                        &quot;Etc/GMT+5&quot;                       
+## [417] &quot;Etc/GMT+6&quot;                        &quot;Etc/GMT+7&quot;                       
+## [419] &quot;Etc/GMT+8&quot;                        &quot;Etc/GMT+9&quot;                       
+## [421] &quot;Etc/GMT0&quot;                         &quot;Etc/Greenwich&quot;                   
+## [423] &quot;Etc/UCT&quot;                          &quot;Etc/Universal&quot;                   
+## [425] &quot;Etc/UTC&quot;                          &quot;Etc/Zulu&quot;                        
+## [427] &quot;Europe/Amsterdam&quot;                 &quot;Europe/Andorra&quot;                  
+## [429] &quot;Europe/Astrakhan&quot;                 &quot;Europe/Athens&quot;                   
+## [431] &quot;Europe/Belfast&quot;                   &quot;Europe/Belgrade&quot;                 
+## [433] &quot;Europe/Berlin&quot;                    &quot;Europe/Bratislava&quot;               
+## [435] &quot;Europe/Brussels&quot;                  &quot;Europe/Bucharest&quot;                
+## [437] &quot;Europe/Budapest&quot;                  &quot;Europe/Busingen&quot;                 
+## [439] &quot;Europe/Chisinau&quot;                  &quot;Europe/Copenhagen&quot;               
+## [441] &quot;Europe/Dublin&quot;                    &quot;Europe/Gibraltar&quot;                
+## [443] &quot;Europe/Guernsey&quot;                  &quot;Europe/Helsinki&quot;                 
+## [445] &quot;Europe/Isle_of_Man&quot;               &quot;Europe/Istanbul&quot;                 
+## [447] &quot;Europe/Jersey&quot;                    &quot;Europe/Kaliningrad&quot;              
+## [449] &quot;Europe/Kiev&quot;                      &quot;Europe/Kirov&quot;                    
+## [451] &quot;Europe/Kyiv&quot;                      &quot;Europe/Lisbon&quot;                   
+## [453] &quot;Europe/Ljubljana&quot;                 &quot;Europe/London&quot;                   
+## [455] &quot;Europe/Luxembourg&quot;                &quot;Europe/Madrid&quot;                   
+## [457] &quot;Europe/Malta&quot;                     &quot;Europe/Mariehamn&quot;                
+## [459] &quot;Europe/Minsk&quot;                     &quot;Europe/Monaco&quot;                   
+## [461] &quot;Europe/Moscow&quot;                    &quot;Europe/Nicosia&quot;                  
+## [463] &quot;Europe/Oslo&quot;                      &quot;Europe/Paris&quot;                    
+## [465] &quot;Europe/Podgorica&quot;                 &quot;Europe/Prague&quot;                   
+## [467] &quot;Europe/Riga&quot;                      &quot;Europe/Rome&quot;                     
+## [469] &quot;Europe/Samara&quot;                    &quot;Europe/San_Marino&quot;               
+## [471] &quot;Europe/Sarajevo&quot;                  &quot;Europe/Saratov&quot;                  
+## [473] &quot;Europe/Simferopol&quot;                &quot;Europe/Skopje&quot;                   
+## [475] &quot;Europe/Sofia&quot;                     &quot;Europe/Stockholm&quot;                
+## [477] &quot;Europe/Tallinn&quot;                   &quot;Europe/Tirane&quot;                   
+## [479] &quot;Europe/Tiraspol&quot;                  &quot;Europe/Ulyanovsk&quot;                
+## [481] &quot;Europe/Uzhgorod&quot;                  &quot;Europe/Vaduz&quot;                    
+## [483] &quot;Europe/Vatican&quot;                   &quot;Europe/Vienna&quot;                   
+## [485] &quot;Europe/Vilnius&quot;                   &quot;Europe/Volgograd&quot;                
+## [487] &quot;Europe/Warsaw&quot;                    &quot;Europe/Zagreb&quot;                   
+## [489] &quot;Europe/Zaporozhye&quot;                &quot;Europe/Zurich&quot;                   
+## [491] &quot;GB&quot;                               &quot;GB-Eire&quot;                         
+## [493] &quot;GMT&quot;                              &quot;GMT-0&quot;                           
+## [495] &quot;GMT+0&quot;                            &quot;GMT0&quot;                            
+## [497] &quot;Greenwich&quot;                        &quot;Hongkong&quot;                        
+## [499] &quot;HST&quot;                              &quot;Iceland&quot;                         
+## [501] &quot;Indian/Antananarivo&quot;              &quot;Indian/Chagos&quot;                   
+## [503] &quot;Indian/Christmas&quot;                 &quot;Indian/Cocos&quot;                    
+## [505] &quot;Indian/Comoro&quot;                    &quot;Indian/Kerguelen&quot;                
+## [507] &quot;Indian/Mahe&quot;                      &quot;Indian/Maldives&quot;                 
+## [509] &quot;Indian/Mauritius&quot;                 &quot;Indian/Mayotte&quot;                  
+## [511] &quot;Indian/Reunion&quot;                   &quot;Iran&quot;                            
+## [513] &quot;Israel&quot;                           &quot;Jamaica&quot;                         
+## [515] &quot;Japan&quot;                            &quot;Kwajalein&quot;                       
+## [517] &quot;Libya&quot;                            &quot;MET&quot;                             
+## [519] &quot;Mexico/BajaNorte&quot;                 &quot;Mexico/BajaSur&quot;                  
+## [521] &quot;Mexico/General&quot;                   &quot;MST&quot;                             
+## [523] &quot;MST7MDT&quot;                          &quot;Navajo&quot;                          
+## [525] &quot;NZ&quot;                               &quot;NZ-CHAT&quot;                         
+## [527] &quot;Pacific/Apia&quot;                     &quot;Pacific/Auckland&quot;                
+## [529] &quot;Pacific/Bougainville&quot;             &quot;Pacific/Chatham&quot;                 
+## [531] &quot;Pacific/Chuuk&quot;                    &quot;Pacific/Easter&quot;                  
+## [533] &quot;Pacific/Efate&quot;                    &quot;Pacific/Enderbury&quot;               
+## [535] &quot;Pacific/Fakaofo&quot;                  &quot;Pacific/Fiji&quot;                    
+## [537] &quot;Pacific/Funafuti&quot;                 &quot;Pacific/Galapagos&quot;               
+## [539] &quot;Pacific/Gambier&quot;                  &quot;Pacific/Guadalcanal&quot;             
+## [541] &quot;Pacific/Guam&quot;                     &quot;Pacific/Honolulu&quot;                
+## [543] &quot;Pacific/Johnston&quot;                 &quot;Pacific/Kanton&quot;                  
+## [545] &quot;Pacific/Kiritimati&quot;               &quot;Pacific/Kosrae&quot;                  
+## [547] &quot;Pacific/Kwajalein&quot;                &quot;Pacific/Majuro&quot;                  
+## [549] &quot;Pacific/Marquesas&quot;                &quot;Pacific/Midway&quot;                  
+## [551] &quot;Pacific/Nauru&quot;                    &quot;Pacific/Niue&quot;                    
+## [553] &quot;Pacific/Norfolk&quot;                  &quot;Pacific/Noumea&quot;                  
+## [555] &quot;Pacific/Pago_Pago&quot;                &quot;Pacific/Palau&quot;                   
+## [557] &quot;Pacific/Pitcairn&quot;                 &quot;Pacific/Pohnpei&quot;                 
+## [559] &quot;Pacific/Ponape&quot;                   &quot;Pacific/Port_Moresby&quot;            
+## [561] &quot;Pacific/Rarotonga&quot;                &quot;Pacific/Saipan&quot;                  
+## [563] &quot;Pacific/Samoa&quot;                    &quot;Pacific/Tahiti&quot;                  
+## [565] &quot;Pacific/Tarawa&quot;                   &quot;Pacific/Tongatapu&quot;               
+## [567] &quot;Pacific/Truk&quot;                     &quot;Pacific/Wake&quot;                    
+## [569] &quot;Pacific/Wallis&quot;                   &quot;Pacific/Yap&quot;                     
+## [571] &quot;Poland&quot;                           &quot;Portugal&quot;                        
+## [573] &quot;PRC&quot;                              &quot;PST8PDT&quot;                         
+## [575] &quot;ROC&quot;                              &quot;ROK&quot;                             
+## [577] &quot;Singapore&quot;                        &quot;Turkey&quot;                          
+## [579] &quot;UCT&quot;                              &quot;Universal&quot;                       
+## [581] &quot;US/Alaska&quot;                        &quot;US/Aleutian&quot;                     
+## [583] &quot;US/Arizona&quot;                       &quot;US/Central&quot;                      
+## [585] &quot;US/East-Indiana&quot;                  &quot;US/Eastern&quot;                      
+## [587] &quot;US/Hawaii&quot;                        &quot;US/Indiana-Starke&quot;               
+## [589] &quot;US/Michigan&quot;                      &quot;US/Mountain&quot;                     
+## [591] &quot;US/Pacific&quot;                       &quot;US/Samoa&quot;                        
+## [593] &quot;UTC&quot;                              &quot;W-SU&quot;                            
+## [595] &quot;WET&quot;                              &quot;Zulu&quot;                            
 ## attr(,&quot;Version&quot;)
-## [1] &quot;2020a&quot;</code></pre>
+## [1] &quot;2023c&quot;</code></pre>
 <p>Our time zone is “America/Denver”. Let’s specify that when creating our object:</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="lubridate.html#cb583-1"></a>dt &lt;-<span class="st"> </span><span class="kw">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:56:00&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/Denver&quot;</span>)</span>
-<span id="cb583-2"><a href="lubridate.html#cb583-2"></a></span>
-<span id="cb583-3"><a href="lubridate.html#cb583-3"></a>dt</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="lubridate.html#cb586-1" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">ymd_hms</span>(<span class="st">&quot;2021-04-15 13:56:00&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/Denver&quot;</span>)</span>
+<span id="cb586-2"><a href="lubridate.html#cb586-2" tabindex="-1"></a></span>
+<span id="cb586-3"><a href="lubridate.html#cb586-3" tabindex="-1"></a>dt</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 13:56:00 MDT&quot;</code></pre>
 <p>Notice that <code>lubridate</code> knows that 2021-04-15 is during Daylight Savings Time, and it automatically assigns MDT instead of MST.</p>
 <p>Now we can convert this object in whichever time zone we want. For instance, when it’s 13:56:00 in Logan, UT on April 15th 2021, what time is it in Rome, Italy?</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="lubridate.html#cb585-1"></a><span class="kw">with_tz</span>(dt, <span class="dt">tz =</span> <span class="st">&quot;Europe/Rome&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="lubridate.html#cb588-1" tabindex="-1"></a><span class="fu">with_tz</span>(dt, <span class="at">tz =</span> <span class="st">&quot;Europe/Rome&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 21:56:00 CEST&quot;</code></pre>
 <p>And what time is that in New York City?</p>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb587-1"><a href="lubridate.html#cb587-1"></a><span class="kw">with_tz</span>(dt, <span class="dt">tz =</span> <span class="st">&quot;America/New_York&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="lubridate.html#cb590-1" tabindex="-1"></a><span class="fu">with_tz</span>(dt, <span class="at">tz =</span> <span class="st">&quot;America/New_York&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 15:56:00 EDT&quot;</code></pre>
 <p>What if we didn’t mean to get the equivalent of “2021-04-15 13:56:00 MDT” in another time zone, but instead we wanted to keep the timestamp exactly as it is but set it in a different time zone? We can use <code>force_tz()</code>:</p>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb589-1"><a href="lubridate.html#cb589-1"></a>dt</span></code></pre></div>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="lubridate.html#cb592-1" tabindex="-1"></a>dt</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 13:56:00 MDT&quot;</code></pre>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb591-1"><a href="lubridate.html#cb591-1"></a><span class="kw">force_tz</span>(dt, <span class="dt">tz =</span> <span class="st">&quot;America/New_York&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="lubridate.html#cb594-1" tabindex="-1"></a><span class="fu">force_tz</span>(dt, <span class="at">tz =</span> <span class="st">&quot;America/New_York&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 13:56:00 EDT&quot;</code></pre>
 </div>
-<div id="time-spans" class="section level3">
-<h3><span class="header-section-number">15.4.4</span> Time spans</h3>
+<div id="time-spans" class="section level3 hasAnchor" number="15.4.4">
+<h3><span class="header-section-number">15.4.4</span> Time spans<a href="lubridate.html#time-spans" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>lubridate</code> works with three types of time spans:</p>
 <ul>
 <li><strong>Periods</strong> are fixed amounts of time, ignoring any time irregularities;</li>
@@ -937,69 +974,69 @@ Figure 15.1: Artwork by Allison Horst
 <li><strong>Intervals</strong> are stretches of time between a specific start date and end date.</li>
 </ul>
 <p>Let’s look at a few examples to illustrate the difference between these. For example, we can get a <strong>period</strong> of N months by using the function <code>months()</code>, and a <strong>duration</strong> of N months by using the function <code>dmonths()</code>:</p>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb593-1"><a href="lubridate.html#cb593-1"></a><span class="kw">class</span>(<span class="kw">months</span>(<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb596"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb596-1"><a href="lubridate.html#cb596-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">months</span>(<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Period&quot;
 ## attr(,&quot;package&quot;)
 ## [1] &quot;lubridate&quot;</code></pre>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="lubridate.html#cb595-1"></a><span class="kw">class</span>(<span class="kw">dmonths</span>(<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb598-1"><a href="lubridate.html#cb598-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">dmonths</span>(<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Duration&quot;
 ## attr(,&quot;package&quot;)
 ## [1] &quot;lubridate&quot;</code></pre>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="lubridate.html#cb597-1"></a>dt <span class="op">+</span><span class="st"> </span><span class="kw">months</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="lubridate.html#cb600-1" tabindex="-1"></a>dt <span class="sc">+</span> <span class="fu">months</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-06-15 13:56:00 MDT&quot;</code></pre>
-<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb599-1"><a href="lubridate.html#cb599-1"></a>dt <span class="op">+</span><span class="st"> </span><span class="kw">dmonths</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="lubridate.html#cb602-1" tabindex="-1"></a>dt <span class="sc">+</span> <span class="fu">dmonths</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-06-15 10:56:00 MDT&quot;</code></pre>
 <p>Our <code>dt</code> timestamp is in April. Adding a <strong>period</strong> of 2 months to <code>dt</code> means simply changing the month component to June, leaving everything else unchanged. Adding a <strong>duration</strong> of 2 months to <code>dt</code> means adding the <em>average</em> equivalent of 2 months in seconds (not all months have the same amount of seconds in them because the duration of a month changes between 28 and 31 days, so that’s why I specified “average”). That’s why the result when we add a 2-month duration to <code>dt</code> is 3 hours earlier than when we add a 2-month period.</p>
 <p>Periods and durations are useful for doing math with date-time objects. We can answer questions such as, what time will it be in 1 hour and 30 minutes?</p>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb601-1"><a href="lubridate.html#cb601-1"></a>dt <span class="op">+</span><span class="st"> </span><span class="kw">hours</span>(<span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">minutes</span>(<span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="lubridate.html#cb604-1" tabindex="-1"></a>dt <span class="sc">+</span> <span class="fu">hours</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="fu">minutes</span>(<span class="dv">30</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-15 15:26:00 MDT&quot;</code></pre>
 <p>Or, say that we want to know what day of the week it was today, 3 years ago:</p>
-<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="lubridate.html#cb603-1"></a>dt_minus3y &lt;-<span class="st"> </span>dt <span class="op">-</span><span class="st"> </span><span class="kw">years</span>(<span class="dv">3</span>)</span>
-<span id="cb603-2"><a href="lubridate.html#cb603-2"></a></span>
-<span id="cb603-3"><a href="lubridate.html#cb603-3"></a><span class="kw">wday</span>(dt_minus3y, <span class="dt">label =</span> <span class="ot">TRUE</span>) <span class="co"># wday() returns the day of the week</span></span></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb606-1"><a href="lubridate.html#cb606-1" tabindex="-1"></a>dt_minus3y <span class="ot">&lt;-</span> dt <span class="sc">-</span> <span class="fu">years</span>(<span class="dv">3</span>)</span>
+<span id="cb606-2"><a href="lubridate.html#cb606-2" tabindex="-1"></a></span>
+<span id="cb606-3"><a href="lubridate.html#cb606-3" tabindex="-1"></a><span class="fu">wday</span>(dt_minus3y, <span class="at">label =</span> <span class="cn">TRUE</span>) <span class="co"># wday() returns the day of the week</span></span></code></pre></div>
 <pre><code>## [1] Sun
 ## Levels: Sun &lt; Mon &lt; Tue &lt; Wed &lt; Thu &lt; Fri &lt; Sat</code></pre>
 <p>Three years ago today was Sunday!</p>
 <p>Unlike periods and durations, intervals are especially handy for some type of operations where it matters <em>when exactly</em> a time span takes place (not just how long it is). For example, say that we have a period that goes from January 19th, 2021 (our first class this semester) to April 27th, 2021 (our last class this semester):</p>
-<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb605-1"><a href="lubridate.html#cb605-1"></a><span class="co"># There are two equivalent ways to create an interval: </span></span>
-<span id="cb605-2"><a href="lubridate.html#cb605-2"></a></span>
-<span id="cb605-3"><a href="lubridate.html#cb605-3"></a><span class="co"># Option 1</span></span>
-<span id="cb605-4"><a href="lubridate.html#cb605-4"></a>s &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2021-01-19&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/Denver&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2021-04-27&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/Denver&quot;</span>))</span>
-<span id="cb605-5"><a href="lubridate.html#cb605-5"></a></span>
-<span id="cb605-6"><a href="lubridate.html#cb605-6"></a><span class="co"># Option 2</span></span>
-<span id="cb605-7"><a href="lubridate.html#cb605-7"></a>s &lt;-<span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2021-01-19&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/Denver&quot;</span>) <span class="op">%--%</span><span class="st"> </span><span class="kw">ymd</span>(<span class="st">&quot;2021-04-27&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/Denver&quot;</span>)</span>
-<span id="cb605-8"><a href="lubridate.html#cb605-8"></a></span>
-<span id="cb605-9"><a href="lubridate.html#cb605-9"></a><span class="kw">class</span>(s)</span></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb608-1"><a href="lubridate.html#cb608-1" tabindex="-1"></a><span class="co"># There are two equivalent ways to create an interval: </span></span>
+<span id="cb608-2"><a href="lubridate.html#cb608-2" tabindex="-1"></a></span>
+<span id="cb608-3"><a href="lubridate.html#cb608-3" tabindex="-1"></a><span class="co"># Option 1</span></span>
+<span id="cb608-4"><a href="lubridate.html#cb608-4" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="fu">ymd</span>(<span class="st">&quot;2021-01-19&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/Denver&quot;</span>), <span class="fu">ymd</span>(<span class="st">&quot;2021-04-27&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/Denver&quot;</span>))</span>
+<span id="cb608-5"><a href="lubridate.html#cb608-5" tabindex="-1"></a></span>
+<span id="cb608-6"><a href="lubridate.html#cb608-6" tabindex="-1"></a><span class="co"># Option 2</span></span>
+<span id="cb608-7"><a href="lubridate.html#cb608-7" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">&quot;2021-01-19&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/Denver&quot;</span>) <span class="sc">%--%</span> <span class="fu">ymd</span>(<span class="st">&quot;2021-04-27&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/Denver&quot;</span>)</span>
+<span id="cb608-8"><a href="lubridate.html#cb608-8" tabindex="-1"></a></span>
+<span id="cb608-9"><a href="lubridate.html#cb608-9" tabindex="-1"></a><span class="fu">class</span>(s)</span></code></pre></div>
 <pre><code>## [1] &quot;Interval&quot;
 ## attr(,&quot;package&quot;)
 ## [1] &quot;lubridate&quot;</code></pre>
 <p>We can get the start or end date of an interval as follows:</p>
-<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb607-1"><a href="lubridate.html#cb607-1"></a><span class="kw">int_start</span>(s)</span></code></pre></div>
+<div class="sourceCode" id="cb610"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb610-1"><a href="lubridate.html#cb610-1" tabindex="-1"></a><span class="fu">int_start</span>(s)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-01-19 MST&quot;</code></pre>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb609-1"><a href="lubridate.html#cb609-1"></a><span class="kw">int_end</span>(s)</span></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="lubridate.html#cb612-1" tabindex="-1"></a><span class="fu">int_end</span>(s)</span></code></pre></div>
 <pre><code>## [1] &quot;2021-04-27 MDT&quot;</code></pre>
 <p>We can check how long the interval is:</p>
-<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="lubridate.html#cb611-1"></a><span class="kw">int_length</span>(s) <span class="co"># default output is in seconds</span></span></code></pre></div>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="lubridate.html#cb614-1" tabindex="-1"></a><span class="fu">int_length</span>(s) <span class="co"># default output is in seconds</span></span></code></pre></div>
 <pre><code>## [1] 8463600</code></pre>
 <p>We can check if any arbitrary date falls within that interval:</p>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="lubridate.html#cb613-1"></a><span class="kw">ymd</span>(<span class="st">&quot;2021-03-14&quot;</span>) <span class="op">%within%</span><span class="st"> </span>s</span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="lubridate.html#cb616-1" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;2021-03-14&quot;</span>) <span class="sc">%within%</span> s</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="lubridate.html#cb615-1"></a><span class="kw">ymd</span>(<span class="st">&quot;1998-03-14&quot;</span>) <span class="op">%within%</span><span class="st"> </span>s</span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="lubridate.html#cb618-1" tabindex="-1"></a><span class="fu">ymd</span>(<span class="st">&quot;1998-03-14&quot;</span>) <span class="sc">%within%</span> s</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>We can shift the interval up or down by a certain time span:</p>
-<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb617-1"><a href="lubridate.html#cb617-1"></a><span class="kw">int_shift</span>(s, <span class="dt">by =</span> <span class="kw">months</span>(<span class="dv">1</span>)) <span class="co"># push back by one month</span></span></code></pre></div>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="lubridate.html#cb620-1" tabindex="-1"></a><span class="fu">int_shift</span>(s, <span class="at">by =</span> <span class="fu">months</span>(<span class="dv">1</span>)) <span class="co"># push back by one month</span></span></code></pre></div>
 <pre><code>## [1] 2021-02-19 MST--2021-05-27 MDT</code></pre>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="lubridate.html#cb619-1"></a><span class="kw">int_shift</span>(s, <span class="dt">by =</span> <span class="kw">days</span>(<span class="op">-</span><span class="dv">7</span>)) <span class="co"># bring forward by one week</span></span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="lubridate.html#cb622-1" tabindex="-1"></a><span class="fu">int_shift</span>(s, <span class="at">by =</span> <span class="fu">days</span>(<span class="sc">-</span><span class="dv">7</span>)) <span class="co"># bring forward by one week</span></span></code></pre></div>
 <pre><code>## [1] 2021-01-12 MST--2021-04-20 MDT</code></pre>
 <p>We can create multiple intervals and check whether they overlap:</p>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="lubridate.html#cb621-1"></a>i &lt;-<span class="st"> </span><span class="kw">interval</span>(<span class="kw">ymd</span>(<span class="st">&quot;2017-07-24&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/Denver&quot;</span>), <span class="kw">ymd</span>(<span class="st">&quot;2021-02-12&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;America/Denver&quot;</span>))</span>
-<span id="cb621-2"><a href="lubridate.html#cb621-2"></a></span>
-<span id="cb621-3"><a href="lubridate.html#cb621-3"></a><span class="kw">int_overlaps</span>(i, s)</span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="lubridate.html#cb624-1" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">interval</span>(<span class="fu">ymd</span>(<span class="st">&quot;2017-07-24&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/Denver&quot;</span>), <span class="fu">ymd</span>(<span class="st">&quot;2021-02-12&quot;</span>, <span class="at">tz =</span> <span class="st">&quot;America/Denver&quot;</span>))</span>
+<span id="cb624-2"><a href="lubridate.html#cb624-2" tabindex="-1"></a></span>
+<span id="cb624-3"><a href="lubridate.html#cb624-3" tabindex="-1"></a><span class="fu">int_overlaps</span>(i, s)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
-<div id="references-9" class="section level2">
-<h2><span class="header-section-number">15.5</span> References</h2>
+<div id="references-9" class="section level2 hasAnchor" number="15.5">
+<h2><span class="header-section-number">15.5</span> References<a href="lubridate.html#references-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>DateTime Classes in R: <a href="https://astrostatistics.psu.edu/su07/R/html/base/html/DateTimeClasses.html#" class="uri">https://astrostatistics.psu.edu/su07/R/html/base/html/DateTimeClasses.html#</a>:~:text=%22POSIXct%22%20is%20more%20convenient%20for,are%20available%20for%20both%20classes.</li>
 <li>Lubridate cheatsheet: <a href="https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf" class="uri">https://rawgit.com/rstudio/cheatsheets/master/lubridate.pdf</a></li>
@@ -1073,7 +1110,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

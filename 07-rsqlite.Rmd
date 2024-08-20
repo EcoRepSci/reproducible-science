@@ -29,7 +29,7 @@ the path exists, it will connect to the existing database; if it does not, it
 will create it. We also specify that the type of database connection is SQLite:
 
 ```{r conn2, eval = TRUE, echo = TRUE}
-dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+dragons_db <- dbConnect(RSQLite::SQLite(), "data/dragons.db")
 ```
 
 ```{r delete, echo = FALSE, eval = FALSE}
@@ -67,7 +67,7 @@ Now, instead of manually importing the data by pointing and clicking, we can
 load the data from .csv files into R and insert it into the newly created table. 
 
 ```{r drag-csv, eval = TRUE, echo = TRUE}
-dragons <- read.csv("../../Course Material/Data/dragons/dragons.csv", 
+dragons <- read.csv("data/dragons.csv", 
                    stringsAsFactors = FALSE) 
 
 names(dragons)
@@ -115,7 +115,7 @@ status varchar(20)
 ```
 
 ```{r tags-csv, eval = FALSE, echo = TRUE}
-tags <- read.csv("../../Course Material/Data/dragons/tags.csv")
+tags <- read.csv("data/tags.csv")
 
 dbWriteTable(dragons_db, "tags", tags, append = TRUE)
 
@@ -134,7 +134,7 @@ utm_y double
 ```
 
 ```{r write-capsites,  eval = FALSE, echo = TRUE}
-capture_sites <- read.csv("../../Course Material/Data/dragons/capture_sites.csv")
+capture_sites <- read.csv("data/capture_sites.csv")
 
 names(capture_sites)[2:3] <- c("utm_x", "utm_y")
 
@@ -168,7 +168,7 @@ Then we read in the .csv file and add a column called `capture_id` with the
 serial number we'll use as primary key:
 
 ```{r pkey-cap, eval = TRUE, echo = TRUE}
-captures <- read.csv("../../Course Material/Data/dragons/captures.csv") 
+captures <- read.csv("data/captures.csv") 
 
 captures$capture_id <- 1:nrow(captures)
 
@@ -223,7 +223,7 @@ FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
 ```{r csv-morph, eval = FALSE, echo = TRUE}
 
 # Load csv file
-morphometrics <- read.csv("../../Course Material/Data/dragons/morphometrics.csv") 
+morphometrics <- read.csv("data/morphometrics.csv") 
 
 # Add auto-incremental number
 morphometrics$measurement_id <- 1:nrow(morphometrics)
@@ -259,7 +259,7 @@ FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)
 ```
 
 ```{r csv-diet, eval = FALSE, echo = TRUE}
-diet <- read.csv("../../Course Material/Data/dragons/diet.csv") 
+diet <- read.csv("data/diet.csv") 
 
 diet$diet_id <- 1:nrow(diet)
 
@@ -289,7 +289,7 @@ FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
 ```
 
 ```{r csv-deploy, eval = FALSE, echo = TRUE}
-deployments <- read.csv("../../Course Material/Data/dragons/deployments.csv") 
+deployments <- read.csv("data/deployments.csv") 
 
 deployments$deployment_id <- 1:nrow(deployments)
 
@@ -318,7 +318,7 @@ FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
 ```
 
 ```{r csv-gps, eval = FALSE, echo = TRUE}
-gps_data_raw <- read.csv("../../Course Material/Data/dragons/telemetry_raw.csv") 
+gps_data_raw <- read.csv("data/telemetry_raw.csv") 
 
 gps_data_raw$gps_id <- 1:nrow(gps_data_raw)
 

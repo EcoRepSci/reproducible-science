@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Version Control with Git | Reproducible Data Science</title>
-  <meta name="description" content="WILD 6900: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 553: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Version Control with Git | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="WILD 6900: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 2 Version Control with Git | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WILD 6900: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-15" />
+<meta name="date" content="2024-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,24 +49,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,13 +86,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -137,8 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/EcoRepSci/reproducible-science">Course Material</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#git"><i class="fa fa-check"></i><b>0.1.1</b> Git</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#spreadsheet-editor"><i class="fa fa-check"></i><b>0.1.2</b> Spreadsheet Editor</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#sqlite"><i class="fa fa-check"></i><b>0.1.3</b> SQLite</a></li>
@@ -147,8 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#required-r-packages"><i class="fa fa-check"></i><b>0.1.6</b> Required R Packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a><ul>
-<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a><ul>
+<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="project-organization.html"><a href="project-organization.html#overlap"><i class="fa fa-check"></i><b>1.1.1</b> Overlap</a></li>
 <li class="chapter" data-level="1.1.2" data-path="project-organization.html"><a href="project-organization.html#minimizing-duplication"><i class="fa fa-check"></i><b>1.1.2</b> Minimizing duplication</a></li>
 <li class="chapter" data-level="1.1.3" data-path="project-organization.html"><a href="project-organization.html#self-containedness"><i class="fa fa-check"></i><b>1.1.3</b> Self-containedness</a></li>
@@ -157,18 +164,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="project-organization.html"><a href="project-organization.html#golden-rules"><i class="fa fa-check"></i><b>1.2</b> Golden rules</a></li>
 <li class="chapter" data-level="1.3" data-path="project-organization.html"><a href="project-organization.html#be-flexible"><i class="fa fa-check"></i><b>1.3</b> Be flexible</a></li>
 <li class="chapter" data-level="1.4" data-path="project-organization.html"><a href="project-organization.html#documentation"><i class="fa fa-check"></i><b>1.4</b> Documentation</a></li>
-<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a><ul>
+<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="project-organization.html"><a href="project-organization.html#computer-readable-file-names"><i class="fa fa-check"></i><b>1.5.1</b> Computer-readable file names</a></li>
 <li class="chapter" data-level="1.5.2" data-path="project-organization.html"><a href="project-organization.html#human-readable-file-names"><i class="fa fa-check"></i><b>1.5.2</b> Human-readable file names</a></li>
 <li class="chapter" data-level="1.5.3" data-path="project-organization.html"><a href="project-organization.html#file-names-that-work-well-with-default-ordering"><i class="fa fa-check"></i><b>1.5.3</b> File names that work well with default ordering</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="project-organization.html"><a href="project-organization.html#rstudio-projects"><i class="fa fa-check"></i><b>1.6</b> RStudio Projects</a></li>
-<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a><ul>
+<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="project-organization.html"><a href="project-organization.html#path-separators"><i class="fa fa-check"></i><b>1.7.1</b> Path separators</a></li>
 <li class="chapter" data-level="1.7.2" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>1.7.2</b> References</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a><ul>
+<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="version-control-git.html"><a href="version-control-git.html#command-line-basics"><i class="fa fa-check"></i><b>2.1</b> Command line basics</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control-git.html"><a href="version-control-git.html#configuring-git"><i class="fa fa-check"></i><b>2.2</b> Configuring Git</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control-git.html"><a href="version-control-git.html#getting-help"><i class="fa fa-check"></i><b>2.3</b> Getting help</a></li>
@@ -182,7 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11" data-path="version-control-git.html"><a href="version-control-git.html#git-everyday"><i class="fa fa-check"></i><b>2.11</b> Git everyday</a></li>
 <li class="chapter" data-level="2.12" data-path="version-control-git.html"><a href="version-control-git.html#references-1"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a><ul>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#adding-a-remote-to-a-local-repository"><i class="fa fa-check"></i><b>3.1</b> Adding a remote to a local repository</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#pushing-to-a-remote-repository"><i class="fa fa-check"></i><b>3.2</b> Pushing to a remote repository</a></li>
 <li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#cloning-a-repository"><i class="fa fa-check"></i><b>3.3</b> Cloning a repository</a></li>
@@ -194,11 +205,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="github.html"><a href="github.html#pull-requests"><i class="fa fa-check"></i><b>3.9</b> Pull requests</a></li>
 <li class="chapter" data-level="3.10" data-path="github.html"><a href="github.html#references-2"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a><ul>
+<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#what-are-spreadsheets-good-for"><i class="fa fa-check"></i><b>4.1</b> What are spreadsheets good for?</a></li>
 <li class="chapter" data-level="4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#human-readable-vs.-computer-readable-data"><i class="fa fa-check"></i><b>4.2</b> Human-readable vs. computer-readable data</a></li>
 <li class="chapter" data-level="4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#tidydata"><i class="fa fa-check"></i><b>4.3</b> Tidy data</a></li>
-<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a><ul>
+<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-variables-in-a-single-column"><i class="fa fa-check"></i><b>4.4.1</b> Multiple variables in a single column</a></li>
 <li class="chapter" data-level="4.4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#rows-for-variables-columns-for-observation"><i class="fa fa-check"></i><b>4.4.2</b> Rows for variables, columns for observation</a></li>
 <li class="chapter" data-level="4.4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-tables-in-a-single-spreadsheet"><i class="fa fa-check"></i><b>4.4.3</b> Multiple tables in a single spreadsheet</a></li>
@@ -212,7 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="spreadsheets.html"><a href="spreadsheets.html#document-document-document"><i class="fa fa-check"></i><b>4.5</b> Document, document, document!</a></li>
 <li class="chapter" data-level="4.6" data-path="spreadsheets.html"><a href="spreadsheets.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a><ul>
+<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="relational-databases.html"><a href="relational-databases.html#what-is-a-relational-database"><i class="fa fa-check"></i><b>5.1</b> What is a relational database?</a></li>
 <li class="chapter" data-level="5.2" data-path="relational-databases.html"><a href="relational-databases.html#why-bothering-with-relational-databases"><i class="fa fa-check"></i><b>5.2</b> Why bothering with relational databases?</a></li>
 <li class="chapter" data-level="5.3" data-path="relational-databases.html"><a href="relational-databases.html#database-components"><i class="fa fa-check"></i><b>5.3</b> Database components</a></li>
@@ -220,9 +234,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>5.5</b> Data types</a></li>
 <li class="chapter" data-level="5.6" data-path="relational-databases.html"><a href="relational-databases.html#a-first-look-at-our-practice-database"><i class="fa fa-check"></i><b>5.6</b> A first look at our practice database</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a><ul>
+<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="sql.html"><a href="sql.html#the-sql-language"><i class="fa fa-check"></i><b>6.1</b> The SQL language</a></li>
-<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a><ul>
+<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>6.2.1</b> Limiting results</a></li>
 <li class="chapter" data-level="6.2.2" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>6.2.2</b> Sorting results</a></li>
 <li class="chapter" data-level="6.2.3" data-path="sql.html"><a href="sql.html#finding-unique-values"><i class="fa fa-check"></i><b>6.2.3</b> Finding unique values</a></li>
@@ -237,7 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.12" data-path="sql.html"><a href="sql.html#nested-select-statements"><i class="fa fa-check"></i><b>6.2.12</b> Nested <code>SELECT</code> statements</a></li>
 <li class="chapter" data-level="6.2.13" data-path="sql.html"><a href="sql.html#order-of-operations"><i class="fa fa-check"></i><b>6.2.13</b> Order of operations</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a><ul>
+<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="sql.html"><a href="sql.html#creating-a-new-database-in-sqlite-studio"><i class="fa fa-check"></i><b>6.3.1</b> Creating a new database in SQLite Studio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="sql.html"><a href="sql.html#creating-tables"><i class="fa fa-check"></i><b>6.3.2</b> Creating tables</a></li>
 <li class="chapter" data-level="6.3.3" data-path="sql.html"><a href="sql.html#adding-constraints"><i class="fa fa-check"></i><b>6.3.3</b> Adding constraints</a></li>
@@ -248,17 +265,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
 <li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
 <li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
 <li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
 <li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
 <li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
-<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
 <li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
 <li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
@@ -270,11 +290,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
-<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
+<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a><ul>
+<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="github-pages.html"><a href="github-pages.html#step-1-set-up-compatibility-with-github-pages"><i class="fa fa-check"></i><b>9.2.1</b> Step 1: Set up compatibility with GitHub Pages</a></li>
 <li class="chapter" data-level="9.2.2" data-path="github-pages.html"><a href="github-pages.html#step-2-set-up-git-repository"><i class="fa fa-check"></i><b>9.2.2</b> Step 2: Set up Git repository</a></li>
 <li class="chapter" data-level="9.2.3" data-path="github-pages.html"><a href="github-pages.html#step-3-link-git-repository-to-remote-github-repository"><i class="fa fa-check"></i><b>9.2.3</b> Step 3: Link Git repository to remote GitHub repository</a></li>
@@ -283,9 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
 <li class="chapter" data-level="9.4" data-path="github-pages.html"><a href="github-pages.html#references-4"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
-<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a><ul>
+<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#assigning-objects"><i class="fa fa-check"></i><b>10.2.1</b> Assigning objects</a></li>
 <li class="chapter" data-level="10.2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#adding-comments"><i class="fa fa-check"></i><b>10.2.2</b> Adding comments</a></li>
 <li class="chapter" data-level="10.2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#headers-and-description"><i class="fa fa-check"></i><b>10.2.3</b> Headers and description</a></li>
@@ -305,15 +330,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="intro-to-r.html"><a href="intro-to-r.html#references-5"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
-<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="troubleshooting.html"><a href="troubleshooting.html#locating-the-problematic-piece-of-code"><i class="fa fa-check"></i><b>11.1.1</b> Locating the problematic piece of code</a></li>
 <li class="chapter" data-level="11.1.2" data-path="troubleshooting.html"><a href="troubleshooting.html#isolating-the-error"><i class="fa fa-check"></i><b>11.1.2</b> Isolating the error</a></li>
 <li class="chapter" data-level="11.1.3" data-path="troubleshooting.html"><a href="troubleshooting.html#deciphering-error-messages"><i class="fa fa-check"></i><b>11.1.3</b> Deciphering error messages</a></li>
 <li class="chapter" data-level="11.1.4" data-path="troubleshooting.html"><a href="troubleshooting.html#syntax-errors"><i class="fa fa-check"></i><b>11.1.4</b> Syntax errors</a></li>
 <li class="chapter" data-level="11.1.5" data-path="troubleshooting.html"><a href="troubleshooting.html#errors-from-using-package-functions"><i class="fa fa-check"></i><b>11.1.5</b> Errors from using package functions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a><ul>
+<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="troubleshooting.html"><a href="troubleshooting.html#r-documentation"><i class="fa fa-check"></i><b>11.2.1</b> R documentation</a></li>
 <li class="chapter" data-level="11.2.2" data-path="troubleshooting.html"><a href="troubleshooting.html#google"><i class="fa fa-check"></i><b>11.2.2</b> Google</a></li>
 <li class="chapter" data-level="11.2.3" data-path="troubleshooting.html"><a href="troubleshooting.html#stackoverflow-et-al."><i class="fa fa-check"></i><b>11.2.3</b> StackOverflow et al.</a></li>
@@ -323,16 +351,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="troubleshooting.html"><a href="troubleshooting.html#reproducible-examples"><i class="fa fa-check"></i><b>11.5</b> Reproducible examples</a></li>
 <li class="chapter" data-level="11.6" data-path="troubleshooting.html"><a href="troubleshooting.html#the-rubber-duck"><i class="fa fa-check"></i><b>11.6</b> The rubber duck</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a><ul>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="renv.html"><a href="renv.html#whats-the-need-for-dependency-management"><i class="fa fa-check"></i><b>12.1</b> What’s the need for dependency management?</a></li>
-<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
+<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="renv.html"><a href="renv.html#references-6"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
-<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a><ul>
+<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-columns"><i class="fa fa-check"></i><b>13.2.1</b> Subsetting columns</a></li>
 <li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
@@ -349,15 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
 <li class="chapter" data-level="13.4" data-path="tidyverse.html"><a href="tidyverse.html#references-7"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a><ul>
+<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>14.1</b> A Grammar of Graphics</a></li>
-<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a><ul>
+<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="ggplot2.html"><a href="ggplot2.html#basic-scatterplot"><i class="fa fa-check"></i><b>14.2.1</b> Basic scatterplot</a></li>
 <li class="chapter" data-level="14.2.2" data-path="ggplot2.html"><a href="ggplot2.html#basic-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Basic histogram</a></li>
 <li class="chapter" data-level="14.2.3" data-path="ggplot2.html"><a href="ggplot2.html#basic-density-plot"><i class="fa fa-check"></i><b>14.2.3</b> Basic density plot</a></li>
 <li class="chapter" data-level="14.2.4" data-path="ggplot2.html"><a href="ggplot2.html#other-geom-functions"><i class="fa fa-check"></i><b>14.2.4</b> Other <code>geom</code> functions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a><ul>
+<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="ggplot2.html"><a href="ggplot2.html#changing-axis-labels"><i class="fa fa-check"></i><b>14.3.1</b> Changing axis labels</a></li>
 <li class="chapter" data-level="14.3.2" data-path="ggplot2.html"><a href="ggplot2.html#changing-colors"><i class="fa fa-check"></i><b>14.3.2</b> Changing colors</a></li>
 <li class="chapter" data-level="14.3.3" data-path="ggplot2.html"><a href="ggplot2.html#modifying-legends"><i class="fa fa-check"></i><b>14.3.3</b> Modifying legends</a></li>
@@ -377,11 +412,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>14.6</b> Saving plots</a></li>
 <li class="chapter" data-level="14.7" data-path="ggplot2.html"><a href="ggplot2.html#references-8"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a><ul>
+<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="lubridate.html"><a href="lubridate.html#what-makes-dates-and-times-special"><i class="fa fa-check"></i><b>15.1</b> What makes dates and times special</a></li>
 <li class="chapter" data-level="15.2" data-path="lubridate.html"><a href="lubridate.html#definitions"><i class="fa fa-check"></i><b>15.2</b> Definitions</a></li>
 <li class="chapter" data-level="15.3" data-path="lubridate.html"><a href="lubridate.html#under-the-hood"><i class="fa fa-check"></i><b>15.3</b> Under the hood</a></li>
-<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="lubridate.html"><a href="lubridate.html#parsing-dates-and-times"><i class="fa fa-check"></i><b>15.4.1</b> Parsing dates and times</a></li>
 <li class="chapter" data-level="15.4.2" data-path="lubridate.html"><a href="lubridate.html#extracting-components-of-a-date-time-object"><i class="fa fa-check"></i><b>15.4.2</b> Extracting components of a date-time object</a></li>
 <li class="chapter" data-level="15.4.3" data-path="lubridate.html"><a href="lubridate.html#time-zones"><i class="fa fa-check"></i><b>15.4.3</b> Time zones</a></li>
@@ -410,74 +447,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="version-control-git" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Version Control with Git</h1>
+<div id="version-control-git" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Version Control with Git<a href="version-control-git.html#version-control-git" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Git is a version control system. It tracks all the changes you make to your files and allows you to go back to previous versions as far back in time as you need. Git is useful for a variety of reasons. Most of us are familiar with folders that look like this:</p>
 <div style="text-align:center" markdown="1">
-<div class="figure">
-<img src="img/version-nightmare.png" style="width:50.0%" alt="" />
-<p class="caption">Messy folder</p>
+<div class="float">
+<img src="img/version-nightmare.png" style="width:50.0%" alt="Messy folder" />
+<div class="figcaption">Messy folder</div>
 </div>
 </div>
 <p>Saving multiple versions of files like this is problematic because, first, it uses space inefficiently (even if files are small, multiple versions add up and end up wasting a lot of room on our computers); second, and perhaps most importantly, it creates confusion and makes our workflow prone to errors. Instead of manually saving edits to a file in a separate copy “just in case”, and instead of having to keep track of which is the most recent version, we can put our files under version control and let Git keep track of the changes we make. Git will record a history of changes to each file without duplicating it, and we’ll be able to revert to any previous version in the history of that file. Version control allows us to be clean and tidy in our file organization, optimizing use of space without ever fearing to lose any of our work. Once a file is tracked by Git, it is virtually impossible to do anything irreversible to it.</p>
 <p>I haven’t mentioned anything yet about the benefits of version control for collaborative work. This is because at its core, Git works locally on your computer. We often tend to think of version control as the way to handle multiple users working on the same file simultaneously, but Git is first and foremost a tool for your own file organization. Git is installed and runs on your machine, not on a network. It is the integration with an external server, be it private or public (GitHub and GitLab, for example, are public server providers), that makes Git a tool for multiple-user applications. This chapter focuses on the local functionalities of Git, while we’ll dive into its benefits for collaborative projects in the next Chapter.</p>
-<div id="command-line-basics" class="section level2">
-<h2><span class="header-section-number">2.1</span> Command line basics</h2>
+<div id="command-line-basics" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Command line basics<a href="version-control-git.html#command-line-basics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can use Git from the command line in the computer’s terminal. The command line can be intimidating if you haven’t used it before, but using Git only requires basic familiarity with it. Commands are slightly different between operating systems, so I’ll assume Windows is the most commonly used and specify the Mac/Linux alternative when applicable.</p>
 <p>When you open up the terminal (or command prompt) on your computer, you’ll see a symbol, on many computers it is a “$” or “&gt;”, followed by a blinking cursor. That symbol is called the prompt, and it means the terminal is waiting for your input. If you copy-paste any code from this chapter into your terminal,
 <strong>make sure you only copy the part after the prompt</strong> (don’t copy the &gt;).
 Also, if Ctrl+V does not work in the terminal, you can right-click to paste.</p>
 <p>When you open the terminal, you should automatically be located in the root directory of your file system (or your home directory, if you have a computer with multiple users). The name of the folder you’re in appears right before the prompt. For example, this is what my prompt looks like:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="version-control-git.html#cb8-1"></a><span class="ex">C</span>:\Users\Simona<span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="version-control-git.html#cb8-1" tabindex="-1"></a><span class="ex">C:\Users\Simona</span><span class="op">&gt;</span></span></code></pre></div>
 <p>If you are not in your root directory when you first open up the terminal, you can use the following command to navigate to it:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="version-control-git.html#cb9-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> \</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="version-control-git.html#cb9-1" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="dt">\</span></span></code></pre></div>
 <p>This command stands for “change directory”. The “\” symbol indicates the root directory. On Mac/Linux, you can navigate to the root directory by simply typing “cd” or:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="version-control-git.html#cb10-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> ~</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="version-control-git.html#cb10-1" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">~</span></span></code></pre></div>
 <p>If you want to go to a specific directory other than the root, you can type its path (relative to the folder you’re currently in) after “cd”. To go from Users\Simona to Users\Simona\Documents:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="version-control-git.html#cb11-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> Documents</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="version-control-git.html#cb11-1" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">Documents</span></span></code></pre></div>
 <p>If you want to go back to the parent of the current directory (the folder that contains it), you can use:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="version-control-git.html#cb12-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> ..</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb12-1"><a href="version-control-git.html#cb12-1" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">..</span></span></code></pre></div>
 <p>To go back to Users from Documents:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="version-control-git.html#cb13-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> ..\..</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb13-1"><a href="version-control-git.html#cb13-1" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">..\..</span></span></code></pre></div>
 <p>To go back to Documents from Users:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="version-control-git.html#cb14-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> Simona\Documents</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb14-1"><a href="version-control-git.html#cb14-1" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">Simona\Documents</span></span></code></pre></div>
 </div>
-<div id="configuring-git" class="section level2">
-<h2><span class="header-section-number">2.2</span> Configuring Git</h2>
+<div id="configuring-git" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Configuring Git<a href="version-control-git.html#configuring-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once Git is installed on our computer, we need to do a few one-time steps to configure it. Let’s set up our name and our email address by typing the following in the terminal:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="version-control-git.html#cb15-1"></a><span class="op">&gt;</span> <span class="fu">git</span> config --global user.name <span class="st">&quot;First Last&quot;</span></span>
-<span id="cb15-2"><a href="version-control-git.html#cb15-2"></a><span class="op">&gt;</span> <span class="fu">git</span> config --global user.email <span class="st">&quot;first.last@example.com&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb15-1"><a href="version-control-git.html#cb15-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">config</span> <span class="at">--global</span> user.name <span class="st">&quot;First Last&quot;</span></span>
+<span id="cb15-2"><a href="version-control-git.html#cb15-2" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">config</span> <span class="at">--global</span> user.email <span class="st">&quot;first.last@example.com&quot;</span></span></code></pre></div>
 <p>This will be important when we start using GitHub. If you want to change these options in the future you always can, and if you want to use different options than the global ones within a specific project you can run the commands above removing “–global” while in the project directory (not the root!).</p>
 <p>There are more configuration options you can personalize, but we won’t get into that in this chapter. If you want to check what configuration options you have active, you can use:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="version-control-git.html#cb16-1"></a><span class="op">&gt;</span> <span class="fu">git</span> config --list</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb16-1"><a href="version-control-git.html#cb16-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">config</span> <span class="at">--list</span></span></code></pre></div>
 </div>
-<div id="getting-help" class="section level2">
-<h2><span class="header-section-number">2.3</span> Getting help</h2>
+<div id="getting-help" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Getting help<a href="version-control-git.html#getting-help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If you need help while using Git, you can use any of the following commands to get the manual page for any of the Git verbs:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="version-control-git.html#cb17-1"></a><span class="op">&gt;</span> <span class="fu">git</span> help <span class="op">&lt;</span>verb<span class="op">&gt;</span></span>
-<span id="cb17-2"><a href="version-control-git.html#cb17-2"></a><span class="op">&gt;</span> <span class="fu">git</span> <span class="op">&lt;</span>verb<span class="op">&gt;</span> --help</span>
-<span id="cb17-3"><a href="version-control-git.html#cb17-3"></a><span class="op">&gt;</span> <span class="fu">man</span> git-<span class="op">&lt;</span>verb<span class="op">&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb17-1"><a href="version-control-git.html#cb17-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="bu">help</span> <span class="op">&lt;</span>verb<span class="op">&gt;</span></span>
+<span id="cb17-2"><a href="version-control-git.html#cb17-2" tabindex="-1"></a><span class="op">&gt;</span> git <span class="op">&lt;</span>verb<span class="op">&gt;</span> --help</span>
+<span id="cb17-3"><a href="version-control-git.html#cb17-3" tabindex="-1"></a><span class="op">&gt;</span> man <span class="ex">git-</span><span class="op">&lt;</span>verb<span class="op">&gt;</span></span></code></pre></div>
 </div>
-<div id="creating-a-repository" class="section level2">
-<h2><span class="header-section-number">2.4</span> Creating a repository</h2>
+<div id="creating-a-repository" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Creating a repository<a href="version-control-git.html#creating-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once Git is set up and configured, we are ready to create our first repository. A repository is a directory that is under version control. Let’s use the example directory structure from Figure <a href="project-organization.html#fig:dir-example">1.4</a>. First, we navigate to the folder where we want to initialize our repository. In our example’s case, that is:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="version-control-git.html#cb18-1"></a><span class="op">&gt;</span> <span class="bu">cd</span> Documents\PhD\Research\GreenFrogs</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb18-1"><a href="version-control-git.html#cb18-1" tabindex="-1"></a><span class="op">&gt;</span> cd <span class="ex">Documents\PhD\Research\GreenFrogs</span></span></code></pre></div>
 <p>Now we will enable Git to start tracking everything inside this folder:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="version-control-git.html#cb19-1"></a><span class="op">&gt;</span> <span class="fu">git</span> init</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb19-1"><a href="version-control-git.html#cb19-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">init</span></span></code></pre></div>
 <p>This command initializes Git. It may appear like nothing changed, but if you allow the option to show hidden files in your file explorer you will notice there is a new subfolder called .git. That folder is where Git will store all of its version control information. You don’t have to worry about the content of that folder and you can keep using your files normally like you always would.</p>
 </div>
-<div id="tracking-files" class="section level2">
-<h2><span class="header-section-number">2.5</span> Tracking files</h2>
+<div id="tracking-files" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Tracking files<a href="version-control-git.html#tracking-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Creating a repository enables Git to start tracking files within it, but that does not happen automatically. We have to tell Git which files we want to track. We can check what Git is tracking so far by using:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="version-control-git.html#cb20-1"></a><span class="op">&gt;</span> <span class="fu">git</span> status </span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb20-1"><a href="version-control-git.html#cb20-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">status</span> </span></code></pre></div>
 <p>At the bottom, we’ll see a list of untracked files. We need to switch on tracking on those. To begin tracking a new file, we use the verb ‘add’. For example, to track a file named “green_frog_diet_data_cleaning.R” we would type:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="version-control-git.html#cb21-1"></a><span class="op">&gt;</span> <span class="fu">git</span> add green_frog_diet_data_cleaning.R</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb21-1"><a href="version-control-git.html#cb21-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">add</span> green_frog_diet_data_cleaning.R</span></code></pre></div>
 <p>This works well if we want to add a specific file. If we want to start tracking the whole content of the folder, we can do:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="version-control-git.html#cb22-1"></a><span class="op">&gt;</span> <span class="fu">git</span> add --all</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb22-1"><a href="version-control-git.html#cb22-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">add</span> <span class="at">--all</span></span></code></pre></div>
 <p>But be careful when using this command: Git is optimized to work with plain text files (for example .txt or R scripts), and it doesn’t really understand binary files (which is how Word files are stored, for example). Also, some files typically do not need to be version controlled, such as images; in fact, because they are large files, version controlling images can end up clogging your workflow. Make sure you are always aware of what exactly you’re adding when you use ‘git add –all’. When in doubt, add files one by one. There are also ways to make this process a little more distraction-proof: in the next step, we’ll see how to make sure we only track the files we want.</p>
 </div>
-<div id="ignoring-files" class="section level2">
-<h2><span class="header-section-number">2.6</span> Ignoring files</h2>
+<div id="ignoring-files" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Ignoring files<a href="version-control-git.html#ignoring-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can set up some rules to exclude from version control files that it would be superfluous or detrimental to track. Writing these down as rules can save us some time and headaches versus having to decide manually every time. We can exclude files from version control within a repository by using .gitignore. This is simply a text file that lists all the rules for files that, by default, we do not want to track. Rules can be based on the file type or patterns in the file name. Generally, there are a few criteria you can consider when deciding what to exclude from version control:</p>
 <ul>
 <li>File encoding (plain-text vs. binary): Git cannot track changes within binary files, so, even though you <strong>can</strong> store these files under version control, you won’t be able to use Git to compare different version, so there’s really no point in tracking these;</li>
@@ -510,42 +547,42 @@ green_frog_demography_manuscript.docx</p>
 /.Rproj.user/</p>
 </blockquote>
 <p>We can add as many rules as we like, then save the .gitignore text file when we’re done. Now, if we didn’t forget to include anything that needed to be ignored, we can safely add all our files in one go:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="version-control-git.html#cb23-1"></a><span class="op">&gt;</span> <span class="fu">git</span> add --all</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb23-1"><a href="version-control-git.html#cb23-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">add</span> <span class="at">--all</span></span></code></pre></div>
 </div>
-<div id="the-3-states" class="section level2">
-<h2><span class="header-section-number">2.7</span> The 3 states</h2>
+<div id="the-3-states" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> The 3 states<a href="version-control-git.html#the-3-states" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once files are tracked by Git, they can be in one of three states: modified, staged, or committed. A modified file includes edits that have not been recorded in Git yet; when we stage a modified file, we mark it as ready to be committed; when we commit that staged file, the current version gets stored in the history of that file.</p>
 <p>Git works with snapshots called “commits”, which are records of what the repository looked like at a certain point in time. By committing a file, we freeze that version of the file forever in its history and we will be able to go back to it. Then, if we edit the file again, we’ll have to tell Git when we’re ready to make a new commit by moving that file to the staging area. Note that the same command ‘git add’ is used both to start tracking a previously untracked file and to add a modified file to the staging area.</p>
 <p>Now we are ready to do our first commit. We use the following command:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="version-control-git.html#cb24-1"></a><span class="op">&gt;</span> <span class="fu">git</span> commit -m <span class="st">&quot;First commit&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb24-1"><a href="version-control-git.html#cb24-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">commit</span> <span class="at">-m</span> <span class="st">&quot;First commit&quot;</span></span></code></pre></div>
 <p>Each commit should be accompanied by a message, added with the flag -m. The message should describe the changes made to the file/s since the previous commit. It is a good habit to write detailed commit messages, so that when we need to go back and recover a previous version of a file, we can read the history of commits and easily find the version we are looking for.</p>
 </div>
-<div id="un-staging-files" class="section level2">
-<h2><span class="header-section-number">2.8</span> Un-staging files</h2>
+<div id="un-staging-files" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Un-staging files<a href="version-control-git.html#un-staging-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It happens to the best of us. We forgot to add a certain rule to .gitignore and when we go ahead and get ready to commit our files we realized we just staged a file we didn’t want to stage. No worries, there is a way to fix that. The following command un-stages files and saves us from having to commit them:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="version-control-git.html#cb25-1"></a><span class="op">&gt;</span> <span class="fu">git</span> rm --cached filename</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb25-1"><a href="version-control-git.html#cb25-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="fu">rm</span> <span class="at">--cached</span> filename</span></code></pre></div>
 <p>You can use pattern matching here as well, but you’ll need to put a backslash in front of the wildcard:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="version-control-git.html#cb26-1"></a><span class="op">&gt;</span> <span class="fu">git</span> rm --cached <span class="dt">\*</span>.jpg</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb26-1"><a href="version-control-git.html#cb26-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="fu">rm</span> <span class="at">--cached</span> <span class="dt">\*</span>.jpg</span></code></pre></div>
 </div>
-<div id="recovering-a-previous-version-of-a-file" class="section level2">
-<h2><span class="header-section-number">2.9</span> Recovering a previous version of a file</h2>
+<div id="recovering-a-previous-version-of-a-file" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Recovering a previous version of a file<a href="version-control-git.html#recovering-a-previous-version-of-a-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Git works like a time machine, allowing us to recover any previous version of a tracked file. It does so by saving snapshots of what the file looked like at each commit. So, each commit represent a point in time that we can access to retrieve the version that existed at that time. We can take a look at the commit history using:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="version-control-git.html#cb27-1"></a><span class="op">&gt;</span> <span class="fu">git</span> log</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb27-1"><a href="version-control-git.html#cb27-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">log</span></span></code></pre></div>
 <p>Here’s where current me will be grateful to past me for writing descriptive commit messages. If the commit messages do a good job of describing what changes I made to a file, it will be easy to recognize which commit is the one I want to go back to.</p>
 <p>The string of numbers and letters following the word ‘commit’ in the log is called the hash and it uniquely identifies each commit. We can revert to the version of a file from a specific commit by using the hash as follows:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="version-control-git.html#cb28-1"></a><span class="op">&gt;</span> <span class="fu">git</span> checkout 9c5d9a3f52b7d43c1c0a06a94b11df5c3051ca27 -- filename.ext</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb28-1"><a href="version-control-git.html#cb28-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">checkout</span> 9c5d9a3f52b7d43c1c0a06a94b11df5c3051ca27 <span class="at">--</span> filename.ext</span></code></pre></div>
 </div>
-<div id="removing-git" class="section level2">
-<h2><span class="header-section-number">2.10</span> Removing Git</h2>
+<div id="removing-git" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Removing Git<a href="version-control-git.html#removing-git" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If for any reason you ever want to remove Git tracking from a repository (going back to a regular folder without version control) you can use the following command:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="version-control-git.html#cb29-1"></a><span class="op">&gt;</span> <span class="fu">rm</span> -rf .git</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb29-1"><a href="version-control-git.html#cb29-1" tabindex="-1"></a><span class="op">&gt;</span> rm <span class="ex">-rf</span> .git</span></code></pre></div>
 </div>
-<div id="git-everyday" class="section level2">
-<h2><span class="header-section-number">2.11</span> Git everyday</h2>
+<div id="git-everyday" class="section level2 hasAnchor" number="2.11">
+<h2><span class="header-section-number">2.11</span> Git everyday<a href="version-control-git.html#git-everyday" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter walked you through commands to configure git, initialize repositories, stage and un-stage files, commit changes, and revert to previous versions of a file. In practice, you may use some of these commands only once (e.g., to configure your email address when you first install Git) or when you start a new repository. In your everyday use of Git, the most important commands you need to remember are those to add and commit your changes. For everything else, feel free to refer back to this manual or other resources on the internet.</p>
 </div>
-<div id="references-1" class="section level2">
-<h2><span class="header-section-number">2.12</span> References</h2>
+<div id="references-1" class="section level2 hasAnchor" number="2.12">
+<h2><span class="header-section-number">2.12</span> References<a href="version-control-git.html#references-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>The Carpentries lesson on Version Control with Git: <a href="http://swcarpentry.github.io/git-novice/" class="uri">http://swcarpentry.github.io/git-novice/</a></li>
 <li>Pro Git book by Scott Chacon and Ben Straub: <a href="https://git-scm.com/book/en/v2" class="uri">https://git-scm.com/book/en/v2</a></li>
@@ -619,7 +656,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

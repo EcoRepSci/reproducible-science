@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Troubleshooting in R | Reproducible Data Science</title>
-  <meta name="description" content="WILD 6900: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 553: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Troubleshooting in R | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="WILD 6900: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 11 Troubleshooting in R | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WILD 6900: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-15" />
+<meta name="date" content="2024-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,24 +49,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,13 +86,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -137,8 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/EcoRepSci/reproducible-science">Course Material</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#git"><i class="fa fa-check"></i><b>0.1.1</b> Git</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#spreadsheet-editor"><i class="fa fa-check"></i><b>0.1.2</b> Spreadsheet Editor</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#sqlite"><i class="fa fa-check"></i><b>0.1.3</b> SQLite</a></li>
@@ -147,8 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#required-r-packages"><i class="fa fa-check"></i><b>0.1.6</b> Required R Packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a><ul>
-<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a><ul>
+<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="project-organization.html"><a href="project-organization.html#overlap"><i class="fa fa-check"></i><b>1.1.1</b> Overlap</a></li>
 <li class="chapter" data-level="1.1.2" data-path="project-organization.html"><a href="project-organization.html#minimizing-duplication"><i class="fa fa-check"></i><b>1.1.2</b> Minimizing duplication</a></li>
 <li class="chapter" data-level="1.1.3" data-path="project-organization.html"><a href="project-organization.html#self-containedness"><i class="fa fa-check"></i><b>1.1.3</b> Self-containedness</a></li>
@@ -157,18 +164,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="project-organization.html"><a href="project-organization.html#golden-rules"><i class="fa fa-check"></i><b>1.2</b> Golden rules</a></li>
 <li class="chapter" data-level="1.3" data-path="project-organization.html"><a href="project-organization.html#be-flexible"><i class="fa fa-check"></i><b>1.3</b> Be flexible</a></li>
 <li class="chapter" data-level="1.4" data-path="project-organization.html"><a href="project-organization.html#documentation"><i class="fa fa-check"></i><b>1.4</b> Documentation</a></li>
-<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a><ul>
+<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="project-organization.html"><a href="project-organization.html#computer-readable-file-names"><i class="fa fa-check"></i><b>1.5.1</b> Computer-readable file names</a></li>
 <li class="chapter" data-level="1.5.2" data-path="project-organization.html"><a href="project-organization.html#human-readable-file-names"><i class="fa fa-check"></i><b>1.5.2</b> Human-readable file names</a></li>
 <li class="chapter" data-level="1.5.3" data-path="project-organization.html"><a href="project-organization.html#file-names-that-work-well-with-default-ordering"><i class="fa fa-check"></i><b>1.5.3</b> File names that work well with default ordering</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="project-organization.html"><a href="project-organization.html#rstudio-projects"><i class="fa fa-check"></i><b>1.6</b> RStudio Projects</a></li>
-<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a><ul>
+<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="project-organization.html"><a href="project-organization.html#path-separators"><i class="fa fa-check"></i><b>1.7.1</b> Path separators</a></li>
 <li class="chapter" data-level="1.7.2" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>1.7.2</b> References</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a><ul>
+<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="version-control-git.html"><a href="version-control-git.html#command-line-basics"><i class="fa fa-check"></i><b>2.1</b> Command line basics</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control-git.html"><a href="version-control-git.html#configuring-git"><i class="fa fa-check"></i><b>2.2</b> Configuring Git</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control-git.html"><a href="version-control-git.html#getting-help"><i class="fa fa-check"></i><b>2.3</b> Getting help</a></li>
@@ -182,7 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11" data-path="version-control-git.html"><a href="version-control-git.html#git-everyday"><i class="fa fa-check"></i><b>2.11</b> Git everyday</a></li>
 <li class="chapter" data-level="2.12" data-path="version-control-git.html"><a href="version-control-git.html#references-1"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a><ul>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#adding-a-remote-to-a-local-repository"><i class="fa fa-check"></i><b>3.1</b> Adding a remote to a local repository</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#pushing-to-a-remote-repository"><i class="fa fa-check"></i><b>3.2</b> Pushing to a remote repository</a></li>
 <li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#cloning-a-repository"><i class="fa fa-check"></i><b>3.3</b> Cloning a repository</a></li>
@@ -194,11 +205,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="github.html"><a href="github.html#pull-requests"><i class="fa fa-check"></i><b>3.9</b> Pull requests</a></li>
 <li class="chapter" data-level="3.10" data-path="github.html"><a href="github.html#references-2"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a><ul>
+<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#what-are-spreadsheets-good-for"><i class="fa fa-check"></i><b>4.1</b> What are spreadsheets good for?</a></li>
 <li class="chapter" data-level="4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#human-readable-vs.-computer-readable-data"><i class="fa fa-check"></i><b>4.2</b> Human-readable vs. computer-readable data</a></li>
 <li class="chapter" data-level="4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#tidydata"><i class="fa fa-check"></i><b>4.3</b> Tidy data</a></li>
-<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a><ul>
+<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-variables-in-a-single-column"><i class="fa fa-check"></i><b>4.4.1</b> Multiple variables in a single column</a></li>
 <li class="chapter" data-level="4.4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#rows-for-variables-columns-for-observation"><i class="fa fa-check"></i><b>4.4.2</b> Rows for variables, columns for observation</a></li>
 <li class="chapter" data-level="4.4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-tables-in-a-single-spreadsheet"><i class="fa fa-check"></i><b>4.4.3</b> Multiple tables in a single spreadsheet</a></li>
@@ -212,7 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="spreadsheets.html"><a href="spreadsheets.html#document-document-document"><i class="fa fa-check"></i><b>4.5</b> Document, document, document!</a></li>
 <li class="chapter" data-level="4.6" data-path="spreadsheets.html"><a href="spreadsheets.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a><ul>
+<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="relational-databases.html"><a href="relational-databases.html#what-is-a-relational-database"><i class="fa fa-check"></i><b>5.1</b> What is a relational database?</a></li>
 <li class="chapter" data-level="5.2" data-path="relational-databases.html"><a href="relational-databases.html#why-bothering-with-relational-databases"><i class="fa fa-check"></i><b>5.2</b> Why bothering with relational databases?</a></li>
 <li class="chapter" data-level="5.3" data-path="relational-databases.html"><a href="relational-databases.html#database-components"><i class="fa fa-check"></i><b>5.3</b> Database components</a></li>
@@ -220,9 +234,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>5.5</b> Data types</a></li>
 <li class="chapter" data-level="5.6" data-path="relational-databases.html"><a href="relational-databases.html#a-first-look-at-our-practice-database"><i class="fa fa-check"></i><b>5.6</b> A first look at our practice database</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a><ul>
+<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="sql.html"><a href="sql.html#the-sql-language"><i class="fa fa-check"></i><b>6.1</b> The SQL language</a></li>
-<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a><ul>
+<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>6.2.1</b> Limiting results</a></li>
 <li class="chapter" data-level="6.2.2" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>6.2.2</b> Sorting results</a></li>
 <li class="chapter" data-level="6.2.3" data-path="sql.html"><a href="sql.html#finding-unique-values"><i class="fa fa-check"></i><b>6.2.3</b> Finding unique values</a></li>
@@ -237,7 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.12" data-path="sql.html"><a href="sql.html#nested-select-statements"><i class="fa fa-check"></i><b>6.2.12</b> Nested <code>SELECT</code> statements</a></li>
 <li class="chapter" data-level="6.2.13" data-path="sql.html"><a href="sql.html#order-of-operations"><i class="fa fa-check"></i><b>6.2.13</b> Order of operations</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a><ul>
+<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="sql.html"><a href="sql.html#creating-a-new-database-in-sqlite-studio"><i class="fa fa-check"></i><b>6.3.1</b> Creating a new database in SQLite Studio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="sql.html"><a href="sql.html#creating-tables"><i class="fa fa-check"></i><b>6.3.2</b> Creating tables</a></li>
 <li class="chapter" data-level="6.3.3" data-path="sql.html"><a href="sql.html#adding-constraints"><i class="fa fa-check"></i><b>6.3.3</b> Adding constraints</a></li>
@@ -248,17 +265,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
 <li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
 <li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
 <li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
 <li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
 <li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
-<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
 <li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
 <li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
@@ -270,11 +290,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
-<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
+<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a><ul>
+<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="github-pages.html"><a href="github-pages.html#step-1-set-up-compatibility-with-github-pages"><i class="fa fa-check"></i><b>9.2.1</b> Step 1: Set up compatibility with GitHub Pages</a></li>
 <li class="chapter" data-level="9.2.2" data-path="github-pages.html"><a href="github-pages.html#step-2-set-up-git-repository"><i class="fa fa-check"></i><b>9.2.2</b> Step 2: Set up Git repository</a></li>
 <li class="chapter" data-level="9.2.3" data-path="github-pages.html"><a href="github-pages.html#step-3-link-git-repository-to-remote-github-repository"><i class="fa fa-check"></i><b>9.2.3</b> Step 3: Link Git repository to remote GitHub repository</a></li>
@@ -283,9 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
 <li class="chapter" data-level="9.4" data-path="github-pages.html"><a href="github-pages.html#references-4"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
-<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a><ul>
+<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#assigning-objects"><i class="fa fa-check"></i><b>10.2.1</b> Assigning objects</a></li>
 <li class="chapter" data-level="10.2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#adding-comments"><i class="fa fa-check"></i><b>10.2.2</b> Adding comments</a></li>
 <li class="chapter" data-level="10.2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#headers-and-description"><i class="fa fa-check"></i><b>10.2.3</b> Headers and description</a></li>
@@ -305,15 +330,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="intro-to-r.html"><a href="intro-to-r.html#references-5"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
-<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="troubleshooting.html"><a href="troubleshooting.html#locating-the-problematic-piece-of-code"><i class="fa fa-check"></i><b>11.1.1</b> Locating the problematic piece of code</a></li>
 <li class="chapter" data-level="11.1.2" data-path="troubleshooting.html"><a href="troubleshooting.html#isolating-the-error"><i class="fa fa-check"></i><b>11.1.2</b> Isolating the error</a></li>
 <li class="chapter" data-level="11.1.3" data-path="troubleshooting.html"><a href="troubleshooting.html#deciphering-error-messages"><i class="fa fa-check"></i><b>11.1.3</b> Deciphering error messages</a></li>
 <li class="chapter" data-level="11.1.4" data-path="troubleshooting.html"><a href="troubleshooting.html#syntax-errors"><i class="fa fa-check"></i><b>11.1.4</b> Syntax errors</a></li>
 <li class="chapter" data-level="11.1.5" data-path="troubleshooting.html"><a href="troubleshooting.html#errors-from-using-package-functions"><i class="fa fa-check"></i><b>11.1.5</b> Errors from using package functions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a><ul>
+<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="troubleshooting.html"><a href="troubleshooting.html#r-documentation"><i class="fa fa-check"></i><b>11.2.1</b> R documentation</a></li>
 <li class="chapter" data-level="11.2.2" data-path="troubleshooting.html"><a href="troubleshooting.html#google"><i class="fa fa-check"></i><b>11.2.2</b> Google</a></li>
 <li class="chapter" data-level="11.2.3" data-path="troubleshooting.html"><a href="troubleshooting.html#stackoverflow-et-al."><i class="fa fa-check"></i><b>11.2.3</b> StackOverflow et al.</a></li>
@@ -323,16 +351,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="troubleshooting.html"><a href="troubleshooting.html#reproducible-examples"><i class="fa fa-check"></i><b>11.5</b> Reproducible examples</a></li>
 <li class="chapter" data-level="11.6" data-path="troubleshooting.html"><a href="troubleshooting.html#the-rubber-duck"><i class="fa fa-check"></i><b>11.6</b> The rubber duck</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a><ul>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="renv.html"><a href="renv.html#whats-the-need-for-dependency-management"><i class="fa fa-check"></i><b>12.1</b> What’s the need for dependency management?</a></li>
-<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
+<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="renv.html"><a href="renv.html#references-6"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
-<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a><ul>
+<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-columns"><i class="fa fa-check"></i><b>13.2.1</b> Subsetting columns</a></li>
 <li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
@@ -349,15 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
 <li class="chapter" data-level="13.4" data-path="tidyverse.html"><a href="tidyverse.html#references-7"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a><ul>
+<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>14.1</b> A Grammar of Graphics</a></li>
-<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a><ul>
+<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="ggplot2.html"><a href="ggplot2.html#basic-scatterplot"><i class="fa fa-check"></i><b>14.2.1</b> Basic scatterplot</a></li>
 <li class="chapter" data-level="14.2.2" data-path="ggplot2.html"><a href="ggplot2.html#basic-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Basic histogram</a></li>
 <li class="chapter" data-level="14.2.3" data-path="ggplot2.html"><a href="ggplot2.html#basic-density-plot"><i class="fa fa-check"></i><b>14.2.3</b> Basic density plot</a></li>
 <li class="chapter" data-level="14.2.4" data-path="ggplot2.html"><a href="ggplot2.html#other-geom-functions"><i class="fa fa-check"></i><b>14.2.4</b> Other <code>geom</code> functions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a><ul>
+<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="ggplot2.html"><a href="ggplot2.html#changing-axis-labels"><i class="fa fa-check"></i><b>14.3.1</b> Changing axis labels</a></li>
 <li class="chapter" data-level="14.3.2" data-path="ggplot2.html"><a href="ggplot2.html#changing-colors"><i class="fa fa-check"></i><b>14.3.2</b> Changing colors</a></li>
 <li class="chapter" data-level="14.3.3" data-path="ggplot2.html"><a href="ggplot2.html#modifying-legends"><i class="fa fa-check"></i><b>14.3.3</b> Modifying legends</a></li>
@@ -377,11 +412,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>14.6</b> Saving plots</a></li>
 <li class="chapter" data-level="14.7" data-path="ggplot2.html"><a href="ggplot2.html#references-8"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a><ul>
+<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="lubridate.html"><a href="lubridate.html#what-makes-dates-and-times-special"><i class="fa fa-check"></i><b>15.1</b> What makes dates and times special</a></li>
 <li class="chapter" data-level="15.2" data-path="lubridate.html"><a href="lubridate.html#definitions"><i class="fa fa-check"></i><b>15.2</b> Definitions</a></li>
 <li class="chapter" data-level="15.3" data-path="lubridate.html"><a href="lubridate.html#under-the-hood"><i class="fa fa-check"></i><b>15.3</b> Under the hood</a></li>
-<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="lubridate.html"><a href="lubridate.html#parsing-dates-and-times"><i class="fa fa-check"></i><b>15.4.1</b> Parsing dates and times</a></li>
 <li class="chapter" data-level="15.4.2" data-path="lubridate.html"><a href="lubridate.html#extracting-components-of-a-date-time-object"><i class="fa fa-check"></i><b>15.4.2</b> Extracting components of a date-time object</a></li>
 <li class="chapter" data-level="15.4.3" data-path="lubridate.html"><a href="lubridate.html#time-zones"><i class="fa fa-check"></i><b>15.4.3</b> Time zones</a></li>
@@ -410,8 +447,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="troubleshooting" class="section level1">
-<h1><span class="header-section-number">Chapter 11</span> Troubleshooting in R</h1>
+<div id="troubleshooting" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Troubleshooting in R<a href="troubleshooting.html#troubleshooting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Troubleshooting is a fundamental programming skill. There is no way to become
 fluent in a programming language without learning how to troubleshoot errors,
 which are every programmer’s daily bread, no matter the skill level. In this
@@ -426,8 +463,8 @@ is almost certainly because of user error. While this can seem like a heavy load
 to bear, it actually is liberating because it means that <strong>you can fix it</strong>.
 It’s not out of your control and if you carefully analyze what you wrote you
 will succeed in finding the problem and correcting it.</p>
-<div id="how-to-interpret-error-messages" class="section level2">
-<h2><span class="header-section-number">11.1</span> How to interpret error messages</h2>
+<div id="how-to-interpret-error-messages" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> How to interpret error messages<a href="troubleshooting.html#how-to-interpret-error-messages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Error messages can be terrifying – nobody likes to see a tide of red invading
 their R console – but they can be an important ally in diagnosing problems in
 your code. Some error messages (the good ones) are clear and point you to the
@@ -442,8 +479,8 @@ code went through, it just may not have done what you thought it would do.
 Unlike with an error message, where the code stopped and didn’t produce an
 output, when you get a warning you can actually double check the output and
 make sure everything makes sense.</p>
-<div id="locating-the-problematic-piece-of-code" class="section level3">
-<h3><span class="header-section-number">11.1.1</span> Locating the problematic piece of code</h3>
+<div id="locating-the-problematic-piece-of-code" class="section level3 hasAnchor" number="11.1.1">
+<h3><span class="header-section-number">11.1.1</span> Locating the problematic piece of code<a href="troubleshooting.html#locating-the-problematic-piece-of-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>RStudio helps you identify which line generated the error by placing little red
 marks on the left of your script next to the line numbers. However, these can
 also be misleading because they can appear far downstream of where the original
@@ -457,31 +494,31 @@ and produced the objects that went as input into that line. So, the first thing
 to do before you try to dig deeper in the error message is checking that what
 went in input into that line actually looks like it’s supposed to.</p>
 </div>
-<div id="isolating-the-error" class="section level3">
-<h3><span class="header-section-number">11.1.2</span> Isolating the error</h3>
+<div id="isolating-the-error" class="section level3 hasAnchor" number="11.1.2">
+<h3><span class="header-section-number">11.1.2</span> Isolating the error<a href="troubleshooting.html#isolating-the-error" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In general, isolating the problem is the first step in troubleshooting. We’ve
 talked about running the code line by line to identify which line is problematic,
 but even within the same line it’s useful to run each piece of code that can be
 run independently to check that it’s giving the expected output. For example,
 if I am running the following code:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="troubleshooting.html#cb323-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">numbers =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
-<span id="cb323-2"><a href="troubleshooting.html#cb323-2"></a>                 <span class="dt">letters =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),</span>
-<span id="cb323-3"><a href="troubleshooting.html#cb323-3"></a>                 <span class="dt">animals =</span> <span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="troubleshooting.html#cb324-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numbers =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb324-2"><a href="troubleshooting.html#cb324-2" tabindex="-1"></a>                 <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),</span>
+<span id="cb324-3"><a href="troubleshooting.html#cb324-3" tabindex="-1"></a>                 <span class="at">animals =</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>))</span></code></pre></div>
 <p>I can run each piece to look at it and double check it:</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="troubleshooting.html#cb324-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="troubleshooting.html#cb325-1" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="troubleshooting.html#cb326-1"></a><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="troubleshooting.html#cb327-1" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot;</code></pre>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="troubleshooting.html#cb328-1"></a><span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="troubleshooting.html#cb329-1" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;cat&quot;     &quot;dog&quot;     &quot;lion&quot;    &quot;cheetah&quot; &quot;giraffe&quot;</code></pre>
 </div>
-<div id="deciphering-error-messages" class="section level3">
-<h3><span class="header-section-number">11.1.3</span> Deciphering error messages</h3>
+<div id="deciphering-error-messages" class="section level3 hasAnchor" number="11.1.3">
+<h3><span class="header-section-number">11.1.3</span> Deciphering error messages<a href="troubleshooting.html#deciphering-error-messages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If the input looks good, it’s time to start deciphering the error message. Here
 are some examples of common errors and what they usually mean (not literally,
 but what type of mistake do they usually result from):</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="troubleshooting.html#cb330-1"></a>test &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb330-2"><a href="troubleshooting.html#cb330-2"></a><span class="kw">sum</span>(tets)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="troubleshooting.html#cb331-1" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb331-2"><a href="troubleshooting.html#cb331-2" tabindex="-1"></a><span class="fu">sum</span>(tets)</span></code></pre></div>
 <pre><code>## Error in eval(expr, envir, enclos): object &#39;tets&#39; not found</code></pre>
 <p>An object can be “not found” when you misspelled its name or when you didn’t run
 your code in the correct order and you haven’t created it yet. This is also an
@@ -491,10 +528,10 @@ chances are it will have to look for some objects that do not exist because the
 previous code failed. So, make sure you start troubleshooting from the first
 error that occurred upstream.</p>
 <p>Here’s another evergreen:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="troubleshooting.html#cb332-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">numbers =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
-<span id="cb332-2"><a href="troubleshooting.html#cb332-2"></a>                 <span class="dt">letters =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>))</span>
-<span id="cb332-3"><a href="troubleshooting.html#cb332-3"></a></span>
-<span id="cb332-4"><a href="troubleshooting.html#cb332-4"></a>df<span class="op">$</span>animals &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="troubleshooting.html#cb333-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numbers =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb333-2"><a href="troubleshooting.html#cb333-2" tabindex="-1"></a>                 <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>))</span>
+<span id="cb333-3"><a href="troubleshooting.html#cb333-3" tabindex="-1"></a></span>
+<span id="cb333-4"><a href="troubleshooting.html#cb333-4" tabindex="-1"></a>df<span class="sc">$</span>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in `$&lt;-.data.frame`(`*tmp*`, animals, value = c(&quot;cat&quot;, &quot;dog&quot;, &quot;lion&quot;, : replacement has 4 rows, data has 5</code></pre>
 <p>Whenever you see an error of the form <code>replacement has... data has...</code> you know
 that you’re trying to plug in the wrong number of values into an object. In this
@@ -508,10 +545,10 @@ which point within it the error occurred.</p>
 <code>Error in</code>) to identify <em>where</em> the error occurred, and use the second component
 (the one after the <code>:</code>) to understand <em>what</em> went wrong.</p>
 </div>
-<div id="syntax-errors" class="section level3">
-<h3><span class="header-section-number">11.1.4</span> Syntax errors</h3>
+<div id="syntax-errors" class="section level3 hasAnchor" number="11.1.4">
+<h3><span class="header-section-number">11.1.4</span> Syntax errors<a href="troubleshooting.html#syntax-errors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Perhaps the most classic of error messages is this:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="troubleshooting.html#cb334-1"></a>vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)<span class="er">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="troubleshooting.html#cb335-1" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>)<span class="er">)</span></span></code></pre></div>
 <pre><code>## Error: &lt;text&gt;:1:24: unexpected &#39;)&#39;
 ## 1: vec &lt;- c(1, 4, 6, 7, 8))
 ##                            ^</code></pre>
@@ -520,13 +557,13 @@ closed all the parentheses you opened. If you move your cursor to an opening (or
 closing) parenthesis (or bracket), RStudio will highlight the closing (or
 opening) one.</p>
 <p>Another classic:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="troubleshooting.html#cb336-1"></a>df[df<span class="op">$</span>numbers <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="troubleshooting.html#cb337-1" tabindex="-1"></a>df[df<span class="sc">$</span>numbers <span class="sc">&gt;</span> <span class="dv">4</span>]</span></code></pre></div>
 <pre><code>## Error in `[.data.frame`(df, df$numbers &gt; 4): undefined columns selected</code></pre>
 <p>This is most likely the symptom that we forgot a comma inside the brackets and
 therefore the indexing isn’t working correctly.</p>
 </div>
-<div id="errors-from-using-package-functions" class="section level3">
-<h3><span class="header-section-number">11.1.5</span> Errors from using package functions</h3>
+<div id="errors-from-using-package-functions" class="section level3 hasAnchor" number="11.1.5">
+<h3><span class="header-section-number">11.1.5</span> Errors from using package functions<a href="troubleshooting.html#errors-from-using-package-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In some situations, you will get an error message that will point you to a line
 of code that you haven’t written. That is most likely because a function that
 you are calling ran into an internal error, and the code you’re seeing in the
@@ -545,17 +582,17 @@ is to use the syntax <code>package::function</code> to specify which package you
 the function from. This removes any ambiguity.</p>
 </div>
 </div>
-<div id="how-to-look-for-help" class="section level2">
-<h2><span class="header-section-number">11.2</span> How to look for help</h2>
-<div id="r-documentation" class="section level3">
-<h3><span class="header-section-number">11.2.1</span> R documentation</h3>
+<div id="how-to-look-for-help" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> How to look for help<a href="troubleshooting.html#how-to-look-for-help" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="r-documentation" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> R documentation<a href="troubleshooting.html#r-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first thing to check when a function is not working like expected is to
 look up the documentation and double check that you provided all the necessary
 input in the right format. You can look up the help file of a function like so:</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="troubleshooting.html#cb338-1"></a>?mean</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="troubleshooting.html#cb339-1" tabindex="-1"></a>?mean</span></code></pre></div>
 </div>
-<div id="google" class="section level3">
-<h3><span class="header-section-number">11.2.2</span> Google</h3>
+<div id="google" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Google<a href="troubleshooting.html#google" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Googling error messages is an art. Here are my go-to rules for how to put
 together an effective Google search for an error message:</p>
 <ul>
@@ -580,8 +617,8 @@ function to your search (this does not always help, but it often does);</li>
 to your search.</li>
 </ul>
 </div>
-<div id="stackoverflow-et-al." class="section level3">
-<h3><span class="header-section-number">11.2.3</span> StackOverflow et al.</h3>
+<div id="stackoverflow-et-al." class="section level3 hasAnchor" number="11.2.3">
+<h3><span class="header-section-number">11.2.3</span> StackOverflow et al.<a href="troubleshooting.html#stackoverflow-et-al." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The world is so big and there are so many humans on this planet and so many of
 them program that you will struggle to find a problem somebody else hasn’t
 already run into and posted about on StackOverflow or similar websites. The
@@ -591,11 +628,11 @@ about it, the specifics of the dataset the other person is using may not be
 exactly identical to yours. This is where thinking outside the box and drawing
 parallels between your case and somebody else’s case becomes critical. For
 instance, say that I run the following code and get an error:</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="troubleshooting.html#cb339-1"></a>vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb339-2"><a href="troubleshooting.html#cb339-2"></a></span>
-<span id="cb339-3"><a href="troubleshooting.html#cb339-3"></a>mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="ot">NA</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
-<span id="cb339-4"><a href="troubleshooting.html#cb339-4"></a></span>
-<span id="cb339-5"><a href="troubleshooting.html#cb339-5"></a>mat[<span class="dv">1</span>, ] &lt;-<span class="st"> </span>vec</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="troubleshooting.html#cb340-1" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb340-2"><a href="troubleshooting.html#cb340-2" tabindex="-1"></a></span>
+<span id="cb340-3"><a href="troubleshooting.html#cb340-3" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb340-4"><a href="troubleshooting.html#cb340-4" tabindex="-1"></a></span>
+<span id="cb340-5"><a href="troubleshooting.html#cb340-5" tabindex="-1"></a>mat[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> vec</span></code></pre></div>
 <pre><code>## Error in mat[1, ] &lt;- vec: number of items to replace is not a multiple of replacement length</code></pre>
 <p>If I go and Google the error, <a href="https://stackoverflow.com/questions/38738347/why-do-i-get-number-of-items-to-replace-is-not-a-multiple-of-replacement-length">this</a> is the first post I find on StackOverflow about it. This person is trying to do a different thing than me:
 they are trying to assign new values to a column in a data frame based on another
@@ -614,17 +651,17 @@ Figure 11.1: Artwork by Allison Horst
 </div>
 </div>
 </div>
-<div id="how-to-troubleshoot-a-loop" class="section level2">
-<h2><span class="header-section-number">11.3</span> How to troubleshoot a loop</h2>
+<div id="how-to-troubleshoot-a-loop" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> How to troubleshoot a loop<a href="troubleshooting.html#how-to-troubleshoot-a-loop" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Consider the following loop:</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="troubleshooting.html#cb341-1"></a>my_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">11</span>, <span class="dv">4</span>, <span class="ot">TRUE</span>, <span class="dv">98</span>, <span class="ot">FALSE</span>, <span class="st">&quot;yellow&quot;</span>, <span class="dv">34</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="st">&quot;dog&quot;</span>)</span>
-<span id="cb341-2"><a href="troubleshooting.html#cb341-2"></a></span>
-<span id="cb341-3"><a href="troubleshooting.html#cb341-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(my_list)) {</span>
-<span id="cb341-4"><a href="troubleshooting.html#cb341-4"></a>  </span>
-<span id="cb341-5"><a href="troubleshooting.html#cb341-5"></a>  item &lt;-<span class="st"> </span>my_list[[i]]</span>
-<span id="cb341-6"><a href="troubleshooting.html#cb341-6"></a>  res &lt;-<span class="st"> </span>item <span class="op">+</span><span class="st"> </span><span class="dv">10</span></span>
-<span id="cb341-7"><a href="troubleshooting.html#cb341-7"></a></span>
-<span id="cb341-8"><a href="troubleshooting.html#cb341-8"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="troubleshooting.html#cb342-1" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">11</span>, <span class="dv">4</span>, <span class="cn">TRUE</span>, <span class="dv">98</span>, <span class="cn">FALSE</span>, <span class="st">&quot;yellow&quot;</span>, <span class="dv">34</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="st">&quot;dog&quot;</span>)</span>
+<span id="cb342-2"><a href="troubleshooting.html#cb342-2" tabindex="-1"></a></span>
+<span id="cb342-3"><a href="troubleshooting.html#cb342-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(my_list)) {</span>
+<span id="cb342-4"><a href="troubleshooting.html#cb342-4" tabindex="-1"></a>  </span>
+<span id="cb342-5"><a href="troubleshooting.html#cb342-5" tabindex="-1"></a>  item <span class="ot">&lt;-</span> my_list[[i]]</span>
+<span id="cb342-6"><a href="troubleshooting.html#cb342-6" tabindex="-1"></a>  res <span class="ot">&lt;-</span> item <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb342-7"><a href="troubleshooting.html#cb342-7" tabindex="-1"></a></span>
+<span id="cb342-8"><a href="troubleshooting.html#cb342-8" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Error in item + 10: non-numeric argument to binary operator</code></pre>
 <p>Something is wrong with this loop because I am getting an error. But how do I
 know where the error happened? The first trick to know is that loops work
@@ -634,16 +671,16 @@ it runs through an iteration, the loop will assign to <code>i</code> the current
 thus, <code>i</code> is an object in your environment. If one iteration returns an error,
 the loop stops. So the value of <code>i</code> after the loop stops will tell you which was
 the element that produced the error:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="troubleshooting.html#cb343-1"></a>i</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="troubleshooting.html#cb344-1" tabindex="-1"></a>i</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>In this case, the sixth iteration is the one that failed. Now that we know this,
 the second trick to know is that we can step through the loop one line at a time
 while having <code>i = 6</code> and see where the error occurs:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="troubleshooting.html#cb345-1"></a>i &lt;-<span class="st"> </span><span class="dv">6</span></span>
-<span id="cb345-2"><a href="troubleshooting.html#cb345-2"></a></span>
-<span id="cb345-3"><a href="troubleshooting.html#cb345-3"></a>item &lt;-<span class="st"> </span>my_list[[i]] <span class="co"># this line returns no error</span></span>
-<span id="cb345-4"><a href="troubleshooting.html#cb345-4"></a></span>
-<span id="cb345-5"><a href="troubleshooting.html#cb345-5"></a>res &lt;-<span class="st"> </span>item <span class="op">+</span><span class="st"> </span><span class="dv">10</span> <span class="co"># this is the culprit!</span></span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="troubleshooting.html#cb346-1" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb346-2"><a href="troubleshooting.html#cb346-2" tabindex="-1"></a></span>
+<span id="cb346-3"><a href="troubleshooting.html#cb346-3" tabindex="-1"></a>item <span class="ot">&lt;-</span> my_list[[i]] <span class="co"># this line returns no error</span></span>
+<span id="cb346-4"><a href="troubleshooting.html#cb346-4" tabindex="-1"></a></span>
+<span id="cb346-5"><a href="troubleshooting.html#cb346-5" tabindex="-1"></a>res <span class="ot">&lt;-</span> item <span class="sc">+</span> <span class="dv">10</span> <span class="co"># this is the culprit!</span></span></code></pre></div>
 <pre><code>## Error in item + 10: non-numeric argument to binary operator</code></pre>
 <p>In this case, the problem was that item 6 of my list is a character string and
 I’m asking R to do math on it. I was able to do math on elements 1 through 5
@@ -654,8 +691,8 @@ something goes wrong, but also to verify that the loop is functioning correctly
 on a single item before you pull the trigger on the whole thing. You can set
 <code>i &lt;- 1</code> and step through the loop line by line to do a test run.</p>
 </div>
-<div id="how-to-troubleshoot-a-function" class="section level2">
-<h2><span class="header-section-number">11.4</span> How to troubleshoot a function</h2>
+<div id="how-to-troubleshoot-a-function" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> How to troubleshoot a function<a href="troubleshooting.html#how-to-troubleshoot-a-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In Chapter <a href="intro-to-r.html#intro-to-r">10</a> we have seen how to write functions and also how to
 use <code>lapply</code> to run the same function on a list of objects. Functions can be
 as simple or as complicated as we need them to be, but the more complex they get
@@ -668,15 +705,15 @@ environment at each iteration. Functions, instead, work by creating their own
 environment where temporary objects are saved. Then, once the final output is
 ready to be returned, the function saves that and only that to the global
 environment. Consider the following function:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="troubleshooting.html#cb347-1"></a>fun_test &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
-<span id="cb347-2"><a href="troubleshooting.html#cb347-2"></a>  </span>
-<span id="cb347-3"><a href="troubleshooting.html#cb347-3"></a>  y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb347-4"><a href="troubleshooting.html#cb347-4"></a>  z &lt;-<span class="st"> </span>y <span class="op">+</span><span class="st"> </span><span class="dv">10</span></span>
-<span id="cb347-5"><a href="troubleshooting.html#cb347-5"></a>  <span class="kw">return</span>(z)</span>
-<span id="cb347-6"><a href="troubleshooting.html#cb347-6"></a></span>
-<span id="cb347-7"><a href="troubleshooting.html#cb347-7"></a>}</span>
-<span id="cb347-8"><a href="troubleshooting.html#cb347-8"></a></span>
-<span id="cb347-9"><a href="troubleshooting.html#cb347-9"></a>(output &lt;-<span class="st"> </span><span class="kw">fun_test</span>(<span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="troubleshooting.html#cb348-1" tabindex="-1"></a>fun_test <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb348-2"><a href="troubleshooting.html#cb348-2" tabindex="-1"></a>  </span>
+<span id="cb348-3"><a href="troubleshooting.html#cb348-3" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb348-4"><a href="troubleshooting.html#cb348-4" tabindex="-1"></a>  z <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">10</span></span>
+<span id="cb348-5"><a href="troubleshooting.html#cb348-5" tabindex="-1"></a>  <span class="fu">return</span>(z)</span>
+<span id="cb348-6"><a href="troubleshooting.html#cb348-6" tabindex="-1"></a></span>
+<span id="cb348-7"><a href="troubleshooting.html#cb348-7" tabindex="-1"></a>}</span>
+<span id="cb348-8"><a href="troubleshooting.html#cb348-8" tabindex="-1"></a></span>
+<span id="cb348-9"><a href="troubleshooting.html#cb348-9" tabindex="-1"></a>(output <span class="ot">&lt;-</span> <span class="fu">fun_test</span>(<span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>The intermediate object <code>y</code> is never saved to our global environment. The <code>z</code>
 object is the one we’re returning, and it gets saved to the environment with the
@@ -684,43 +721,43 @@ name we give it (<code>output</code>). To troubleshoot or verify what’s going 
 the function, we need to “move” the process into our global environment. This
 means that we need to define an <code>x</code> object in our global environment and then
 step through the code inside the curly braces manually:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="troubleshooting.html#cb349-1"></a>(x &lt;-<span class="st"> </span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="troubleshooting.html#cb350-1" tabindex="-1"></a>(x <span class="ot">&lt;-</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="troubleshooting.html#cb351-1"></a>(y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="troubleshooting.html#cb352-1" tabindex="-1"></a>(y <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="troubleshooting.html#cb353-1"></a>(z &lt;-<span class="st"> </span>y <span class="op">+</span><span class="st"> </span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="troubleshooting.html#cb354-1" tabindex="-1"></a>(z <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>Now let’s make an example with <code>lapply</code>. Say that we want to apply our function
 to the list we used in the loop above:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="troubleshooting.html#cb355-1"></a>my_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">11</span>, <span class="dv">4</span>, <span class="ot">TRUE</span>, <span class="dv">98</span>, <span class="ot">FALSE</span>, <span class="st">&quot;yellow&quot;</span>, <span class="dv">34</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="st">&quot;dog&quot;</span>)</span>
-<span id="cb355-2"><a href="troubleshooting.html#cb355-2"></a></span>
-<span id="cb355-3"><a href="troubleshooting.html#cb355-3"></a><span class="kw">lapply</span>(my_list, fun_test)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="troubleshooting.html#cb356-1" tabindex="-1"></a>my_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">11</span>, <span class="dv">4</span>, <span class="cn">TRUE</span>, <span class="dv">98</span>, <span class="cn">FALSE</span>, <span class="st">&quot;yellow&quot;</span>, <span class="dv">34</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="st">&quot;dog&quot;</span>)</span>
+<span id="cb356-2"><a href="troubleshooting.html#cb356-2" tabindex="-1"></a></span>
+<span id="cb356-3"><a href="troubleshooting.html#cb356-3" tabindex="-1"></a><span class="fu">lapply</span>(my_list, fun_test)</span></code></pre></div>
 <pre><code>## Error in x * 2: non-numeric argument to binary operator</code></pre>
 <p>Here’s the error again. This time, we don’t get the luxury of looking at the
 iteration index to get a hint on where things went wrong. So what we can do
 instead is step through the list elements one at a time:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="troubleshooting.html#cb357-1"></a>x &lt;-<span class="st"> </span>my_list[[<span class="dv">1</span>]] <span class="co"># first we assign the first element of the list to x</span></span>
-<span id="cb357-2"><a href="troubleshooting.html#cb357-2"></a></span>
-<span id="cb357-3"><a href="troubleshooting.html#cb357-3"></a><span class="co"># then we step through the code inside the function</span></span>
-<span id="cb357-4"><a href="troubleshooting.html#cb357-4"></a>(y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="troubleshooting.html#cb358-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> my_list[[<span class="dv">1</span>]] <span class="co"># first we assign the first element of the list to x</span></span>
+<span id="cb358-2"><a href="troubleshooting.html#cb358-2" tabindex="-1"></a></span>
+<span id="cb358-3"><a href="troubleshooting.html#cb358-3" tabindex="-1"></a><span class="co"># then we step through the code inside the function</span></span>
+<span id="cb358-4"><a href="troubleshooting.html#cb358-4" tabindex="-1"></a>(y <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 22</code></pre>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="troubleshooting.html#cb359-1"></a>(z &lt;-<span class="st"> </span>y <span class="op">+</span><span class="st"> </span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="troubleshooting.html#cb360-1" tabindex="-1"></a>(z <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 32</code></pre>
 <p>This went smoothly, so that must not have been the problematic item. If we keep
 going with the other elements, eventually we find the culprit:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="troubleshooting.html#cb361-1"></a>x &lt;-<span class="st"> </span>my_list[[<span class="dv">6</span>]] </span>
-<span id="cb361-2"><a href="troubleshooting.html#cb361-2"></a></span>
-<span id="cb361-3"><a href="troubleshooting.html#cb361-3"></a>(y &lt;-<span class="st"> </span>x <span class="op">*</span><span class="st"> </span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="troubleshooting.html#cb362-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> my_list[[<span class="dv">6</span>]] </span>
+<span id="cb362-2"><a href="troubleshooting.html#cb362-2" tabindex="-1"></a></span>
+<span id="cb362-3"><a href="troubleshooting.html#cb362-3" tabindex="-1"></a>(y <span class="ot">&lt;-</span> x <span class="sc">*</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## Error in x * 2: non-numeric argument to binary operator</code></pre>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="troubleshooting.html#cb363-1"></a>(z &lt;-<span class="st"> </span>y <span class="op">+</span><span class="st"> </span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="troubleshooting.html#cb364-1" tabindex="-1"></a>(z <span class="ot">&lt;-</span> y <span class="sc">+</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 32</code></pre>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="troubleshooting.html#cb365-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="troubleshooting.html#cb366-1" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] &quot;yellow&quot;</code></pre>
 <p>And there it is: element #6 is a character string and we get an error because
 we are trying to do math on it.</p>
 </div>
-<div id="reproducible-examples" class="section level2">
-<h2><span class="header-section-number">11.5</span> Reproducible examples</h2>
+<div id="reproducible-examples" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Reproducible examples<a href="troubleshooting.html#reproducible-examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the unlikely event that you run into an error that no human has posted on
 StackOverflow before, you can post a request for help. It is best to do so by
 sharing a reproducible example. A reproducible example is a standalone script
@@ -737,55 +774,60 @@ available in R, you can use that. Otherwise, you can use the function <code>dput
 generate code to recreate your current dataset and then copy-paste it into your
 script:</li>
 </ul>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="troubleshooting.html#cb367-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">numbers =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
-<span id="cb367-2"><a href="troubleshooting.html#cb367-2"></a>                 <span class="dt">letters =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),</span>
-<span id="cb367-3"><a href="troubleshooting.html#cb367-3"></a>                 <span class="dt">animals =</span> <span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>))</span>
-<span id="cb367-4"><a href="troubleshooting.html#cb367-4"></a></span>
-<span id="cb367-5"><a href="troubleshooting.html#cb367-5"></a><span class="kw">dput</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="troubleshooting.html#cb368-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numbers =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb368-2"><a href="troubleshooting.html#cb368-2" tabindex="-1"></a>                 <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>),</span>
+<span id="cb368-3"><a href="troubleshooting.html#cb368-3" tabindex="-1"></a>                 <span class="at">animals =</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>))</span>
+<span id="cb368-4"><a href="troubleshooting.html#cb368-4" tabindex="-1"></a></span>
+<span id="cb368-5"><a href="troubleshooting.html#cb368-5" tabindex="-1"></a><span class="fu">dput</span>(df)</span></code></pre></div>
 <pre><code>## structure(list(numbers = 1:5, letters = c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, 
 ## &quot;E&quot;), animals = c(&quot;cat&quot;, &quot;dog&quot;, &quot;lion&quot;, &quot;cheetah&quot;, &quot;giraffe&quot;)), class = &quot;data.frame&quot;, row.names = c(NA, 
 ## -5L))</code></pre>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="troubleshooting.html#cb369-1"></a>df &lt;-<span class="st"> </span><span class="kw">structure</span>(<span class="kw">list</span>(<span class="dt">numbers =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, </span>
-<span id="cb369-2"><a href="troubleshooting.html#cb369-2"></a>                     <span class="dt">letters =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), </span>
-<span id="cb369-3"><a href="troubleshooting.html#cb369-3"></a>                     <span class="dt">animals =</span> <span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)), </span>
-<span id="cb369-4"><a href="troubleshooting.html#cb369-4"></a>                <span class="dt">class =</span> <span class="st">&quot;data.frame&quot;</span>, <span class="dt">row.names =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="op">-</span>5L))</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="troubleshooting.html#cb370-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">structure</span>(<span class="fu">list</span>(<span class="at">numbers =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, </span>
+<span id="cb370-2"><a href="troubleshooting.html#cb370-2" tabindex="-1"></a>                     <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;E&quot;</span>), </span>
+<span id="cb370-3"><a href="troubleshooting.html#cb370-3" tabindex="-1"></a>                     <span class="at">animals =</span> <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;cheetah&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)), </span>
+<span id="cb370-4"><a href="troubleshooting.html#cb370-4" tabindex="-1"></a>                <span class="at">class =</span> <span class="st">&quot;data.frame&quot;</span>, <span class="at">row.names =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="sc">-</span>5L))</span></code></pre></div>
 <ul>
 <li>Code: the code that you want to get help with;</li>
 <li>R environment: you can obtain information on your current session environment
 using the <code>sessionInfo</code> function. Copy-paste the output as a comment into your
 reproducible example script:</li>
 </ul>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="troubleshooting.html#cb370-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
-<pre><code>## R version 4.0.2 (2020-06-22)
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="troubleshooting.html#cb371-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.3.2 (2023-10-31 ucrt)
 ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 18363)
+## Running under: Windows 11 x64 (build 22631)
 ## 
 ## Matrix products: default
 ## 
+## 
 ## locale:
-## [1] LC_COLLATE=English_United States.1252 
-## [2] LC_CTYPE=English_United States.1252   
-## [3] LC_MONETARY=English_United States.1252
+## [1] LC_COLLATE=English_United States.utf8 
+## [2] LC_CTYPE=English_United States.utf8   
+## [3] LC_MONETARY=English_United States.utf8
 ## [4] LC_NUMERIC=C                          
-## [5] LC_TIME=English_United States.1252    
+## [5] LC_TIME=English_United States.utf8    
+## 
+## time zone: America/Los_Angeles
+## tzcode source: internal
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] DBI_1.1.0
+## [1] DBI_1.2.3
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.7      rstudioapi_0.11 knitr_1.36      magrittr_2.0.1 
-##  [5] bit_4.0.4       jpeg_0.1-8.1    rlang_0.4.11    fastmap_1.1.0  
-##  [9] stringr_1.4.0   blob_1.2.1      highr_0.8       tools_4.0.2    
-## [13] xfun_0.26       png_0.1-7       jquerylib_0.1.4 htmltools_0.5.2
-## [17] yaml_2.2.1      bit64_4.0.5     digest_0.6.27   bookdown_0.24  
-## [21] vctrs_0.3.6     memoise_1.1.0   evaluate_0.14   RSQLite_2.2.1  
-## [25] rmarkdown_2.11  stringi_1.4.6   compiler_4.0.2  pkgconfig_2.0.3</code></pre>
+##  [1] vctrs_0.6.4       cli_3.6.1         knitr_1.45        rlang_1.1.2      
+##  [5] xfun_0.41         highr_0.10        png_0.1-8         jsonlite_1.8.7   
+##  [9] bit_4.0.5         htmltools_0.5.7   sass_0.4.7        rmarkdown_2.25   
+## [13] evaluate_0.23     jquerylib_0.1.4   fastmap_1.1.1     yaml_2.3.7       
+## [17] memoise_2.0.1     bookdown_0.40     compiler_4.3.2    RSQLite_2.3.7    
+## [21] blob_1.2.4        pkgconfig_2.0.3   rstudioapi_0.15.0 digest_0.6.33    
+## [25] R6_2.5.1          bslib_0.5.1       tools_4.3.2       bit64_4.0.5      
+## [29] jpeg_0.1-10       cachem_1.0.8</code></pre>
 </div>
-<div id="the-rubber-duck" class="section level2">
-<h2><span class="header-section-number">11.6</span> The rubber duck</h2>
+<div id="the-rubber-duck" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> The rubber duck<a href="troubleshooting.html#the-rubber-duck" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:rubber-duck"></span>
 <img src="img/rubber-duck.png" alt="The rubber duck method consists of explaining code out loud to a rubber duck." width="50%" />
 <p class="caption">
@@ -870,7 +912,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

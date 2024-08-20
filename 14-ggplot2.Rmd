@@ -23,7 +23,7 @@ We are going to practice using the dragon dataset again, so let's load it in:
 ```{r gg2, eval = TRUE, echo = TRUE}
 library(DBI)
 
-dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+dragons_db <- dbConnect(RSQLite::SQLite(), "data/dragons.db")
 
 dragons <- dbGetQuery(dragons_db, "SELECT * FROM dragons;")
 capture_sites <- dbGetQuery(dragons_db, "SELECT * FROM capture_sites;")

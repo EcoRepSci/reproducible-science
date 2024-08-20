@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Project Organization | Reproducible Data Science</title>
-  <meta name="description" content="WILD 6900: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 553: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Project Organization | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="WILD 6900: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 1 Project Organization | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WILD 6900: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-15" />
+<meta name="date" content="2024-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,24 +49,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,13 +86,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -137,8 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/EcoRepSci/reproducible-science">Course Material</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#git"><i class="fa fa-check"></i><b>0.1.1</b> Git</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#spreadsheet-editor"><i class="fa fa-check"></i><b>0.1.2</b> Spreadsheet Editor</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#sqlite"><i class="fa fa-check"></i><b>0.1.3</b> SQLite</a></li>
@@ -147,8 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#required-r-packages"><i class="fa fa-check"></i><b>0.1.6</b> Required R Packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a><ul>
-<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a><ul>
+<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="project-organization.html"><a href="project-organization.html#overlap"><i class="fa fa-check"></i><b>1.1.1</b> Overlap</a></li>
 <li class="chapter" data-level="1.1.2" data-path="project-organization.html"><a href="project-organization.html#minimizing-duplication"><i class="fa fa-check"></i><b>1.1.2</b> Minimizing duplication</a></li>
 <li class="chapter" data-level="1.1.3" data-path="project-organization.html"><a href="project-organization.html#self-containedness"><i class="fa fa-check"></i><b>1.1.3</b> Self-containedness</a></li>
@@ -157,18 +164,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="project-organization.html"><a href="project-organization.html#golden-rules"><i class="fa fa-check"></i><b>1.2</b> Golden rules</a></li>
 <li class="chapter" data-level="1.3" data-path="project-organization.html"><a href="project-organization.html#be-flexible"><i class="fa fa-check"></i><b>1.3</b> Be flexible</a></li>
 <li class="chapter" data-level="1.4" data-path="project-organization.html"><a href="project-organization.html#documentation"><i class="fa fa-check"></i><b>1.4</b> Documentation</a></li>
-<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a><ul>
+<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="project-organization.html"><a href="project-organization.html#computer-readable-file-names"><i class="fa fa-check"></i><b>1.5.1</b> Computer-readable file names</a></li>
 <li class="chapter" data-level="1.5.2" data-path="project-organization.html"><a href="project-organization.html#human-readable-file-names"><i class="fa fa-check"></i><b>1.5.2</b> Human-readable file names</a></li>
 <li class="chapter" data-level="1.5.3" data-path="project-organization.html"><a href="project-organization.html#file-names-that-work-well-with-default-ordering"><i class="fa fa-check"></i><b>1.5.3</b> File names that work well with default ordering</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="project-organization.html"><a href="project-organization.html#rstudio-projects"><i class="fa fa-check"></i><b>1.6</b> RStudio Projects</a></li>
-<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a><ul>
+<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="project-organization.html"><a href="project-organization.html#path-separators"><i class="fa fa-check"></i><b>1.7.1</b> Path separators</a></li>
 <li class="chapter" data-level="1.7.2" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>1.7.2</b> References</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a><ul>
+<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="version-control-git.html"><a href="version-control-git.html#command-line-basics"><i class="fa fa-check"></i><b>2.1</b> Command line basics</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control-git.html"><a href="version-control-git.html#configuring-git"><i class="fa fa-check"></i><b>2.2</b> Configuring Git</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control-git.html"><a href="version-control-git.html#getting-help"><i class="fa fa-check"></i><b>2.3</b> Getting help</a></li>
@@ -182,7 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11" data-path="version-control-git.html"><a href="version-control-git.html#git-everyday"><i class="fa fa-check"></i><b>2.11</b> Git everyday</a></li>
 <li class="chapter" data-level="2.12" data-path="version-control-git.html"><a href="version-control-git.html#references-1"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a><ul>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#adding-a-remote-to-a-local-repository"><i class="fa fa-check"></i><b>3.1</b> Adding a remote to a local repository</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#pushing-to-a-remote-repository"><i class="fa fa-check"></i><b>3.2</b> Pushing to a remote repository</a></li>
 <li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#cloning-a-repository"><i class="fa fa-check"></i><b>3.3</b> Cloning a repository</a></li>
@@ -194,11 +205,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="github.html"><a href="github.html#pull-requests"><i class="fa fa-check"></i><b>3.9</b> Pull requests</a></li>
 <li class="chapter" data-level="3.10" data-path="github.html"><a href="github.html#references-2"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a><ul>
+<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#what-are-spreadsheets-good-for"><i class="fa fa-check"></i><b>4.1</b> What are spreadsheets good for?</a></li>
 <li class="chapter" data-level="4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#human-readable-vs.-computer-readable-data"><i class="fa fa-check"></i><b>4.2</b> Human-readable vs. computer-readable data</a></li>
 <li class="chapter" data-level="4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#tidydata"><i class="fa fa-check"></i><b>4.3</b> Tidy data</a></li>
-<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a><ul>
+<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-variables-in-a-single-column"><i class="fa fa-check"></i><b>4.4.1</b> Multiple variables in a single column</a></li>
 <li class="chapter" data-level="4.4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#rows-for-variables-columns-for-observation"><i class="fa fa-check"></i><b>4.4.2</b> Rows for variables, columns for observation</a></li>
 <li class="chapter" data-level="4.4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-tables-in-a-single-spreadsheet"><i class="fa fa-check"></i><b>4.4.3</b> Multiple tables in a single spreadsheet</a></li>
@@ -212,7 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="spreadsheets.html"><a href="spreadsheets.html#document-document-document"><i class="fa fa-check"></i><b>4.5</b> Document, document, document!</a></li>
 <li class="chapter" data-level="4.6" data-path="spreadsheets.html"><a href="spreadsheets.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a><ul>
+<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="relational-databases.html"><a href="relational-databases.html#what-is-a-relational-database"><i class="fa fa-check"></i><b>5.1</b> What is a relational database?</a></li>
 <li class="chapter" data-level="5.2" data-path="relational-databases.html"><a href="relational-databases.html#why-bothering-with-relational-databases"><i class="fa fa-check"></i><b>5.2</b> Why bothering with relational databases?</a></li>
 <li class="chapter" data-level="5.3" data-path="relational-databases.html"><a href="relational-databases.html#database-components"><i class="fa fa-check"></i><b>5.3</b> Database components</a></li>
@@ -220,9 +234,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>5.5</b> Data types</a></li>
 <li class="chapter" data-level="5.6" data-path="relational-databases.html"><a href="relational-databases.html#a-first-look-at-our-practice-database"><i class="fa fa-check"></i><b>5.6</b> A first look at our practice database</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a><ul>
+<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="sql.html"><a href="sql.html#the-sql-language"><i class="fa fa-check"></i><b>6.1</b> The SQL language</a></li>
-<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a><ul>
+<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>6.2.1</b> Limiting results</a></li>
 <li class="chapter" data-level="6.2.2" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>6.2.2</b> Sorting results</a></li>
 <li class="chapter" data-level="6.2.3" data-path="sql.html"><a href="sql.html#finding-unique-values"><i class="fa fa-check"></i><b>6.2.3</b> Finding unique values</a></li>
@@ -237,7 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.12" data-path="sql.html"><a href="sql.html#nested-select-statements"><i class="fa fa-check"></i><b>6.2.12</b> Nested <code>SELECT</code> statements</a></li>
 <li class="chapter" data-level="6.2.13" data-path="sql.html"><a href="sql.html#order-of-operations"><i class="fa fa-check"></i><b>6.2.13</b> Order of operations</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a><ul>
+<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="sql.html"><a href="sql.html#creating-a-new-database-in-sqlite-studio"><i class="fa fa-check"></i><b>6.3.1</b> Creating a new database in SQLite Studio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="sql.html"><a href="sql.html#creating-tables"><i class="fa fa-check"></i><b>6.3.2</b> Creating tables</a></li>
 <li class="chapter" data-level="6.3.3" data-path="sql.html"><a href="sql.html#adding-constraints"><i class="fa fa-check"></i><b>6.3.3</b> Adding constraints</a></li>
@@ -248,17 +265,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
 <li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
 <li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
 <li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
 <li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
 <li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
-<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
 <li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
 <li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
@@ -270,11 +290,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
-<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
+<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a><ul>
+<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="github-pages.html"><a href="github-pages.html#step-1-set-up-compatibility-with-github-pages"><i class="fa fa-check"></i><b>9.2.1</b> Step 1: Set up compatibility with GitHub Pages</a></li>
 <li class="chapter" data-level="9.2.2" data-path="github-pages.html"><a href="github-pages.html#step-2-set-up-git-repository"><i class="fa fa-check"></i><b>9.2.2</b> Step 2: Set up Git repository</a></li>
 <li class="chapter" data-level="9.2.3" data-path="github-pages.html"><a href="github-pages.html#step-3-link-git-repository-to-remote-github-repository"><i class="fa fa-check"></i><b>9.2.3</b> Step 3: Link Git repository to remote GitHub repository</a></li>
@@ -283,9 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
 <li class="chapter" data-level="9.4" data-path="github-pages.html"><a href="github-pages.html#references-4"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
-<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a><ul>
+<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#assigning-objects"><i class="fa fa-check"></i><b>10.2.1</b> Assigning objects</a></li>
 <li class="chapter" data-level="10.2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#adding-comments"><i class="fa fa-check"></i><b>10.2.2</b> Adding comments</a></li>
 <li class="chapter" data-level="10.2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#headers-and-description"><i class="fa fa-check"></i><b>10.2.3</b> Headers and description</a></li>
@@ -305,15 +330,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="intro-to-r.html"><a href="intro-to-r.html#references-5"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
-<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="troubleshooting.html"><a href="troubleshooting.html#locating-the-problematic-piece-of-code"><i class="fa fa-check"></i><b>11.1.1</b> Locating the problematic piece of code</a></li>
 <li class="chapter" data-level="11.1.2" data-path="troubleshooting.html"><a href="troubleshooting.html#isolating-the-error"><i class="fa fa-check"></i><b>11.1.2</b> Isolating the error</a></li>
 <li class="chapter" data-level="11.1.3" data-path="troubleshooting.html"><a href="troubleshooting.html#deciphering-error-messages"><i class="fa fa-check"></i><b>11.1.3</b> Deciphering error messages</a></li>
 <li class="chapter" data-level="11.1.4" data-path="troubleshooting.html"><a href="troubleshooting.html#syntax-errors"><i class="fa fa-check"></i><b>11.1.4</b> Syntax errors</a></li>
 <li class="chapter" data-level="11.1.5" data-path="troubleshooting.html"><a href="troubleshooting.html#errors-from-using-package-functions"><i class="fa fa-check"></i><b>11.1.5</b> Errors from using package functions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a><ul>
+<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="troubleshooting.html"><a href="troubleshooting.html#r-documentation"><i class="fa fa-check"></i><b>11.2.1</b> R documentation</a></li>
 <li class="chapter" data-level="11.2.2" data-path="troubleshooting.html"><a href="troubleshooting.html#google"><i class="fa fa-check"></i><b>11.2.2</b> Google</a></li>
 <li class="chapter" data-level="11.2.3" data-path="troubleshooting.html"><a href="troubleshooting.html#stackoverflow-et-al."><i class="fa fa-check"></i><b>11.2.3</b> StackOverflow et al.</a></li>
@@ -323,16 +351,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="troubleshooting.html"><a href="troubleshooting.html#reproducible-examples"><i class="fa fa-check"></i><b>11.5</b> Reproducible examples</a></li>
 <li class="chapter" data-level="11.6" data-path="troubleshooting.html"><a href="troubleshooting.html#the-rubber-duck"><i class="fa fa-check"></i><b>11.6</b> The rubber duck</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a><ul>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="renv.html"><a href="renv.html#whats-the-need-for-dependency-management"><i class="fa fa-check"></i><b>12.1</b> What’s the need for dependency management?</a></li>
-<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
+<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="renv.html"><a href="renv.html#references-6"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
-<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a><ul>
+<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-columns"><i class="fa fa-check"></i><b>13.2.1</b> Subsetting columns</a></li>
 <li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
@@ -349,15 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
 <li class="chapter" data-level="13.4" data-path="tidyverse.html"><a href="tidyverse.html#references-7"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a><ul>
+<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>14.1</b> A Grammar of Graphics</a></li>
-<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a><ul>
+<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="ggplot2.html"><a href="ggplot2.html#basic-scatterplot"><i class="fa fa-check"></i><b>14.2.1</b> Basic scatterplot</a></li>
 <li class="chapter" data-level="14.2.2" data-path="ggplot2.html"><a href="ggplot2.html#basic-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Basic histogram</a></li>
 <li class="chapter" data-level="14.2.3" data-path="ggplot2.html"><a href="ggplot2.html#basic-density-plot"><i class="fa fa-check"></i><b>14.2.3</b> Basic density plot</a></li>
 <li class="chapter" data-level="14.2.4" data-path="ggplot2.html"><a href="ggplot2.html#other-geom-functions"><i class="fa fa-check"></i><b>14.2.4</b> Other <code>geom</code> functions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a><ul>
+<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="ggplot2.html"><a href="ggplot2.html#changing-axis-labels"><i class="fa fa-check"></i><b>14.3.1</b> Changing axis labels</a></li>
 <li class="chapter" data-level="14.3.2" data-path="ggplot2.html"><a href="ggplot2.html#changing-colors"><i class="fa fa-check"></i><b>14.3.2</b> Changing colors</a></li>
 <li class="chapter" data-level="14.3.3" data-path="ggplot2.html"><a href="ggplot2.html#modifying-legends"><i class="fa fa-check"></i><b>14.3.3</b> Modifying legends</a></li>
@@ -377,11 +412,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>14.6</b> Saving plots</a></li>
 <li class="chapter" data-level="14.7" data-path="ggplot2.html"><a href="ggplot2.html#references-8"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a><ul>
+<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="lubridate.html"><a href="lubridate.html#what-makes-dates-and-times-special"><i class="fa fa-check"></i><b>15.1</b> What makes dates and times special</a></li>
 <li class="chapter" data-level="15.2" data-path="lubridate.html"><a href="lubridate.html#definitions"><i class="fa fa-check"></i><b>15.2</b> Definitions</a></li>
 <li class="chapter" data-level="15.3" data-path="lubridate.html"><a href="lubridate.html#under-the-hood"><i class="fa fa-check"></i><b>15.3</b> Under the hood</a></li>
-<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="lubridate.html"><a href="lubridate.html#parsing-dates-and-times"><i class="fa fa-check"></i><b>15.4.1</b> Parsing dates and times</a></li>
 <li class="chapter" data-level="15.4.2" data-path="lubridate.html"><a href="lubridate.html#extracting-components-of-a-date-time-object"><i class="fa fa-check"></i><b>15.4.2</b> Extracting components of a date-time object</a></li>
 <li class="chapter" data-level="15.4.3" data-path="lubridate.html"><a href="lubridate.html#time-zones"><i class="fa fa-check"></i><b>15.4.3</b> Time zones</a></li>
@@ -410,10 +447,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="project-organization" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Project Organization</h1>
-<div id="directory-structure" class="section level2">
-<h2><span class="header-section-number">1.1</span> Directory structure</h2>
+<div id="project-organization" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Project Organization<a href="project-organization.html#project-organization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="directory-structure" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Directory structure<a href="project-organization.html#directory-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When starting a new project, it is worthwhile to spend some time thinking about how to best organize its content. This means asking questions such as:</p>
 <ul>
 <li>What are my project inputs?</li>
@@ -435,26 +472,26 @@ Figure 1.2: Activity-based directory organization
 </div>
 <p>How you define a project is largely up to you. It could be all the work you do on a given dataset, or all the work you do for a thesis or dissertation, or each manuscript could be its own project even if it uses the same dataset as a different project.</p>
 <p>With so many options, how do we choose? Ultimately, the way you structure your project directories will have a big impact on the efficiency and reproducibility of your work, so there are some criteria to keep in mind.</p>
-<div id="overlap" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Overlap</h3>
+<div id="overlap" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Overlap<a href="project-organization.html#overlap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The first thing to consider is the overlap in data and code files between a project and other past/current projects. If two projects don’t share any data, it’s probably best to manage them separately. If two projects share a large amount of data, it might make more sense to manage them together as one. If you are writing functions to use across several different projects, they should probably be in their own project.</p>
 </div>
-<div id="minimizing-duplication" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> Minimizing duplication</h3>
+<div id="minimizing-duplication" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Minimizing duplication<a href="project-organization.html#minimizing-duplication" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The reason why it’s important to account for overlap is because you want to minimize duplication as much as you can. Duplication of both data and code files is dangerous because it’s easy to lose track of modifications you have made to a file saved in one place but not in the other place. As you keep making changes, the two files will have the same name but different content, which generates confusion. Duplication is also inefficient because it occupies precious space on your computer.</p>
 </div>
-<div id="self-containedness" class="section level3">
-<h3><span class="header-section-number">1.1.3</span> Self-containedness</h3>
+<div id="self-containedness" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Self-containedness<a href="project-organization.html#self-containedness" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A fundamental quality of reproducible projects is that they are self-contained, meaning that ideally you could zip up the entire project directory and send it to a friend and they should be able to run your code and reproduce your results without changing anything. This means everything the project needs to work, from A to Z – data, functions, code – is contained in its root directory.</p>
 </div>
-<div id="tradeoffs" class="section level3">
-<h3><span class="header-section-number">1.1.4</span> Tradeoffs</h3>
+<div id="tradeoffs" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Tradeoffs<a href="project-organization.html#tradeoffs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The self-containedness criterion is sometimes in contradiction with minimizing duplication: if two projects share one or more data files, you can either violate the duplication criterion by making sure each project contains all the necessary data for the sake of self-containedness; or you can choose to sacrifice self-containedness to avoid file duplication and save space on your computer. The answer will depend on whether you anticipate the project to be widely shared or mostly for your personal use, how large the shared data files are, etc.</p>
 <p>The bottom line is that there is no one-size-fits-all solution for project organization. Most importantly, the structure you choose needs to be functional for your needs. Putting thought into it is a great place to start.</p>
 </div>
 </div>
-<div id="golden-rules" class="section level2">
-<h2><span class="header-section-number">1.2</span> Golden rules</h2>
+<div id="golden-rules" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Golden rules<a href="project-organization.html#golden-rules" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Whichever directory structure you choose for a project, there are some universal rules to keep in mind for how to organize files within it.</p>
 <ol style="list-style-type: decimal">
 <li><p>First and foremost, <strong>raw data should never be changed</strong>. Save it into a “data” folder and treat it as immutable. You can even set it as read-only to make sure there is no room for accidents.</p></li>
@@ -466,19 +503,19 @@ Figure 1.2: Activity-based directory organization
 <li><p>Modularize your code: instead of having a giant script to run your entire analysis from data cleaning to final figures, break up your workflow into several short, single-purpose scripts with well-defined inputs and outputs.</p></li>
 </ol>
 </div>
-<div id="be-flexible" class="section level2">
-<h2><span class="header-section-number">1.3</span> Be flexible</h2>
+<div id="be-flexible" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Be flexible<a href="project-organization.html#be-flexible" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It can be challenging to anticipate the structure of a project that is just about to start (especially the first time you start thinking through optimal directory structures). It helps to be flexible and allow some room for adjustments. For example, you can start with a basic directory structure where you have a “data” folder, a “code” folder, and an “output” folder, and then you may decide to split the “code” folder into “src” and “funs”, or to further split the “output” folder into “output” and “figures”, etc. Sometimes these changes can break your code and become frustrating, but these problems are easy to fix.</p>
 <p>Similarly, it can be challenging to have the long-term vision to know where it’s best to break a script and start a new one. It’s easy to tunnel vision into an analysis and keep adding lines and lines of code without thinking about break points that make sense. One good way to deal with this is to reserve some time at the end of your coding session to look at your script and notice if there are any intermediate products that you can save and use as input of the next step of the workflow. Then you can make the necessary adjustments in terms of code compartmentalization, paths to input and output files, etc.</p>
 <p>In the words of Wilson et al. (2017, see references below), “consistency and predictability are more important than hairsplitting” when organizing the directory structure for your projects. Besides a few universal rules, designing the optimal structure often requires consideration of project specifics. Ultimately, the goal is to improve efficiency – by allowing you to find your files easily, only run the minimal amount of code you need for a task, making it easy for collaborators and future you to wrap your head around the project content – and reproducibility.</p>
 </div>
-<div id="documentation" class="section level2">
-<h2><span class="header-section-number">1.4</span> Documentation</h2>
+<div id="documentation" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Documentation<a href="project-organization.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One very important aspect of reproducibility is good documentation. Each of your projects should always be accompanied by a README file. The README should contain all the information an outsider would need to understand what the project is all about, what are the inputs and outputs, where to find files within the project directory, etc. The README is simply a text file, there’s nothing special to it – you can just create it in your Notepad or other text editor.</p>
 <p>Writing down everything about a project in a README can be tedious, but it pays off ten-fold. It’s good to get in the habit of starting a project by creating a README file right after the directory structure is created. Record who the author/s is/are, the date the project was started, and a description of what the project is for. Then, any time a new file is added, specify what it is and where you got it from. For example, “File X.csv was sent by Mary White in an email on 2/1/2019 to my.address @ gmail.com”, etc. Be meticulous: what seems obvious today can become a puzzle to solve in a few months.</p>
 </div>
-<div id="naming-files" class="section level2">
-<h2><span class="header-section-number">1.5</span> Naming files</h2>
+<div id="naming-files" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Naming files<a href="project-organization.html#naming-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There is a science to choosing good file names, too. Here is a list of file names that are <strong>not</strong> good, for a variety of different reasons:</p>
 <blockquote>
 <p>data.csv <br/>
@@ -488,24 +525,24 @@ Green Frogs Manuscript_Final_edits.docx <br/>
 final.docx <br/></p>
 </blockquote>
 <p>Why are those names bad, and what makes a good file name? Good file names are computer-readable, human-readable, and work well with default ordering. Let’s break these three criteria down one by one.</p>
-<div id="computer-readable-file-names" class="section level3">
-<h3><span class="header-section-number">1.5.1</span> Computer-readable file names</h3>
+<div id="computer-readable-file-names" class="section level3 hasAnchor" number="1.5.1">
+<h3><span class="header-section-number">1.5.1</span> Computer-readable file names<a href="project-organization.html#computer-readable-file-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What makes a file name computer-readable? First, computer readable files contain no spaces, no punctuation, and no special characters. They are case-consistent, which means that you always stick to the same case pattern, whether that be full lowercase, camel case (ThisIsWhatIMeanByCamelCase), or whatever else. Finally, good file names make deliberate use of text delimiters. Wise use of delimiters makes it easy to look for patterns when you are searching for a specific file. Usually, it’s recommended that you use an underscore (_) to delimit metadata units and a dash (-) to delimit words within a metadata unit. For example, here is a good, computer-readable file name:</p>
 <blockquote>
 <p>2018-04-26_reproducible-science_slides_lesson-01.pptx</p>
 </blockquote>
 </div>
-<div id="human-readable-file-names" class="section level3">
-<h3><span class="header-section-number">1.5.2</span> Human-readable file names</h3>
+<div id="human-readable-file-names" class="section level3 hasAnchor" number="1.5.2">
+<h3><span class="header-section-number">1.5.2</span> Human-readable file names<a href="project-organization.html#human-readable-file-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The example file name above is not only computer-readable, it’s also human-readable. This means that a human can read the file name and have a pretty good idea of what’s in that file. Good file names are informative! You shouldn’t be afraid to use long names if that’s what it takes to make them descriptive.</p>
 </div>
-<div id="file-names-that-work-well-with-default-ordering" class="section level3">
-<h3><span class="header-section-number">1.5.3</span> File names that work well with default ordering</h3>
+<div id="file-names-that-work-well-with-default-ordering" class="section level3 hasAnchor" number="1.5.3">
+<h3><span class="header-section-number">1.5.3</span> File names that work well with default ordering<a href="project-organization.html#file-names-that-work-well-with-default-ordering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you sort your files alphabetically in a folder, you want them to be ordered in a way that makes sense. Whether you sort your files by date or by a sequential number, the number always goes first. For dates, use the YMD format, or your files created in April of 1984 and 2020 will be closer than the ones created in March and April 2020. If you are using sequential numbering, add a sensible amount of zeros in front based on how many files of that category you expect to have in the future. If you expect to have more than 10 but not more than 99 files, you can add a single leading zero (e.g., “data_analysis_01.R” instead of “data_analysis_1.R”), whereas if you expect to have between 100 and 999 you can add two (e.g., “Photo_001.jpeg” instead of “Photo_1.jpeg” or “Photo_01.jpeg”).</p>
 </div>
 </div>
-<div id="rstudio-projects" class="section level2">
-<h2><span class="header-section-number">1.6</span> RStudio Projects</h2>
+<div id="rstudio-projects" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> RStudio Projects<a href="project-organization.html#rstudio-projects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>RStudio Projects are a great tool to help you stay organized. The concept behind RStudio Projects is that each Project is a self-contained unit where inputs, outputs, and code are all in one place. Sounds familiar? RStudio Projects work seamlessly with the directory organization framework we have been talking about. It’s a good idea to make sure each of the projects (with a lowercase p) you work on has its own associated RStudio Project (with a capital P).</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:rstudio-proj"></span>
 <img src="img/rstudio-project.jpg" alt="How to create a new RStudio Project" width="640" />
@@ -516,8 +553,8 @@ Figure 1.3: How to create a new RStudio Project
 <p>You may be familiar with the concept of a working directory in R. The working directory is the place where, unless otherwise specified, all of your outputs are saved. All relative paths are also interpreted relative to the working directory (more on relative paths in a minute).</p>
 <p>The cool thing about an RStudio Project is that it automatically makes sure that your project directory is set as the working directory. All the clunkiness of having to set, change, or double check which directory you’re working in is forgotten: all you do is open up your Project and then the paths you use to load or save data are already, by default, relative to your project directory.</p>
 </div>
-<div id="relative-and-absolute-paths" class="section level2">
-<h2><span class="header-section-number">1.7</span> Relative and absolute paths</h2>
+<div id="relative-and-absolute-paths" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Relative and absolute paths<a href="project-organization.html#relative-and-absolute-paths" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Paths define the location of files within the file system. There are two ways to point to a file from within a command prompt such as R. The first is to use what is called an absolute path: this describes the full sequence of folders a file is contained in, starting from the root directory of a computer. When you right click on any file on your computer, you can look up its absolute path in the Properties. This is an example of an absolute path:</p>
 <blockquote>
 <p>C:/Users/MJS/Documents/PhD/Planning/schedule_2021.csv</p>
@@ -546,12 +583,12 @@ Figure 1.4: Example directory structure
 <p>../../../../DAJ</p>
 </blockquote>
 <p>The path above navigates all the way up to “Users” and into a different user’s directory.</p>
-<div id="path-separators" class="section level3">
-<h3><span class="header-section-number">1.7.1</span> Path separators</h3>
-<p>Something to be mindful of is that the separator between folder names in a path is different on different operating systems. On Windows, it is a backslash (“"), while on Mac/Linux, it is a slash (”/“). However, R uses the Mac/Linux convention, so always use”/" when typing paths in R.</p>
+<div id="path-separators" class="section level3 hasAnchor" number="1.7.1">
+<h3><span class="header-section-number">1.7.1</span> Path separators<a href="project-organization.html#path-separators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Something to be mindful of is that the separator between folder names in a path is different on different operating systems. On Windows, it is a backslash (“"), while on Mac/Linux, it is a slash (”/“). However, R uses the Mac/Linux convention, so always use”/” when typing paths in R.</p>
 </div>
-<div id="references" class="section level3">
-<h3><span class="header-section-number">1.7.2</span> References</h3>
+<div id="references" class="section level3 hasAnchor" number="1.7.2">
+<h3><span class="header-section-number">1.7.2</span> References<a href="project-organization.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Wilson G, Bryan J, Cranston K, Kitzes J, Nederbragt L, Teal TK (2017) Good enough practices in scientific computing. PLoS Comput Biol 13(6): e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510" class="uri">https://doi.org/10.1371/journal.pcbi.1005510</a></li>
 <li><a href="https://speakerdeck.com/jennybc/how-to-name-files" class="uri">https://speakerdeck.com/jennybc/how-to-name-files</a></li>
@@ -627,7 +664,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

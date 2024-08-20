@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Introduction to R | Reproducible Data Science</title>
-  <meta name="description" content="WILD 6900: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 553: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Introduction to R | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="WILD 6900: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 10 Introduction to R | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WILD 6900: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-15" />
+<meta name="date" content="2024-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,24 +49,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,13 +86,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -137,8 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/EcoRepSci/reproducible-science">Course Material</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#git"><i class="fa fa-check"></i><b>0.1.1</b> Git</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#spreadsheet-editor"><i class="fa fa-check"></i><b>0.1.2</b> Spreadsheet Editor</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#sqlite"><i class="fa fa-check"></i><b>0.1.3</b> SQLite</a></li>
@@ -147,8 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#required-r-packages"><i class="fa fa-check"></i><b>0.1.6</b> Required R Packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a><ul>
-<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a><ul>
+<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="project-organization.html"><a href="project-organization.html#overlap"><i class="fa fa-check"></i><b>1.1.1</b> Overlap</a></li>
 <li class="chapter" data-level="1.1.2" data-path="project-organization.html"><a href="project-organization.html#minimizing-duplication"><i class="fa fa-check"></i><b>1.1.2</b> Minimizing duplication</a></li>
 <li class="chapter" data-level="1.1.3" data-path="project-organization.html"><a href="project-organization.html#self-containedness"><i class="fa fa-check"></i><b>1.1.3</b> Self-containedness</a></li>
@@ -157,18 +164,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="project-organization.html"><a href="project-organization.html#golden-rules"><i class="fa fa-check"></i><b>1.2</b> Golden rules</a></li>
 <li class="chapter" data-level="1.3" data-path="project-organization.html"><a href="project-organization.html#be-flexible"><i class="fa fa-check"></i><b>1.3</b> Be flexible</a></li>
 <li class="chapter" data-level="1.4" data-path="project-organization.html"><a href="project-organization.html#documentation"><i class="fa fa-check"></i><b>1.4</b> Documentation</a></li>
-<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a><ul>
+<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="project-organization.html"><a href="project-organization.html#computer-readable-file-names"><i class="fa fa-check"></i><b>1.5.1</b> Computer-readable file names</a></li>
 <li class="chapter" data-level="1.5.2" data-path="project-organization.html"><a href="project-organization.html#human-readable-file-names"><i class="fa fa-check"></i><b>1.5.2</b> Human-readable file names</a></li>
 <li class="chapter" data-level="1.5.3" data-path="project-organization.html"><a href="project-organization.html#file-names-that-work-well-with-default-ordering"><i class="fa fa-check"></i><b>1.5.3</b> File names that work well with default ordering</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="project-organization.html"><a href="project-organization.html#rstudio-projects"><i class="fa fa-check"></i><b>1.6</b> RStudio Projects</a></li>
-<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a><ul>
+<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="project-organization.html"><a href="project-organization.html#path-separators"><i class="fa fa-check"></i><b>1.7.1</b> Path separators</a></li>
 <li class="chapter" data-level="1.7.2" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>1.7.2</b> References</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a><ul>
+<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="version-control-git.html"><a href="version-control-git.html#command-line-basics"><i class="fa fa-check"></i><b>2.1</b> Command line basics</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control-git.html"><a href="version-control-git.html#configuring-git"><i class="fa fa-check"></i><b>2.2</b> Configuring Git</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control-git.html"><a href="version-control-git.html#getting-help"><i class="fa fa-check"></i><b>2.3</b> Getting help</a></li>
@@ -182,7 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11" data-path="version-control-git.html"><a href="version-control-git.html#git-everyday"><i class="fa fa-check"></i><b>2.11</b> Git everyday</a></li>
 <li class="chapter" data-level="2.12" data-path="version-control-git.html"><a href="version-control-git.html#references-1"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a><ul>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#adding-a-remote-to-a-local-repository"><i class="fa fa-check"></i><b>3.1</b> Adding a remote to a local repository</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#pushing-to-a-remote-repository"><i class="fa fa-check"></i><b>3.2</b> Pushing to a remote repository</a></li>
 <li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#cloning-a-repository"><i class="fa fa-check"></i><b>3.3</b> Cloning a repository</a></li>
@@ -194,11 +205,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="github.html"><a href="github.html#pull-requests"><i class="fa fa-check"></i><b>3.9</b> Pull requests</a></li>
 <li class="chapter" data-level="3.10" data-path="github.html"><a href="github.html#references-2"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a><ul>
+<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#what-are-spreadsheets-good-for"><i class="fa fa-check"></i><b>4.1</b> What are spreadsheets good for?</a></li>
 <li class="chapter" data-level="4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#human-readable-vs.-computer-readable-data"><i class="fa fa-check"></i><b>4.2</b> Human-readable vs. computer-readable data</a></li>
 <li class="chapter" data-level="4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#tidydata"><i class="fa fa-check"></i><b>4.3</b> Tidy data</a></li>
-<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a><ul>
+<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-variables-in-a-single-column"><i class="fa fa-check"></i><b>4.4.1</b> Multiple variables in a single column</a></li>
 <li class="chapter" data-level="4.4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#rows-for-variables-columns-for-observation"><i class="fa fa-check"></i><b>4.4.2</b> Rows for variables, columns for observation</a></li>
 <li class="chapter" data-level="4.4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-tables-in-a-single-spreadsheet"><i class="fa fa-check"></i><b>4.4.3</b> Multiple tables in a single spreadsheet</a></li>
@@ -212,7 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="spreadsheets.html"><a href="spreadsheets.html#document-document-document"><i class="fa fa-check"></i><b>4.5</b> Document, document, document!</a></li>
 <li class="chapter" data-level="4.6" data-path="spreadsheets.html"><a href="spreadsheets.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a><ul>
+<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="relational-databases.html"><a href="relational-databases.html#what-is-a-relational-database"><i class="fa fa-check"></i><b>5.1</b> What is a relational database?</a></li>
 <li class="chapter" data-level="5.2" data-path="relational-databases.html"><a href="relational-databases.html#why-bothering-with-relational-databases"><i class="fa fa-check"></i><b>5.2</b> Why bothering with relational databases?</a></li>
 <li class="chapter" data-level="5.3" data-path="relational-databases.html"><a href="relational-databases.html#database-components"><i class="fa fa-check"></i><b>5.3</b> Database components</a></li>
@@ -220,9 +234,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>5.5</b> Data types</a></li>
 <li class="chapter" data-level="5.6" data-path="relational-databases.html"><a href="relational-databases.html#a-first-look-at-our-practice-database"><i class="fa fa-check"></i><b>5.6</b> A first look at our practice database</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a><ul>
+<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="sql.html"><a href="sql.html#the-sql-language"><i class="fa fa-check"></i><b>6.1</b> The SQL language</a></li>
-<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a><ul>
+<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>6.2.1</b> Limiting results</a></li>
 <li class="chapter" data-level="6.2.2" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>6.2.2</b> Sorting results</a></li>
 <li class="chapter" data-level="6.2.3" data-path="sql.html"><a href="sql.html#finding-unique-values"><i class="fa fa-check"></i><b>6.2.3</b> Finding unique values</a></li>
@@ -237,7 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.12" data-path="sql.html"><a href="sql.html#nested-select-statements"><i class="fa fa-check"></i><b>6.2.12</b> Nested <code>SELECT</code> statements</a></li>
 <li class="chapter" data-level="6.2.13" data-path="sql.html"><a href="sql.html#order-of-operations"><i class="fa fa-check"></i><b>6.2.13</b> Order of operations</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a><ul>
+<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="sql.html"><a href="sql.html#creating-a-new-database-in-sqlite-studio"><i class="fa fa-check"></i><b>6.3.1</b> Creating a new database in SQLite Studio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="sql.html"><a href="sql.html#creating-tables"><i class="fa fa-check"></i><b>6.3.2</b> Creating tables</a></li>
 <li class="chapter" data-level="6.3.3" data-path="sql.html"><a href="sql.html#adding-constraints"><i class="fa fa-check"></i><b>6.3.3</b> Adding constraints</a></li>
@@ -248,17 +265,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
 <li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
 <li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
 <li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
 <li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
 <li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
-<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
 <li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
 <li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
@@ -270,11 +290,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
-<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
+<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a><ul>
+<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="github-pages.html"><a href="github-pages.html#step-1-set-up-compatibility-with-github-pages"><i class="fa fa-check"></i><b>9.2.1</b> Step 1: Set up compatibility with GitHub Pages</a></li>
 <li class="chapter" data-level="9.2.2" data-path="github-pages.html"><a href="github-pages.html#step-2-set-up-git-repository"><i class="fa fa-check"></i><b>9.2.2</b> Step 2: Set up Git repository</a></li>
 <li class="chapter" data-level="9.2.3" data-path="github-pages.html"><a href="github-pages.html#step-3-link-git-repository-to-remote-github-repository"><i class="fa fa-check"></i><b>9.2.3</b> Step 3: Link Git repository to remote GitHub repository</a></li>
@@ -283,9 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
 <li class="chapter" data-level="9.4" data-path="github-pages.html"><a href="github-pages.html#references-4"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
-<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a><ul>
+<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#assigning-objects"><i class="fa fa-check"></i><b>10.2.1</b> Assigning objects</a></li>
 <li class="chapter" data-level="10.2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#adding-comments"><i class="fa fa-check"></i><b>10.2.2</b> Adding comments</a></li>
 <li class="chapter" data-level="10.2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#headers-and-description"><i class="fa fa-check"></i><b>10.2.3</b> Headers and description</a></li>
@@ -305,15 +330,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="intro-to-r.html"><a href="intro-to-r.html#references-5"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
-<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="troubleshooting.html"><a href="troubleshooting.html#locating-the-problematic-piece-of-code"><i class="fa fa-check"></i><b>11.1.1</b> Locating the problematic piece of code</a></li>
 <li class="chapter" data-level="11.1.2" data-path="troubleshooting.html"><a href="troubleshooting.html#isolating-the-error"><i class="fa fa-check"></i><b>11.1.2</b> Isolating the error</a></li>
 <li class="chapter" data-level="11.1.3" data-path="troubleshooting.html"><a href="troubleshooting.html#deciphering-error-messages"><i class="fa fa-check"></i><b>11.1.3</b> Deciphering error messages</a></li>
 <li class="chapter" data-level="11.1.4" data-path="troubleshooting.html"><a href="troubleshooting.html#syntax-errors"><i class="fa fa-check"></i><b>11.1.4</b> Syntax errors</a></li>
 <li class="chapter" data-level="11.1.5" data-path="troubleshooting.html"><a href="troubleshooting.html#errors-from-using-package-functions"><i class="fa fa-check"></i><b>11.1.5</b> Errors from using package functions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a><ul>
+<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="troubleshooting.html"><a href="troubleshooting.html#r-documentation"><i class="fa fa-check"></i><b>11.2.1</b> R documentation</a></li>
 <li class="chapter" data-level="11.2.2" data-path="troubleshooting.html"><a href="troubleshooting.html#google"><i class="fa fa-check"></i><b>11.2.2</b> Google</a></li>
 <li class="chapter" data-level="11.2.3" data-path="troubleshooting.html"><a href="troubleshooting.html#stackoverflow-et-al."><i class="fa fa-check"></i><b>11.2.3</b> StackOverflow et al.</a></li>
@@ -323,16 +351,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="troubleshooting.html"><a href="troubleshooting.html#reproducible-examples"><i class="fa fa-check"></i><b>11.5</b> Reproducible examples</a></li>
 <li class="chapter" data-level="11.6" data-path="troubleshooting.html"><a href="troubleshooting.html#the-rubber-duck"><i class="fa fa-check"></i><b>11.6</b> The rubber duck</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a><ul>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="renv.html"><a href="renv.html#whats-the-need-for-dependency-management"><i class="fa fa-check"></i><b>12.1</b> What’s the need for dependency management?</a></li>
-<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
+<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="renv.html"><a href="renv.html#references-6"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
-<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a><ul>
+<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-columns"><i class="fa fa-check"></i><b>13.2.1</b> Subsetting columns</a></li>
 <li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
@@ -349,15 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
 <li class="chapter" data-level="13.4" data-path="tidyverse.html"><a href="tidyverse.html#references-7"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a><ul>
+<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>14.1</b> A Grammar of Graphics</a></li>
-<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a><ul>
+<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="ggplot2.html"><a href="ggplot2.html#basic-scatterplot"><i class="fa fa-check"></i><b>14.2.1</b> Basic scatterplot</a></li>
 <li class="chapter" data-level="14.2.2" data-path="ggplot2.html"><a href="ggplot2.html#basic-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Basic histogram</a></li>
 <li class="chapter" data-level="14.2.3" data-path="ggplot2.html"><a href="ggplot2.html#basic-density-plot"><i class="fa fa-check"></i><b>14.2.3</b> Basic density plot</a></li>
 <li class="chapter" data-level="14.2.4" data-path="ggplot2.html"><a href="ggplot2.html#other-geom-functions"><i class="fa fa-check"></i><b>14.2.4</b> Other <code>geom</code> functions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a><ul>
+<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="ggplot2.html"><a href="ggplot2.html#changing-axis-labels"><i class="fa fa-check"></i><b>14.3.1</b> Changing axis labels</a></li>
 <li class="chapter" data-level="14.3.2" data-path="ggplot2.html"><a href="ggplot2.html#changing-colors"><i class="fa fa-check"></i><b>14.3.2</b> Changing colors</a></li>
 <li class="chapter" data-level="14.3.3" data-path="ggplot2.html"><a href="ggplot2.html#modifying-legends"><i class="fa fa-check"></i><b>14.3.3</b> Modifying legends</a></li>
@@ -377,11 +412,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>14.6</b> Saving plots</a></li>
 <li class="chapter" data-level="14.7" data-path="ggplot2.html"><a href="ggplot2.html#references-8"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a><ul>
+<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="lubridate.html"><a href="lubridate.html#what-makes-dates-and-times-special"><i class="fa fa-check"></i><b>15.1</b> What makes dates and times special</a></li>
 <li class="chapter" data-level="15.2" data-path="lubridate.html"><a href="lubridate.html#definitions"><i class="fa fa-check"></i><b>15.2</b> Definitions</a></li>
 <li class="chapter" data-level="15.3" data-path="lubridate.html"><a href="lubridate.html#under-the-hood"><i class="fa fa-check"></i><b>15.3</b> Under the hood</a></li>
-<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="lubridate.html"><a href="lubridate.html#parsing-dates-and-times"><i class="fa fa-check"></i><b>15.4.1</b> Parsing dates and times</a></li>
 <li class="chapter" data-level="15.4.2" data-path="lubridate.html"><a href="lubridate.html#extracting-components-of-a-date-time-object"><i class="fa fa-check"></i><b>15.4.2</b> Extracting components of a date-time object</a></li>
 <li class="chapter" data-level="15.4.3" data-path="lubridate.html"><a href="lubridate.html#time-zones"><i class="fa fa-check"></i><b>15.4.3</b> Time zones</a></li>
@@ -410,10 +447,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro-to-r" class="section level1">
-<h1><span class="header-section-number">Chapter 10</span> Introduction to R</h1>
-<div id="getting-started" class="section level2">
-<h2><span class="header-section-number">10.1</span> Getting started</h2>
+<div id="intro-to-r" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Introduction to R<a href="intro-to-r.html#intro-to-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="getting-started" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Getting started<a href="intro-to-r.html#getting-started" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Some of you may already be familiar with R, so we are going to go over some
 basics and then breeze through the fundamentals of R programming to get to the
 more advanced stuff.</p>
@@ -451,15 +488,15 @@ instead, it means the code you tried to run is incomplete (in many cases,
 this means you’re missing a closing parenthesis). You can press <em>Esc</em> to abort the
 command when this happens and you’re not sure what’s missing.</p>
 </div>
-<div id="basics-of-r-programming" class="section level2">
-<h2><span class="header-section-number">10.2</span> Basics of R programming</h2>
-<div id="assigning-objects" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> Assigning objects</h3>
+<div id="basics-of-r-programming" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Basics of R programming<a href="intro-to-r.html#basics-of-r-programming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="assigning-objects" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Assigning objects<a href="intro-to-r.html#assigning-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>&lt;-</code> operator is called an <em>assignment</em> operator. Whatever is on the right of
 the arrow is going to be assigned to the name on the left, and the object will
 show up in your <em>Environment</em> tab on the top-right. A shortcut for the assignment
 operator is <em>Alt + -</em>.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="intro-to-r.html#cb187-1"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="intro-to-r.html#cb188-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span></code></pre></div>
 <p>You can name an object anything you want, but the name
 cannot start with a number. Also, R is case-sensitive, so make sure you are
 consistent with uppercase/lowercase. Back in the day someone would have told you
@@ -468,48 +505,48 @@ has an autocomplete option that makes this not a problem at all, so I say: above
 all, choose names that are descriptive because that will make your code much
 more readable and easy to understand!</p>
 </div>
-<div id="adding-comments" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> Adding comments</h3>
+<div id="adding-comments" class="section level3 hasAnchor" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Adding comments<a href="intro-to-r.html#adding-comments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One of the recommendations you are going to hear most often is, “always comment
 your code”. Indeed, it is very important to make sure your scripts contain
 enough information that a reader unfamiliar with your code (a colleague, or
 yourself in a few weeks) can understand what’s going on and what each piece is
 doing. You can add comments using a hashtag. Anything on a line after the <code>#</code>
 will not be treated as code.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="intro-to-r.html#cb188-1"></a>x &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># This is a comment</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="intro-to-r.html#cb189-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># This is a comment</span></span></code></pre></div>
 </div>
-<div id="headers-and-description" class="section level3">
-<h3><span class="header-section-number">10.2.3</span> Headers and description</h3>
+<div id="headers-and-description" class="section level3 hasAnchor" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Headers and description<a href="intro-to-r.html#headers-and-description" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Even when I’m not writing an RMarkdown file and I’m just working with a .R file,
 I like to start my scripts with a header that says who the author is, what the
 script is about, when it was created, and when it was last modified. Something
 like this:</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="intro-to-r.html#cb189-1"></a><span class="co"># # # # # # # # # # #</span></span>
-<span id="cb189-2"><a href="intro-to-r.html#cb189-2"></a><span class="co"># Simona Picardi</span></span>
-<span id="cb189-3"><a href="intro-to-r.html#cb189-3"></a><span class="co"># Getting started with R</span></span>
-<span id="cb189-4"><a href="intro-to-r.html#cb189-4"></a><span class="co"># Created January 8th, 2020</span></span>
-<span id="cb189-5"><a href="intro-to-r.html#cb189-5"></a><span class="co"># Last modified January 25th, 2020</span></span>
-<span id="cb189-6"><a href="intro-to-r.html#cb189-6"></a><span class="co"># # # # # # # # # # # </span></span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="intro-to-r.html#cb190-1" tabindex="-1"></a><span class="co"># # # # # # # # # # #</span></span>
+<span id="cb190-2"><a href="intro-to-r.html#cb190-2" tabindex="-1"></a><span class="co"># Simona Picardi</span></span>
+<span id="cb190-3"><a href="intro-to-r.html#cb190-3" tabindex="-1"></a><span class="co"># Getting started with R</span></span>
+<span id="cb190-4"><a href="intro-to-r.html#cb190-4" tabindex="-1"></a><span class="co"># Created January 8th, 2020</span></span>
+<span id="cb190-5"><a href="intro-to-r.html#cb190-5" tabindex="-1"></a><span class="co"># Last modified January 25th, 2020</span></span>
+<span id="cb190-6"><a href="intro-to-r.html#cb190-6" tabindex="-1"></a><span class="co"># # # # # # # # # # # </span></span></code></pre></div>
 <p>After the header, I like to add a general description providing some context of
 what the script does and where it fits in with related ones. For example, you
 may want to describe what project the script is part of, what is it for, what
 are the inputs and outputs, etc.</p>
 </div>
-<div id="navigating-through-the-script" class="section level3">
-<h3><span class="header-section-number">10.2.4</span> Navigating through the script</h3>
+<div id="navigating-through-the-script" class="section level3 hasAnchor" number="10.2.4">
+<h3><span class="header-section-number">10.2.4</span> Navigating through the script<a href="intro-to-r.html#navigating-through-the-script" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Often you’ll find yourself writing scripts that are many many lines long. If you
 are looking for a specific piece within a large script, you could spend a long
 time crossing your eyes trying to find it. Because nobody likes their eyes to
 bleed, it’s much more convenient to add bookmarks to your script so that you can
 easily jump to the section you’re looking for. You can add a bookmark using four
 hastags like so:</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="intro-to-r.html#cb190-1"></a><span class="co"># Data processing ####</span></span>
-<span id="cb190-2"><a href="intro-to-r.html#cb190-2"></a></span>
-<span id="cb190-3"><a href="intro-to-r.html#cb190-3"></a><span class="co"># some code</span></span>
-<span id="cb190-4"><a href="intro-to-r.html#cb190-4"></a></span>
-<span id="cb190-5"><a href="intro-to-r.html#cb190-5"></a><span class="co"># Data analysis ####</span></span>
-<span id="cb190-6"><a href="intro-to-r.html#cb190-6"></a></span>
-<span id="cb190-7"><a href="intro-to-r.html#cb190-7"></a><span class="co"># some code</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="intro-to-r.html#cb191-1" tabindex="-1"></a><span class="co"># Data processing ####</span></span>
+<span id="cb191-2"><a href="intro-to-r.html#cb191-2" tabindex="-1"></a></span>
+<span id="cb191-3"><a href="intro-to-r.html#cb191-3" tabindex="-1"></a><span class="co"># some code</span></span>
+<span id="cb191-4"><a href="intro-to-r.html#cb191-4" tabindex="-1"></a></span>
+<span id="cb191-5"><a href="intro-to-r.html#cb191-5" tabindex="-1"></a><span class="co"># Data analysis ####</span></span>
+<span id="cb191-6"><a href="intro-to-r.html#cb191-6" tabindex="-1"></a></span>
+<span id="cb191-7"><a href="intro-to-r.html#cb191-7" tabindex="-1"></a><span class="co"># some code</span></span></code></pre></div>
 <p>The <em>Data processing</em> and <em>Data analysis</em> bookmarks will appear under your
 script panel and you can click to navigate between them.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:r-bookmarks"></span>
@@ -519,18 +556,18 @@ Figure 10.2: Bookmarks in RStudio help you efficiently navigate your script
 </p>
 </div>
 </div>
-<div id="functions-and-their-arguments" class="section level3">
-<h3><span class="header-section-number">10.2.5</span> Functions and their arguments</h3>
+<div id="functions-and-their-arguments" class="section level3 hasAnchor" number="10.2.5">
+<h3><span class="header-section-number">10.2.5</span> Functions and their arguments<a href="intro-to-r.html#functions-and-their-arguments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A function is an executable scripts that takes a well-defined input and returns
 a certain desired output. The inputs of a function are called <em>arguments</em>. For
 example, the function <code>round</code> takes as input an argument called <code>x</code> which is
 the number you want to round:</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="intro-to-r.html#cb191-1"></a><span class="kw">round</span>(<span class="dt">x =</span> <span class="fl">10.46</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="intro-to-r.html#cb192-1" tabindex="-1"></a><span class="fu">round</span>(<span class="at">x =</span> <span class="fl">10.46</span>)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>The function takes also a <code>digits</code> argument, although it is optional: if we
 don’t specify it will just use the default value. You can check what the default
 is by looking at the help file for the function:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="intro-to-r.html#cb193-1"></a>?round</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="intro-to-r.html#cb194-1" tabindex="-1"></a>?round</span></code></pre></div>
 <p>The default is 0 decimal digits, so unless we specify something different the
 function will round to the closest integer. Arguments that are optional are also called <em>options</em>. It’s important to be aware of what default values are assigned
 to optional arguments when we don’t manually specify them. Another thing to be
@@ -541,8 +578,8 @@ of the inputs and do <code>round(1, 10.465)</code> the function won’t understa
 10.465 and not 1. But if we spell out which input is which, the order no longer
 matters: <code>round(digits = 1, x = 10.465)</code> works just fine.</p>
 </div>
-<div id="writing-functions" class="section level3">
-<h3><span class="header-section-number">10.2.6</span> Writing functions</h3>
+<div id="writing-functions" class="section level3 hasAnchor" number="10.2.6">
+<h3><span class="header-section-number">10.2.6</span> Writing functions<a href="intro-to-r.html#writing-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now that we learned about the anatomy of a function, we can write our own. A
 function is like a recipe where the arguments are the ingredients and the
 function code is the procedure. At the end, you get your baked goods. The
@@ -550,60 +587,60 @@ syntax to write a function is <code>function(arguments){code}</code>. First, we 
 inputs the function should take (i.e., we pick names for the arguments). Then,
 inside the curly braces, we describe what the function does with those inputs.
 For example, let’s write a function to add two numbers together:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="intro-to-r.html#cb194-1"></a><span class="co"># We&#39;ll call this function &#39;add&#39;. </span></span>
-<span id="cb194-2"><a href="intro-to-r.html#cb194-2"></a>add &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) { <span class="co"># It takes as input two arguments named `x` and `y`</span></span>
-<span id="cb194-3"><a href="intro-to-r.html#cb194-3"></a>  <span class="kw">return</span>(x <span class="op">+</span><span class="st"> </span>y) <span class="co"># and it returns x + y</span></span>
-<span id="cb194-4"><a href="intro-to-r.html#cb194-4"></a>}</span>
-<span id="cb194-5"><a href="intro-to-r.html#cb194-5"></a></span>
-<span id="cb194-6"><a href="intro-to-r.html#cb194-6"></a><span class="kw">add</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="intro-to-r.html#cb195-1" tabindex="-1"></a><span class="co"># We&#39;ll call this function &#39;add&#39;. </span></span>
+<span id="cb195-2"><a href="intro-to-r.html#cb195-2" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) { <span class="co"># It takes as input two arguments named `x` and `y`</span></span>
+<span id="cb195-3"><a href="intro-to-r.html#cb195-3" tabindex="-1"></a>  <span class="fu">return</span>(x <span class="sc">+</span> y) <span class="co"># and it returns x + y</span></span>
+<span id="cb195-4"><a href="intro-to-r.html#cb195-4" tabindex="-1"></a>}</span>
+<span id="cb195-5"><a href="intro-to-r.html#cb195-5" tabindex="-1"></a></span>
+<span id="cb195-6"><a href="intro-to-r.html#cb195-6" tabindex="-1"></a><span class="fu">add</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
 <p>We can then assign this value to an object:</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="intro-to-r.html#cb196-1"></a>(z &lt;-<span class="st"> </span><span class="kw">add</span>(<span class="dv">4</span>, <span class="dv">5</span>)) <span class="co"># by wrapping the assignment statement in parentheses I also automatically print it to the console</span></span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="intro-to-r.html#cb197-1" tabindex="-1"></a>(z <span class="ot">&lt;-</span> <span class="fu">add</span>(<span class="dv">4</span>, <span class="dv">5</span>)) <span class="co"># by wrapping the assignment statement in parentheses I also automatically print it to the console</span></span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
 <p>We can also write functions that, instead of returning a value that can be
 assigned to an object, print something in the console without returning anything:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="intro-to-r.html#cb198-1"></a>print_words &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</span>
-<span id="cb198-2"><a href="intro-to-r.html#cb198-2"></a>  <span class="kw">print</span>(<span class="kw">paste</span>(x, y))</span>
-<span id="cb198-3"><a href="intro-to-r.html#cb198-3"></a>}</span>
-<span id="cb198-4"><a href="intro-to-r.html#cb198-4"></a></span>
-<span id="cb198-5"><a href="intro-to-r.html#cb198-5"></a>x &lt;-<span class="st"> &quot;Hello&quot;</span></span>
-<span id="cb198-6"><a href="intro-to-r.html#cb198-6"></a>y &lt;-<span class="st"> &quot;world!&quot;</span></span>
-<span id="cb198-7"><a href="intro-to-r.html#cb198-7"></a></span>
-<span id="cb198-8"><a href="intro-to-r.html#cb198-8"></a><span class="kw">print_words</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="intro-to-r.html#cb199-1" tabindex="-1"></a>print_words <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb199-2"><a href="intro-to-r.html#cb199-2" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(x, y))</span>
+<span id="cb199-3"><a href="intro-to-r.html#cb199-3" tabindex="-1"></a>}</span>
+<span id="cb199-4"><a href="intro-to-r.html#cb199-4" tabindex="-1"></a></span>
+<span id="cb199-5"><a href="intro-to-r.html#cb199-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;Hello&quot;</span></span>
+<span id="cb199-6"><a href="intro-to-r.html#cb199-6" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">&quot;world!&quot;</span></span>
+<span id="cb199-7"><a href="intro-to-r.html#cb199-7" tabindex="-1"></a></span>
+<span id="cb199-8"><a href="intro-to-r.html#cb199-8" tabindex="-1"></a><span class="fu">print_words</span>(x, y)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello world!&quot;</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="intro-to-r.html#cb200-1"></a>x &lt;-<span class="st"> &quot;Hello&quot;</span></span>
-<span id="cb200-2"><a href="intro-to-r.html#cb200-2"></a>y &lt;-<span class="st"> &quot;Simona!&quot;</span></span>
-<span id="cb200-3"><a href="intro-to-r.html#cb200-3"></a></span>
-<span id="cb200-4"><a href="intro-to-r.html#cb200-4"></a><span class="kw">print_words</span>(x, y)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="intro-to-r.html#cb201-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;Hello&quot;</span></span>
+<span id="cb201-2"><a href="intro-to-r.html#cb201-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="st">&quot;Simona!&quot;</span></span>
+<span id="cb201-3"><a href="intro-to-r.html#cb201-3" tabindex="-1"></a></span>
+<span id="cb201-4"><a href="intro-to-r.html#cb201-4" tabindex="-1"></a><span class="fu">print_words</span>(x, y)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello Simona!&quot;</code></pre>
 </div>
-<div id="data-types-1" class="section level3">
-<h3><span class="header-section-number">10.2.7</span> Data types</h3>
+<div id="data-types-1" class="section level3 hasAnchor" number="10.2.7">
+<h3><span class="header-section-number">10.2.7</span> Data types<a href="intro-to-r.html#data-types-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Data in R can be of several types. The four most common ones are <code>character</code>,
 <code>numeric</code>, <code>integer</code>, and <code>logical</code>. There’s also <code>complex</code> and <code>raw</code>, but we
 won’t talk about those here. Character data consists of strings of text and it
 is defined using quotes:</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="intro-to-r.html#cb202-1"></a>x &lt;-<span class="st"> &quot;some text&quot;</span></span>
-<span id="cb202-2"><a href="intro-to-r.html#cb202-2"></a></span>
-<span id="cb202-3"><a href="intro-to-r.html#cb202-3"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="intro-to-r.html#cb203-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">&quot;some text&quot;</span></span>
+<span id="cb203-2"><a href="intro-to-r.html#cb203-2" tabindex="-1"></a></span>
+<span id="cb203-3"><a href="intro-to-r.html#cb203-3" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Numbers and integers are pretty self-explanatory. Logical data is boolean <code>TRUE</code>/
 <code>FALSE</code>:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="intro-to-r.html#cb204-1"></a>x &lt;-<span class="st"> </span><span class="ot">TRUE</span></span>
-<span id="cb204-2"><a href="intro-to-r.html#cb204-2"></a></span>
-<span id="cb204-3"><a href="intro-to-r.html#cb204-3"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="intro-to-r.html#cb205-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb205-2"><a href="intro-to-r.html#cb205-2" tabindex="-1"></a></span>
+<span id="cb205-3"><a href="intro-to-r.html#cb205-3" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 </div>
-<div id="vectors" class="section level3">
-<h3><span class="header-section-number">10.2.8</span> Vectors</h3>
+<div id="vectors" class="section level3 hasAnchor" number="10.2.8">
+<h3><span class="header-section-number">10.2.8</span> Vectors<a href="intro-to-r.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A vector (or atomic vector) is the most basic data structure in R. It is a
 collection of items of the same data type. You can concatenate different elements
 into a vector using <code>c</code>:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="intro-to-r.html#cb206-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">27</span>, <span class="dv">5</span>, <span class="dv">32</span>) <span class="co"># this is a numeric vector</span></span>
-<span id="cb206-2"><a href="intro-to-r.html#cb206-2"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="intro-to-r.html#cb207-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">27</span>, <span class="dv">5</span>, <span class="dv">32</span>) <span class="co"># this is a numeric vector</span></span>
+<span id="cb207-2"><a href="intro-to-r.html#cb207-2" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="intro-to-r.html#cb208-1"></a>y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>) <span class="co"># this is a character vector</span></span>
-<span id="cb208-2"><a href="intro-to-r.html#cb208-2"></a><span class="kw">class</span>(y)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="intro-to-r.html#cb209-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>) <span class="co"># this is a character vector</span></span>
+<span id="cb209-2"><a href="intro-to-r.html#cb209-2" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>As a matter of fact, a vector that only has one element is still a vector! So
 <code>x &lt;- 43</code> is a vector with 1 element (that is, a vector of <code>length</code> = 1).</p>
@@ -611,26 +648,26 @@ into a vector using <code>c</code>:</p>
 If we try to mix data types inside a vector, R will fall back to the data type
 that is most inclusive and interpret all the elements in the vector as belonging
 to that data type. For example, if we do:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="intro-to-r.html#cb210-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="st">&quot;B&quot;</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb210-2"><a href="intro-to-r.html#cb210-2"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="intro-to-r.html#cb211-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&quot;B&quot;</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb211-2"><a href="intro-to-r.html#cb211-2" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>R interpreted the whole vector as character because there’s no way to turn “B”
 into a number, but you can read numbers as text strings. If instead we do:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="intro-to-r.html#cb212-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="dv">1</span>)</span>
-<span id="cb212-2"><a href="intro-to-r.html#cb212-2"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="intro-to-r.html#cb213-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="dv">1</span>)</span>
+<span id="cb213-2"><a href="intro-to-r.html#cb213-2" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>R interprets the whole vector as numeric because <code>TRUE</code> and <code>FALSE</code> are encoded
 as 1 and 0, respectively. So R converted the logical element into a number and
 now the entire vector is numeric. If we mix logical and character, character
 will win because there is no way to turn a text string into <code>TRUE</code> or <code>FALSE</code>,
 but <code>TRUE</code> and <code>FALSE</code> are literally words so it’s easy to read them as text:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="intro-to-r.html#cb214-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;test&quot;</span>, <span class="st">&quot;FALSE&quot;</span>)</span>
-<span id="cb214-2"><a href="intro-to-r.html#cb214-2"></a><span class="kw">class</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="intro-to-r.html#cb215-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;test&quot;</span>, <span class="st">&quot;FALSE&quot;</span>)</span>
+<span id="cb215-2"><a href="intro-to-r.html#cb215-2" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Anything in quotes is always interpreted as character, no matter what:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="intro-to-r.html#cb216-1"></a><span class="kw">class</span>(<span class="st">&quot;1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="intro-to-r.html#cb217-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;1&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="intro-to-r.html#cb218-1"></a><span class="kw">class</span>(<span class="st">&quot;TRUE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="intro-to-r.html#cb219-1" tabindex="-1"></a><span class="fu">class</span>(<span class="st">&quot;TRUE&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>So, in the hierarchy of data types, <code>character</code> is the most general because you
 can always turn something into a character; <code>numeric</code> follows because you can
@@ -640,27 +677,27 @@ process of converting an object of one type into another type is called
 <em>coercing</em>. You may run into this term in error messages so it’s good to know
 what it means so you can diagnose problems.</p>
 </div>
-<div id="factors" class="section level3">
-<h3><span class="header-section-number">10.2.9</span> Factors</h3>
+<div id="factors" class="section level3 hasAnchor" number="10.2.9">
+<h3><span class="header-section-number">10.2.9</span> Factors<a href="intro-to-r.html#factors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Categorical data is represented in R using <em>factors</em>. A factor is stored as a
 vector of labels called <em>levels</em> but, under the hood, each level gets assigned
 an integer (or index value). R uses the integer component of a factor to do its
 job but it displays the level to you so that it’s descriptive and meaningful.
 This weird nature of factors is often a source of confusion. For example, if we
 have the following factor,</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="intro-to-r.html#cb220-1"></a>years &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">2017</span>, <span class="dv">2018</span>, <span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2021</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="intro-to-r.html#cb221-1" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="dv">2017</span>, <span class="dv">2018</span>, <span class="dv">2019</span>, <span class="dv">2020</span>, <span class="dv">2021</span>))</span></code></pre></div>
 <p>and we want to convert the years back into numeric, we would maybe try:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="intro-to-r.html#cb221-1"></a><span class="kw">as.numeric</span>(years)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="intro-to-r.html#cb222-1" tabindex="-1"></a><span class="fu">as.numeric</span>(years)</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
 <p>The result is not what we expected. This is because R converted the index values
 into numbers, not the factor levels. To specify that we want to convert the
 factor levels into numbers, not the underlying vector of integers, we have to be
 explicit about it:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="intro-to-r.html#cb223-1"></a><span class="kw">as.numeric</span>(<span class="kw">levels</span>(years))</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="intro-to-r.html#cb224-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">levels</span>(years))</span></code></pre></div>
 <pre><code>## [1] 2017 2018 2019 2020 2021</code></pre>
 </div>
-<div id="data-frames" class="section level3">
-<h3><span class="header-section-number">10.2.10</span> Data frames</h3>
+<div id="data-frames" class="section level3 hasAnchor" number="10.2.10">
+<h3><span class="header-section-number">10.2.10</span> Data frames<a href="intro-to-r.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R stores tabular data in data frames. A data frame is a data structure composed
 by rows and columns, where each column is a vector (and therefore contains
 elements of the same type). Different columns in a data frame can contain data
@@ -669,11 +706,11 @@ More often than not, you’ll create data frames by importing external files (su
 as .csv) or by connecting to a SQL database, in which case the output of a query
 is returned as a data frame by RSQLite (see Chapter <a href="rsqlite.html#rsqlite">7</a>). But you can
 also manually create a data frame:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="intro-to-r.html#cb225-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">numbers =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb225-2"><a href="intro-to-r.html#cb225-2"></a>                 <span class="dt">letters =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>),</span>
-<span id="cb225-3"><a href="intro-to-r.html#cb225-3"></a>                 <span class="dt">colors =</span> <span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>)))</span>
-<span id="cb225-4"><a href="intro-to-r.html#cb225-4"></a></span>
-<span id="cb225-5"><a href="intro-to-r.html#cb225-5"></a><span class="kw">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="intro-to-r.html#cb226-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">numbers =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb226-2"><a href="intro-to-r.html#cb226-2" tabindex="-1"></a>                 <span class="at">letters =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>),</span>
+<span id="cb226-3"><a href="intro-to-r.html#cb226-3" tabindex="-1"></a>                 <span class="at">colors =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>)))</span>
+<span id="cb226-4"><a href="intro-to-r.html#cb226-4" tabindex="-1"></a></span>
+<span id="cb226-5"><a href="intro-to-r.html#cb226-5" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
 ##  $ numbers: num  1 2 3
 ##  $ letters: chr  &quot;A&quot; &quot;B&quot; &quot;C&quot;
@@ -681,27 +718,27 @@ also manually create a data frame:</p>
 <p>Using <code>str</code> to look at the structure of the data frame, we can confirm that it
 contains three columns: a numeric vector, a character vector, and a factor.</p>
 <p>You can select columns of a data frame by name using a <code>$</code>:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="intro-to-r.html#cb227-1"></a>df<span class="op">$</span>colors</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="intro-to-r.html#cb228-1" tabindex="-1"></a>df<span class="sc">$</span>colors</span></code></pre></div>
 <pre><code>## [1] blue  red   green
 ## Levels: blue green red</code></pre>
 </div>
-<div id="dimensions" class="section level3">
-<h3><span class="header-section-number">10.2.11</span> Dimensions</h3>
+<div id="dimensions" class="section level3 hasAnchor" number="10.2.11">
+<h3><span class="header-section-number">10.2.11</span> Dimensions<a href="intro-to-r.html#dimensions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One thing that it’s important to be aware of is the dimensions of the objects we
 work with. A vector is a one-dimensional data structure. If we wanted to make
 an analogy with geometry, a vector is like a line. There is no scalar in R
 because a single element is still a vector (of length 1). A data frame is like a
 plane because it has two dimensions (rows and columns). This is important to understand because it determines how we subset data. For example, let’s look at the dimensions of the data frame we just created:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="intro-to-r.html#cb229-1"></a><span class="kw">dim</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="intro-to-r.html#cb230-1" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code></pre></div>
 <pre><code>## [1] 3 3</code></pre>
 <p>This is a 3x3 object (3 rows and 3 columns), and therefore it has 2 dimensions.
 A vector, on the other hand, only has a length (its one dimension):</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="intro-to-r.html#cb231-1"></a><span class="kw">length</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="intro-to-r.html#cb232-1" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Matrices are also 2-dimensional objects like data frames, but they differ from
 data frames because they can only contain elements of the same data types, while
 columns in a data frame can be of different data types. For example:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="intro-to-r.html#cb233-1"></a>(mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="intro-to-r.html#cb234-1" tabindex="-1"></a>(mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="at">nrow =</span> <span class="dv">5</span>, <span class="at">ncol =</span> <span class="dv">5</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    6   11   16   21
 ## [2,]    2    7   12   17   22
@@ -712,7 +749,7 @@ columns in a data frame can be of different data types. For example:</p>
 with 3 dimension is like a 3D matrix, where the first dimension is the number of
 rows, the second is the number of columns, and the third is the number of
 matrices that compose the array. For example:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="intro-to-r.html#cb235-1"></a>(arr &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">24</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="intro-to-r.html#cb236-1" tabindex="-1"></a>(arr <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>)))</span></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3] [,4]
@@ -731,106 +768,106 @@ matrices that compose the array. For example:</p>
 ## [1,]   17   19   21   23
 ## [2,]   18   20   22   24</code></pre>
 <p>This array has 3 dimensions:</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="intro-to-r.html#cb237-1"></a><span class="kw">dim</span>(arr)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="intro-to-r.html#cb238-1" tabindex="-1"></a><span class="fu">dim</span>(arr)</span></code></pre></div>
 <pre><code>## [1] 2 4 3</code></pre>
 </div>
-<div id="subsetting" class="section level3">
-<h3><span class="header-section-number">10.2.12</span> Subsetting</h3>
+<div id="subsetting" class="section level3 hasAnchor" number="10.2.12">
+<h3><span class="header-section-number">10.2.12</span> Subsetting<a href="intro-to-r.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Knowing how many dimensions an object has makes it straightforward to write
 syntax to subset it. For example, to subset the following vector to only include
 the first two elements:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="intro-to-r.html#cb239-1"></a>test &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="intro-to-r.html#cb240-1" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>)</span></code></pre></div>
 <p>We can specify which elements we want to subset in brackets:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="intro-to-r.html#cb240-1"></a>test[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="intro-to-r.html#cb241-1" tabindex="-1"></a>test[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)]</span></code></pre></div>
 <pre><code>## [1] &quot;blue&quot; &quot;red&quot;</code></pre>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="intro-to-r.html#cb242-1"></a><span class="co"># A better way to write this:</span></span>
-<span id="cb242-2"><a href="intro-to-r.html#cb242-2"></a>test[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># using : automatically returns a vector of integers from the number on the left to the one on the right</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="intro-to-r.html#cb243-1" tabindex="-1"></a><span class="co"># A better way to write this:</span></span>
+<span id="cb243-2"><a href="intro-to-r.html#cb243-2" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="co"># using : automatically returns a vector of integers from the number on the left to the one on the right</span></span></code></pre></div>
 <pre><code>## [1] &quot;blue&quot; &quot;red&quot;</code></pre>
 <p>The numbers in square brackets provide the indexes of the elements we want to
 keep. For an object that has more than one dimension, we need to specify 2 sets
 of indexes, one for each dimension. In the case of a data frame, these would be
 rows and columns:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="intro-to-r.html#cb244-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="intro-to-r.html#cb245-1" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 1       1       A   blue
 ## 2       2       B    red
 ## 3       3       C  green</code></pre>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="intro-to-r.html#cb246-1"></a>df[<span class="dv">1</span>, <span class="dv">2</span>] <span class="co"># subset the first row of the second column</span></span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="intro-to-r.html#cb247-1" tabindex="-1"></a>df[<span class="dv">1</span>, <span class="dv">2</span>] <span class="co"># subset the first row of the second column</span></span></code></pre></div>
 <pre><code>## [1] &quot;A&quot;</code></pre>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="intro-to-r.html#cb248-1"></a>df[<span class="dv">1</span>, ] <span class="co"># subset the entire first row</span></span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="intro-to-r.html#cb249-1" tabindex="-1"></a>df[<span class="dv">1</span>, ] <span class="co"># subset the entire first row</span></span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 1       1       A   blue</code></pre>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="intro-to-r.html#cb250-1"></a>df[, <span class="dv">2</span>] <span class="co"># subset the entire second column</span></span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="intro-to-r.html#cb251-1" tabindex="-1"></a>df[, <span class="dv">2</span>] <span class="co"># subset the entire second column</span></span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
 <p>Note that when we subset a column, the output is a vector (all elements are of
 the same type). But when we subset a row, the output is still a data frame
 (elements need not be of the same type):</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="intro-to-r.html#cb252-1"></a><span class="kw">class</span>(df[, <span class="dv">2</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="intro-to-r.html#cb253-1" tabindex="-1"></a><span class="fu">class</span>(df[, <span class="dv">2</span>])</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="intro-to-r.html#cb254-1"></a><span class="kw">class</span>(df[<span class="dv">1</span>, ])</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="intro-to-r.html#cb255-1" tabindex="-1"></a><span class="fu">class</span>(df[<span class="dv">1</span>, ])</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>If you want to exclude a row or a column instead of keeping it, you can use a <code>-</code>
 in front of the index:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="intro-to-r.html#cb256-1"></a>df[, <span class="dv">-1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="intro-to-r.html#cb257-1" tabindex="-1"></a>df[, <span class="sc">-</span><span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##   letters colors
 ## 1       A   blue
 ## 2       B    red
 ## 3       C  green</code></pre>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="intro-to-r.html#cb258-1"></a>df[<span class="op">-</span><span class="dv">2</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="intro-to-r.html#cb259-1" tabindex="-1"></a>df[<span class="sc">-</span><span class="dv">2</span>, ]</span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 1       1       A   blue
 ## 3       3       C  green</code></pre>
 <p>We can subset a matrix with positional indexes the same way we would subset a
 data frame:</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="intro-to-r.html#cb260-1"></a>mat[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="intro-to-r.html#cb261-1" tabindex="-1"></a>mat[<span class="dv">1</span>, <span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>To subset rows, columns, or matrices within a 3-dimensional array we need to use
 3 indexes instead of 2, like we’ve been doing for matrices and data frames. For
 example, to subset the first row:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="intro-to-r.html#cb262-1"></a>arr[<span class="dv">1</span>, , ]</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="intro-to-r.html#cb263-1" tabindex="-1"></a>arr[<span class="dv">1</span>, , ]</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    9   17
 ## [2,]    3   11   19
 ## [3,]    5   13   21
 ## [4,]    7   15   23</code></pre>
 <p>To subset the first column:</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="intro-to-r.html#cb264-1"></a>arr[, <span class="dv">1</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="intro-to-r.html#cb265-1" tabindex="-1"></a>arr[, <span class="dv">1</span>, ]</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    9   17
 ## [2,]    2   10   18</code></pre>
 <p>To subset the first matrix:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="intro-to-r.html#cb266-1"></a>arr[, , <span class="dv">1</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="intro-to-r.html#cb267-1" tabindex="-1"></a>arr[, , <span class="dv">1</span>]</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    3    5    7
 ## [2,]    2    4    6    8</code></pre>
 </div>
-<div id="logical-conditions" class="section level3">
-<h3><span class="header-section-number">10.2.13</span> Logical conditions</h3>
+<div id="logical-conditions" class="section level3 hasAnchor" number="10.2.13">
+<h3><span class="header-section-number">10.2.13</span> Logical conditions<a href="intro-to-r.html#logical-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Logical conditions are statements that can be answered with <code>TRUE</code> or <code>FALSE</code>.
 For example, is 10 greater than 5?</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="intro-to-r.html#cb268-1"></a><span class="dv">10</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="intro-to-r.html#cb269-1" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">5</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Is 2 + 2 = 3?</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="intro-to-r.html#cb270-1"></a><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="intro-to-r.html#cb271-1" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">3</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Is <code>df</code> a data frame?</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="intro-to-r.html#cb272-1"></a><span class="kw">class</span>(df) <span class="op">==</span><span class="st"> &quot;data.frame&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="intro-to-r.html#cb273-1" tabindex="-1"></a><span class="fu">class</span>(df) <span class="sc">==</span> <span class="st">&quot;data.frame&quot;</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Logical conditions are very useful for conditional subsetting. More often than
 wanting to subset a specific row or column of a data frame, we may want to
 subset rows based on a condition. For example, if we only want rows where the
 color is blue:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="intro-to-r.html#cb274-1"></a>df[df<span class="op">$</span>colors <span class="op">==</span><span class="st"> &quot;blue&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="intro-to-r.html#cb275-1" tabindex="-1"></a>df[df<span class="sc">$</span>colors <span class="sc">==</span> <span class="st">&quot;blue&quot;</span>, ]</span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 1       1       A   blue</code></pre>
 <p>Instead of putting a numeric index where we tell R which rows we want, we used a
 logical condition. R will evaluate that logical condition and only keep the rows
 for which it’s true. Let’s decompose that:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="intro-to-r.html#cb276-1"></a>df<span class="op">$</span>colors <span class="op">==</span><span class="st"> &quot;blue&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="intro-to-r.html#cb277-1" tabindex="-1"></a>df<span class="sc">$</span>colors <span class="sc">==</span> <span class="st">&quot;blue&quot;</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 <p>When you plug in the above statement in place of the subsetting index, R will
 return the rows that satisfy the condition (the ones that return <code>TRUE</code>):</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="intro-to-r.html#cb278-1"></a>df[df<span class="op">$</span>colors <span class="op">==</span><span class="st"> &quot;blue&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="intro-to-r.html#cb279-1" tabindex="-1"></a>df[df<span class="sc">$</span>colors <span class="sc">==</span> <span class="st">&quot;blue&quot;</span>, ]</span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 1       1       A   blue</code></pre>
 <p>Note that a double equal <code>==</code> will evaluate a logical condition, while a single
@@ -839,31 +876,31 @@ same thing!</p>
 <p>To exclude a column or a row when using conditional subsetting, we can’t use <code>-</code>
 like we did when we were using indexes. Instead, logical conditions are denied
 with <code>!</code>:</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="intro-to-r.html#cb280-1"></a>df[<span class="op">!</span>df<span class="op">$</span>colors <span class="op">==</span><span class="st"> &quot;blue&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="intro-to-r.html#cb281-1" tabindex="-1"></a>df[<span class="sc">!</span>df<span class="sc">$</span>colors <span class="sc">==</span> <span class="st">&quot;blue&quot;</span>, ]</span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 2       2       B    red
 ## 3       3       C  green</code></pre>
 <p>In the example above, we write the logical condition <em>“color is equal to blue”</em>
 and then we deny it by putting <code>!</code> in front of it. We can also directly write
 the logical condition <em>“color is NOT equal to blue”</em>:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="intro-to-r.html#cb282-1"></a>df[df<span class="op">$</span>colors <span class="op">!=</span><span class="st"> &quot;blue&quot;</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="intro-to-r.html#cb283-1" tabindex="-1"></a>df[df<span class="sc">$</span>colors <span class="sc">!=</span> <span class="st">&quot;blue&quot;</span>, ]</span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 2       2       B    red
 ## 3       3       C  green</code></pre>
 <p>So far, we have seen four logical operators: <code>&gt;</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code>. Another one
 you’ll be finding yourself using a lot is <code>%in%</code>, which tests whether a value is
 within a list of values:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="intro-to-r.html#cb284-1"></a>df[df<span class="op">$</span>colors <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), ]</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="intro-to-r.html#cb285-1" tabindex="-1"></a>df[df<span class="sc">$</span>colors <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), ]</span></code></pre></div>
 <pre><code>##   numbers letters colors
 ## 1       1       A   blue
 ## 2       2       B    red</code></pre>
 </div>
-<div id="lists" class="section level3">
-<h3><span class="header-section-number">10.2.14</span> Lists</h3>
+<div id="lists" class="section level3 hasAnchor" number="10.2.14">
+<h3><span class="header-section-number">10.2.14</span> Lists<a href="intro-to-r.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Lists are the most flexible data structure in R. They can contain elements of
 different data type and size. For example:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="intro-to-r.html#cb286-1"></a><span class="co"># This list contains numeric vectors of different length</span></span>
-<span id="cb286-2"><a href="intro-to-r.html#cb286-2"></a>(list1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="intro-to-r.html#cb287-1" tabindex="-1"></a><span class="co"># This list contains numeric vectors of different length</span></span>
+<span id="cb287-2"><a href="intro-to-r.html#cb287-2" tabindex="-1"></a>(list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1
 ## 
@@ -872,15 +909,15 @@ different data type and size. For example:</p>
 ## 
 ## [[3]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="intro-to-r.html#cb288-1"></a><span class="co"># This list contains vectors of different data types</span></span>
-<span id="cb288-2"><a href="intro-to-r.html#cb288-2"></a>(list2 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="kw">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="intro-to-r.html#cb289-1" tabindex="-1"></a><span class="co"># This list contains vectors of different data types</span></span>
+<span id="cb289-2"><a href="intro-to-r.html#cb289-2" tabindex="-1"></a>(list2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="st">&quot;cat&quot;</span>, <span class="st">&quot;dog&quot;</span>, <span class="st">&quot;lion&quot;</span>, <span class="st">&quot;giraffe&quot;</span>)))</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1 2 3 4 5
 ## 
 ## [[2]]
 ## [1] &quot;cat&quot;     &quot;dog&quot;     &quot;lion&quot;    &quot;giraffe&quot;</code></pre>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="intro-to-r.html#cb290-1"></a><span class="co"># This list contains a numeric vector, a character vector, a matrix, and a function</span></span>
-<span id="cb290-2"><a href="intro-to-r.html#cb290-2"></a>(list3 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>), <span class="cf">function</span>(x) {x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>}))</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="intro-to-r.html#cb291-1" tabindex="-1"></a><span class="co"># This list contains a numeric vector, a character vector, a matrix, and a function</span></span>
+<span id="cb291-2"><a href="intro-to-r.html#cb291-2" tabindex="-1"></a>(list3 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">4</span>), <span class="cf">function</span>(x) {x <span class="sc">+</span> <span class="dv">1</span>}))</span></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -897,9 +934,9 @@ different data type and size. For example:</p>
 ## [[4]]
 ## function(x) {x + 1}</code></pre>
 <p>We can name the elements of a list:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="intro-to-r.html#cb292-1"></a><span class="kw">names</span>(list3) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;numbers&quot;</span>, <span class="st">&quot;letters&quot;</span>, <span class="st">&quot;matrix&quot;</span>, <span class="st">&quot;function&quot;</span>)</span>
-<span id="cb292-2"><a href="intro-to-r.html#cb292-2"></a></span>
-<span id="cb292-3"><a href="intro-to-r.html#cb292-3"></a>list3</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="intro-to-r.html#cb293-1" tabindex="-1"></a><span class="fu">names</span>(list3) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;numbers&quot;</span>, <span class="st">&quot;letters&quot;</span>, <span class="st">&quot;matrix&quot;</span>, <span class="st">&quot;function&quot;</span>)</span>
+<span id="cb293-2"><a href="intro-to-r.html#cb293-2" tabindex="-1"></a></span>
+<span id="cb293-3"><a href="intro-to-r.html#cb293-3" tabindex="-1"></a>list3</span></code></pre></div>
 <pre><code>## $numbers
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -917,57 +954,57 @@ different data type and size. For example:</p>
 ## function(x) {x + 1}</code></pre>
 <p>We can subset lists by using double brackets. For example, to extract the second
 element of <code>list3</code> we would do:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="intro-to-r.html#cb294-1"></a>list3[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="intro-to-r.html#cb295-1" tabindex="-1"></a>list3[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;B&quot;</code></pre>
 <p>This returns the character vector with the letters A and B. Using a single
 bracket instead of a double bracket will return a list with the element/s we
 called for:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="intro-to-r.html#cb296-1"></a>list3[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="intro-to-r.html#cb297-1" tabindex="-1"></a>list3[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## $letters
 ## [1] &quot;A&quot; &quot;B&quot;</code></pre>
 <p>Imagine the single bracket as returning the bin where the object is and the
 double bracket as returning the actual content of the bin.</p>
 </div>
-<div id="control-structures" class="section level3">
-<h3><span class="header-section-number">10.2.15</span> Control structures</h3>
+<div id="control-structures" class="section level3 hasAnchor" number="10.2.15">
+<h3><span class="header-section-number">10.2.15</span> Control structures<a href="intro-to-r.html#control-structures" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Control structures allow you to “activate” or “de-activate” your code based on
 circumstances you can define as you need. Think of them as switches that
 modulate the operations you do on your data.</p>
 <p>The most commonly used control structure in R is the combination of <code>if</code> and
 <code>else</code>. By using <code>if</code>, you can specify a logical condition and the code that you
 want to run if that condition is verified. The syntax is as follows:</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="intro-to-r.html#cb298-1"></a><span class="cf">if</span> (condition) {<span class="co"># do something}</span></span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="intro-to-r.html#cb299-1" tabindex="-1"></a><span class="cf">if</span> (condition) {<span class="co"># do something}</span></span></code></pre></div>
 <p>If <code>condition</code> returns <code>TRUE</code>, the code in the curly braces will be executed,
 otherwise it won’t. If you want to specify what to do in case the condition is
 <code>FALSE</code>, you can pair the <code>if</code> with an <code>else</code>:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="intro-to-r.html#cb299-1"></a><span class="cf">if</span> (condition) {<span class="co"># do something</span></span>
-<span id="cb299-2"><a href="intro-to-r.html#cb299-2"></a>} <span class="cf">else</span> {</span>
-<span id="cb299-3"><a href="intro-to-r.html#cb299-3"></a>    <span class="co"># do something else</span></span>
-<span id="cb299-4"><a href="intro-to-r.html#cb299-4"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="intro-to-r.html#cb300-1" tabindex="-1"></a><span class="cf">if</span> (condition) {<span class="co"># do something</span></span>
+<span id="cb300-2"><a href="intro-to-r.html#cb300-2" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb300-3"><a href="intro-to-r.html#cb300-3" tabindex="-1"></a>    <span class="co"># do something else</span></span>
+<span id="cb300-4"><a href="intro-to-r.html#cb300-4" tabindex="-1"></a>  }</span></code></pre></div>
 <p>Other control structures include <code>break</code>, which stops a loop when a condition
 is met, and <code>next</code>, which skips one iteration of a loop. Loops themselves are
 control structures, but we’ll talk about them in the next section.</p>
 </div>
-<div id="repeating-operations" class="section level3">
-<h3><span class="header-section-number">10.2.16</span> Repeating operations</h3>
+<div id="repeating-operations" class="section level3 hasAnchor" number="10.2.16">
+<h3><span class="header-section-number">10.2.16</span> Repeating operations<a href="intro-to-r.html#repeating-operations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Many times in R you will find yourself having to repeat the same operation over
 a set of values/rows. There are multiple ways to do so: vectorized operations,
 loops, and <code>apply</code> functions.</p>
-<div id="vectorization" class="section level4">
-<h4><span class="header-section-number">10.2.16.1</span> Vectorization</h4>
+<div id="vectorization" class="section level4 hasAnchor" number="10.2.16.1">
+<h4><span class="header-section-number">10.2.16.1</span> Vectorization<a href="intro-to-r.html#vectorization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Unlike many other programming languages, R supports vectorization, which means
 some operations can be carried out in parallel across R objects. Without
 knowing, we’ve already made some examples of vectorized calculations in R. For
 instance, applying a logical comparison to all elements of a vector:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="intro-to-r.html#cb300-1"></a>vec &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb300-2"><a href="intro-to-r.html#cb300-2"></a></span>
-<span id="cb300-3"><a href="intro-to-r.html#cb300-3"></a>vec <span class="op">&gt;</span><span class="st"> </span><span class="dv">4</span></span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="intro-to-r.html#cb301-1" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb301-2"><a href="intro-to-r.html#cb301-2" tabindex="-1"></a></span>
+<span id="cb301-3"><a href="intro-to-r.html#cb301-3" tabindex="-1"></a>vec <span class="sc">&gt;</span> <span class="dv">4</span></span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 <p>The sum of two vectors can also be vectorized:</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="intro-to-r.html#cb302-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></span>
-<span id="cb302-2"><a href="intro-to-r.html#cb302-2"></a>y &lt;-<span class="st"> </span><span class="dv">6</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb302-3"><a href="intro-to-r.html#cb302-3"></a></span>
-<span id="cb302-4"><a href="intro-to-r.html#cb302-4"></a>x <span class="op">+</span><span class="st"> </span>y</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="intro-to-r.html#cb303-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb303-2"><a href="intro-to-r.html#cb303-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb303-3"><a href="intro-to-r.html#cb303-3" tabindex="-1"></a></span>
+<span id="cb303-4"><a href="intro-to-r.html#cb303-4" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
 <pre><code>## [1]  7  9 11 13 15</code></pre>
 <p>In languages that don’t use vectorization, you would have to write a loop to
 sum each element of <code>x</code> to the corresponding element of <code>y</code>. Vectorization makes
@@ -979,10 +1016,10 @@ same length: they are each composed of five elements. If we try to do a
 vectorized calculation on two vectors that aren’t the same length, R will
 recycle values from the shortest vector when it runs out, leading to unexpected
 results:</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="intro-to-r.html#cb304-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span></span>
-<span id="cb304-2"><a href="intro-to-r.html#cb304-2"></a>y &lt;-<span class="st"> </span><span class="dv">7</span><span class="op">:</span><span class="dv">10</span></span>
-<span id="cb304-3"><a href="intro-to-r.html#cb304-3"></a></span>
-<span id="cb304-4"><a href="intro-to-r.html#cb304-4"></a>x <span class="op">+</span><span class="st"> </span>y</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="intro-to-r.html#cb305-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb305-2"><a href="intro-to-r.html#cb305-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">7</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb305-3"><a href="intro-to-r.html#cb305-3" tabindex="-1"></a></span>
+<span id="cb305-4"><a href="intro-to-r.html#cb305-4" tabindex="-1"></a>x <span class="sc">+</span> y</span></code></pre></div>
 <pre><code>## Warning in x + y: longer object length is not a multiple of shorter object
 ## length</code></pre>
 <pre><code>## [1]  8 10 12 14 12 14</code></pre>
@@ -993,8 +1030,8 @@ going with the values of <code>x</code> but started over with <code>y</code> and
 warning message, it means there’s an instance of vector recycling going on in
 your code.</p>
 </div>
-<div id="loops" class="section level4">
-<h4><span class="header-section-number">10.2.16.2</span> Loops</h4>
+<div id="loops" class="section level4 hasAnchor" number="10.2.16.2">
+<h4><span class="header-section-number">10.2.16.2</span> Loops<a href="intro-to-r.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The first thing to know about loops is when you should or shouldn’t use a loop.
 Loops can be inefficient when compared to vectorized alternatives, so whenever
 you can do what you need by using a vectorized operation, do that instead of a
@@ -1005,13 +1042,13 @@ many times it should repeat the operation. Most of the time you’ll find yourse
 using <code>for</code> loops, so we’ll go over those in detail.</p>
 <p>A <code>for</code> loop is written by specifying how many times we want to repeat an
 operation and what is the operation we want to repeat:</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="intro-to-r.html#cb307-1"></a><span class="cf">for</span> (i <span class="cf">in</span> n_times) {</span>
-<span id="cb307-2"><a href="intro-to-r.html#cb307-2"></a>  <span class="co"># do something</span></span>
-<span id="cb307-3"><a href="intro-to-r.html#cb307-3"></a>  }</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="intro-to-r.html#cb308-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> n_times) {</span>
+<span id="cb308-2"><a href="intro-to-r.html#cb308-2" tabindex="-1"></a>  <span class="co"># do something</span></span>
+<span id="cb308-3"><a href="intro-to-r.html#cb308-3" tabindex="-1"></a>  }</span></code></pre></div>
 <p>This can be as simple as printing the numbers from 1 to 10:</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="intro-to-r.html#cb308-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</span>
-<span id="cb308-2"><a href="intro-to-r.html#cb308-2"></a>  <span class="kw">print</span>(i)</span>
-<span id="cb308-3"><a href="intro-to-r.html#cb308-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="intro-to-r.html#cb309-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb309-2"><a href="intro-to-r.html#cb309-2" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb309-3"><a href="intro-to-r.html#cb309-3" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -1023,11 +1060,11 @@ operation and what is the operation we want to repeat:</p>
 ## [1] 9
 ## [1] 10</code></pre>
 <p>Or it can be more complicated, such as multiple consecutive operations:</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="intro-to-r.html#cb310-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</span>
-<span id="cb310-2"><a href="intro-to-r.html#cb310-2"></a>  x &lt;-<span class="st"> </span>i <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb310-3"><a href="intro-to-r.html#cb310-3"></a>  y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb310-4"><a href="intro-to-r.html#cb310-4"></a>  <span class="kw">print</span>(x <span class="op">+</span><span class="st"> </span>y)</span>
-<span id="cb310-5"><a href="intro-to-r.html#cb310-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="intro-to-r.html#cb311-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb311-2"><a href="intro-to-r.html#cb311-2" tabindex="-1"></a>  x <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb311-3"><a href="intro-to-r.html#cb311-3" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb311-4"><a href="intro-to-r.html#cb311-4" tabindex="-1"></a>  <span class="fu">print</span>(x <span class="sc">+</span> y)</span>
+<span id="cb311-5"><a href="intro-to-r.html#cb311-5" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 6
 ## [1] 20
 ## [1] 42
@@ -1041,16 +1078,16 @@ operation and what is the operation we want to repeat:</p>
 <p>The two examples above print the results to the console. If you want to store
 the results, you start by defining an object that will store the values as you
 compute them:</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="intro-to-r.html#cb312-1"></a>res &lt;-<span class="st"> </span><span class="kw">c</span>()</span>
-<span id="cb312-2"><a href="intro-to-r.html#cb312-2"></a></span>
-<span id="cb312-3"><a href="intro-to-r.html#cb312-3"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</span>
-<span id="cb312-4"><a href="intro-to-r.html#cb312-4"></a>  x &lt;-<span class="st"> </span>i <span class="op">*</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb312-5"><a href="intro-to-r.html#cb312-5"></a>  y &lt;-<span class="st"> </span>x<span class="op">^</span><span class="dv">2</span></span>
-<span id="cb312-6"><a href="intro-to-r.html#cb312-6"></a>  res[i] &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y</span>
-<span id="cb312-7"><a href="intro-to-r.html#cb312-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="intro-to-r.html#cb313-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb313-2"><a href="intro-to-r.html#cb313-2" tabindex="-1"></a></span>
+<span id="cb313-3"><a href="intro-to-r.html#cb313-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb313-4"><a href="intro-to-r.html#cb313-4" tabindex="-1"></a>  x <span class="ot">&lt;-</span> i <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb313-5"><a href="intro-to-r.html#cb313-5" tabindex="-1"></a>  y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb313-6"><a href="intro-to-r.html#cb313-6" tabindex="-1"></a>  res[i] <span class="ot">&lt;-</span> x <span class="sc">+</span> y</span>
+<span id="cb313-7"><a href="intro-to-r.html#cb313-7" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<div id="the-apply-family" class="section level4">
-<h4><span class="header-section-number">10.2.16.3</span> The <code>apply</code> family</h4>
+<div id="the-apply-family" class="section level4 hasAnchor" number="10.2.16.3">
+<h4><span class="header-section-number">10.2.16.3</span> The <code>apply</code> family<a href="intro-to-r.html#the-apply-family" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Functions from the <code>apply</code> family include <code>apply</code>, <code>sapply</code>, <code>tapply</code>, <code>mapply</code>,
 <code>vapply</code>, <code>lapply</code>. All of these functions work similarly to a loop by applying
 the same operation to a certain piece of input data. However, they differ from
@@ -1066,7 +1103,7 @@ to 1) or columns (if set to 2);</li>
 <li><code>FUN</code> is the function we want to apply.</li>
 </ul>
 <p>For example, remember our matrix?</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="intro-to-r.html#cb313-1"></a>mat</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="intro-to-r.html#cb314-1" tabindex="-1"></a>mat</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    6   11   16   21
 ## [2,]    2    7   12   17   22
@@ -1074,7 +1111,7 @@ to 1) or columns (if set to 2);</li>
 ## [4,]    4    9   14   19   24
 ## [5,]    5   10   15   20   25</code></pre>
 <p>We can use <code>apply</code> to get a row-wise sum:</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="intro-to-r.html#cb315-1"></a><span class="kw">apply</span>(mat, <span class="dv">1</span>, sum)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="intro-to-r.html#cb316-1" tabindex="-1"></a><span class="fu">apply</span>(mat, <span class="dv">1</span>, sum)</span></code></pre></div>
 <pre><code>## [1] 55 60 65 70 75</code></pre>
 <p>All other members of the <code>apply</code> family are a variation on this basic theme.</p>
 <p>One other member of the <code>apply</code> family that you will find extremely useful is
@@ -1082,7 +1119,7 @@ to 1) or columns (if set to 2);</li>
 the flexibility lists give in terms of what they can contain, using <code>lapply</code>
 opens up a world of possibilities in terms of what kind of operations we can
 automate. Here is a basic example that illustrates how to use <code>lapply</code>:</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="intro-to-r.html#cb317-1"></a>(l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dv">2</span><span class="op">:</span><span class="dv">20</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">30</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="intro-to-r.html#cb318-1" tabindex="-1"></a>(l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">20</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">30</span>))</span></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -1097,7 +1134,7 @@ could not be rows or columns in the same matrix or data frame, and we couldn’t
 just use <code>apply</code> to repeat an operation on each of them. But because we’re using
 a list and <code>lapply</code>, we can. If we want to get the sum of values within each
 element of the list:</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="intro-to-r.html#cb319-1"></a><span class="kw">lapply</span>(l, sum)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="intro-to-r.html#cb320-1" tabindex="-1"></a><span class="fu">lapply</span>(l, sum)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 55
 ## 
@@ -1107,7 +1144,7 @@ element of the list:</p>
 ## [[3]]
 ## [1] 462</code></pre>
 <p>Or if we want to apply a custom function:</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="intro-to-r.html#cb321-1"></a><span class="kw">lapply</span>(l, <span class="cf">function</span>(x) {<span class="kw">mean</span>(x <span class="op">+</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">456</span>)})</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="intro-to-r.html#cb322-1" tabindex="-1"></a><span class="fu">lapply</span>(l, <span class="cf">function</span>(x) {<span class="fu">mean</span>(x <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">456</span>)})</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 917.5
 ## 
@@ -1119,8 +1156,8 @@ element of the list:</p>
 </div>
 </div>
 </div>
-<div id="references-5" class="section level2">
-<h2><span class="header-section-number">10.3</span> References</h2>
+<div id="references-5" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> References<a href="intro-to-r.html#references-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://bookdown.org/rdpeng/rprogdatascience/" class="uri">https://bookdown.org/rdpeng/rprogdatascience/</a></li>
 <li><a href="https://swcarpentry.github.io/r-novice-inflammation/" class="uri">https://swcarpentry.github.io/r-novice-inflammation/</a></li>
@@ -1195,7 +1232,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

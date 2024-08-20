@@ -5,26 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Collaborative Science with GitHub | Reproducible Data Science</title>
-  <meta name="description" content="WILD 6900: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 553: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Collaborative Science with GitHub | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  
-  <meta property="og:description" content="WILD 6900: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 3 Collaborative Science with GitHub | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WILD 6900: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2021-01-15" />
+<meta name="date" content="2024-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,24 +49,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,13 +86,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -120,6 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -137,8 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://github.com/EcoRepSci/reproducible-science">Course Material</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#software-requirements-and-installation-instructions"><i class="fa fa-check"></i><b>0.1</b> Software Requirements and Installation Instructions</a>
+<ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#git"><i class="fa fa-check"></i><b>0.1.1</b> Git</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#spreadsheet-editor"><i class="fa fa-check"></i><b>0.1.2</b> Spreadsheet Editor</a></li>
 <li class="chapter" data-level="0.1.3" data-path="index.html"><a href="index.html#sqlite"><i class="fa fa-check"></i><b>0.1.3</b> SQLite</a></li>
@@ -147,8 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.1.6" data-path="index.html"><a href="index.html#required-r-packages"><i class="fa fa-check"></i><b>0.1.6</b> Required R Packages</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a><ul>
-<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a><ul>
+<li class="chapter" data-level="1" data-path="project-organization.html"><a href="project-organization.html"><i class="fa fa-check"></i><b>1</b> Project Organization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="project-organization.html"><a href="project-organization.html#directory-structure"><i class="fa fa-check"></i><b>1.1</b> Directory structure</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="project-organization.html"><a href="project-organization.html#overlap"><i class="fa fa-check"></i><b>1.1.1</b> Overlap</a></li>
 <li class="chapter" data-level="1.1.2" data-path="project-organization.html"><a href="project-organization.html#minimizing-duplication"><i class="fa fa-check"></i><b>1.1.2</b> Minimizing duplication</a></li>
 <li class="chapter" data-level="1.1.3" data-path="project-organization.html"><a href="project-organization.html#self-containedness"><i class="fa fa-check"></i><b>1.1.3</b> Self-containedness</a></li>
@@ -157,18 +164,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="project-organization.html"><a href="project-organization.html#golden-rules"><i class="fa fa-check"></i><b>1.2</b> Golden rules</a></li>
 <li class="chapter" data-level="1.3" data-path="project-organization.html"><a href="project-organization.html#be-flexible"><i class="fa fa-check"></i><b>1.3</b> Be flexible</a></li>
 <li class="chapter" data-level="1.4" data-path="project-organization.html"><a href="project-organization.html#documentation"><i class="fa fa-check"></i><b>1.4</b> Documentation</a></li>
-<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a><ul>
+<li class="chapter" data-level="1.5" data-path="project-organization.html"><a href="project-organization.html#naming-files"><i class="fa fa-check"></i><b>1.5</b> Naming files</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="project-organization.html"><a href="project-organization.html#computer-readable-file-names"><i class="fa fa-check"></i><b>1.5.1</b> Computer-readable file names</a></li>
 <li class="chapter" data-level="1.5.2" data-path="project-organization.html"><a href="project-organization.html#human-readable-file-names"><i class="fa fa-check"></i><b>1.5.2</b> Human-readable file names</a></li>
 <li class="chapter" data-level="1.5.3" data-path="project-organization.html"><a href="project-organization.html#file-names-that-work-well-with-default-ordering"><i class="fa fa-check"></i><b>1.5.3</b> File names that work well with default ordering</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="project-organization.html"><a href="project-organization.html#rstudio-projects"><i class="fa fa-check"></i><b>1.6</b> RStudio Projects</a></li>
-<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a><ul>
+<li class="chapter" data-level="1.7" data-path="project-organization.html"><a href="project-organization.html#relative-and-absolute-paths"><i class="fa fa-check"></i><b>1.7</b> Relative and absolute paths</a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="project-organization.html"><a href="project-organization.html#path-separators"><i class="fa fa-check"></i><b>1.7.1</b> Path separators</a></li>
 <li class="chapter" data-level="1.7.2" data-path="project-organization.html"><a href="project-organization.html#references"><i class="fa fa-check"></i><b>1.7.2</b> References</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a><ul>
+<li class="chapter" data-level="2" data-path="version-control-git.html"><a href="version-control-git.html"><i class="fa fa-check"></i><b>2</b> Version Control with Git</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="version-control-git.html"><a href="version-control-git.html#command-line-basics"><i class="fa fa-check"></i><b>2.1</b> Command line basics</a></li>
 <li class="chapter" data-level="2.2" data-path="version-control-git.html"><a href="version-control-git.html#configuring-git"><i class="fa fa-check"></i><b>2.2</b> Configuring Git</a></li>
 <li class="chapter" data-level="2.3" data-path="version-control-git.html"><a href="version-control-git.html#getting-help"><i class="fa fa-check"></i><b>2.3</b> Getting help</a></li>
@@ -182,7 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11" data-path="version-control-git.html"><a href="version-control-git.html#git-everyday"><i class="fa fa-check"></i><b>2.11</b> Git everyday</a></li>
 <li class="chapter" data-level="2.12" data-path="version-control-git.html"><a href="version-control-git.html#references-1"><i class="fa fa-check"></i><b>2.12</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a><ul>
+<li class="chapter" data-level="3" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>3</b> Collaborative Science with GitHub</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="github.html"><a href="github.html#adding-a-remote-to-a-local-repository"><i class="fa fa-check"></i><b>3.1</b> Adding a remote to a local repository</a></li>
 <li class="chapter" data-level="3.2" data-path="github.html"><a href="github.html#pushing-to-a-remote-repository"><i class="fa fa-check"></i><b>3.2</b> Pushing to a remote repository</a></li>
 <li class="chapter" data-level="3.3" data-path="github.html"><a href="github.html#cloning-a-repository"><i class="fa fa-check"></i><b>3.3</b> Cloning a repository</a></li>
@@ -194,11 +205,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.9" data-path="github.html"><a href="github.html#pull-requests"><i class="fa fa-check"></i><b>3.9</b> Pull requests</a></li>
 <li class="chapter" data-level="3.10" data-path="github.html"><a href="github.html#references-2"><i class="fa fa-check"></i><b>3.10</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a><ul>
+<li class="chapter" data-level="4" data-path="spreadsheets.html"><a href="spreadsheets.html"><i class="fa fa-check"></i><b>4</b> Best Practices in the Use of Spreadsheets</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#what-are-spreadsheets-good-for"><i class="fa fa-check"></i><b>4.1</b> What are spreadsheets good for?</a></li>
 <li class="chapter" data-level="4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#human-readable-vs.-computer-readable-data"><i class="fa fa-check"></i><b>4.2</b> Human-readable vs. computer-readable data</a></li>
 <li class="chapter" data-level="4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#tidydata"><i class="fa fa-check"></i><b>4.3</b> Tidy data</a></li>
-<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a><ul>
+<li class="chapter" data-level="4.4" data-path="spreadsheets.html"><a href="spreadsheets.html#problematic-practices"><i class="fa fa-check"></i><b>4.4</b> Problematic practices</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-variables-in-a-single-column"><i class="fa fa-check"></i><b>4.4.1</b> Multiple variables in a single column</a></li>
 <li class="chapter" data-level="4.4.2" data-path="spreadsheets.html"><a href="spreadsheets.html#rows-for-variables-columns-for-observation"><i class="fa fa-check"></i><b>4.4.2</b> Rows for variables, columns for observation</a></li>
 <li class="chapter" data-level="4.4.3" data-path="spreadsheets.html"><a href="spreadsheets.html#multiple-tables-in-a-single-spreadsheet"><i class="fa fa-check"></i><b>4.4.3</b> Multiple tables in a single spreadsheet</a></li>
@@ -212,7 +225,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.5" data-path="spreadsheets.html"><a href="spreadsheets.html#document-document-document"><i class="fa fa-check"></i><b>4.5</b> Document, document, document!</a></li>
 <li class="chapter" data-level="4.6" data-path="spreadsheets.html"><a href="spreadsheets.html#references-3"><i class="fa fa-check"></i><b>4.6</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a><ul>
+<li class="chapter" data-level="5" data-path="relational-databases.html"><a href="relational-databases.html"><i class="fa fa-check"></i><b>5</b> Relational Databases</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="relational-databases.html"><a href="relational-databases.html#what-is-a-relational-database"><i class="fa fa-check"></i><b>5.1</b> What is a relational database?</a></li>
 <li class="chapter" data-level="5.2" data-path="relational-databases.html"><a href="relational-databases.html#why-bothering-with-relational-databases"><i class="fa fa-check"></i><b>5.2</b> Why bothering with relational databases?</a></li>
 <li class="chapter" data-level="5.3" data-path="relational-databases.html"><a href="relational-databases.html#database-components"><i class="fa fa-check"></i><b>5.3</b> Database components</a></li>
@@ -220,9 +234,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5" data-path="relational-databases.html"><a href="relational-databases.html#data-types"><i class="fa fa-check"></i><b>5.5</b> Data types</a></li>
 <li class="chapter" data-level="5.6" data-path="relational-databases.html"><a href="relational-databases.html#a-first-look-at-our-practice-database"><i class="fa fa-check"></i><b>5.6</b> A first look at our practice database</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a><ul>
+<li class="chapter" data-level="6" data-path="sql.html"><a href="sql.html"><i class="fa fa-check"></i><b>6</b> Basics of SQL Language</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="sql.html"><a href="sql.html#the-sql-language"><i class="fa fa-check"></i><b>6.1</b> The SQL language</a></li>
-<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a><ul>
+<li class="chapter" data-level="6.2" data-path="sql.html"><a href="sql.html#writing-sql-queries"><i class="fa fa-check"></i><b>6.2</b> Writing SQL queries</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="sql.html"><a href="sql.html#limiting-results"><i class="fa fa-check"></i><b>6.2.1</b> Limiting results</a></li>
 <li class="chapter" data-level="6.2.2" data-path="sql.html"><a href="sql.html#sorting-results"><i class="fa fa-check"></i><b>6.2.2</b> Sorting results</a></li>
 <li class="chapter" data-level="6.2.3" data-path="sql.html"><a href="sql.html#finding-unique-values"><i class="fa fa-check"></i><b>6.2.3</b> Finding unique values</a></li>
@@ -237,7 +253,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.12" data-path="sql.html"><a href="sql.html#nested-select-statements"><i class="fa fa-check"></i><b>6.2.12</b> Nested <code>SELECT</code> statements</a></li>
 <li class="chapter" data-level="6.2.13" data-path="sql.html"><a href="sql.html#order-of-operations"><i class="fa fa-check"></i><b>6.2.13</b> Order of operations</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a><ul>
+<li class="chapter" data-level="6.3" data-path="sql.html"><a href="sql.html#building-a-database"><i class="fa fa-check"></i><b>6.3</b> Building a database</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="sql.html"><a href="sql.html#creating-a-new-database-in-sqlite-studio"><i class="fa fa-check"></i><b>6.3.1</b> Creating a new database in SQLite Studio</a></li>
 <li class="chapter" data-level="6.3.2" data-path="sql.html"><a href="sql.html#creating-tables"><i class="fa fa-check"></i><b>6.3.2</b> Creating tables</a></li>
 <li class="chapter" data-level="6.3.3" data-path="sql.html"><a href="sql.html#adding-constraints"><i class="fa fa-check"></i><b>6.3.3</b> Adding constraints</a></li>
@@ -248,17 +265,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.8" data-path="sql.html"><a href="sql.html#crossing-existing-information-to-derive-new-tables"><i class="fa fa-check"></i><b>6.3.8</b> Crossing existing information to derive new tables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a><ul>
+<li class="chapter" data-level="7" data-path="rsqlite.html"><a href="rsqlite.html"><i class="fa fa-check"></i><b>7</b> Interfacing Databases in R with RSQLite</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="rsqlite.html"><a href="rsqlite.html#the-rsqlite-package"><i class="fa fa-check"></i><b>7.1</b> The RSQLite package</a></li>
 <li class="chapter" data-level="7.2" data-path="rsqlite.html"><a href="rsqlite.html#establising-a-database-connection"><i class="fa fa-check"></i><b>7.2</b> Establising a database connection</a></li>
 <li class="chapter" data-level="7.3" data-path="rsqlite.html"><a href="rsqlite.html#sending-queries-to-the-database"><i class="fa fa-check"></i><b>7.3</b> Sending queries to the database</a></li>
 <li class="chapter" data-level="7.4" data-path="rsqlite.html"><a href="rsqlite.html#a-note-on-reproducibility"><i class="fa fa-check"></i><b>7.4</b> A note on reproducibility</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a><ul>
+<li class="chapter" data-level="8" data-path="rmarkdown.html"><a href="rmarkdown.html"><i class="fa fa-check"></i><b>8</b> Dynamic Documents with RMarkdown</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="rmarkdown.html"><a href="rmarkdown.html#what-is-a-dynamic-document"><i class="fa fa-check"></i><b>8.1</b> What is a dynamic document?</a></li>
 <li class="chapter" data-level="8.2" data-path="rmarkdown.html"><a href="rmarkdown.html#markdown-and-rmarkdown"><i class="fa fa-check"></i><b>8.2</b> Markdown and RMarkdown</a></li>
 <li class="chapter" data-level="8.3" data-path="rmarkdown.html"><a href="rmarkdown.html#installing-rmarkdown"><i class="fa fa-check"></i><b>8.3</b> Installing RMarkdown</a></li>
-<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a><ul>
+<li class="chapter" data-level="8.4" data-path="rmarkdown.html"><a href="rmarkdown.html#writing-an-rmarkdown-document"><i class="fa fa-check"></i><b>8.4</b> Writing an RMarkdown document</a>
+<ul>
 <li class="chapter" data-level="8.4.1" data-path="rmarkdown.html"><a href="rmarkdown.html#creating-the-document"><i class="fa fa-check"></i><b>8.4.1</b> Creating the document</a></li>
 <li class="chapter" data-level="8.4.2" data-path="rmarkdown.html"><a href="rmarkdown.html#yaml-headers"><i class="fa fa-check"></i><b>8.4.2</b> YAML headers</a></li>
 <li class="chapter" data-level="8.4.3" data-path="rmarkdown.html"><a href="rmarkdown.html#code-chunks"><i class="fa fa-check"></i><b>8.4.3</b> Code chunks</a></li>
@@ -270,11 +290,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.4.9" data-path="rmarkdown.html"><a href="rmarkdown.html#the-sky-is-the-limit"><i class="fa fa-check"></i><b>8.4.9</b> The sky is the limit!</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a><ul>
-<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a><ul>
+<li class="chapter" data-level="9" data-path="github-pages.html"><a href="github-pages.html"><i class="fa fa-check"></i><b>9</b> Automatically Generated Websites with GitHub Pages</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="github-pages.html"><a href="github-pages.html#bookdown"><i class="fa fa-check"></i><b>9.1</b> Bookdown</a>
+<ul>
 <li class="chapter" data-level="9.1.1" data-path="github-pages.html"><a href="github-pages.html#creating-a-book"><i class="fa fa-check"></i><b>9.1.1</b> Creating a book</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a><ul>
+<li class="chapter" data-level="9.2" data-path="github-pages.html"><a href="github-pages.html#publishing-a-book-with-github-pages"><i class="fa fa-check"></i><b>9.2</b> Publishing a book with GitHub Pages</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="github-pages.html"><a href="github-pages.html#step-1-set-up-compatibility-with-github-pages"><i class="fa fa-check"></i><b>9.2.1</b> Step 1: Set up compatibility with GitHub Pages</a></li>
 <li class="chapter" data-level="9.2.2" data-path="github-pages.html"><a href="github-pages.html#step-2-set-up-git-repository"><i class="fa fa-check"></i><b>9.2.2</b> Step 2: Set up Git repository</a></li>
 <li class="chapter" data-level="9.2.3" data-path="github-pages.html"><a href="github-pages.html#step-3-link-git-repository-to-remote-github-repository"><i class="fa fa-check"></i><b>9.2.3</b> Step 3: Link Git repository to remote GitHub repository</a></li>
@@ -283,9 +306,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="github-pages.html"><a href="github-pages.html#maintaining-the-website"><i class="fa fa-check"></i><b>9.3</b> Maintaining the website</a></li>
 <li class="chapter" data-level="9.4" data-path="github-pages.html"><a href="github-pages.html#references-4"><i class="fa fa-check"></i><b>9.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a><ul>
+<li class="chapter" data-level="10" data-path="intro-to-r.html"><a href="intro-to-r.html"><i class="fa fa-check"></i><b>10</b> Introduction to R</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="intro-to-r.html"><a href="intro-to-r.html#getting-started"><i class="fa fa-check"></i><b>10.1</b> Getting started</a></li>
-<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a><ul>
+<li class="chapter" data-level="10.2" data-path="intro-to-r.html"><a href="intro-to-r.html#basics-of-r-programming"><i class="fa fa-check"></i><b>10.2</b> Basics of R programming</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="intro-to-r.html"><a href="intro-to-r.html#assigning-objects"><i class="fa fa-check"></i><b>10.2.1</b> Assigning objects</a></li>
 <li class="chapter" data-level="10.2.2" data-path="intro-to-r.html"><a href="intro-to-r.html#adding-comments"><i class="fa fa-check"></i><b>10.2.2</b> Adding comments</a></li>
 <li class="chapter" data-level="10.2.3" data-path="intro-to-r.html"><a href="intro-to-r.html#headers-and-description"><i class="fa fa-check"></i><b>10.2.3</b> Headers and description</a></li>
@@ -305,15 +330,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.3" data-path="intro-to-r.html"><a href="intro-to-r.html#references-5"><i class="fa fa-check"></i><b>10.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a><ul>
-<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a><ul>
+<li class="chapter" data-level="11" data-path="troubleshooting.html"><a href="troubleshooting.html"><i class="fa fa-check"></i><b>11</b> Troubleshooting in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-interpret-error-messages"><i class="fa fa-check"></i><b>11.1</b> How to interpret error messages</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="troubleshooting.html"><a href="troubleshooting.html#locating-the-problematic-piece-of-code"><i class="fa fa-check"></i><b>11.1.1</b> Locating the problematic piece of code</a></li>
 <li class="chapter" data-level="11.1.2" data-path="troubleshooting.html"><a href="troubleshooting.html#isolating-the-error"><i class="fa fa-check"></i><b>11.1.2</b> Isolating the error</a></li>
 <li class="chapter" data-level="11.1.3" data-path="troubleshooting.html"><a href="troubleshooting.html#deciphering-error-messages"><i class="fa fa-check"></i><b>11.1.3</b> Deciphering error messages</a></li>
 <li class="chapter" data-level="11.1.4" data-path="troubleshooting.html"><a href="troubleshooting.html#syntax-errors"><i class="fa fa-check"></i><b>11.1.4</b> Syntax errors</a></li>
 <li class="chapter" data-level="11.1.5" data-path="troubleshooting.html"><a href="troubleshooting.html#errors-from-using-package-functions"><i class="fa fa-check"></i><b>11.1.5</b> Errors from using package functions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a><ul>
+<li class="chapter" data-level="11.2" data-path="troubleshooting.html"><a href="troubleshooting.html#how-to-look-for-help"><i class="fa fa-check"></i><b>11.2</b> How to look for help</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="troubleshooting.html"><a href="troubleshooting.html#r-documentation"><i class="fa fa-check"></i><b>11.2.1</b> R documentation</a></li>
 <li class="chapter" data-level="11.2.2" data-path="troubleshooting.html"><a href="troubleshooting.html#google"><i class="fa fa-check"></i><b>11.2.2</b> Google</a></li>
 <li class="chapter" data-level="11.2.3" data-path="troubleshooting.html"><a href="troubleshooting.html#stackoverflow-et-al."><i class="fa fa-check"></i><b>11.2.3</b> StackOverflow et al.</a></li>
@@ -323,16 +351,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="troubleshooting.html"><a href="troubleshooting.html#reproducible-examples"><i class="fa fa-check"></i><b>11.5</b> Reproducible examples</a></li>
 <li class="chapter" data-level="11.6" data-path="troubleshooting.html"><a href="troubleshooting.html#the-rubber-duck"><i class="fa fa-check"></i><b>11.6</b> The rubber duck</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a><ul>
+<li class="chapter" data-level="12" data-path="renv.html"><a href="renv.html"><i class="fa fa-check"></i><b>12</b> Dependency Management in R</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="renv.html"><a href="renv.html#whats-the-need-for-dependency-management"><i class="fa fa-check"></i><b>12.1</b> What’s the need for dependency management?</a></li>
-<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a><ul>
+<li class="chapter" data-level="12.2" data-path="renv.html"><a href="renv.html#the-renv-package"><i class="fa fa-check"></i><b>12.2</b> The <code>renv</code> package</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="renv.html"><a href="renv.html#usage"><i class="fa fa-check"></i><b>12.2.1</b> Usage</a></li>
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="renv.html"><a href="renv.html#references-6"><i class="fa fa-check"></i><b>12.3</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a><ul>
+<li class="chapter" data-level="13" data-path="tidyverse.html"><a href="tidyverse.html"><i class="fa fa-check"></i><b>13</b> Data Wrangling with tidyverse</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="tidyverse.html"><a href="tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>13.1</b> Welcome to the tidyverse</a></li>
-<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a><ul>
+<li class="chapter" data-level="13.2" data-path="tidyverse.html"><a href="tidyverse.html#tidyverse-functions"><i class="fa fa-check"></i><b>13.2</b> Tidyverse functions</a>
+<ul>
 <li class="chapter" data-level="13.2.1" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-columns"><i class="fa fa-check"></i><b>13.2.1</b> Subsetting columns</a></li>
 <li class="chapter" data-level="13.2.2" data-path="tidyverse.html"><a href="tidyverse.html#subsetting-rows-with-logical-conditions"><i class="fa fa-check"></i><b>13.2.2</b> Subsetting rows with logical conditions</a></li>
 <li class="chapter" data-level="13.2.3" data-path="tidyverse.html"><a href="tidyverse.html#concatenating-operations-with-pipes"><i class="fa fa-check"></i><b>13.2.3</b> Concatenating operations with pipes</a></li>
@@ -349,15 +381,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="tidyverse.html"><a href="tidyverse.html#style"><i class="fa fa-check"></i><b>13.3</b> Style</a></li>
 <li class="chapter" data-level="13.4" data-path="tidyverse.html"><a href="tidyverse.html#references-7"><i class="fa fa-check"></i><b>13.4</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a><ul>
+<li class="chapter" data-level="14" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>14</b> Data Visualization with ggplot2</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="ggplot2.html"><a href="ggplot2.html#a-grammar-of-graphics"><i class="fa fa-check"></i><b>14.1</b> A Grammar of Graphics</a></li>
-<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a><ul>
+<li class="chapter" data-level="14.2" data-path="ggplot2.html"><a href="ggplot2.html#building-plots"><i class="fa fa-check"></i><b>14.2</b> Building plots</a>
+<ul>
 <li class="chapter" data-level="14.2.1" data-path="ggplot2.html"><a href="ggplot2.html#basic-scatterplot"><i class="fa fa-check"></i><b>14.2.1</b> Basic scatterplot</a></li>
 <li class="chapter" data-level="14.2.2" data-path="ggplot2.html"><a href="ggplot2.html#basic-histogram"><i class="fa fa-check"></i><b>14.2.2</b> Basic histogram</a></li>
 <li class="chapter" data-level="14.2.3" data-path="ggplot2.html"><a href="ggplot2.html#basic-density-plot"><i class="fa fa-check"></i><b>14.2.3</b> Basic density plot</a></li>
 <li class="chapter" data-level="14.2.4" data-path="ggplot2.html"><a href="ggplot2.html#other-geom-functions"><i class="fa fa-check"></i><b>14.2.4</b> Other <code>geom</code> functions</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a><ul>
+<li class="chapter" data-level="14.3" data-path="ggplot2.html"><a href="ggplot2.html#customizing-plots"><i class="fa fa-check"></i><b>14.3</b> Customizing plots</a>
+<ul>
 <li class="chapter" data-level="14.3.1" data-path="ggplot2.html"><a href="ggplot2.html#changing-axis-labels"><i class="fa fa-check"></i><b>14.3.1</b> Changing axis labels</a></li>
 <li class="chapter" data-level="14.3.2" data-path="ggplot2.html"><a href="ggplot2.html#changing-colors"><i class="fa fa-check"></i><b>14.3.2</b> Changing colors</a></li>
 <li class="chapter" data-level="14.3.3" data-path="ggplot2.html"><a href="ggplot2.html#modifying-legends"><i class="fa fa-check"></i><b>14.3.3</b> Modifying legends</a></li>
@@ -377,11 +412,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.6" data-path="ggplot2.html"><a href="ggplot2.html#saving-plots"><i class="fa fa-check"></i><b>14.6</b> Saving plots</a></li>
 <li class="chapter" data-level="14.7" data-path="ggplot2.html"><a href="ggplot2.html#references-8"><i class="fa fa-check"></i><b>14.7</b> References</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a><ul>
+<li class="chapter" data-level="15" data-path="lubridate.html"><a href="lubridate.html"><i class="fa fa-check"></i><b>15</b> Dates and Times in R</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="lubridate.html"><a href="lubridate.html#what-makes-dates-and-times-special"><i class="fa fa-check"></i><b>15.1</b> What makes dates and times special</a></li>
 <li class="chapter" data-level="15.2" data-path="lubridate.html"><a href="lubridate.html#definitions"><i class="fa fa-check"></i><b>15.2</b> Definitions</a></li>
 <li class="chapter" data-level="15.3" data-path="lubridate.html"><a href="lubridate.html#under-the-hood"><i class="fa fa-check"></i><b>15.3</b> Under the hood</a></li>
-<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a><ul>
+<li class="chapter" data-level="15.4" data-path="lubridate.html"><a href="lubridate.html#the-lubridate-package"><i class="fa fa-check"></i><b>15.4</b> The <code>lubridate</code> package</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="lubridate.html"><a href="lubridate.html#parsing-dates-and-times"><i class="fa fa-check"></i><b>15.4.1</b> Parsing dates and times</a></li>
 <li class="chapter" data-level="15.4.2" data-path="lubridate.html"><a href="lubridate.html#extracting-components-of-a-date-time-object"><i class="fa fa-check"></i><b>15.4.2</b> Extracting components of a date-time object</a></li>
 <li class="chapter" data-level="15.4.3" data-path="lubridate.html"><a href="lubridate.html#time-zones"><i class="fa fa-check"></i><b>15.4.3</b> Time zones</a></li>
@@ -410,12 +447,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="github" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Collaborative Science with GitHub</h1>
+<div id="github" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Collaborative Science with GitHub<a href="github.html#github" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>So far, we have gained a good understanding of how Git works locally on our computer. Now we are going to see how to work with remote repositories and use Git to collaborate with others. A remote repository is a copy of a repository that is stored elsewhere than your local copy, such as a web server or a private network server. In most cases, when collaborating, you’ll have a copy of a repository on your machine (the local repository) and a copy on a server that is accessible to others (the remote repository). The remote repository can be hosted on GitHub.</p>
 <p>There are two ways to set up your local and remote repositories to interact. One is to set up the local first and link it with a remote later. The second one is to create the remote first and “clone it” on your computer to get a local copy. If you’re starting a brand new repository you can go either way, but the first approach is what you would do if you wanted to link a repository that already exists on your local machine to a GitHub repository.</p>
-<div id="adding-a-remote-to-a-local-repository" class="section level2">
-<h2><span class="header-section-number">3.1</span> Adding a remote to a local repository</h2>
+<div id="adding-a-remote-to-a-local-repository" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Adding a remote to a local repository<a href="github.html#adding-a-remote-to-a-local-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Starting from an existing Git repository on your computer, you can link this to its GitHub counterpart by adding a remote URL. To set up a URL, go on the GitHub website, click on the ‘+’ sign in the top-right corner and select ‘New Repository’.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:github01"></span>
 <img src="img/github-01.PNG" alt="Create new GitHub repository" width="100%" />
@@ -431,58 +468,58 @@ Figure 3.2: Create new GitHub repository
 </p>
 </div>
 <p>To connect the local and remote repositories, you can copy the URL of the remote repository and paste it in the following command in the terminal:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="github.html#cb30-1"></a><span class="op">&gt;</span> <span class="fu">git</span> remote add origin https://github.com/picardis/myrepo.git</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb30-1"><a href="github.html#cb30-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">remote</span> add origin https://github.com/picardis/myrepo.git</span></code></pre></div>
 <p>‘Origin’ is the conventional name given to a remote repository. You could use any other name, but since GitHub uses ‘origin’ as the default name when creating a repository from the website, using this convention will make things easier later. You’d need a very good reason to use a different name.</p>
 <p>To check that the remote was added correctly you can view the list of remotes associated with your local repository:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="github.html#cb31-1"></a><span class="op">&gt;</span> <span class="fu">git</span> remote -v</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb31-1"><a href="github.html#cb31-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">remote</span> <span class="at">-v</span></span></code></pre></div>
 <p>We’ll talk about branches later in this chapter, and we’ll see that a repository can have multiple branches. At a minimum, each repository includes one main branch, which is created by default when you create your repository. By default, this branch is called <code>master</code>. Starting in 2020, GitHub has started to switch to using <code>main</code> instead of <code>master</code> to remove unnecessary references to slavery. We like this change,
 because Black Lives Matter. So we’ll go ahead and rename the <code>master</code> branch to <code>main</code>:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="github.html#cb32-1"></a><span class="op">&gt;</span> <span class="fu">git</span> branch -M main</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb32-1"><a href="github.html#cb32-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">branch</span> <span class="at">-M</span> main</span></code></pre></div>
 </div>
-<div id="pushing-to-a-remote-repository" class="section level2">
-<h2><span class="header-section-number">3.2</span> Pushing to a remote repository</h2>
+<div id="pushing-to-a-remote-repository" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Pushing to a remote repository<a href="github.html#pushing-to-a-remote-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now it’s time to transfer an exact copy of the files in the local repository to the remote one. This action is called ‘pushing’. The first time you push, it’s a good idea to specify which branch Git should use as the default remote for the local main branch in the future. We do this by adding the flag ‘-u’ (for upstream), followed by the name of the remote and the name of the local branch that you want to link up:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="github.html#cb33-1"></a><span class="op">&gt;</span> <span class="fu">git</span> push -u origin main</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb33-1"><a href="github.html#cb33-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">push</span> <span class="at">-u</span> origin main</span></code></pre></div>
 <p>This command is identical to the following:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="github.html#cb34-1"></a><span class="op">&gt;</span> <span class="fu">git</span> push --set-upstream origin main</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb34-1"><a href="github.html#cb34-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">push</span> <span class="at">--set-upstream</span> origin main</span></code></pre></div>
 <p>You only have to set the upstream the first time you push a certain branch. After the upstream is set up, you will be able to just push changes to the remote repository by doing:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb35-1"><a href="github.html#cb35-1"></a><span class="op">&gt;</span> <span class="fu">git</span> push</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb35-1"><a href="github.html#cb35-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">push</span></span></code></pre></div>
 <p>You will be prompted to enter your GitHub password for the push to go through.</p>
 <p>Once you push, all the files you committed are transferred and your two repositories will mirror each other. To keep the remote repository synchronized with the local, any time you commit changes to tracked files you will also need to push them. That adds a new step to our workflow: add/stage, commit, push.</p>
 </div>
-<div id="cloning-a-repository" class="section level2">
-<h2><span class="header-section-number">3.3</span> Cloning a repository</h2>
+<div id="cloning-a-repository" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Cloning a repository<a href="github.html#cloning-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The other way to get a local-remote repository pair set up is to create a GitHub repository first and clone it on your computer. In this case, it doesn’t matter whether the remote repository is empty or not, so you can add a README. Cloning a repository is also useful if you are collaborating on a project with someone on their repository. You and your collaborator/s can all have a copy of the same repository on each of your computers by cloning a shared remote repository, which will then be synchronized with changes made by anyone on the team. The person who created the repository will need to add the others as collaborators so that they’re able to clone it.</p>
 <p>To clone a repository, open the terminal and navigate to the folder where you want to download it. Then use the following command:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb36-1"><a href="github.html#cb36-1"></a>$ <span class="fu">git</span> clone https://github.com/picardis/myrepo.git</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb36-1"><a href="github.html#cb36-1" tabindex="-1"></a><span class="ex">$</span> git clone https://github.com/picardis/myrepo.git</span></code></pre></div>
 <p>The repository will be copied to your computer into the folder you specified.</p>
 </div>
-<div id="synchronizing-changes-among-collaborators" class="section level2">
-<h2><span class="header-section-number">3.4</span> Synchronizing changes among collaborators</h2>
+<div id="synchronizing-changes-among-collaborators" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Synchronizing changes among collaborators<a href="github.html#synchronizing-changes-among-collaborators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The inverse of pushing is pulling, which transfers files and changes from the remote repository to the local one:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb37-1"><a href="github.html#cb37-1"></a>$ <span class="fu">git</span> pull </span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb37-1"><a href="github.html#cb37-1" tabindex="-1"></a><span class="ex">$</span> git pull </span></code></pre></div>
 <p>When you are working with collaborators on a shared GitHub repository, you will periodically need to pull from it to make sure your local copy is synchronized with changes somebody else might have made. You certainly need to pull before you push your own changes, because Git won’t allow you to push if the remote repository has changes that you don’t have on your local copy. If the two repositories are already up-to-date and you try to pull, nothing will happen because there are no changes on the remote repository that aren’t already in the local.</p>
 <p>If a collaborator makes a change that is in conflict with what we committed to our own local repository, when we try to pull we are going to encounter a merge conflict. Merge conflicts occur when two collaborators work on the same file at the same time. GitHub does not know how to automatically reconcile changes to the same file, and it will throw an error that we’ll need to resolve manually.</p>
 </div>
-<div id="resolving-conflicts" class="section level2">
-<h2><span class="header-section-number">3.5</span> Resolving conflicts</h2>
+<div id="resolving-conflicts" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Resolving conflicts<a href="github.html#resolving-conflicts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Having to deal with merge conflicts is eventually very likely when working on collaborative projects, but they can be handled and resolved without too much pain.</p>
 <p>If two collaborators edit the same file at the same time without pulling each other’s changes first, when one tries to push their changes to the remote they will get an error message that looks like this:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb38-1"><a href="github.html#cb38-1"></a><span class="ex">To</span> https://github.com/picardis/myrepo.git</span>
-<span id="cb38-2"><a href="github.html#cb38-2"></a> ! [<span class="ex">rejected</span>]        master -<span class="op">&gt;</span> master (fetch first)</span>
-<span id="cb38-3"><a href="github.html#cb38-3"></a><span class="ex">error</span>: failed to push some refs to <span class="st">&#39;https://github.com/picardis/myrepo.git&#39;</span></span>
-<span id="cb38-4"><a href="github.html#cb38-4"></a><span class="ex">hint</span>: Updates were rejected because the remote contains work that you do</span>
-<span id="cb38-5"><a href="github.html#cb38-5"></a><span class="ex">hint</span>: not have locally. This is usually caused by another repository pushing</span>
-<span id="cb38-6"><a href="github.html#cb38-6"></a><span class="ex">hint</span>: to the same ref. You may want to first integrate the remote changes</span>
-<span id="cb38-7"><a href="github.html#cb38-7"></a><span class="ex">hint</span>: (e.g., <span class="st">&#39;git pull ...&#39;</span>) <span class="ex">before</span> pushing again.</span>
-<span id="cb38-8"><a href="github.html#cb38-8"></a><span class="ex">hint</span>: See the <span class="st">&#39;Note about fast-forwards&#39;</span> in <span class="st">&#39;git push --help&#39;</span> for details.</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb38-1"><a href="github.html#cb38-1" tabindex="-1"></a><span class="ex">To</span> https://github.com/picardis/myrepo.git</span>
+<span id="cb38-2"><a href="github.html#cb38-2" tabindex="-1"></a> <span class="ot">! </span><span class="ex">[rejected]</span>        master <span class="at">-</span><span class="op">&gt;</span> master <span class="er">(</span><span class="ex">fetch</span> first<span class="kw">)</span></span>
+<span id="cb38-3"><a href="github.html#cb38-3" tabindex="-1"></a><span class="ex">error:</span> failed to push some refs to <span class="st">&#39;https://github.com/picardis/myrepo.git&#39;</span></span>
+<span id="cb38-4"><a href="github.html#cb38-4" tabindex="-1"></a><span class="ex">hint:</span> Updates were rejected because the remote contains work that you do</span>
+<span id="cb38-5"><a href="github.html#cb38-5" tabindex="-1"></a><span class="ex">hint:</span> not have locally. This is usually caused by another repository pushing</span>
+<span id="cb38-6"><a href="github.html#cb38-6" tabindex="-1"></a><span class="ex">hint:</span> to the same ref. You may want to first integrate the remote changes</span>
+<span id="cb38-7"><a href="github.html#cb38-7" tabindex="-1"></a><span class="ex">hint:</span> <span class="er">(</span><span class="ex">e.g.,</span> <span class="st">&#39;git pull ...&#39;</span><span class="kw">)</span> <span class="ex">before</span> pushing again.</span>
+<span id="cb38-8"><a href="github.html#cb38-8" tabindex="-1"></a><span class="ex">hint:</span> See the <span class="st">&#39;Note about fast-forwards&#39;</span> in <span class="st">&#39;git push --help&#39;</span> for details.</span></code></pre></div>
 <p>Git is rejecting the push because it found some updates in the remote repository that have not been incorporated in the local copy. To solve this, the person who got the error will need to pull the most recent changes, merge them into their current copy, and then push the resulting file.</p>
 <p>After pulling, if we open the file where the conflict is, we’ll find that Git did not erase one person’s changes in favor of the other’s; instead, it marked the lines where conflicting changes occur. The beginning and end of the problematic chunk are highlighted, and the two versions are separated by ‘=’ signs.</p>
 <p>Now it is up to us to reconcile these changes however we consider appropriate. We could keep our own changes, keep the changes made by our collaborator, write something new to replace both, or delete the change entirely. Once the conflict is removed and the file is saved, we can proceed as usual by staging the file, committing it, and pushing it. Now, when any of the other collaborators pulls from the repository again, they will get the merged version of this file.</p>
 <p>In some cases, collaborators will make simultaneous changes to a file that are mutually exclusive – for example, one person will delete a line of code while another person will edit that same line. However, changes don’t need to be mutually exclusive for a merge conflict to happen: any time two users edit the same line of the same file at the same time (for example, two users may both add a new argument to the same function), Git is going to play it safe and call a merge conflict regardless of whether the changes contradict each other or not. Conflict resolution requires the user to verify whether the changes affect each other and if they can both stay or not.</p>
 </div>
-<div id="avoiding-conflicts" class="section level2">
-<h2><span class="header-section-number">3.6</span> Avoiding conflicts</h2>
+<div id="avoiding-conflicts" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Avoiding conflicts<a href="github.html#avoiding-conflicts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Merge conflicts need to be manually resolved by a person, which is time-consuming. More importantly, the person who resolves a merge conflicts is making a judgement call on what is the best way of fixing the situation. Having to introduce subjective judgement calls is perhaps the weakest spot of the entire collaborative version control workflow. Preventing conflicts from happening in the first place is better than having to fix them. There are a few things that can help prevent merge conflicts:</p>
 <ul>
 <li>Pull often: decreases probability that your working version is not up-to-date;</li>
@@ -491,26 +528,26 @@ because Black Lives Matter. So we’ll go ahead and rename the <code>master</cod
 <li>Working on branches or forks… more on this in the next sections.</li>
 </ul>
 </div>
-<div id="working-with-branches" class="section level2">
-<h2><span class="header-section-number">3.7</span> Working with branches</h2>
+<div id="working-with-branches" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Working with branches<a href="github.html#working-with-branches" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>By default, a new repository contains a single branch: the main branch. However, we can create new branches within a repository. A branch is like a parallel universe where any changes we make on the files only exist on that branch and do not affect the main branch. Branches allow you to freely experiment with editing files and code without affecting the original project until you’re ready to merge them.</p>
 <p>The command to create a branch is:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb39-1"><a href="github.html#cb39-1"></a><span class="op">&gt;</span> <span class="fu">git</span> branch my-branch</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb39-1"><a href="github.html#cb39-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">branch</span> my-branch</span></code></pre></div>
 <p>To start working on the new branch, we switch to it with the following command:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb40-1"><a href="github.html#cb40-1"></a><span class="op">&gt;</span> <span class="fu">git</span> checkout my-branch</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb40-1"><a href="github.html#cb40-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">checkout</span> my-branch</span></code></pre></div>
 <p>Or we could also create the branch and switch to it all in one:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb41-1"><a href="github.html#cb41-1"></a><span class="op">&gt;</span> <span class="fu">git</span> checkout -b my-branch</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb41-1"><a href="github.html#cb41-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">checkout</span> <span class="at">-b</span> my-branch</span></code></pre></div>
 <p>Where “b” stands for branch. To verify which branch we’re on, we can use ‘git log’ (we’ve used this same command before to look at the commit history):</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb42-1"><a href="github.html#cb42-1"></a><span class="op">&gt;</span> <span class="fu">git</span> log </span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb42-1"><a href="github.html#cb42-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">log</span> </span></code></pre></div>
 <p>The word ‘HEAD’ in the output of <code>git log</code> is called a pointer; it tells us which branch we’re currently working on. On creation, a new branch shares the commit history of the main branch up until the moment the branch was created. After that, the two commit histories are allowed to diverge. Any changes we commit to a branch will be only effective on the that branch and not affect the others. This takes off all the pressure of making changes to your code that could potentially break your workflow downstream. Once you’ve had a chance to verify that the changes work the way you want them to, you can merge the branches back into one.</p>
 <p>To merge changes made in a branch into the main branch we use:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb43-1"><a href="github.html#cb43-1"></a><span class="op">&gt;</span> <span class="fu">git</span> merge my-branch</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb43-1"><a href="github.html#cb43-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">merge</span> my-branch</span></code></pre></div>
 <p>And then we can delete the ‘my-branch’ branch which is no longer needed:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb44-1"><a href="github.html#cb44-1"></a>$ <span class="fu">git</span> branch -d my-branch</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb44-1"><a href="github.html#cb44-1" tabindex="-1"></a><span class="ex">$</span> git branch <span class="at">-d</span> my-branch</span></code></pre></div>
 <p>If there are conflicting changes on the two branches we are trying to merge, Git will halt the process and issue a merge conflict similar to what we have seen before.</p>
 </div>
-<div id="forking-a-repository" class="section level2">
-<h2><span class="header-section-number">3.8</span> Forking a repository</h2>
+<div id="forking-a-repository" class="section level2 hasAnchor" number="3.8">
+<h2><span class="header-section-number">3.8</span> Forking a repository<a href="github.html#forking-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Forking a repository means creating a copy of an existing repository where you can make changes without affecting the original repository. You can technically fork your own repository, but forking is mostly used to get a copy of somebody else’s repository. For example, if you want to contribute to a project that was created by a person you don’t know, or if you want to build off of their code because it does something similar to what you need to do, you can fork their repository and work on it without their copy being affected.</p>
 <p>The cool thing about forking is that, if the owner makes changes to their repository, you can pull those changes to your fork so that your copy of the repository stays in sync with the original. Also, you can contribute your own changes by submitting them to the original repository through pull requests. This is the main difference between forking and cloning somebody else’s repository: by cloning, you won’t be able to update your copy to include new changes made in the original and you won’t be able to contribute back unless you’re added as a collaborator.</p>
 <p>Unlike all the other functionalities we have seen so far, which are Git commands, forking is a GitHub functionality. There is no built-in Git function to fork a repository from the command line. To fork a repository, go to the web page of that repository and click “Fork” in the top-right corner. This will create a copy of the repository on your GitHub account.</p>
@@ -521,13 +558,13 @@ Figure 3.3: Fork GitHub repository
 </p>
 </div>
 <p>Now, if you also want a local copy of this repository on your computer, you can clone your fork. For example, if I forked octocat’s Spoon-Knife repository onto my GitHub account, I could then clone it onto my computer like so:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb45-1"><a href="github.html#cb45-1"></a><span class="op">&gt;</span> <span class="fu">git</span> clone https://github.com/picardis/Spoon-Knife</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb45-1"><a href="github.html#cb45-1" tabindex="-1"></a><span class="op">&gt;</span> git <span class="ex">clone</span> https://github.com/picardis/Spoon-Knife</span></code></pre></div>
 <p>To keep my fork up-to-date with the original repository, I can configure it as follows:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb46-1"><a href="github.html#cb46-1"></a>$ <span class="fu">git</span> remote add upstream https://github.com/octocat/Spoon-Knife.git</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb46-1"><a href="github.html#cb46-1" tabindex="-1"></a><span class="ex">$</span> git remote add upstream https://github.com/octocat/Spoon-Knife.git</span></code></pre></div>
 <p>Now I will be able to pull from the original repository and keep my local copy synchronized. I won’t be able to push because I do not have collaborator privileges on this repository.</p>
 </div>
-<div id="pull-requests" class="section level2">
-<h2><span class="header-section-number">3.9</span> Pull requests</h2>
+<div id="pull-requests" class="section level2 hasAnchor" number="3.9">
+<h2><span class="header-section-number">3.9</span> Pull requests<a href="github.html#pull-requests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Pull requests are the way to ask that the edits you made in a fork (or a branch) get merged into the original repository (or main branch). To ask the owner of a repository to view and potentially integrate the changes you made in your own forked version, you submit a pull request. Similarly, to let your collaborators know about the edits you made and let them review them before they get merged, you submit a pull request. There is a key difference here: while as an external agent you have no other choice but submitting a pull request to merge a fork into a repository, as a collaborator you could simply merge your edits if you wanted to. If you are working on your own repository by yourself, there is no need to go through pull requests to merge a branch. But if you are collaborating with people, it is still good and courteous practice to use pull requests as a heads-up before you merge your changes, so that others on the project can review and approve them.</p>
 <p>The most straightforward way to submit a pull request is from the GitHub website. To start a pull request, you must have some changes committed to the repository or branch where you want to merge them. Then you can go to the repository page on GitHub and click on the ‘Pull requests’ tab, then click ‘New pull request’. Choose your target branch, enter a title and description, and then click ‘Send pull request’. Once the pull request is open, everyone can write comments on it, see all the commits it includes, and look at the changes it proposes within files.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:github04"></span>
@@ -538,8 +575,8 @@ Figure 3.4: Pull request
 </div>
 <p>Once everyone is happy with the proposed changes, you are ready to merge the pull request. If there are no merge conflicts, you will see a ‘Merge pull request’ button.</p>
 </div>
-<div id="references-2" class="section level2">
-<h2><span class="header-section-number">3.10</span> References</h2>
+<div id="references-2" class="section level2 hasAnchor" number="3.10">
+<h2><span class="header-section-number">3.10</span> References<a href="github.html#references-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>GitHub Community Forum: <a href="https://github.community/" class="uri">https://github.community/</a></li>
 </ul>
@@ -612,7 +649,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

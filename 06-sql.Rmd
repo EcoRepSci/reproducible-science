@@ -9,7 +9,7 @@ library(DBI)
 ```
 
 ```{r conn, echo = FALSE, eval = TRUE}
-dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+dragons_db <- dbConnect(RSQLite::SQLite(), "data/dragons.db")
 ```
 
 ## The SQL language

@@ -54,7 +54,7 @@ using RSQLite like we learned in Chapter \@ref(rsqlite):
 ```{r tidy4, eval = TRUE, echo = TRUE}
 library(DBI)
 
-dragons_db <- dbConnect(RSQLite::SQLite(), "../../Course Material/Data/dragons/dragons.db")
+dragons_db <- dbConnect(RSQLite::SQLite(), "data/dragons.db")
 ```
 
 And let's load all the tables:
