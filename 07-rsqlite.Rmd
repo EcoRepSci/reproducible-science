@@ -21,7 +21,7 @@ to SQLite. So, first things first, we are going to load the DBI package:
 library(DBI)
 ```
 
-## Establising a database connection
+## Establishing a database connection
 
 We start by connecting to a database, either an existing one or one we create 
 new. The `dbConnect` function takes as input a file path for the database. If
