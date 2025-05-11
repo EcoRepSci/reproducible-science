@@ -539,7 +539,7 @@ will look like this:
 ```{sql}
 SELECT morphometrics.dragon_id, wingspan_cm, sex
 FROM morphometrics -- this is our left table
-LEFT JOIN dragons -- this is our left table 
+LEFT JOIN dragons -- this is our right table 
 ON morphometrics.dragon_id = dragons.dragon_id -- this is the shared column
 LIMIT 10;
 ```
