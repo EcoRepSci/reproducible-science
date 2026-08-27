@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Dynamic Documents with RMarkdown | Reproducible Data Science</title>
-  <meta name="description" content="WLF 553: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 5530: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Dynamic Documents with RMarkdown | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 5530: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 8 Dynamic Documents with RMarkdown | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 5530: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2024-08-20" />
+<meta name="date" content="2026-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -502,8 +503,8 @@ the conversion to the final file format.</p>
 <h2><span class="header-section-number">8.3</span> Installing RMarkdown<a href="rmarkdown.html#installing-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To get started with RMarkdown documents, we need to make sure we have the
 necessary R packages installed:</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="rmarkdown.html#cb178-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>) </span>
-<span id="cb178-2"><a href="rmarkdown.html#cb178-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="rmarkdown.html#cb177-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rmarkdown&quot;</span>) </span>
+<span id="cb177-2"><a href="rmarkdown.html#cb177-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
 </div>
 <div id="writing-an-rmarkdown-document" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Writing an RMarkdown document<a href="rmarkdown.html#writing-an-rmarkdown-document" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -534,12 +535,12 @@ Figure 8.3: Create a new RMarkdown file
 <p>Once you click OK, RStudio will create a new document that automatically
 contains a YAML header. YAML stands for “YAML Ain’t Markup Language” and it
 encodes the metadata of the document. This is what it looks like:</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb179-1"><a href="rmarkdown.html#cb179-1" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb179-2"><a href="rmarkdown.html#cb179-2" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Untitled&quot;</span></span>
-<span id="cb179-3"><a href="rmarkdown.html#cb179-3" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Simona Picardi&quot;</span></span>
-<span id="cb179-4"><a href="rmarkdown.html#cb179-4" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2/18/2021&quot;</span></span>
-<span id="cb179-5"><a href="rmarkdown.html#cb179-5" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb179-6"><a href="rmarkdown.html#cb179-6" tabindex="-1"></a><span class="co">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb178-1"><a href="rmarkdown.html#cb178-1" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb178-2"><a href="rmarkdown.html#cb178-2" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Untitled&quot;</span></span>
+<span id="cb178-3"><a href="rmarkdown.html#cb178-3" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Simona Picardi&quot;</span></span>
+<span id="cb178-4"><a href="rmarkdown.html#cb178-4" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2/18/2021&quot;</span></span>
+<span id="cb178-5"><a href="rmarkdown.html#cb178-5" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb178-6"><a href="rmarkdown.html#cb178-6" tabindex="-1"></a><span class="co">---</span></span></code></pre></div>
 <p>The author and date were automatically added in, as well as the default output
 format (HTML). We can go ahead and edit the title, or anything else that is in
 quotes if we want the date to be different our our name to appear differently
@@ -629,9 +630,9 @@ code-generated (for example, a photo). There are several ways to do that. One is
 to use the syntax <code>![Caption](path_to_image.png)</code> (this needs to be in a
 new line). Another option is to use the <code>include_graphics</code> function from <code>knitr</code>.
 You can create a new code chunk where you want the image to appear:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb181-1"><a href="rmarkdown.html#cb181-1" tabindex="-1"></a><span class="in">```{r image, fig.cap=&quot;this is a caption&quot;, fig.align=&#39;center&#39;, out.width=&#39;100%&#39;}</span></span>
-<span id="cb181-2"><a href="rmarkdown.html#cb181-2" tabindex="-1"></a><span class="in">knitr::include_graphics(&quot;img/my_image.png&quot;)</span></span>
-<span id="cb181-3"><a href="rmarkdown.html#cb181-3" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb180-1"><a href="rmarkdown.html#cb180-1" tabindex="-1"></a><span class="in">```{r image, fig.cap=&quot;this is a caption&quot;, fig.align=&#39;center&#39;, out.width=&#39;100%&#39;}</span></span>
+<span id="cb180-2"><a href="rmarkdown.html#cb180-2" tabindex="-1"></a><span class="in">knitr::include_graphics(&quot;img/my_image.png&quot;)</span></span>
+<span id="cb180-3"><a href="rmarkdown.html#cb180-3" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>Note the chunk options: <code>fig.cap</code> allows you to add a caption under the figure,
 <code>fig.align</code> allows you to tweak the alignment of the image with respect to the
 page, and you can control the size with <code>out.width</code>.</p>
@@ -640,15 +641,15 @@ page, and you can control the size with <code>out.width</code>.</p>
 <h3><span class="header-section-number">8.4.7</span> Adding a table of contents<a href="rmarkdown.html#adding-a-table-of-contents" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can add a table of contents to your document by adding an option for it in
 the YAML header:</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb182-1"><a href="rmarkdown.html#cb182-1" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb182-2"><a href="rmarkdown.html#cb182-2" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Untitled&quot;</span></span>
-<span id="cb182-3"><a href="rmarkdown.html#cb182-3" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Simona Picardi&quot;</span></span>
-<span id="cb182-4"><a href="rmarkdown.html#cb182-4" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2/18/2021&quot;</span></span>
-<span id="cb182-5"><a href="rmarkdown.html#cb182-5" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
-<span id="cb182-6"><a href="rmarkdown.html#cb182-6" tabindex="-1"></a><span class="co">  html_document:</span></span>
-<span id="cb182-7"><a href="rmarkdown.html#cb182-7" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb182-8"><a href="rmarkdown.html#cb182-8" tabindex="-1"></a><span class="co">    toc_depth: 2</span></span>
-<span id="cb182-9"><a href="rmarkdown.html#cb182-9" tabindex="-1"></a><span class="co">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb181-1"><a href="rmarkdown.html#cb181-1" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb181-2"><a href="rmarkdown.html#cb181-2" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Untitled&quot;</span></span>
+<span id="cb181-3"><a href="rmarkdown.html#cb181-3" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Simona Picardi&quot;</span></span>
+<span id="cb181-4"><a href="rmarkdown.html#cb181-4" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;2/18/2021&quot;</span></span>
+<span id="cb181-5"><a href="rmarkdown.html#cb181-5" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
+<span id="cb181-6"><a href="rmarkdown.html#cb181-6" tabindex="-1"></a><span class="co">  html_document:</span></span>
+<span id="cb181-7"><a href="rmarkdown.html#cb181-7" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb181-8"><a href="rmarkdown.html#cb181-8" tabindex="-1"></a><span class="co">    toc_depth: 2</span></span>
+<span id="cb181-9"><a href="rmarkdown.html#cb181-9" tabindex="-1"></a><span class="co">---</span></span></code></pre></div>
 <p>The option <code>toc: true</code> activates the table of contents. You can then list
 additional options to tweak the appearance of the table of contents. For
 example, <code>toc_depth</code> controls how many header levels are visible in the table of
@@ -713,42 +714,42 @@ to learn more about these and other functionalities of RMarkdown:</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["reproducible-science.pdf", "reproducible-science.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["reproducible-science.pdf", "reproducible-science.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

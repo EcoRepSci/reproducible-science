@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Reproducible Data Science</title>
-  <meta name="description" content="WLF 553: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 5530: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 5530: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 5530: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2024-08-20" />
+<meta name="date" content="2026-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -450,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Reproducible Data Science</h1>
 <p class="author"><em>Simona Picardi<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></em></p>
-<p class="date"><em>2024-08-20</em></p>
+<p class="date"><em>2026-08-26</em></p>
 </div>
 <div id="overview" class="section level1 unnumbered hasAnchor">
 <h1>Overview<a href="index.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -460,7 +461,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Figure 0.1: Artwork by Allison Horst
 </p>
 </div>
-<p>This digital book contains the material for the Graduate Course WLF 553 Reproducible Data Science that I teach at the University of Idaho. The aim of the course is to provide students with practical skills to manage and process their data throughout their life cycle, from the moment they are entered into a computer to the moment they are used in a publication, report, presentation, or other document. The content is organized in the following Chapters:</p>
+<p>This digital book contains the material for the Graduate Course WLF 5530 Reproducible Data Science that I teach at the University of Idaho. The aim of the course is to provide students with practical skills to manage and process their data throughout their life cycle, from the moment they are entered into a computer to the moment they are used in a publication, report, presentation, or other document. The content is organized in the following Chapters:</p>
 <ul>
 <li>Chapter <a href="project-organization.html#project-organization">1</a>, Project Organization</li>
 <li>Chapter <a href="version-control-git.html#version-control-git">2</a>, Version Control with Git</li>
@@ -533,14 +534,9 @@ sqldiff.exe program, and the sqlite3_analyzer.exe program”</p></li>
 <li><p>In your file explorer, create a new folder called “sqlite” (e.g., on Windows,
 C:)</p></li>
 <li><p>Extract the .zip file you downloaded into this new folder.</p></li>
-<li><p>Download SQLiteStudio (this is a GUI, or Graphical User Interface, that we
-are going to use to run our SQL commands) here: <a href="https://github.com/pawelsalawa/sqlitestudio/releases" class="uri">https://github.com/pawelsalawa/sqlitestudio/releases</a>. Download the file whose
-name starts with “Install” and choose the .exe extension if you’re working on
-Windows, .dmg if you’re on Mac OS, and the one without extension if you’re on
-Linux.</p></li>
+<li><p>Download Letos (this is a GUI, or Graphical User Interface, that we
+are going to use to run our SQL commands) here: <a href="https://github.com/pawelsalawa/letos/releases" class="uri">https://github.com/pawelsalawa/letos/releases</a>. Download the appropriate file for your Platform and Architecture and run the installer.</p></li>
 </ol>
-<p>If these instructions weren’t clear, you can find more details (with screenshots)
-at this link: <a href="https://www.sqlitetutorial.net/download-install-sqlite/" class="uri">https://www.sqlitetutorial.net/download-install-sqlite/</a></p>
 </div>
 <div id="r" class="section level3 hasAnchor" number="0.1.4">
 <h3><span class="header-section-number">0.1.4</span> R<a href="index.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -629,42 +625,42 @@ running the following code in R:</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["reproducible-science.pdf", "reproducible-science.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["reproducible-science.pdf", "reproducible-science.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

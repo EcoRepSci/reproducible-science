@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Automatically Generated Websites with GitHub Pages | Reproducible Data Science</title>
-  <meta name="description" content="WLF 553: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 5530: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Automatically Generated Websites with GitHub Pages | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 5530: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 9 Automatically Generated Websites with GitHub Pages | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 5530: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2024-08-20" />
+<meta name="date" content="2026-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -498,25 +499,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="step-2-set-up-git-repository" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> Step 2: Set up Git repository<a href="github-pages.html#step-2-set-up-git-repository" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>It’s time to put our book under version control. To do so, we open a terminal into our Project folder and we initialize a repository:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb183-1"><a href="github-pages.html#cb183-1" tabindex="-1"></a></span>
-<span id="cb183-2"><a href="github-pages.html#cb183-2" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb182-1"><a href="github-pages.html#cb182-1" tabindex="-1"></a></span>
+<span id="cb182-2"><a href="github-pages.html#cb182-2" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div>
 <p>After we create our .gitignore file, we can add and commit our files:</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb184-1"><a href="github-pages.html#cb184-1" tabindex="-1"></a></span>
-<span id="cb184-2"><a href="github-pages.html#cb184-2" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span></span>
-<span id="cb184-3"><a href="github-pages.html#cb184-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;First commit&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb183-1"><a href="github-pages.html#cb183-1" tabindex="-1"></a></span>
+<span id="cb183-2"><a href="github-pages.html#cb183-2" tabindex="-1"></a><span class="fu">git</span> add <span class="at">--all</span></span>
+<span id="cb183-3"><a href="github-pages.html#cb183-3" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;First commit&quot;</span></span></code></pre></div>
 <p>Let’s also rename our main branch:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb185-1"><a href="github-pages.html#cb185-1" tabindex="-1"></a></span>
-<span id="cb185-2"><a href="github-pages.html#cb185-2" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb184-1"><a href="github-pages.html#cb184-1" tabindex="-1"></a></span>
+<span id="cb184-2"><a href="github-pages.html#cb184-2" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span></code></pre></div>
 </div>
 <div id="step-3-link-git-repository-to-remote-github-repository" class="section level3 hasAnchor" number="9.2.3">
 <h3><span class="header-section-number">9.2.3</span> Step 3: Link Git repository to remote GitHub repository<a href="github-pages.html#step-3-link-git-repository-to-remote-github-repository" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now, we create an empty GitHub repository to link with our local one. Because we are setting this as the upstream for an existing repository, it <em>must</em> be completely empty, so make sure you are not creating a README file or anything (uncheck all those boxes). Also, make sure you choose the option for a <em>Public</em> repository. GitHub Pages are not available for private repositories.</p>
 <p>Back in the terminal, we link this newly created remote repository to our local copy (make sure you replace the URL below with the correct one):</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb186-1"><a href="github-pages.html#cb186-1" tabindex="-1"></a></span>
-<span id="cb186-2"><a href="github-pages.html#cb186-2" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/username/my-repo</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb185-1"><a href="github-pages.html#cb185-1" tabindex="-1"></a></span>
+<span id="cb185-2"><a href="github-pages.html#cb185-2" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/username/my-repo</span></code></pre></div>
 <p>And we push our files to it:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb187-1"><a href="github-pages.html#cb187-1" tabindex="-1"></a></span>
-<span id="cb187-2"><a href="github-pages.html#cb187-2" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb186-1"><a href="github-pages.html#cb186-1" tabindex="-1"></a></span>
+<span id="cb186-2"><a href="github-pages.html#cb186-2" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div>
 </div>
 <div id="step-4-enable-github-pages" class="section level3 hasAnchor" number="9.2.4">
 <h3><span class="header-section-number">9.2.4</span> Step 4: Enable GitHub Pages<a href="github-pages.html#step-4-enable-github-pages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -560,42 +561,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["reproducible-science.pdf", "reproducible-science.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["reproducible-science.pdf", "reproducible-science.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 Data Wrangling with tidyverse | Reproducible Data Science</title>
-  <meta name="description" content="WLF 553: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 5530: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 Data Wrangling with tidyverse | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 5530: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 13 Data Wrangling with tidyverse | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 5530: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2024-08-20" />
+<meta name="date" content="2026-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -478,15 +479,15 @@ packages that are installed together with the tidyverse but are not
 automatically loaded. These package are specialized on a few niche roles that
 users may not always need.</p>
 <p>To install the tidyverse, go ahead and run the following line:</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="tidyverse.html#cb373-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="tidyverse.html#cb372-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <p>Then load the package using:</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="tidyverse.html#cb374-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="tidyverse.html#cb373-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.4
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-## ✔ purrr     1.0.2     
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.1     ✔ stringr   1.5.2
+## ✔ ggplot2   4.0.0     ✔ tibble    3.3.0
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.1.0     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
@@ -498,24 +499,24 @@ users may not always need.</p>
 dragons dataset we used in Chapters <a href="relational-databases.html#relational-databases">5</a>,
 <a href="sql.html#sql">6</a>, and <a href="rsqlite.html#rsqlite">7</a>. Let’s load our data in
 using RSQLite like we learned in Chapter <a href="rsqlite.html#rsqlite">7</a>:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="tidyverse.html#cb376-1" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb376-2"><a href="tidyverse.html#cb376-2" tabindex="-1"></a></span>
-<span id="cb376-3"><a href="tidyverse.html#cb376-3" tabindex="-1"></a>dragons_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;data/dragons.db&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="tidyverse.html#cb375-1" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb375-2"><a href="tidyverse.html#cb375-2" tabindex="-1"></a></span>
+<span id="cb375-3"><a href="tidyverse.html#cb375-3" tabindex="-1"></a>dragons_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;data/dragons.db&quot;</span>)</span></code></pre></div>
 <p>And let’s load all the tables:</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="tidyverse.html#cb377-1" tabindex="-1"></a>dragons <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons;&quot;</span>)</span>
-<span id="cb377-2"><a href="tidyverse.html#cb377-2" tabindex="-1"></a>capture_sites <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span>
-<span id="cb377-3"><a href="tidyverse.html#cb377-3" tabindex="-1"></a>captures <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures;&quot;</span>)</span>
-<span id="cb377-4"><a href="tidyverse.html#cb377-4" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics;&quot;</span>)</span>
-<span id="cb377-5"><a href="tidyverse.html#cb377-5" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet;&quot;</span>)</span>
-<span id="cb377-6"><a href="tidyverse.html#cb377-6" tabindex="-1"></a>tags <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags;&quot;</span>)</span>
-<span id="cb377-7"><a href="tidyverse.html#cb377-7" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments;&quot;</span>)</span>
-<span id="cb377-8"><a href="tidyverse.html#cb377-8" tabindex="-1"></a>telemetry <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="tidyverse.html#cb376-1" tabindex="-1"></a>dragons <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons;&quot;</span>)</span>
+<span id="cb376-2"><a href="tidyverse.html#cb376-2" tabindex="-1"></a>capture_sites <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span>
+<span id="cb376-3"><a href="tidyverse.html#cb376-3" tabindex="-1"></a>captures <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures;&quot;</span>)</span>
+<span id="cb376-4"><a href="tidyverse.html#cb376-4" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics;&quot;</span>)</span>
+<span id="cb376-5"><a href="tidyverse.html#cb376-5" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet;&quot;</span>)</span>
+<span id="cb376-6"><a href="tidyverse.html#cb376-6" tabindex="-1"></a>tags <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags;&quot;</span>)</span>
+<span id="cb376-7"><a href="tidyverse.html#cb376-7" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments;&quot;</span>)</span>
+<span id="cb376-8"><a href="tidyverse.html#cb376-8" tabindex="-1"></a>telemetry <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data;&quot;</span>)</span></code></pre></div>
 <div id="subsetting-columns" class="section level3 hasAnchor" number="13.2.1">
 <h3><span class="header-section-number">13.2.1</span> Subsetting columns<a href="tidyverse.html#subsetting-columns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start practicing on the morphometrics table.</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="tidyverse.html#cb378-1" tabindex="-1"></a><span class="fu">class</span>(morphometrics)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="tidyverse.html#cb377-1" tabindex="-1"></a><span class="fu">class</span>(morphometrics)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="tidyverse.html#cb380-1" tabindex="-1"></a><span class="fu">head</span>(morphometrics)</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="tidyverse.html#cb379-1" tabindex="-1"></a><span class="fu">head</span>(morphometrics)</span></code></pre></div>
 <pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
 ## 1              1       D96 2012-10-10            1069.8965   1389.5527
 ## 2              2      D400 2003-07-03             333.4600    634.9109
@@ -533,9 +534,9 @@ using RSQLite like we learned in Chapter <a href="rsqlite.html#rsqlite">7</a>:</
 <p>We can subset columns of interest from a table using the <code>select</code> function. The
 function takes as arguments 1. the data and 2. the name/s of one or more
 columns that we want to keep:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="tidyverse.html#cb382-1" tabindex="-1"></a>body_wing <span class="ot">&lt;-</span> <span class="fu">select</span>(morphometrics, dragon_id, date, total_body_length_cm, wingspan_cm)</span>
-<span id="cb382-2"><a href="tidyverse.html#cb382-2" tabindex="-1"></a></span>
-<span id="cb382-3"><a href="tidyverse.html#cb382-3" tabindex="-1"></a><span class="fu">head</span>(body_wing)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="tidyverse.html#cb381-1" tabindex="-1"></a>body_wing <span class="ot">&lt;-</span> <span class="fu">select</span>(morphometrics, dragon_id, date, total_body_length_cm, wingspan_cm)</span>
+<span id="cb381-2"><a href="tidyverse.html#cb381-2" tabindex="-1"></a></span>
+<span id="cb381-3"><a href="tidyverse.html#cb381-3" tabindex="-1"></a><span class="fu">head</span>(body_wing)</span></code></pre></div>
 <pre><code>##   dragon_id       date total_body_length_cm wingspan_cm
 ## 1       D96 2012-10-10            1069.8965   1389.5527
 ## 2      D400 2003-07-03             333.4600    634.9109
@@ -549,9 +550,9 @@ now that we are processing the data in R. We could drop that column by
 selecting all the other ones, but that would be a lot of typing. There is a more
 convenient way: we can use <code>select</code> to discard columns by adding a <code>-</code> in front
 of their name:</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="tidyverse.html#cb384-1" tabindex="-1"></a>no_pkey <span class="ot">&lt;-</span> <span class="fu">select</span>(morphometrics, <span class="sc">-</span>measurement_id)</span>
-<span id="cb384-2"><a href="tidyverse.html#cb384-2" tabindex="-1"></a></span>
-<span id="cb384-3"><a href="tidyverse.html#cb384-3" tabindex="-1"></a><span class="fu">head</span>(no_pkey)</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="tidyverse.html#cb383-1" tabindex="-1"></a>no_pkey <span class="ot">&lt;-</span> <span class="fu">select</span>(morphometrics, <span class="sc">-</span>measurement_id)</span>
+<span id="cb383-2"><a href="tidyverse.html#cb383-2" tabindex="-1"></a></span>
+<span id="cb383-3"><a href="tidyverse.html#cb383-3" tabindex="-1"></a><span class="fu">head</span>(no_pkey)</span></code></pre></div>
 <pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
 ## 1       D96 2012-10-10            1069.8965   1389.5527       595.2706
 ## 2      D400 2003-07-03             333.4600    634.9109       104.2241
@@ -571,9 +572,9 @@ of their name:</p>
 <h3><span class="header-section-number">13.2.2</span> Subsetting rows with logical conditions<a href="tidyverse.html#subsetting-rows-with-logical-conditions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To subset rows of a table based on certain conditions, we can use the <code>filter</code>
 function. For example, to filter only wingspans larger than 10 m:</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="tidyverse.html#cb386-1" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> <span class="fu">filter</span>(morphometrics, wingspan_cm <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
-<span id="cb386-2"><a href="tidyverse.html#cb386-2" tabindex="-1"></a></span>
-<span id="cb386-3"><a href="tidyverse.html#cb386-3" tabindex="-1"></a><span class="fu">head</span>(larger_than_10m)</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="tidyverse.html#cb385-1" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> <span class="fu">filter</span>(morphometrics, wingspan_cm <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
+<span id="cb385-2"><a href="tidyverse.html#cb385-2" tabindex="-1"></a></span>
+<span id="cb385-3"><a href="tidyverse.html#cb385-3" tabindex="-1"></a><span class="fu">head</span>(larger_than_10m)</span></code></pre></div>
 <pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
 ## 1              1       D96 2012-10-10            1069.8965    1389.553
 ## 2              3      D316 2017-09-08             866.8935    1052.370
@@ -597,15 +598,15 @@ subsequent actions into one single chunk of code. For instance, if we wanted to
 drop the <code>measurement_id</code> column from the morphometrics table <strong>and</strong> filter
 rows where <code>wingspan_cm</code> is larger than 10 m, this is what we would do without
 the pipe:</p>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="tidyverse.html#cb388-1" tabindex="-1"></a>no_pkey <span class="ot">&lt;-</span> <span class="fu">select</span>(morphometrics, <span class="sc">-</span>measurement_id)</span>
-<span id="cb388-2"><a href="tidyverse.html#cb388-2" tabindex="-1"></a></span>
-<span id="cb388-3"><a href="tidyverse.html#cb388-3" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> <span class="fu">filter</span>(no_pkey, wingspan_cm <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="tidyverse.html#cb387-1" tabindex="-1"></a>no_pkey <span class="ot">&lt;-</span> <span class="fu">select</span>(morphometrics, <span class="sc">-</span>measurement_id)</span>
+<span id="cb387-2"><a href="tidyverse.html#cb387-2" tabindex="-1"></a></span>
+<span id="cb387-3"><a href="tidyverse.html#cb387-3" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> <span class="fu">filter</span>(no_pkey, wingspan_cm <span class="sc">&gt;</span> <span class="dv">1000</span>)</span></code></pre></div>
 <p>Instead, we can concatenate the two actions:</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="tidyverse.html#cb389-1" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb389-2"><a href="tidyverse.html#cb389-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb389-3"><a href="tidyverse.html#cb389-3" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_cm <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
-<span id="cb389-4"><a href="tidyverse.html#cb389-4" tabindex="-1"></a></span>
-<span id="cb389-5"><a href="tidyverse.html#cb389-5" tabindex="-1"></a><span class="fu">head</span>(larger_than_10m) </span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="tidyverse.html#cb388-1" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb388-2"><a href="tidyverse.html#cb388-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb388-3"><a href="tidyverse.html#cb388-3" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_cm <span class="sc">&gt;</span> <span class="dv">1000</span>)</span>
+<span id="cb388-4"><a href="tidyverse.html#cb388-4" tabindex="-1"></a></span>
+<span id="cb388-5"><a href="tidyverse.html#cb388-5" tabindex="-1"></a><span class="fu">head</span>(larger_than_10m) </span></code></pre></div>
 <pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
 ## 1       D96 2012-10-10            1069.8965    1389.553       595.2706
 ## 2      D316 2017-09-08             866.8935    1052.370       373.7619
@@ -644,12 +645,12 @@ Figure 13.2: Artwork by Allison Horst
 the conversion between meters and centimeters in our head before applying the
 wingspan filter. It would be easier to convert the column to meters to begin
 with. We can create a new column using <code>mutate</code>:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="tidyverse.html#cb391-1" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb391-2"><a href="tidyverse.html#cb391-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb391-3"><a href="tidyverse.html#cb391-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wingspan_m =</span> wingspan_cm<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb391-4"><a href="tidyverse.html#cb391-4" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_m <span class="sc">&gt;</span> <span class="dv">10</span>)</span>
-<span id="cb391-5"><a href="tidyverse.html#cb391-5" tabindex="-1"></a></span>
-<span id="cb391-6"><a href="tidyverse.html#cb391-6" tabindex="-1"></a><span class="fu">head</span>(larger_than_10m)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="tidyverse.html#cb390-1" tabindex="-1"></a>larger_than_10m <span class="ot">&lt;-</span> morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb390-2"><a href="tidyverse.html#cb390-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb390-3"><a href="tidyverse.html#cb390-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wingspan_m =</span> wingspan_cm<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb390-4"><a href="tidyverse.html#cb390-4" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_m <span class="sc">&gt;</span> <span class="dv">10</span>)</span>
+<span id="cb390-5"><a href="tidyverse.html#cb390-5" tabindex="-1"></a></span>
+<span id="cb390-6"><a href="tidyverse.html#cb390-6" tabindex="-1"></a><span class="fu">head</span>(larger_than_10m)</span></code></pre></div>
 <pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
 ## 1       D96 2012-10-10            1069.8965    1389.553       595.2706
 ## 2      D316 2017-09-08             866.8935    1052.370       373.7619
@@ -672,11 +673,11 @@ show the first 6 rows of the result. Instead, I can save myself some typing and
 space in my environment (and make everything look cleaner) by adding another
 pipe at the end with the <code>slice</code> function. The <code>slice</code> function selects rows
 based on position, so if I want to look at the first 6 I can do:</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="tidyverse.html#cb393-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb393-2"><a href="tidyverse.html#cb393-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb393-3"><a href="tidyverse.html#cb393-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wingspan_m =</span> wingspan_cm<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb393-4"><a href="tidyverse.html#cb393-4" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_m <span class="sc">&gt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb393-5"><a href="tidyverse.html#cb393-5" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="tidyverse.html#cb392-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb392-2"><a href="tidyverse.html#cb392-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb392-3"><a href="tidyverse.html#cb392-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wingspan_m =</span> wingspan_cm<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb392-4"><a href="tidyverse.html#cb392-4" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_m <span class="sc">&gt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb392-5"><a href="tidyverse.html#cb392-5" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code></pre></div>
 <pre><code>##   dragon_id       date total_body_length_cm wingspan_cm tail_length_cm
 ## 1       D96 2012-10-10            1069.8965    1389.553       595.2706
 ## 2      D316 2017-09-08             866.8935    1052.370       373.7619
@@ -694,15 +695,15 @@ based on position, so if I want to look at the first 6 I can do:</p>
 <p>More generally, <code>slice</code> can be used as the equivalent of selecting rows from a
 data frame using indexes like we did in Chapter <a href="intro-to-r.html#intro-to-r">10</a>. If I want
 row 38 of the morphometrics table, I can do:</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="tidyverse.html#cb395-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb395-2"><a href="tidyverse.html#cb395-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">38</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="tidyverse.html#cb394-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb394-2"><a href="tidyverse.html#cb394-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">38</span>)</span></code></pre></div>
 <pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
 ## 1             38      D367 2006-06-12             1129.259     1315.82
 ##   tail_length_cm tarsus_length_cm claw_length_cm
 ## 1       578.4428         133.3162       24.20511</code></pre>
 <p>This works with multiple rows too, and they don’t need to be consecutive:</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="tidyverse.html#cb397-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb397-2"><a href="tidyverse.html#cb397-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">12</span>, <span class="dv">84</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="tidyverse.html#cb396-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb396-2"><a href="tidyverse.html#cb396-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">38</span>, <span class="dv">12</span>, <span class="dv">84</span>))</span></code></pre></div>
 <pre><code>##   measurement_id dragon_id       date total_body_length_cm wingspan_cm
 ## 1             38      D367 2006-06-12            1129.2590   1315.8203
 ## 2             12      D322 2009-03-09             309.3959    595.7932
@@ -726,11 +727,11 @@ tibbles do have an advantage: when printing a tibble to the console, only the
 first 10 records will show up, which is convenient because it means you don’t
 need to use <code>head()</code> to prevent your console from being flooded with output.
 Case in point:</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="tidyverse.html#cb399-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb399-2"><a href="tidyverse.html#cb399-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb399-3"><a href="tidyverse.html#cb399-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
-<span id="cb399-4"><a href="tidyverse.html#cb399-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wingspan_m =</span> wingspan_cm<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb399-5"><a href="tidyverse.html#cb399-5" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_m <span class="sc">&gt;</span> <span class="dv">10</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="tidyverse.html#cb398-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb398-2"><a href="tidyverse.html#cb398-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb398-3"><a href="tidyverse.html#cb398-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>measurement_id) <span class="sc">%&gt;%</span> </span>
+<span id="cb398-4"><a href="tidyverse.html#cb398-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">wingspan_m =</span> wingspan_cm<span class="sc">/</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb398-5"><a href="tidyverse.html#cb398-5" tabindex="-1"></a>  <span class="fu">filter</span>(wingspan_m <span class="sc">&gt;</span> <span class="dv">10</span>) </span></code></pre></div>
 <pre><code>## # A tibble: 192 × 8
 ##    dragon_id date       total_body_length_cm wingspan_cm tail_length_cm
 ##    &lt;chr&gt;     &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
@@ -750,12 +751,12 @@ Case in point:</p>
 <p>As you can see, the appearance of a tibble is very similar to the one of a
 data frame. In fact, objects can be of multiple classes in R, and tibbles are
 also data frames under the hood!</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="tidyverse.html#cb401-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">as_tibble</span>(morphometrics))</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="tidyverse.html#cb400-1" tabindex="-1"></a><span class="fu">class</span>(<span class="fu">as_tibble</span>(morphometrics))</span></code></pre></div>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 <p>Converting between tibble and data frame is also super easy, so you can switch
 back and forth between them whenever you need:</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="tidyverse.html#cb403-1" tabindex="-1"></a>morph_tib <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(morphometrics)</span>
-<span id="cb403-2"><a href="tidyverse.html#cb403-2" tabindex="-1"></a>morph_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(morph_tib)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="tidyverse.html#cb402-1" tabindex="-1"></a>morph_tib <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(morphometrics)</span>
+<span id="cb402-2"><a href="tidyverse.html#cb402-2" tabindex="-1"></a>morph_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(morph_tib)</span></code></pre></div>
 <p>This last bit is useful to know especially when you are using other packages
 that were not written using tidyverse and strictly require data frames as input.</p>
 </div>
@@ -770,9 +771,9 @@ table (the second one) whenever available. If no information is available, the
 columns coming from the right table will have <code>NA</code> but the row will be retained.
 To join two tables, these need to share at least one column. Let’s join the
 morphometrics table with the dragons table:</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="tidyverse.html#cb404-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb404-2"><a href="tidyverse.html#cb404-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb404-3"><a href="tidyverse.html#cb404-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="tidyverse.html#cb403-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb403-2"><a href="tidyverse.html#cb403-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb403-3"><a href="tidyverse.html#cb403-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) </span></code></pre></div>
 <pre><code>## # A tibble: 327 × 12
 ##    measurement_id dragon_id date       total_body_length_cm wingspan_cm
 ##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;
@@ -792,10 +793,10 @@ morphometrics table with the dragons table:</p>
 ## #   update_timestamp &lt;chr&gt;</code></pre>
 <p>In this case the shared column has the same name in the two tables. If it
 doesn’t, you can still join based on that column. Let’s demonstrate how:</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="tidyverse.html#cb406-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb406-2"><a href="tidyverse.html#cb406-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb406-3"><a href="tidyverse.html#cb406-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dragon =</span> dragon_id) <span class="sc">%&gt;%</span> <span class="co"># now the dragon_id column is called &quot;dragon&quot;</span></span>
-<span id="cb406-4"><a href="tidyverse.html#cb406-4" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dragon&quot;</span> <span class="ot">=</span> <span class="st">&quot;dragon_id&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="tidyverse.html#cb405-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb405-2"><a href="tidyverse.html#cb405-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb405-3"><a href="tidyverse.html#cb405-3" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">dragon =</span> dragon_id) <span class="sc">%&gt;%</span> <span class="co"># now the dragon_id column is called &quot;dragon&quot;</span></span>
+<span id="cb405-4"><a href="tidyverse.html#cb405-4" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&quot;dragon&quot;</span> <span class="ot">=</span> <span class="st">&quot;dragon_id&quot;</span>)) </span></code></pre></div>
 <pre><code>## # A tibble: 327 × 12
 ##    measurement_id dragon date    total_body_length_cm wingspan_cm tail_length_cm
 ##             &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;                  &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
@@ -821,10 +822,10 @@ doesn’t, you can still join based on that column. Let’s demonstrate how:</p>
 <code>rename</code>. We can also change the order in which columns appear in our table
 using <code>relocate</code>. For example, say that we want to move the age class column
 to right after the dragon ID:</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="tidyverse.html#cb408-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb408-2"><a href="tidyverse.html#cb408-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb408-3"><a href="tidyverse.html#cb408-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb408-4"><a href="tidyverse.html#cb408-4" tabindex="-1"></a>  <span class="fu">relocate</span>(age_class, <span class="at">.after =</span> dragon_id)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="tidyverse.html#cb407-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb407-2"><a href="tidyverse.html#cb407-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb407-3"><a href="tidyverse.html#cb407-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb407-4"><a href="tidyverse.html#cb407-4" tabindex="-1"></a>  <span class="fu">relocate</span>(age_class, <span class="at">.after =</span> dragon_id)</span></code></pre></div>
 <pre><code>## # A tibble: 327 × 12
 ##    measurement_id dragon_id age_class date      total_body_length_cm wingspan_cm
 ##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;                    &lt;dbl&gt;       &lt;dbl&gt;
@@ -849,13 +850,13 @@ calculate some summary statistics based on different groups. To do so, we use
 the function <code>group_by</code> together with the function <code>summarize</code>. For instance,
 let’s calculate minimum, maximum, and mean tail length for dragons of different
 age classes:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="tidyverse.html#cb410-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb410-2"><a href="tidyverse.html#cb410-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb410-3"><a href="tidyverse.html#cb410-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb410-4"><a href="tidyverse.html#cb410-4" tabindex="-1"></a>  <span class="fu">group_by</span>(age_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb410-5"><a href="tidyverse.html#cb410-5" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">min_tail_length_cm =</span> <span class="fu">min</span>(tail_length_cm),</span>
-<span id="cb410-6"><a href="tidyverse.html#cb410-6" tabindex="-1"></a>            <span class="at">mean_tail_length_cm =</span> <span class="fu">mean</span>(tail_length_cm),</span>
-<span id="cb410-7"><a href="tidyverse.html#cb410-7" tabindex="-1"></a>            <span class="at">max_tail_length_cm =</span> <span class="fu">max</span>(tail_length_cm))</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="tidyverse.html#cb409-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb409-2"><a href="tidyverse.html#cb409-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb409-3"><a href="tidyverse.html#cb409-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb409-4"><a href="tidyverse.html#cb409-4" tabindex="-1"></a>  <span class="fu">group_by</span>(age_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb409-5"><a href="tidyverse.html#cb409-5" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">min_tail_length_cm =</span> <span class="fu">min</span>(tail_length_cm),</span>
+<span id="cb409-6"><a href="tidyverse.html#cb409-6" tabindex="-1"></a>            <span class="at">mean_tail_length_cm =</span> <span class="fu">mean</span>(tail_length_cm),</span>
+<span id="cb409-7"><a href="tidyverse.html#cb409-7" tabindex="-1"></a>            <span class="at">max_tail_length_cm =</span> <span class="fu">max</span>(tail_length_cm))</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 4
 ##   age_class min_tail_length_cm mean_tail_length_cm max_tail_length_cm
 ##   &lt;chr&gt;                  &lt;dbl&gt;               &lt;dbl&gt;              &lt;dbl&gt;
@@ -864,11 +865,11 @@ age classes:</p>
 ## 3 Subadult               338.                 435.               544.</code></pre>
 <p>We can also use <code>group_by</code> to count how many records we have for each group.
 Let’s say we want to know how many dragons of each species we captured:</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="tidyverse.html#cb412-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb412-2"><a href="tidyverse.html#cb412-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb412-3"><a href="tidyverse.html#cb412-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb412-4"><a href="tidyverse.html#cb412-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb412-5"><a href="tidyverse.html#cb412-5" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="tidyverse.html#cb411-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb411-2"><a href="tidyverse.html#cb411-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb411-3"><a href="tidyverse.html#cb411-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb411-4"><a href="tidyverse.html#cb411-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb411-5"><a href="tidyverse.html#cb411-5" tabindex="-1"></a>  <span class="fu">tally</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 2
 ##    species                 n
 ##    &lt;chr&gt;               &lt;int&gt;
@@ -886,12 +887,12 @@ Let’s say we want to know how many dragons of each species we captured:</p>
 <div id="sorting-results-1" class="section level3 hasAnchor" number="13.2.10">
 <h3><span class="header-section-number">13.2.10</span> Sorting results<a href="tidyverse.html#sorting-results-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s sort results of our count by species in decreasing order:</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="tidyverse.html#cb414-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb414-2"><a href="tidyverse.html#cb414-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb414-3"><a href="tidyverse.html#cb414-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb414-4"><a href="tidyverse.html#cb414-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb414-5"><a href="tidyverse.html#cb414-5" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb414-6"><a href="tidyverse.html#cb414-6" tabindex="-1"></a>  <span class="fu">arrange</span>(n)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="tidyverse.html#cb413-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb413-2"><a href="tidyverse.html#cb413-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb413-3"><a href="tidyverse.html#cb413-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb413-4"><a href="tidyverse.html#cb413-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb413-5"><a href="tidyverse.html#cb413-5" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb413-6"><a href="tidyverse.html#cb413-6" tabindex="-1"></a>  <span class="fu">arrange</span>(n)</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 2
 ##    species                 n
 ##    &lt;chr&gt;               &lt;int&gt;
@@ -908,12 +909,12 @@ Let’s say we want to know how many dragons of each species we captured:</p>
 <p>Nope, that didn’t do it. The species are sorted from the least to the most
 numerous (the default). We need to specify that we want to sort results in
 descending order:</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="tidyverse.html#cb416-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb416-2"><a href="tidyverse.html#cb416-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb416-3"><a href="tidyverse.html#cb416-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb416-4"><a href="tidyverse.html#cb416-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb416-5"><a href="tidyverse.html#cb416-5" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb416-6"><a href="tidyverse.html#cb416-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="tidyverse.html#cb415-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb415-2"><a href="tidyverse.html#cb415-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb415-3"><a href="tidyverse.html#cb415-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb415-4"><a href="tidyverse.html#cb415-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb415-5"><a href="tidyverse.html#cb415-5" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb415-6"><a href="tidyverse.html#cb415-6" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 10 × 2
 ##    species                 n
 ##    &lt;chr&gt;               &lt;int&gt;
@@ -935,25 +936,25 @@ species for which we have at least 30 individuals. We need to filter those whose
 species falls within that group. So this task can be divided in two steps:
 first, identify the group and store the result; second, filter the table based
 on records from those groups. Let’s see:</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="tidyverse.html#cb418-1" tabindex="-1"></a>(species_over30 <span class="ot">&lt;-</span> dragons <span class="sc">%&gt;%</span> </span>
-<span id="cb418-2"><a href="tidyverse.html#cb418-2" tabindex="-1"></a>   <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb418-3"><a href="tidyverse.html#cb418-3" tabindex="-1"></a>   <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb418-4"><a href="tidyverse.html#cb418-4" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb418-5"><a href="tidyverse.html#cb418-5" tabindex="-1"></a>   <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb418-6"><a href="tidyverse.html#cb418-6" tabindex="-1"></a>   <span class="fu">pull</span>(species))</span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="tidyverse.html#cb417-1" tabindex="-1"></a>(species_over30 <span class="ot">&lt;-</span> dragons <span class="sc">%&gt;%</span> </span>
+<span id="cb417-2"><a href="tidyverse.html#cb417-2" tabindex="-1"></a>   <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb417-3"><a href="tidyverse.html#cb417-3" tabindex="-1"></a>   <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb417-4"><a href="tidyverse.html#cb417-4" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb417-5"><a href="tidyverse.html#cb417-5" tabindex="-1"></a>   <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb417-6"><a href="tidyverse.html#cb417-6" tabindex="-1"></a>   <span class="fu">pull</span>(species))</span></code></pre></div>
 <pre><code>## [1] &quot;Norwegian Ridgeback&quot; &quot;Common Welsh Green&quot;  &quot;Romanian Longhorn&quot;  
 ## [4] &quot;Hebridean Black&quot;     &quot;Peruvian Vipertooth&quot; &quot;Hungarian Horntail&quot;</code></pre>
 <p>The function <code>pull</code> at the end extracts the values in my column of interest and
 returns them as a vector.</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="tidyverse.html#cb420-1" tabindex="-1"></a><span class="fu">class</span>(species_over30) <span class="co"># this is a character vector</span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="tidyverse.html#cb419-1" tabindex="-1"></a><span class="fu">class</span>(species_over30) <span class="co"># this is a character vector</span></span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>If I used select instead, the result would be a tibble:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="tidyverse.html#cb422-1" tabindex="-1"></a>dragons <span class="sc">%&gt;%</span> </span>
-<span id="cb422-2"><a href="tidyverse.html#cb422-2" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb422-3"><a href="tidyverse.html#cb422-3" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb422-4"><a href="tidyverse.html#cb422-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb422-5"><a href="tidyverse.html#cb422-5" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb422-6"><a href="tidyverse.html#cb422-6" tabindex="-1"></a>  <span class="fu">select</span>(species)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="tidyverse.html#cb421-1" tabindex="-1"></a>dragons <span class="sc">%&gt;%</span> </span>
+<span id="cb421-2"><a href="tidyverse.html#cb421-2" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb421-3"><a href="tidyverse.html#cb421-3" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb421-4"><a href="tidyverse.html#cb421-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb421-5"><a href="tidyverse.html#cb421-5" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb421-6"><a href="tidyverse.html#cb421-6" tabindex="-1"></a>  <span class="fu">select</span>(species)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 1
 ##   species            
 ##   &lt;chr&gt;              
@@ -963,20 +964,20 @@ returns them as a vector.</p>
 ## 4 Hebridean Black    
 ## 5 Peruvian Vipertooth
 ## 6 Hungarian Horntail</code></pre>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="tidyverse.html#cb424-1" tabindex="-1"></a>dragons <span class="sc">%&gt;%</span> </span>
-<span id="cb424-2"><a href="tidyverse.html#cb424-2" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb424-3"><a href="tidyverse.html#cb424-3" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb424-4"><a href="tidyverse.html#cb424-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb424-5"><a href="tidyverse.html#cb424-5" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb424-6"><a href="tidyverse.html#cb424-6" tabindex="-1"></a>  <span class="fu">select</span>(species) <span class="sc">%&gt;%</span> </span>
-<span id="cb424-7"><a href="tidyverse.html#cb424-7" tabindex="-1"></a>  <span class="fu">class</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="tidyverse.html#cb423-1" tabindex="-1"></a>dragons <span class="sc">%&gt;%</span> </span>
+<span id="cb423-2"><a href="tidyverse.html#cb423-2" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb423-3"><a href="tidyverse.html#cb423-3" tabindex="-1"></a>  <span class="fu">tally</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb423-4"><a href="tidyverse.html#cb423-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb423-5"><a href="tidyverse.html#cb423-5" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb423-6"><a href="tidyverse.html#cb423-6" tabindex="-1"></a>  <span class="fu">select</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb423-7"><a href="tidyverse.html#cb423-7" tabindex="-1"></a>  <span class="fu">class</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 <p>Now that we have a vector with the species that we want to retain, we can apply
 our filter:</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="tidyverse.html#cb426-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb426-2"><a href="tidyverse.html#cb426-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb426-3"><a href="tidyverse.html#cb426-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb426-4"><a href="tidyverse.html#cb426-4" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> species_over30)</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="tidyverse.html#cb425-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb425-2"><a href="tidyverse.html#cb425-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb425-3"><a href="tidyverse.html#cb425-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb425-4"><a href="tidyverse.html#cb425-4" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> species_over30)</span></code></pre></div>
 <pre><code>## # A tibble: 264 × 12
 ##    measurement_id dragon_id date       total_body_length_cm wingspan_cm
 ##             &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;                     &lt;dbl&gt;       &lt;dbl&gt;
@@ -1011,21 +1012,21 @@ we wanted to create a composite variable combining sex and age class, with
 possible categories “adult female”, “adult male”, “juvenile female”, etc. We can
 gather the information from the two existing column and create a new column
 assigning the appropriate category to each individual using <code>case_when</code>:</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="tidyverse.html#cb428-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb428-2"><a href="tidyverse.html#cb428-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb428-3"><a href="tidyverse.html#cb428-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb428-4"><a href="tidyverse.html#cb428-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
-<span id="cb428-5"><a href="tidyverse.html#cb428-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
-<span id="cb428-6"><a href="tidyverse.html#cb428-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
-<span id="cb428-7"><a href="tidyverse.html#cb428-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
-<span id="cb428-8"><a href="tidyverse.html#cb428-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Male&quot;</span>,</span>
-<span id="cb428-9"><a href="tidyverse.html#cb428-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb428-10"><a href="tidyverse.html#cb428-10" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb428-11"><a href="tidyverse.html#cb428-11" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Unknown&quot;</span>,</span>
-<span id="cb428-12"><a href="tidyverse.html#cb428-12" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Unknown&quot;</span>,</span>
-<span id="cb428-13"><a href="tidyverse.html#cb428-13" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Unknown&quot;</span></span>
-<span id="cb428-14"><a href="tidyverse.html#cb428-14" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
-<span id="cb428-15"><a href="tidyverse.html#cb428-15" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="tidyverse.html#cb427-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb427-2"><a href="tidyverse.html#cb427-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb427-3"><a href="tidyverse.html#cb427-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb427-4"><a href="tidyverse.html#cb427-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
+<span id="cb427-5"><a href="tidyverse.html#cb427-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
+<span id="cb427-6"><a href="tidyverse.html#cb427-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
+<span id="cb427-7"><a href="tidyverse.html#cb427-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
+<span id="cb427-8"><a href="tidyverse.html#cb427-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Male&quot;</span>,</span>
+<span id="cb427-9"><a href="tidyverse.html#cb427-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb427-10"><a href="tidyverse.html#cb427-10" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb427-11"><a href="tidyverse.html#cb427-11" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Unknown&quot;</span>,</span>
+<span id="cb427-12"><a href="tidyverse.html#cb427-12" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Unknown&quot;</span>,</span>
+<span id="cb427-13"><a href="tidyverse.html#cb427-13" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Unknown&quot;</span></span>
+<span id="cb427-14"><a href="tidyverse.html#cb427-14" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
+<span id="cb427-15"><a href="tidyverse.html#cb427-15" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 × 4
 ##    dragon_id sex   age_class sex_age_combo   
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           
@@ -1043,26 +1044,26 @@ assigning the appropriate category to each individual using <code>case_when</cod
 <p>Let’s break down the syntax I used in the <code>case_when</code> statement. Each entry has
 the form <em>logical condition</em> ~ <em>value to assign</em>. Let’s isolate the left-hand
 side of the first entry:</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="tidyverse.html#cb430-1" tabindex="-1"></a><span class="fu">head</span>(dragons<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> dragons<span class="sc">$</span>age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="tidyverse.html#cb429-1" tabindex="-1"></a><span class="fu">head</span>(dragons<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> dragons<span class="sc">$</span>age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE  TRUE FALSE  TRUE</code></pre>
 <p>There can be as many entries as we want, but they should fully cover the
 logical domain of the statement. In other words, we need to account for every
 possibility. If, say, we left out the male subadult combination, <code>case_when</code> is
 going to automatically assign <code>NA</code>:</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="tidyverse.html#cb432-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb432-2"><a href="tidyverse.html#cb432-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb432-3"><a href="tidyverse.html#cb432-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb432-4"><a href="tidyverse.html#cb432-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
-<span id="cb432-5"><a href="tidyverse.html#cb432-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
-<span id="cb432-6"><a href="tidyverse.html#cb432-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
-<span id="cb432-7"><a href="tidyverse.html#cb432-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
-<span id="cb432-8"><a href="tidyverse.html#cb432-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb432-9"><a href="tidyverse.html#cb432-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb432-10"><a href="tidyverse.html#cb432-10" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Unknown&quot;</span>,</span>
-<span id="cb432-11"><a href="tidyverse.html#cb432-11" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Unknown&quot;</span>,</span>
-<span id="cb432-12"><a href="tidyverse.html#cb432-12" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Unknown&quot;</span></span>
-<span id="cb432-13"><a href="tidyverse.html#cb432-13" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
-<span id="cb432-14"><a href="tidyverse.html#cb432-14" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="tidyverse.html#cb431-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb431-2"><a href="tidyverse.html#cb431-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb431-3"><a href="tidyverse.html#cb431-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb431-4"><a href="tidyverse.html#cb431-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
+<span id="cb431-5"><a href="tidyverse.html#cb431-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
+<span id="cb431-6"><a href="tidyverse.html#cb431-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
+<span id="cb431-7"><a href="tidyverse.html#cb431-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
+<span id="cb431-8"><a href="tidyverse.html#cb431-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb431-9"><a href="tidyverse.html#cb431-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb431-10"><a href="tidyverse.html#cb431-10" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Unknown&quot;</span>,</span>
+<span id="cb431-11"><a href="tidyverse.html#cb431-11" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Unknown&quot;</span>,</span>
+<span id="cb431-12"><a href="tidyverse.html#cb431-12" tabindex="-1"></a>    <span class="fu">is.na</span>(sex) <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Unknown&quot;</span></span>
+<span id="cb431-13"><a href="tidyverse.html#cb431-13" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
+<span id="cb431-14"><a href="tidyverse.html#cb431-14" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 × 4
 ##    dragon_id sex   age_class sex_age_combo   
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;           
@@ -1082,19 +1083,19 @@ one implicit by using <code>TRUE</code> on the left-hand side of the last entry 
 <code>case_when</code> statement. For example, if an individual does not fall in the first
 six categories it means its sex is unknown. We could lump these all together in
 one “Unknown” category:</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="tidyverse.html#cb434-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb434-2"><a href="tidyverse.html#cb434-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb434-3"><a href="tidyverse.html#cb434-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb434-4"><a href="tidyverse.html#cb434-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
-<span id="cb434-5"><a href="tidyverse.html#cb434-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
-<span id="cb434-6"><a href="tidyverse.html#cb434-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
-<span id="cb434-7"><a href="tidyverse.html#cb434-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
-<span id="cb434-8"><a href="tidyverse.html#cb434-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Male&quot;</span>,</span>
-<span id="cb434-9"><a href="tidyverse.html#cb434-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb434-10"><a href="tidyverse.html#cb434-10" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb434-11"><a href="tidyverse.html#cb434-11" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Unknown&quot;</span></span>
-<span id="cb434-12"><a href="tidyverse.html#cb434-12" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
-<span id="cb434-13"><a href="tidyverse.html#cb434-13" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="tidyverse.html#cb433-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb433-2"><a href="tidyverse.html#cb433-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb433-3"><a href="tidyverse.html#cb433-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb433-4"><a href="tidyverse.html#cb433-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
+<span id="cb433-5"><a href="tidyverse.html#cb433-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
+<span id="cb433-6"><a href="tidyverse.html#cb433-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
+<span id="cb433-7"><a href="tidyverse.html#cb433-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
+<span id="cb433-8"><a href="tidyverse.html#cb433-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Male&quot;</span>,</span>
+<span id="cb433-9"><a href="tidyverse.html#cb433-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb433-10"><a href="tidyverse.html#cb433-10" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb433-11"><a href="tidyverse.html#cb433-11" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Unknown&quot;</span></span>
+<span id="cb433-12"><a href="tidyverse.html#cb433-12" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
+<span id="cb433-13"><a href="tidyverse.html#cb433-13" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 × 4
 ##    dragon_id sex   age_class sex_age_combo
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        
@@ -1111,19 +1112,19 @@ one “Unknown” category:</p>
 ## # ℹ 317 more rows</code></pre>
 <p>Or we could decide that if sex is unknown we just simply assign the value of
 <code>age_class</code>:</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="tidyverse.html#cb436-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb436-2"><a href="tidyverse.html#cb436-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb436-3"><a href="tidyverse.html#cb436-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb436-4"><a href="tidyverse.html#cb436-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
-<span id="cb436-5"><a href="tidyverse.html#cb436-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
-<span id="cb436-6"><a href="tidyverse.html#cb436-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
-<span id="cb436-7"><a href="tidyverse.html#cb436-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
-<span id="cb436-8"><a href="tidyverse.html#cb436-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Male&quot;</span>,</span>
-<span id="cb436-9"><a href="tidyverse.html#cb436-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb436-10"><a href="tidyverse.html#cb436-10" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
-<span id="cb436-11"><a href="tidyverse.html#cb436-11" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> age_class</span>
-<span id="cb436-12"><a href="tidyverse.html#cb436-12" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
-<span id="cb436-13"><a href="tidyverse.html#cb436-13" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="tidyverse.html#cb435-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb435-2"><a href="tidyverse.html#cb435-2" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb435-3"><a href="tidyverse.html#cb435-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb435-4"><a href="tidyverse.html#cb435-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sex_age_combo =</span> <span class="fu">case_when</span>(</span>
+<span id="cb435-5"><a href="tidyverse.html#cb435-5" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Female&quot;</span>,</span>
+<span id="cb435-6"><a href="tidyverse.html#cb435-6" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Adult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Adult Male&quot;</span>,</span>
+<span id="cb435-7"><a href="tidyverse.html#cb435-7" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Female&quot;</span>,</span>
+<span id="cb435-8"><a href="tidyverse.html#cb435-8" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Subadult&quot;</span> <span class="sc">~</span> <span class="st">&quot;Subadult Male&quot;</span>,</span>
+<span id="cb435-9"><a href="tidyverse.html#cb435-9" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb435-10"><a href="tidyverse.html#cb435-10" tabindex="-1"></a>    sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span> <span class="sc">&amp;</span> age_class <span class="sc">==</span> <span class="st">&quot;Juvenile&quot;</span> <span class="sc">~</span> <span class="st">&quot;Juvenile Female&quot;</span>,</span>
+<span id="cb435-11"><a href="tidyverse.html#cb435-11" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> age_class</span>
+<span id="cb435-12"><a href="tidyverse.html#cb435-12" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span> </span>
+<span id="cb435-13"><a href="tidyverse.html#cb435-13" tabindex="-1"></a>  <span class="fu">select</span>(dragon_id, sex, age_class, sex_age_combo)</span></code></pre></div>
 <pre><code>## # A tibble: 327 × 4
 ##    dragon_id sex   age_class sex_age_combo
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;        
@@ -1204,42 +1205,42 @@ do it manually, just highlight the chunk of code you want to reindent and go to
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["reproducible-science.pdf", "reproducible-science.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["reproducible-science.pdf", "reproducible-science.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

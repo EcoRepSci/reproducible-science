@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Interfacing Databases in R with RSQLite | Reproducible Data Science</title>
-  <meta name="description" content="WLF 553: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 5530: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Interfacing Databases in R with RSQLite | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 5530: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 7 Interfacing Databases in R with RSQLite | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 5530: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2024-08-20" />
+<meta name="date" content="2026-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -459,7 +460,7 @@ computer, because the R package itself contains SQLite.</p>
 database interface). DBI is a package that provides generic functions for
 interfacing databases with R, and RSQLite makes adjustments that are specific
 to SQLite. So, first things first, we are going to load the DBI package:</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="rsqlite.html#cb133-1" tabindex="-1"></a><span class="fu">library</span>(DBI)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="rsqlite.html#cb132-1" tabindex="-1"></a><span class="fu">library</span>(DBI)</span></code></pre></div>
 </div>
 <div id="establising-a-database-connection" class="section level2 hasAnchor" number="7.2">
 <h2><span class="header-section-number">7.2</span> Establising a database connection<a href="rsqlite.html#establising-a-database-connection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -467,7 +468,7 @@ to SQLite. So, first things first, we are going to load the DBI package:</p>
 new. The <code>dbConnect</code> function takes as input a file path for the database. If
 the path exists, it will connect to the existing database; if it does not, it
 will create it. We also specify that the type of database connection is SQLite:</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="rsqlite.html#cb134-1" tabindex="-1"></a>dragons_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;data/dragons.db&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="rsqlite.html#cb133-1" tabindex="-1"></a>dragons_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;data/dragons.db&quot;</span>)</span></code></pre></div>
 </div>
 <div id="sending-queries-to-the-database" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Sending queries to the database<a href="rsqlite.html#sending-queries-to-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -477,35 +478,35 @@ deleting tables, inserting data, etc.) we use the function <code>dbExecute</code
 function takes as input a database connection and the SQL code that we want to
 run (as a character string). For example, we can copy-paste the code we used in
 Chapter <a href="sql.html#sql">6</a> to create the dragons table:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="rsqlite.html#cb135-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE dragons (</span></span>
-<span id="cb135-2"><a href="rsqlite.html#cb135-2" tabindex="-1"></a><span class="st">dragon_id varchar(5) NOT NULL,</span></span>
-<span id="cb135-3"><a href="rsqlite.html#cb135-3" tabindex="-1"></a><span class="st">sex char(1) CHECK (sex IN (&#39;M&#39;, &#39;F&#39;)),</span></span>
-<span id="cb135-4"><a href="rsqlite.html#cb135-4" tabindex="-1"></a><span class="st">age_class varchar(8) CHECK (age_class IN (&#39;Juvenile&#39;, &#39;Subadult&#39;, &#39;Adult&#39;)),</span></span>
-<span id="cb135-5"><a href="rsqlite.html#cb135-5" tabindex="-1"></a><span class="st">species varchar(50),</span></span>
-<span id="cb135-6"><a href="rsqlite.html#cb135-6" tabindex="-1"></a><span class="st">PRIMARY KEY (dragon_id)</span></span>
-<span id="cb135-7"><a href="rsqlite.html#cb135-7" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="rsqlite.html#cb134-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE dragons (</span></span>
+<span id="cb134-2"><a href="rsqlite.html#cb134-2" tabindex="-1"></a><span class="st">dragon_id varchar(5) NOT NULL,</span></span>
+<span id="cb134-3"><a href="rsqlite.html#cb134-3" tabindex="-1"></a><span class="st">sex char(1) CHECK (sex IN (&#39;M&#39;, &#39;F&#39;)),</span></span>
+<span id="cb134-4"><a href="rsqlite.html#cb134-4" tabindex="-1"></a><span class="st">age_class varchar(8) CHECK (age_class IN (&#39;Juvenile&#39;, &#39;Subadult&#39;, &#39;Adult&#39;)),</span></span>
+<span id="cb134-5"><a href="rsqlite.html#cb134-5" tabindex="-1"></a><span class="st">species varchar(50),</span></span>
+<span id="cb134-6"><a href="rsqlite.html#cb134-6" tabindex="-1"></a><span class="st">PRIMARY KEY (dragon_id)</span></span>
+<span id="cb134-7"><a href="rsqlite.html#cb134-7" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
 <p>Now, instead of manually importing the data by pointing and clicking, we can
 load the data from .csv files into R and insert it into the newly created table.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="rsqlite.html#cb136-1" tabindex="-1"></a>dragons <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/dragons.csv&quot;</span>, </span>
-<span id="cb136-2"><a href="rsqlite.html#cb136-2" tabindex="-1"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb136-3"><a href="rsqlite.html#cb136-3" tabindex="-1"></a></span>
-<span id="cb136-4"><a href="rsqlite.html#cb136-4" tabindex="-1"></a><span class="fu">names</span>(dragons)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="rsqlite.html#cb135-1" tabindex="-1"></a>dragons <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/dragons.csv&quot;</span>, </span>
+<span id="cb135-2"><a href="rsqlite.html#cb135-2" tabindex="-1"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb135-3"><a href="rsqlite.html#cb135-3" tabindex="-1"></a></span>
+<span id="cb135-4"><a href="rsqlite.html#cb135-4" tabindex="-1"></a><span class="fu">names</span>(dragons)</span></code></pre></div>
 <pre><code>## [1] &quot;dragon&quot;    &quot;sex&quot;       &quot;age_class&quot; &quot;species&quot;</code></pre>
 <p>Note that the column names in the .csv differ slightly from the column names we
 assigned when creating the dragons table. This is a problem because RSQLite
 won’t recognize the columns and won’t be able to insert the data. We can prevent
 this by changing any names that do not match so that they match the database:</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="rsqlite.html#cb138-1" tabindex="-1"></a><span class="fu">names</span>(dragons)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dragon_id&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="rsqlite.html#cb137-1" tabindex="-1"></a><span class="fu">names</span>(dragons)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dragon_id&quot;</span></span></code></pre></div>
 <p>Now we can enter the data from the .csv into the dragons table. The function
 <code>dbWriteTable</code> takes as input the database connection, the name of the table we
 want to fill (in quotes), and the name of the data frame we want to input. Note
 that I’m using <code>append = TRUE</code> because otherwise RSQLite will overwrite the
 current table with whatever is in the .csv, and any constraints we have enforced (primary key, foreign key, etc.) will be lost:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="rsqlite.html#cb139-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;dragons&quot;</span>, dragons, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="rsqlite.html#cb138-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;dragons&quot;</span>, dragons, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Now we can send a query to the database to check that the data were inserted
 correctly. Because this is a query that retrieves data, not a query that
 modifies the database, we use <code>dbGetQuery</code> instead of <code>dbExecute</code>:</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="rsqlite.html#cb140-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="rsqlite.html#cb139-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    dragon_id  sex age_class             species update_timestamp
 ## 1         D1    F  Subadult     Hebridean Black             &lt;NA&gt;
 ## 2         D2 &lt;NA&gt;  Juvenile   Romanian Longhorn             &lt;NA&gt;
@@ -518,15 +519,15 @@ modifies the database, we use <code>dbGetQuery</code> instead of <code>dbExecute
 ## 9         D9    F     Adult Norwegian Ridgeback             &lt;NA&gt;
 ## 10       D10    F     Adult  Common Welsh Green             &lt;NA&gt;</code></pre>
 <p>Now we can repeat this process with the other tables:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="rsqlite.html#cb142-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE tags (</span></span>
-<span id="cb142-2"><a href="rsqlite.html#cb142-2" tabindex="-1"></a><span class="st">tag_id char(6) NOT NULL PRIMARY KEY,</span></span>
-<span id="cb142-3"><a href="rsqlite.html#cb142-3" tabindex="-1"></a><span class="st">brand varchar(50),</span></span>
-<span id="cb142-4"><a href="rsqlite.html#cb142-4" tabindex="-1"></a><span class="st">status varchar(20)</span></span>
-<span id="cb142-5"><a href="rsqlite.html#cb142-5" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="rsqlite.html#cb143-1" tabindex="-1"></a>tags <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tags.csv&quot;</span>)</span>
-<span id="cb143-2"><a href="rsqlite.html#cb143-2" tabindex="-1"></a></span>
-<span id="cb143-3"><a href="rsqlite.html#cb143-3" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;tags&quot;</span>, tags, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="rsqlite.html#cb144-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="rsqlite.html#cb141-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE tags (</span></span>
+<span id="cb141-2"><a href="rsqlite.html#cb141-2" tabindex="-1"></a><span class="st">tag_id char(6) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb141-3"><a href="rsqlite.html#cb141-3" tabindex="-1"></a><span class="st">brand varchar(50),</span></span>
+<span id="cb141-4"><a href="rsqlite.html#cb141-4" tabindex="-1"></a><span class="st">status varchar(20)</span></span>
+<span id="cb141-5"><a href="rsqlite.html#cb141-5" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="rsqlite.html#cb142-1" tabindex="-1"></a>tags <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tags.csv&quot;</span>)</span>
+<span id="cb142-2"><a href="rsqlite.html#cb142-2" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="rsqlite.html#cb142-3" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;tags&quot;</span>, tags, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="rsqlite.html#cb143-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    tag_id              brand      status
 ## 1  N33529 Heatwave Telemetry Refurbished
 ## 2  J47978          Undertone         New
@@ -538,17 +539,17 @@ modifies the database, we use <code>dbGetQuery</code> instead of <code>dbExecute
 ## 8  P47677         Aerotronic         New
 ## 9  P35987         Aerotronic         New
 ## 10 I41609 Heatwave Telemetry Refurbished</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="rsqlite.html#cb146-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE capture_sites (</span></span>
-<span id="cb146-2"><a href="rsqlite.html#cb146-2" tabindex="-1"></a><span class="st">site char(3) NOT NULL PRIMARY KEY,</span></span>
-<span id="cb146-3"><a href="rsqlite.html#cb146-3" tabindex="-1"></a><span class="st">utm_x double,</span></span>
-<span id="cb146-4"><a href="rsqlite.html#cb146-4" tabindex="-1"></a><span class="st">utm_y double</span></span>
-<span id="cb146-5"><a href="rsqlite.html#cb146-5" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="rsqlite.html#cb147-1" tabindex="-1"></a>capture_sites <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/capture_sites.csv&quot;</span>)</span>
-<span id="cb147-2"><a href="rsqlite.html#cb147-2" tabindex="-1"></a></span>
-<span id="cb147-3"><a href="rsqlite.html#cb147-3" tabindex="-1"></a><span class="fu">names</span>(capture_sites)[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;utm_x&quot;</span>, <span class="st">&quot;utm_y&quot;</span>)</span>
-<span id="cb147-4"><a href="rsqlite.html#cb147-4" tabindex="-1"></a></span>
-<span id="cb147-5"><a href="rsqlite.html#cb147-5" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;capture_sites&quot;</span>, capture_sites, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="rsqlite.html#cb148-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="rsqlite.html#cb145-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE capture_sites (</span></span>
+<span id="cb145-2"><a href="rsqlite.html#cb145-2" tabindex="-1"></a><span class="st">site char(3) NOT NULL PRIMARY KEY,</span></span>
+<span id="cb145-3"><a href="rsqlite.html#cb145-3" tabindex="-1"></a><span class="st">utm_x double,</span></span>
+<span id="cb145-4"><a href="rsqlite.html#cb145-4" tabindex="-1"></a><span class="st">utm_y double</span></span>
+<span id="cb145-5"><a href="rsqlite.html#cb145-5" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="rsqlite.html#cb146-1" tabindex="-1"></a>capture_sites <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/capture_sites.csv&quot;</span>)</span>
+<span id="cb146-2"><a href="rsqlite.html#cb146-2" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="rsqlite.html#cb146-3" tabindex="-1"></a><span class="fu">names</span>(capture_sites)[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;utm_x&quot;</span>, <span class="st">&quot;utm_y&quot;</span>)</span>
+<span id="cb146-4"><a href="rsqlite.html#cb146-4" tabindex="-1"></a></span>
+<span id="cb146-5"><a href="rsqlite.html#cb146-5" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;capture_sites&quot;</span>, capture_sites, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="rsqlite.html#cb147-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span></code></pre></div>
 <pre><code>##   site  utm_x   utm_y
 ## 1  LOG 430659 4620909
 ## 2  SLC 424790 4512583
@@ -561,21 +562,21 @@ need that trick anymore. We can just add the auto-incremental serial number to
 the data and append it to the table while keeping all the structure and the
 constraints we have enforced. Let’s try this with the captures table. First, we
 create the table:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="rsqlite.html#cb150-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE captures (</span></span>
-<span id="cb150-2"><a href="rsqlite.html#cb150-2" tabindex="-1"></a><span class="st">capture_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
-<span id="cb150-3"><a href="rsqlite.html#cb150-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
-<span id="cb150-4"><a href="rsqlite.html#cb150-4" tabindex="-1"></a><span class="st">date text,</span></span>
-<span id="cb150-5"><a href="rsqlite.html#cb150-5" tabindex="-1"></a><span class="st">site char(3),</span></span>
-<span id="cb150-6"><a href="rsqlite.html#cb150-6" tabindex="-1"></a><span class="st">FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)</span></span>
-<span id="cb150-7"><a href="rsqlite.html#cb150-7" tabindex="-1"></a><span class="st">FOREIGN KEY(site) REFERENCES capture_sites(site)</span></span>
-<span id="cb150-8"><a href="rsqlite.html#cb150-8" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="rsqlite.html#cb149-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE captures (</span></span>
+<span id="cb149-2"><a href="rsqlite.html#cb149-2" tabindex="-1"></a><span class="st">capture_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb149-3"><a href="rsqlite.html#cb149-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb149-4"><a href="rsqlite.html#cb149-4" tabindex="-1"></a><span class="st">date text,</span></span>
+<span id="cb149-5"><a href="rsqlite.html#cb149-5" tabindex="-1"></a><span class="st">site char(3),</span></span>
+<span id="cb149-6"><a href="rsqlite.html#cb149-6" tabindex="-1"></a><span class="st">FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb149-7"><a href="rsqlite.html#cb149-7" tabindex="-1"></a><span class="st">FOREIGN KEY(site) REFERENCES capture_sites(site)</span></span>
+<span id="cb149-8"><a href="rsqlite.html#cb149-8" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
 <p>Then we read in the .csv file and add a column called <code>capture_id</code> with the
 serial number we’ll use as primary key:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="rsqlite.html#cb151-1" tabindex="-1"></a>captures <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/captures.csv&quot;</span>) </span>
-<span id="cb151-2"><a href="rsqlite.html#cb151-2" tabindex="-1"></a></span>
-<span id="cb151-3"><a href="rsqlite.html#cb151-3" tabindex="-1"></a>captures<span class="sc">$</span>capture_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(captures)</span>
-<span id="cb151-4"><a href="rsqlite.html#cb151-4" tabindex="-1"></a></span>
-<span id="cb151-5"><a href="rsqlite.html#cb151-5" tabindex="-1"></a><span class="fu">head</span>(captures)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="rsqlite.html#cb150-1" tabindex="-1"></a>captures <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/captures.csv&quot;</span>) </span>
+<span id="cb150-2"><a href="rsqlite.html#cb150-2" tabindex="-1"></a></span>
+<span id="cb150-3"><a href="rsqlite.html#cb150-3" tabindex="-1"></a>captures<span class="sc">$</span>capture_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(captures)</span>
+<span id="cb150-4"><a href="rsqlite.html#cb150-4" tabindex="-1"></a></span>
+<span id="cb150-5"><a href="rsqlite.html#cb150-5" tabindex="-1"></a><span class="fu">head</span>(captures)</span></code></pre></div>
 <pre><code>##   dragon capture_date capture_site capture_id
 ## 1     D1   2012-08-10          MOA          1
 ## 2     D2   2013-07-23          MOA          2
@@ -585,13 +586,13 @@ serial number we’ll use as primary key:</p>
 ## 6     D6   2016-02-25          LOG          6</code></pre>
 <p>Not only the column names need to match the names in the database table, but the
 order has to match too. So we re-order the columns:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="rsqlite.html#cb153-1" tabindex="-1"></a>captures <span class="ot">&lt;-</span> captures[, <span class="fu">c</span>(<span class="st">&quot;capture_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;capture_date&quot;</span>, <span class="st">&quot;capture_site&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="rsqlite.html#cb152-1" tabindex="-1"></a>captures <span class="ot">&lt;-</span> captures[, <span class="fu">c</span>(<span class="st">&quot;capture_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;capture_date&quot;</span>, <span class="st">&quot;capture_site&quot;</span>)]</span></code></pre></div>
 <p>We fix the names so they match:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="rsqlite.html#cb154-1" tabindex="-1"></a><span class="fu">names</span>(captures)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;site&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="rsqlite.html#cb153-1" tabindex="-1"></a><span class="fu">names</span>(captures)[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;site&quot;</span>)</span></code></pre></div>
 <p>And we append the data frame to the database table:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="rsqlite.html#cb155-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;captures&quot;</span>, captures, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="rsqlite.html#cb154-1" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;captures&quot;</span>, captures, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Let’s check that everything worked:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="rsqlite.html#cb156-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="rsqlite.html#cb155-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    capture_id dragon_id       date site
 ## 1           1        D1 2012-08-10  MOA
 ## 2           2        D2 2013-07-23  MOA
@@ -604,35 +605,35 @@ order has to match too. So we re-order the columns:</p>
 ## 9           9        D9 2001-08-17  STG
 ## 10         10       D10 2017-01-17  LOG</code></pre>
 <p>Now we can repeat this process with the remaining tables:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="rsqlite.html#cb158-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE morphometrics (</span></span>
-<span id="cb158-2"><a href="rsqlite.html#cb158-2" tabindex="-1"></a><span class="st">measurement_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
-<span id="cb158-3"><a href="rsqlite.html#cb158-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
-<span id="cb158-4"><a href="rsqlite.html#cb158-4" tabindex="-1"></a><span class="st">date text,</span></span>
-<span id="cb158-5"><a href="rsqlite.html#cb158-5" tabindex="-1"></a><span class="st">total_body_length_cm float,</span></span>
-<span id="cb158-6"><a href="rsqlite.html#cb158-6" tabindex="-1"></a><span class="st">wingspan_cm float,</span></span>
-<span id="cb158-7"><a href="rsqlite.html#cb158-7" tabindex="-1"></a><span class="st">tail_length_cm float,</span></span>
-<span id="cb158-8"><a href="rsqlite.html#cb158-8" tabindex="-1"></a><span class="st">tarsus_length_cm float,</span></span>
-<span id="cb158-9"><a href="rsqlite.html#cb158-9" tabindex="-1"></a><span class="st">claw_length_cm float,</span></span>
-<span id="cb158-10"><a href="rsqlite.html#cb158-10" tabindex="-1"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
-<span id="cb158-11"><a href="rsqlite.html#cb158-11" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="rsqlite.html#cb159-1" tabindex="-1"></a><span class="co"># Load csv file</span></span>
-<span id="cb159-2"><a href="rsqlite.html#cb159-2" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/morphometrics.csv&quot;</span>) </span>
-<span id="cb159-3"><a href="rsqlite.html#cb159-3" tabindex="-1"></a></span>
-<span id="cb159-4"><a href="rsqlite.html#cb159-4" tabindex="-1"></a><span class="co"># Add auto-incremental number</span></span>
-<span id="cb159-5"><a href="rsqlite.html#cb159-5" tabindex="-1"></a>morphometrics<span class="sc">$</span>measurement_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(morphometrics)</span>
-<span id="cb159-6"><a href="rsqlite.html#cb159-6" tabindex="-1"></a></span>
-<span id="cb159-7"><a href="rsqlite.html#cb159-7" tabindex="-1"></a><span class="co"># Re-order columns</span></span>
-<span id="cb159-8"><a href="rsqlite.html#cb159-8" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> morphometrics[, <span class="fu">c</span>(<span class="st">&quot;measurement_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;date&quot;</span>,</span>
-<span id="cb159-9"><a href="rsqlite.html#cb159-9" tabindex="-1"></a>                                   <span class="st">&quot;total_body_length_cm&quot;</span>, <span class="st">&quot;wingspan_cm&quot;</span>,</span>
-<span id="cb159-10"><a href="rsqlite.html#cb159-10" tabindex="-1"></a>                                   <span class="st">&quot;tail_length_cm&quot;</span>, <span class="st">&quot;tarsus_length_cm&quot;</span>, </span>
-<span id="cb159-11"><a href="rsqlite.html#cb159-11" tabindex="-1"></a>                                   <span class="st">&quot;claw_length_cm&quot;</span>)]</span>
-<span id="cb159-12"><a href="rsqlite.html#cb159-12" tabindex="-1"></a></span>
-<span id="cb159-13"><a href="rsqlite.html#cb159-13" tabindex="-1"></a><span class="co"># Change column names to match</span></span>
-<span id="cb159-14"><a href="rsqlite.html#cb159-14" tabindex="-1"></a><span class="fu">names</span>(morphometrics)[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dragon_id&quot;</span></span>
-<span id="cb159-15"><a href="rsqlite.html#cb159-15" tabindex="-1"></a></span>
-<span id="cb159-16"><a href="rsqlite.html#cb159-16" tabindex="-1"></a><span class="co"># Append to database table</span></span>
-<span id="cb159-17"><a href="rsqlite.html#cb159-17" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;morphometrics&quot;</span>, morphometrics, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="rsqlite.html#cb160-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="rsqlite.html#cb157-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE morphometrics (</span></span>
+<span id="cb157-2"><a href="rsqlite.html#cb157-2" tabindex="-1"></a><span class="st">measurement_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb157-3"><a href="rsqlite.html#cb157-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb157-4"><a href="rsqlite.html#cb157-4" tabindex="-1"></a><span class="st">date text,</span></span>
+<span id="cb157-5"><a href="rsqlite.html#cb157-5" tabindex="-1"></a><span class="st">total_body_length_cm float,</span></span>
+<span id="cb157-6"><a href="rsqlite.html#cb157-6" tabindex="-1"></a><span class="st">wingspan_cm float,</span></span>
+<span id="cb157-7"><a href="rsqlite.html#cb157-7" tabindex="-1"></a><span class="st">tail_length_cm float,</span></span>
+<span id="cb157-8"><a href="rsqlite.html#cb157-8" tabindex="-1"></a><span class="st">tarsus_length_cm float,</span></span>
+<span id="cb157-9"><a href="rsqlite.html#cb157-9" tabindex="-1"></a><span class="st">claw_length_cm float,</span></span>
+<span id="cb157-10"><a href="rsqlite.html#cb157-10" tabindex="-1"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb157-11"><a href="rsqlite.html#cb157-11" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="rsqlite.html#cb158-1" tabindex="-1"></a><span class="co"># Load csv file</span></span>
+<span id="cb158-2"><a href="rsqlite.html#cb158-2" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/morphometrics.csv&quot;</span>) </span>
+<span id="cb158-3"><a href="rsqlite.html#cb158-3" tabindex="-1"></a></span>
+<span id="cb158-4"><a href="rsqlite.html#cb158-4" tabindex="-1"></a><span class="co"># Add auto-incremental number</span></span>
+<span id="cb158-5"><a href="rsqlite.html#cb158-5" tabindex="-1"></a>morphometrics<span class="sc">$</span>measurement_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(morphometrics)</span>
+<span id="cb158-6"><a href="rsqlite.html#cb158-6" tabindex="-1"></a></span>
+<span id="cb158-7"><a href="rsqlite.html#cb158-7" tabindex="-1"></a><span class="co"># Re-order columns</span></span>
+<span id="cb158-8"><a href="rsqlite.html#cb158-8" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> morphometrics[, <span class="fu">c</span>(<span class="st">&quot;measurement_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;date&quot;</span>,</span>
+<span id="cb158-9"><a href="rsqlite.html#cb158-9" tabindex="-1"></a>                                   <span class="st">&quot;total_body_length_cm&quot;</span>, <span class="st">&quot;wingspan_cm&quot;</span>,</span>
+<span id="cb158-10"><a href="rsqlite.html#cb158-10" tabindex="-1"></a>                                   <span class="st">&quot;tail_length_cm&quot;</span>, <span class="st">&quot;tarsus_length_cm&quot;</span>, </span>
+<span id="cb158-11"><a href="rsqlite.html#cb158-11" tabindex="-1"></a>                                   <span class="st">&quot;claw_length_cm&quot;</span>)]</span>
+<span id="cb158-12"><a href="rsqlite.html#cb158-12" tabindex="-1"></a></span>
+<span id="cb158-13"><a href="rsqlite.html#cb158-13" tabindex="-1"></a><span class="co"># Change column names to match</span></span>
+<span id="cb158-14"><a href="rsqlite.html#cb158-14" tabindex="-1"></a><span class="fu">names</span>(morphometrics)[<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;dragon_id&quot;</span></span>
+<span id="cb158-15"><a href="rsqlite.html#cb158-15" tabindex="-1"></a></span>
+<span id="cb158-16"><a href="rsqlite.html#cb158-16" tabindex="-1"></a><span class="co"># Append to database table</span></span>
+<span id="cb158-17"><a href="rsqlite.html#cb158-17" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;morphometrics&quot;</span>, morphometrics, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="rsqlite.html#cb159-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    measurement_id dragon_id       date total_body_length_cm wingspan_cm
 ## 1               1       D96 2012-10-10            1069.8965   1389.5527
 ## 2               2      D400 2003-07-03             333.4600    634.9109
@@ -655,26 +656,26 @@ order has to match too. So we re-order the columns:</p>
 ## 8        148.3656         43.57849       4.576640
 ## 9        666.4246        147.44219      13.189233
 ## 10       140.4342         43.60513       4.248564</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="rsqlite.html#cb162-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE diet (</span></span>
-<span id="cb162-2"><a href="rsqlite.html#cb162-2" tabindex="-1"></a><span class="st">diet_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
-<span id="cb162-3"><a href="rsqlite.html#cb162-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
-<span id="cb162-4"><a href="rsqlite.html#cb162-4" tabindex="-1"></a><span class="st">sample_id varchar(8),</span></span>
-<span id="cb162-5"><a href="rsqlite.html#cb162-5" tabindex="-1"></a><span class="st">date text,</span></span>
-<span id="cb162-6"><a href="rsqlite.html#cb162-6" tabindex="-1"></a><span class="st">item_id integer,</span></span>
-<span id="cb162-7"><a href="rsqlite.html#cb162-7" tabindex="-1"></a><span class="st">item varchar(50),</span></span>
-<span id="cb162-8"><a href="rsqlite.html#cb162-8" tabindex="-1"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
-<span id="cb162-9"><a href="rsqlite.html#cb162-9" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="rsqlite.html#cb163-1" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/diet.csv&quot;</span>) </span>
-<span id="cb163-2"><a href="rsqlite.html#cb163-2" tabindex="-1"></a></span>
-<span id="cb163-3"><a href="rsqlite.html#cb163-3" tabindex="-1"></a>diet<span class="sc">$</span>diet_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(diet)</span>
-<span id="cb163-4"><a href="rsqlite.html#cb163-4" tabindex="-1"></a></span>
-<span id="cb163-5"><a href="rsqlite.html#cb163-5" tabindex="-1"></a>diet <span class="ot">&lt;-</span> diet[, <span class="fu">c</span>(<span class="st">&quot;diet_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;sample_id&quot;</span>, <span class="st">&quot;sample_dates&quot;</span>, <span class="st">&quot;item_id&quot;</span>,</span>
-<span id="cb163-6"><a href="rsqlite.html#cb163-6" tabindex="-1"></a>                 <span class="st">&quot;item&quot;</span>)]</span>
-<span id="cb163-7"><a href="rsqlite.html#cb163-7" tabindex="-1"></a></span>
-<span id="cb163-8"><a href="rsqlite.html#cb163-8" tabindex="-1"></a><span class="fu">names</span>(diet)[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;date&quot;</span>)</span>
-<span id="cb163-9"><a href="rsqlite.html#cb163-9" tabindex="-1"></a></span>
-<span id="cb163-10"><a href="rsqlite.html#cb163-10" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;diet&quot;</span>, diet, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="rsqlite.html#cb164-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="rsqlite.html#cb161-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE diet (</span></span>
+<span id="cb161-2"><a href="rsqlite.html#cb161-2" tabindex="-1"></a><span class="st">diet_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb161-3"><a href="rsqlite.html#cb161-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb161-4"><a href="rsqlite.html#cb161-4" tabindex="-1"></a><span class="st">sample_id varchar(8),</span></span>
+<span id="cb161-5"><a href="rsqlite.html#cb161-5" tabindex="-1"></a><span class="st">date text,</span></span>
+<span id="cb161-6"><a href="rsqlite.html#cb161-6" tabindex="-1"></a><span class="st">item_id integer,</span></span>
+<span id="cb161-7"><a href="rsqlite.html#cb161-7" tabindex="-1"></a><span class="st">item varchar(50),</span></span>
+<span id="cb161-8"><a href="rsqlite.html#cb161-8" tabindex="-1"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb161-9"><a href="rsqlite.html#cb161-9" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="rsqlite.html#cb162-1" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/diet.csv&quot;</span>) </span>
+<span id="cb162-2"><a href="rsqlite.html#cb162-2" tabindex="-1"></a></span>
+<span id="cb162-3"><a href="rsqlite.html#cb162-3" tabindex="-1"></a>diet<span class="sc">$</span>diet_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(diet)</span>
+<span id="cb162-4"><a href="rsqlite.html#cb162-4" tabindex="-1"></a></span>
+<span id="cb162-5"><a href="rsqlite.html#cb162-5" tabindex="-1"></a>diet <span class="ot">&lt;-</span> diet[, <span class="fu">c</span>(<span class="st">&quot;diet_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;sample_id&quot;</span>, <span class="st">&quot;sample_dates&quot;</span>, <span class="st">&quot;item_id&quot;</span>,</span>
+<span id="cb162-6"><a href="rsqlite.html#cb162-6" tabindex="-1"></a>                 <span class="st">&quot;item&quot;</span>)]</span>
+<span id="cb162-7"><a href="rsqlite.html#cb162-7" tabindex="-1"></a></span>
+<span id="cb162-8"><a href="rsqlite.html#cb162-8" tabindex="-1"></a><span class="fu">names</span>(diet)[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;date&quot;</span>)</span>
+<span id="cb162-9"><a href="rsqlite.html#cb162-9" tabindex="-1"></a></span>
+<span id="cb162-10"><a href="rsqlite.html#cb162-10" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;diet&quot;</span>, diet, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="rsqlite.html#cb163-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    diet_id dragon_id sample_id       date item_id          item
 ## 1        1      D221    D221-1 2017-11-22       1  Domestic cow
 ## 2        2      D221    D221-1 2017-11-22       2 Domestic goat
@@ -686,26 +687,26 @@ order has to match too. So we re-order the columns:</p>
 ## 8        8      D119    D119-1 2012-06-28       2        Cougar
 ## 9        9      D119    D119-1 2012-06-28       3 Domestic goat
 ## 10      10      D119    D119-1 2012-06-28       4 Mountain goat</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="rsqlite.html#cb166-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE deployments (</span></span>
-<span id="cb166-2"><a href="rsqlite.html#cb166-2" tabindex="-1"></a><span class="st">deployment_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
-<span id="cb166-3"><a href="rsqlite.html#cb166-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
-<span id="cb166-4"><a href="rsqlite.html#cb166-4" tabindex="-1"></a><span class="st">tag_id char(6),</span></span>
-<span id="cb166-5"><a href="rsqlite.html#cb166-5" tabindex="-1"></a><span class="st">start_deployment text,</span></span>
-<span id="cb166-6"><a href="rsqlite.html#cb166-6" tabindex="-1"></a><span class="st">end_deployment text,</span></span>
-<span id="cb166-7"><a href="rsqlite.html#cb166-7" tabindex="-1"></a><span class="st">FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)</span></span>
-<span id="cb166-8"><a href="rsqlite.html#cb166-8" tabindex="-1"></a><span class="st">FOREIGN KEY(tag_id) REFERENCES tags(tag_id)</span></span>
-<span id="cb166-9"><a href="rsqlite.html#cb166-9" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="rsqlite.html#cb167-1" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deployments.csv&quot;</span>) </span>
-<span id="cb167-2"><a href="rsqlite.html#cb167-2" tabindex="-1"></a></span>
-<span id="cb167-3"><a href="rsqlite.html#cb167-3" tabindex="-1"></a>deployments<span class="sc">$</span>deployment_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(deployments)</span>
-<span id="cb167-4"><a href="rsqlite.html#cb167-4" tabindex="-1"></a></span>
-<span id="cb167-5"><a href="rsqlite.html#cb167-5" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> deployments[, <span class="fu">c</span>(<span class="st">&quot;deployment_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;tag&quot;</span>, </span>
-<span id="cb167-6"><a href="rsqlite.html#cb167-6" tabindex="-1"></a>                               <span class="st">&quot;start_deploy&quot;</span>, <span class="st">&quot;end_deploy&quot;</span>)]</span>
-<span id="cb167-7"><a href="rsqlite.html#cb167-7" tabindex="-1"></a></span>
-<span id="cb167-8"><a href="rsqlite.html#cb167-8" tabindex="-1"></a><span class="fu">names</span>(deployments)[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;tag_id&quot;</span>, <span class="st">&quot;start_deployment&quot;</span>, <span class="st">&quot;end_deployment&quot;</span>)</span>
-<span id="cb167-9"><a href="rsqlite.html#cb167-9" tabindex="-1"></a></span>
-<span id="cb167-10"><a href="rsqlite.html#cb167-10" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;deployments&quot;</span>, deployments, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="rsqlite.html#cb168-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="rsqlite.html#cb165-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE deployments (</span></span>
+<span id="cb165-2"><a href="rsqlite.html#cb165-2" tabindex="-1"></a><span class="st">deployment_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb165-3"><a href="rsqlite.html#cb165-3" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb165-4"><a href="rsqlite.html#cb165-4" tabindex="-1"></a><span class="st">tag_id char(6),</span></span>
+<span id="cb165-5"><a href="rsqlite.html#cb165-5" tabindex="-1"></a><span class="st">start_deployment text,</span></span>
+<span id="cb165-6"><a href="rsqlite.html#cb165-6" tabindex="-1"></a><span class="st">end_deployment text,</span></span>
+<span id="cb165-7"><a href="rsqlite.html#cb165-7" tabindex="-1"></a><span class="st">FOREIGN KEY(dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb165-8"><a href="rsqlite.html#cb165-8" tabindex="-1"></a><span class="st">FOREIGN KEY(tag_id) REFERENCES tags(tag_id)</span></span>
+<span id="cb165-9"><a href="rsqlite.html#cb165-9" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="rsqlite.html#cb166-1" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/deployments.csv&quot;</span>) </span>
+<span id="cb166-2"><a href="rsqlite.html#cb166-2" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="rsqlite.html#cb166-3" tabindex="-1"></a>deployments<span class="sc">$</span>deployment_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(deployments)</span>
+<span id="cb166-4"><a href="rsqlite.html#cb166-4" tabindex="-1"></a></span>
+<span id="cb166-5"><a href="rsqlite.html#cb166-5" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> deployments[, <span class="fu">c</span>(<span class="st">&quot;deployment_id&quot;</span>, <span class="st">&quot;dragon&quot;</span>, <span class="st">&quot;tag&quot;</span>, </span>
+<span id="cb166-6"><a href="rsqlite.html#cb166-6" tabindex="-1"></a>                               <span class="st">&quot;start_deploy&quot;</span>, <span class="st">&quot;end_deploy&quot;</span>)]</span>
+<span id="cb166-7"><a href="rsqlite.html#cb166-7" tabindex="-1"></a></span>
+<span id="cb166-8"><a href="rsqlite.html#cb166-8" tabindex="-1"></a><span class="fu">names</span>(deployments)[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;dragon_id&quot;</span>, <span class="st">&quot;tag_id&quot;</span>, <span class="st">&quot;start_deployment&quot;</span>, <span class="st">&quot;end_deployment&quot;</span>)</span>
+<span id="cb166-9"><a href="rsqlite.html#cb166-9" tabindex="-1"></a></span>
+<span id="cb166-10"><a href="rsqlite.html#cb166-10" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;deployments&quot;</span>, deployments, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="rsqlite.html#cb167-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    deployment_id dragon_id tag_id start_deployment end_deployment
 ## 1              1      D486 N33529       2006-12-20     2007-07-04
 ## 2              2      D393 J47978       2008-01-13     2008-10-13
@@ -717,24 +718,24 @@ order has to match too. So we re-order the columns:</p>
 ## 8              8      D315 P47677       2006-03-03     2006-06-06
 ## 9              9      D209 P35987       2007-02-26     2007-05-31
 ## 10            10      D357 I41609       2013-09-09     2014-03-08</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="rsqlite.html#cb170-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE gps_data_raw (</span></span>
-<span id="cb170-2"><a href="rsqlite.html#cb170-2" tabindex="-1"></a><span class="st">gps_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
-<span id="cb170-3"><a href="rsqlite.html#cb170-3" tabindex="-1"></a><span class="st">tag_id char(6),</span></span>
-<span id="cb170-4"><a href="rsqlite.html#cb170-4" tabindex="-1"></a><span class="st">timestamp text, </span></span>
-<span id="cb170-5"><a href="rsqlite.html#cb170-5" tabindex="-1"></a><span class="st">utm_x double,</span></span>
-<span id="cb170-6"><a href="rsqlite.html#cb170-6" tabindex="-1"></a><span class="st">utm_y double,</span></span>
-<span id="cb170-7"><a href="rsqlite.html#cb170-7" tabindex="-1"></a><span class="st">FOREIGN KEY(tag_id) REFERENCES tags(tag_id)</span></span>
-<span id="cb170-8"><a href="rsqlite.html#cb170-8" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="rsqlite.html#cb171-1" tabindex="-1"></a>gps_data_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/telemetry_raw.csv&quot;</span>) </span>
-<span id="cb171-2"><a href="rsqlite.html#cb171-2" tabindex="-1"></a></span>
-<span id="cb171-3"><a href="rsqlite.html#cb171-3" tabindex="-1"></a>gps_data_raw<span class="sc">$</span>gps_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(gps_data_raw)</span>
-<span id="cb171-4"><a href="rsqlite.html#cb171-4" tabindex="-1"></a></span>
-<span id="cb171-5"><a href="rsqlite.html#cb171-5" tabindex="-1"></a>gps_data_raw <span class="ot">&lt;-</span> gps_data_raw[, <span class="fu">c</span>(<span class="st">&quot;gps_id&quot;</span>, <span class="st">&quot;tag&quot;</span>, <span class="st">&quot;timestamp&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)]</span>
-<span id="cb171-6"><a href="rsqlite.html#cb171-6" tabindex="-1"></a></span>
-<span id="cb171-7"><a href="rsqlite.html#cb171-7" tabindex="-1"></a><span class="fu">names</span>(gps_data_raw)[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tag_id&quot;</span>, <span class="st">&quot;utm_x&quot;</span>, <span class="st">&quot;utm_y&quot;</span>)</span>
-<span id="cb171-8"><a href="rsqlite.html#cb171-8" tabindex="-1"></a></span>
-<span id="cb171-9"><a href="rsqlite.html#cb171-9" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;gps_data_raw&quot;</span>, gps_data_raw, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="rsqlite.html#cb172-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data_raw LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="rsqlite.html#cb169-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE gps_data_raw (</span></span>
+<span id="cb169-2"><a href="rsqlite.html#cb169-2" tabindex="-1"></a><span class="st">gps_id INTEGER PRIMARY KEY AUTOINCREMENT,</span></span>
+<span id="cb169-3"><a href="rsqlite.html#cb169-3" tabindex="-1"></a><span class="st">tag_id char(6),</span></span>
+<span id="cb169-4"><a href="rsqlite.html#cb169-4" tabindex="-1"></a><span class="st">timestamp text, </span></span>
+<span id="cb169-5"><a href="rsqlite.html#cb169-5" tabindex="-1"></a><span class="st">utm_x double,</span></span>
+<span id="cb169-6"><a href="rsqlite.html#cb169-6" tabindex="-1"></a><span class="st">utm_y double,</span></span>
+<span id="cb169-7"><a href="rsqlite.html#cb169-7" tabindex="-1"></a><span class="st">FOREIGN KEY(tag_id) REFERENCES tags(tag_id)</span></span>
+<span id="cb169-8"><a href="rsqlite.html#cb169-8" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="rsqlite.html#cb170-1" tabindex="-1"></a>gps_data_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/telemetry_raw.csv&quot;</span>) </span>
+<span id="cb170-2"><a href="rsqlite.html#cb170-2" tabindex="-1"></a></span>
+<span id="cb170-3"><a href="rsqlite.html#cb170-3" tabindex="-1"></a>gps_data_raw<span class="sc">$</span>gps_id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(gps_data_raw)</span>
+<span id="cb170-4"><a href="rsqlite.html#cb170-4" tabindex="-1"></a></span>
+<span id="cb170-5"><a href="rsqlite.html#cb170-5" tabindex="-1"></a>gps_data_raw <span class="ot">&lt;-</span> gps_data_raw[, <span class="fu">c</span>(<span class="st">&quot;gps_id&quot;</span>, <span class="st">&quot;tag&quot;</span>, <span class="st">&quot;timestamp&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>)]</span>
+<span id="cb170-6"><a href="rsqlite.html#cb170-6" tabindex="-1"></a></span>
+<span id="cb170-7"><a href="rsqlite.html#cb170-7" tabindex="-1"></a><span class="fu">names</span>(gps_data_raw)[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;tag_id&quot;</span>, <span class="st">&quot;utm_x&quot;</span>, <span class="st">&quot;utm_y&quot;</span>)</span>
+<span id="cb170-8"><a href="rsqlite.html#cb170-8" tabindex="-1"></a></span>
+<span id="cb170-9"><a href="rsqlite.html#cb170-9" tabindex="-1"></a><span class="fu">dbWriteTable</span>(dragons_db, <span class="st">&quot;gps_data_raw&quot;</span>, gps_data_raw, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="rsqlite.html#cb171-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data_raw LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    gps_id tag_id           timestamp    utm_x   utm_y
 ## 1       1 N33529 2006-12-20 00:02:03 626479.9 4270480
 ## 2       2 N33529 2006-12-20 03:02:01 628321.6 4271404
@@ -749,38 +750,38 @@ order has to match too. So we re-order the columns:</p>
 <p>Now we are ready to generate the <code>gps_data</code> table based on information from
 existing tables. We can create and populate the table in 2 steps using
 <code>dbExecute</code>:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="rsqlite.html#cb174-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE gps_data (</span></span>
-<span id="cb174-2"><a href="rsqlite.html#cb174-2" tabindex="-1"></a><span class="st">loc_id INTEGER PRIMARY KEY,</span></span>
-<span id="cb174-3"><a href="rsqlite.html#cb174-3" tabindex="-1"></a><span class="st">tag_id char(6),</span></span>
-<span id="cb174-4"><a href="rsqlite.html#cb174-4" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
-<span id="cb174-5"><a href="rsqlite.html#cb174-5" tabindex="-1"></a><span class="st">timestamp text,</span></span>
-<span id="cb174-6"><a href="rsqlite.html#cb174-6" tabindex="-1"></a><span class="st">utm_x double,</span></span>
-<span id="cb174-7"><a href="rsqlite.html#cb174-7" tabindex="-1"></a><span class="st">utm_y double,</span></span>
-<span id="cb174-8"><a href="rsqlite.html#cb174-8" tabindex="-1"></a><span class="st">FOREIGN KEY (tag_id) REFERENCES tags(tag_id)</span></span>
-<span id="cb174-9"><a href="rsqlite.html#cb174-9" tabindex="-1"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
-<span id="cb174-10"><a href="rsqlite.html#cb174-10" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="rsqlite.html#cb175-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;INSERT INTO gps_data (</span></span>
-<span id="cb175-2"><a href="rsqlite.html#cb175-2" tabindex="-1"></a><span class="st">tag_id, dragon_id, timestamp, utm_x, utm_y)</span></span>
-<span id="cb175-3"><a href="rsqlite.html#cb175-3" tabindex="-1"></a><span class="st">SELECT</span></span>
-<span id="cb175-4"><a href="rsqlite.html#cb175-4" tabindex="-1"></a><span class="st">deployments.tag_id,</span></span>
-<span id="cb175-5"><a href="rsqlite.html#cb175-5" tabindex="-1"></a><span class="st">deployments.dragon_id,</span></span>
-<span id="cb175-6"><a href="rsqlite.html#cb175-6" tabindex="-1"></a><span class="st">gps_data_raw.timestamp,</span></span>
-<span id="cb175-7"><a href="rsqlite.html#cb175-7" tabindex="-1"></a><span class="st">gps_data_raw.utm_x,</span></span>
-<span id="cb175-8"><a href="rsqlite.html#cb175-8" tabindex="-1"></a><span class="st">gps_data_raw.utm_y</span></span>
-<span id="cb175-9"><a href="rsqlite.html#cb175-9" tabindex="-1"></a><span class="st">FROM deployments LEFT JOIN gps_data_raw USING (tag_id)</span></span>
-<span id="cb175-10"><a href="rsqlite.html#cb175-10" tabindex="-1"></a><span class="st">WHERE gps_data_raw.tag_id = deployments.tag_id AND</span></span>
-<span id="cb175-11"><a href="rsqlite.html#cb175-11" tabindex="-1"></a><span class="st">(</span></span>
-<span id="cb175-12"><a href="rsqlite.html#cb175-12" tabindex="-1"></a><span class="st">    (</span></span>
-<span id="cb175-13"><a href="rsqlite.html#cb175-13" tabindex="-1"></a><span class="st">    (strftime(gps_data_raw.timestamp) &gt;= strftime(deployments.start_deployment)) AND</span></span>
-<span id="cb175-14"><a href="rsqlite.html#cb175-14" tabindex="-1"></a><span class="st">    (strftime(gps_data_raw.timestamp) &lt;= strftime(deployments.end_deployment))</span></span>
-<span id="cb175-15"><a href="rsqlite.html#cb175-15" tabindex="-1"></a><span class="st">    )</span></span>
-<span id="cb175-16"><a href="rsqlite.html#cb175-16" tabindex="-1"></a><span class="st">OR </span></span>
-<span id="cb175-17"><a href="rsqlite.html#cb175-17" tabindex="-1"></a><span class="st">    (</span></span>
-<span id="cb175-18"><a href="rsqlite.html#cb175-18" tabindex="-1"></a><span class="st">    (gps_data_raw.timestamp &gt;= deployments.start_deployment) AND</span></span>
-<span id="cb175-19"><a href="rsqlite.html#cb175-19" tabindex="-1"></a><span class="st">    (deployments.end_deployment IS NULL)</span></span>
-<span id="cb175-20"><a href="rsqlite.html#cb175-20" tabindex="-1"></a><span class="st">    )</span></span>
-<span id="cb175-21"><a href="rsqlite.html#cb175-21" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="rsqlite.html#cb176-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data LIMIT 10;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="rsqlite.html#cb173-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;CREATE TABLE gps_data (</span></span>
+<span id="cb173-2"><a href="rsqlite.html#cb173-2" tabindex="-1"></a><span class="st">loc_id INTEGER PRIMARY KEY,</span></span>
+<span id="cb173-3"><a href="rsqlite.html#cb173-3" tabindex="-1"></a><span class="st">tag_id char(6),</span></span>
+<span id="cb173-4"><a href="rsqlite.html#cb173-4" tabindex="-1"></a><span class="st">dragon_id varchar(5),</span></span>
+<span id="cb173-5"><a href="rsqlite.html#cb173-5" tabindex="-1"></a><span class="st">timestamp text,</span></span>
+<span id="cb173-6"><a href="rsqlite.html#cb173-6" tabindex="-1"></a><span class="st">utm_x double,</span></span>
+<span id="cb173-7"><a href="rsqlite.html#cb173-7" tabindex="-1"></a><span class="st">utm_y double,</span></span>
+<span id="cb173-8"><a href="rsqlite.html#cb173-8" tabindex="-1"></a><span class="st">FOREIGN KEY (tag_id) REFERENCES tags(tag_id)</span></span>
+<span id="cb173-9"><a href="rsqlite.html#cb173-9" tabindex="-1"></a><span class="st">FOREIGN KEY (dragon_id) REFERENCES dragons(dragon_id)</span></span>
+<span id="cb173-10"><a href="rsqlite.html#cb173-10" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="rsqlite.html#cb174-1" tabindex="-1"></a><span class="fu">dbExecute</span>(dragons_db, <span class="st">&quot;INSERT INTO gps_data (</span></span>
+<span id="cb174-2"><a href="rsqlite.html#cb174-2" tabindex="-1"></a><span class="st">tag_id, dragon_id, timestamp, utm_x, utm_y)</span></span>
+<span id="cb174-3"><a href="rsqlite.html#cb174-3" tabindex="-1"></a><span class="st">SELECT</span></span>
+<span id="cb174-4"><a href="rsqlite.html#cb174-4" tabindex="-1"></a><span class="st">deployments.tag_id,</span></span>
+<span id="cb174-5"><a href="rsqlite.html#cb174-5" tabindex="-1"></a><span class="st">deployments.dragon_id,</span></span>
+<span id="cb174-6"><a href="rsqlite.html#cb174-6" tabindex="-1"></a><span class="st">gps_data_raw.timestamp,</span></span>
+<span id="cb174-7"><a href="rsqlite.html#cb174-7" tabindex="-1"></a><span class="st">gps_data_raw.utm_x,</span></span>
+<span id="cb174-8"><a href="rsqlite.html#cb174-8" tabindex="-1"></a><span class="st">gps_data_raw.utm_y</span></span>
+<span id="cb174-9"><a href="rsqlite.html#cb174-9" tabindex="-1"></a><span class="st">FROM deployments LEFT JOIN gps_data_raw USING (tag_id)</span></span>
+<span id="cb174-10"><a href="rsqlite.html#cb174-10" tabindex="-1"></a><span class="st">WHERE gps_data_raw.tag_id = deployments.tag_id AND</span></span>
+<span id="cb174-11"><a href="rsqlite.html#cb174-11" tabindex="-1"></a><span class="st">(</span></span>
+<span id="cb174-12"><a href="rsqlite.html#cb174-12" tabindex="-1"></a><span class="st">    (</span></span>
+<span id="cb174-13"><a href="rsqlite.html#cb174-13" tabindex="-1"></a><span class="st">    (strftime(gps_data_raw.timestamp) &gt;= strftime(deployments.start_deployment)) AND</span></span>
+<span id="cb174-14"><a href="rsqlite.html#cb174-14" tabindex="-1"></a><span class="st">    (strftime(gps_data_raw.timestamp) &lt;= strftime(deployments.end_deployment))</span></span>
+<span id="cb174-15"><a href="rsqlite.html#cb174-15" tabindex="-1"></a><span class="st">    )</span></span>
+<span id="cb174-16"><a href="rsqlite.html#cb174-16" tabindex="-1"></a><span class="st">OR </span></span>
+<span id="cb174-17"><a href="rsqlite.html#cb174-17" tabindex="-1"></a><span class="st">    (</span></span>
+<span id="cb174-18"><a href="rsqlite.html#cb174-18" tabindex="-1"></a><span class="st">    (gps_data_raw.timestamp &gt;= deployments.start_deployment) AND</span></span>
+<span id="cb174-19"><a href="rsqlite.html#cb174-19" tabindex="-1"></a><span class="st">    (deployments.end_deployment IS NULL)</span></span>
+<span id="cb174-20"><a href="rsqlite.html#cb174-20" tabindex="-1"></a><span class="st">    )</span></span>
+<span id="cb174-21"><a href="rsqlite.html#cb174-21" tabindex="-1"></a><span class="st">);&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="rsqlite.html#cb175-1" tabindex="-1"></a><span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data LIMIT 10;&quot;</span>)</span></code></pre></div>
 <pre><code>##    loc_id tag_id dragon_id           timestamp    utm_x   utm_y
 ## 1       1 N33529      D486 2006-12-20 00:02:03 626479.9 4270480
 ## 2       2 N33529      D486 2006-12-20 03:02:01 628321.6 4271404
@@ -829,42 +830,42 @@ functionalities that R does not provide on its own.</p>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["reproducible-science.pdf", "reproducible-science.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["reproducible-science.pdf", "reproducible-science.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

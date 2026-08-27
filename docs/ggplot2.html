@@ -5,25 +5,25 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 Data Visualization with ggplot2 | Reproducible Data Science</title>
-  <meta name="description" content="WLF 553: Reproducible Data Science" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="description" content="WLF 5530: Reproducible Data Science" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 Data Visualization with ggplot2 | Reproducible Data Science" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="WLF 553: Reproducible Data Science" />
+  <meta property="og:description" content="WLF 5530: Reproducible Data Science" />
   
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 14 Data Visualization with ggplot2 | Reproducible Data Science" />
   
-  <meta name="twitter:description" content="WLF 553: Reproducible Data Science" />
+  <meta name="twitter:description" content="WLF 5530: Reproducible Data Science" />
   
 
 <meta name="author" content="Simona Picardi" />
 
 
-<meta name="date" content="2024-08-20" />
+<meta name="date" content="2026-08-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,6 +55,7 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -459,20 +460,20 @@ see how to make beautiful, elegant plots using the core <code>tidyverse</code> p
 Figure 14.1: Artwork by Allison Horst
 </p>
 </div>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="ggplot2.html#cb438-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="ggplot2.html#cb437-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>We are going to practice using the dragon dataset again, so let’s load it in:</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="ggplot2.html#cb439-1" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb439-2"><a href="ggplot2.html#cb439-2" tabindex="-1"></a></span>
-<span id="cb439-3"><a href="ggplot2.html#cb439-3" tabindex="-1"></a>dragons_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;data/dragons.db&quot;</span>)</span>
-<span id="cb439-4"><a href="ggplot2.html#cb439-4" tabindex="-1"></a></span>
-<span id="cb439-5"><a href="ggplot2.html#cb439-5" tabindex="-1"></a>dragons <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons;&quot;</span>)</span>
-<span id="cb439-6"><a href="ggplot2.html#cb439-6" tabindex="-1"></a>capture_sites <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span>
-<span id="cb439-7"><a href="ggplot2.html#cb439-7" tabindex="-1"></a>captures <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures;&quot;</span>)</span>
-<span id="cb439-8"><a href="ggplot2.html#cb439-8" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics;&quot;</span>)</span>
-<span id="cb439-9"><a href="ggplot2.html#cb439-9" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet;&quot;</span>)</span>
-<span id="cb439-10"><a href="ggplot2.html#cb439-10" tabindex="-1"></a>tags <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags;&quot;</span>)</span>
-<span id="cb439-11"><a href="ggplot2.html#cb439-11" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments;&quot;</span>)</span>
-<span id="cb439-12"><a href="ggplot2.html#cb439-12" tabindex="-1"></a>telemetry <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="ggplot2.html#cb438-1" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb438-2"><a href="ggplot2.html#cb438-2" tabindex="-1"></a></span>
+<span id="cb438-3"><a href="ggplot2.html#cb438-3" tabindex="-1"></a>dragons_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">&quot;data/dragons.db&quot;</span>)</span>
+<span id="cb438-4"><a href="ggplot2.html#cb438-4" tabindex="-1"></a></span>
+<span id="cb438-5"><a href="ggplot2.html#cb438-5" tabindex="-1"></a>dragons <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM dragons;&quot;</span>)</span>
+<span id="cb438-6"><a href="ggplot2.html#cb438-6" tabindex="-1"></a>capture_sites <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM capture_sites;&quot;</span>)</span>
+<span id="cb438-7"><a href="ggplot2.html#cb438-7" tabindex="-1"></a>captures <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM captures;&quot;</span>)</span>
+<span id="cb438-8"><a href="ggplot2.html#cb438-8" tabindex="-1"></a>morphometrics <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM morphometrics;&quot;</span>)</span>
+<span id="cb438-9"><a href="ggplot2.html#cb438-9" tabindex="-1"></a>diet <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM diet;&quot;</span>)</span>
+<span id="cb438-10"><a href="ggplot2.html#cb438-10" tabindex="-1"></a>tags <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM tags;&quot;</span>)</span>
+<span id="cb438-11"><a href="ggplot2.html#cb438-11" tabindex="-1"></a>deployments <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM deployments;&quot;</span>)</span>
+<span id="cb438-12"><a href="ggplot2.html#cb438-12" tabindex="-1"></a>telemetry <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(dragons_db, <span class="st">&quot;SELECT * FROM gps_data;&quot;</span>)</span></code></pre></div>
 <div id="a-grammar-of-graphics" class="section level2 hasAnchor" number="14.1">
 <h2><span class="header-section-number">14.1</span> A Grammar of Graphics<a href="ggplot2.html#a-grammar-of-graphics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>What makes data visualization in <code>ggplot2</code> different from data visualization
@@ -513,9 +514,9 @@ else is optional. Layers are added using a <code>+</code> sign.</p>
 <p>Let’s say that we want to explore the correlation between total body length and
 wingspan in dragons. We may want to look at that using a scatterplot. This is
 how to build one in <code>ggplot2</code>:</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="ggplot2.html#cb440-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
-<span id="cb440-2"><a href="ggplot2.html#cb440-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
-<span id="cb440-3"><a href="ggplot2.html#cb440-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="ggplot2.html#cb439-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
+<span id="cb439-2"><a href="ggplot2.html#cb439-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
+<span id="cb439-3"><a href="ggplot2.html#cb439-3" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg3-1.png" width="672" /></p>
 <p>Let’s break down the syntax of what I just wrote. First, we start with the
 function <code>ggplot</code>. This function takes as input 1. the data that we want to plot
@@ -542,27 +543,27 @@ we want to overlay two different datasets.</p>
 <h3><span class="header-section-number">14.2.2</span> Basic histogram<a href="ggplot2.html#basic-histogram" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What if we wanted to look at the distribution of total body length instead? We
 may want to use a histogram for that:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="ggplot2.html#cb441-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
-<span id="cb441-2"><a href="ggplot2.html#cb441-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm)) <span class="sc">+</span></span>
-<span id="cb441-3"><a href="ggplot2.html#cb441-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="ggplot2.html#cb440-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
+<span id="cb440-2"><a href="ggplot2.html#cb440-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm)) <span class="sc">+</span></span>
+<span id="cb440-3"><a href="ggplot2.html#cb440-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
 <p><img src="reproducible-science_files/figure-html/gg4-1.png" width="672" /></p>
 <p>In this case we only have one aesthetic, because the y axis on a histogram is
 the bin frequency (by default, <code>ggplot2</code> shows the absolute frequency). We can
 choose other options within <code>geom_histogram</code>, such as changing the number of
 bins:</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="ggplot2.html#cb443-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
-<span id="cb443-2"><a href="ggplot2.html#cb443-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm)) <span class="sc">+</span></span>
-<span id="cb443-3"><a href="ggplot2.html#cb443-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="ggplot2.html#cb442-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
+<span id="cb442-2"><a href="ggplot2.html#cb442-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm)) <span class="sc">+</span></span>
+<span id="cb442-3"><a href="ggplot2.html#cb442-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg5-1.png" width="672" /></p>
 </div>
 <div id="basic-density-plot" class="section level3 hasAnchor" number="14.2.3">
 <h3><span class="header-section-number">14.2.3</span> Basic density plot<a href="ggplot2.html#basic-density-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Perhaps a better way to visualize the distribution of a variable is to use a
 density plot rather than a histogram.</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="ggplot2.html#cb444-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
-<span id="cb444-2"><a href="ggplot2.html#cb444-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm)) <span class="sc">+</span></span>
-<span id="cb444-3"><a href="ggplot2.html#cb444-3" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="ggplot2.html#cb443-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
+<span id="cb443-2"><a href="ggplot2.html#cb443-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm)) <span class="sc">+</span></span>
+<span id="cb443-3"><a href="ggplot2.html#cb443-3" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg5b-1.png" width="672" /></p>
 </div>
 <div id="other-geom-functions" class="section level3 hasAnchor" number="14.2.4">
@@ -594,17 +595,17 @@ to learn how to make them pretty.</p>
 <p>Let’s go back to our scatterplot and fix some
 details. First, let’s change the axis labels. There are several ways to do this;
 one of them is this:</p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="ggplot2.html#cb444-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
+<span id="cb444-2"><a href="ggplot2.html#cb444-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
+<span id="cb444-3"><a href="ggplot2.html#cb444-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb444-4"><a href="ggplot2.html#cb444-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>)</span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg6-1.png" width="672" /></p>
+<p>An alternative way is:</p>
 <div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="ggplot2.html#cb445-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
 <span id="cb445-2"><a href="ggplot2.html#cb445-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
 <span id="cb445-3"><a href="ggplot2.html#cb445-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb445-4"><a href="ggplot2.html#cb445-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>)</span></code></pre></div>
-<p><img src="reproducible-science_files/figure-html/gg6-1.png" width="672" /></p>
-<p>An alternative way is:</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="ggplot2.html#cb446-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> morphometrics, </span>
-<span id="cb446-2"><a href="ggplot2.html#cb446-2" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
-<span id="cb446-3"><a href="ggplot2.html#cb446-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb446-4"><a href="ggplot2.html#cb446-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Total body length (cm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb446-5"><a href="ggplot2.html#cb446-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Wingspan (cm)&quot;</span>)</span></code></pre></div>
+<span id="cb445-4"><a href="ggplot2.html#cb445-4" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Total body length (cm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb445-5"><a href="ggplot2.html#cb445-5" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Wingspan (cm)&quot;</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg7-1.png" width="672" /></p>
 </div>
 <div id="changing-colors" class="section level3 hasAnchor" number="14.3.2">
@@ -618,42 +619,55 @@ Let’s try to get a clue to verify this hypothesis by coloring the dots on the
 scatterplot based on age. We are going to use some of the tools we learned in
 Chapter <a href="tidyverse.html#tidyverse">13</a> to associate age information from the dragons table
 to the morphometrics table:</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="ggplot2.html#cb447-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb447-2"><a href="ggplot2.html#cb447-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb447-3"><a href="ggplot2.html#cb447-3" tabindex="-1"></a>  <span class="co"># note that I am feeding the results of the pipe directly into ggplot:</span></span>
-<span id="cb447-4"><a href="ggplot2.html#cb447-4" tabindex="-1"></a>  <span class="co"># whatever comes out of that pipe is used as the data argument for the plot</span></span>
-<span id="cb447-5"><a href="ggplot2.html#cb447-5" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb447-6"><a href="ggplot2.html#cb447-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb447-7"><a href="ggplot2.html#cb447-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="ggplot2.html#cb446-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb446-2"><a href="ggplot2.html#cb446-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb446-3"><a href="ggplot2.html#cb446-3" tabindex="-1"></a>  <span class="co"># note that I am feeding the results of the pipe directly into ggplot:</span></span>
+<span id="cb446-4"><a href="ggplot2.html#cb446-4" tabindex="-1"></a>  <span class="co"># whatever comes out of that pipe is used as the data argument for the plot</span></span>
+<span id="cb446-5"><a href="ggplot2.html#cb446-5" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb446-6"><a href="ggplot2.html#cb446-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb446-7"><a href="ggplot2.html#cb446-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg8-1.png" width="672" /></p>
 </div>
 <div id="modifying-legends" class="section level3 hasAnchor" number="14.3.3">
 <h3><span class="header-section-number">14.3.3</span> Modifying legends<a href="ggplot2.html#modifying-legends" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Looks like our hypothesis was correct: that cluster of points includes
 measurements for juvenile dragons. Let’s make that legend a little prettier:</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="ggplot2.html#cb448-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb448-2"><a href="ggplot2.html#cb448-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb448-3"><a href="ggplot2.html#cb448-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb448-4"><a href="ggplot2.html#cb448-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb448-5"><a href="ggplot2.html#cb448-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="ggplot2.html#cb447-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb447-2"><a href="ggplot2.html#cb447-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb447-3"><a href="ggplot2.html#cb447-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb447-4"><a href="ggplot2.html#cb447-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb447-5"><a href="ggplot2.html#cb447-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg9-1.png" width="672" /></p>
 <p>Besides changing the title of the legend, we can also change the labels on each
 of the categories that appear in it. For example, if we wanted to add age
 ranges to correspond to each age class:</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="ggplot2.html#cb449-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb449-2"><a href="ggplot2.html#cb449-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb449-3"><a href="ggplot2.html#cb449-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb449-4"><a href="ggplot2.html#cb449-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb449-5"><a href="ggplot2.html#cb449-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb449-6"><a href="ggplot2.html#cb449-6" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Adult (&gt; 3 years)&quot;</span>,</span>
-<span id="cb449-7"><a href="ggplot2.html#cb449-7" tabindex="-1"></a>                                 <span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb449-8"><a href="ggplot2.html#cb449-8" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="ggplot2.html#cb448-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb448-2"><a href="ggplot2.html#cb448-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb448-3"><a href="ggplot2.html#cb448-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb448-4"><a href="ggplot2.html#cb448-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb448-5"><a href="ggplot2.html#cb448-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb448-6"><a href="ggplot2.html#cb448-6" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Adult (&gt; 3 years)&quot;</span>,</span>
+<span id="cb448-7"><a href="ggplot2.html#cb448-7" tabindex="-1"></a>                                 <span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb448-8"><a href="ggplot2.html#cb448-8" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>))</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg10-1.png" width="672" /></p>
 <p>What if we want to reorder legend items so that they appear in order of age?
 That is not something that we can do within the plot itself, it’s a change that
 needs to be done in the data before we plot. We need to change the order of the
 levels in the factor <code>age_class</code>. Once that’s done, we need to remember to also
 change the order of the labels to reflect the new order:</p>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="ggplot2.html#cb449-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb449-2"><a href="ggplot2.html#cb449-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb449-3"><a href="ggplot2.html#cb449-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb449-4"><a href="ggplot2.html#cb449-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb449-5"><a href="ggplot2.html#cb449-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb449-6"><a href="ggplot2.html#cb449-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb449-7"><a href="ggplot2.html#cb449-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb449-8"><a href="ggplot2.html#cb449-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb449-9"><a href="ggplot2.html#cb449-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb449-10"><a href="ggplot2.html#cb449-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb449-11"><a href="ggplot2.html#cb449-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) </span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg11-1.png" width="672" /></p>
+<p>We can also change the position of the legend:</p>
 <div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="ggplot2.html#cb450-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
 <span id="cb450-2"><a href="ggplot2.html#cb450-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb450-3"><a href="ggplot2.html#cb450-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
@@ -664,21 +678,8 @@ change the order of the labels to reflect the new order:</p>
 <span id="cb450-8"><a href="ggplot2.html#cb450-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
 <span id="cb450-9"><a href="ggplot2.html#cb450-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
 <span id="cb450-10"><a href="ggplot2.html#cb450-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb450-11"><a href="ggplot2.html#cb450-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) </span></code></pre></div>
-<p><img src="reproducible-science_files/figure-html/gg11-1.png" width="672" /></p>
-<p>We can also change the position of the legend:</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="ggplot2.html#cb451-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb451-2"><a href="ggplot2.html#cb451-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb451-3"><a href="ggplot2.html#cb451-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb451-4"><a href="ggplot2.html#cb451-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb451-5"><a href="ggplot2.html#cb451-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb451-6"><a href="ggplot2.html#cb451-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb451-7"><a href="ggplot2.html#cb451-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb451-8"><a href="ggplot2.html#cb451-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb451-9"><a href="ggplot2.html#cb451-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb451-10"><a href="ggplot2.html#cb451-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb451-11"><a href="ggplot2.html#cb451-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb451-12"><a href="ggplot2.html#cb451-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<span id="cb450-11"><a href="ggplot2.html#cb450-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb450-12"><a href="ggplot2.html#cb450-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg11b-1.png" width="672" /></p>
 </div>
 <div id="themes" class="section level3 hasAnchor" number="14.3.4">
@@ -693,14 +694,14 @@ their size and orientation, the length of the ticks themselves, legend size,
 spacing, alignment, the look of the background of the plot…</p>
 <p>You can create your own theme by saving it as an object and then adding it to
 a plot as a new layer:</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="ggplot2.html#cb452-1" tabindex="-1"></a><span class="co"># This theme adds a gray box around the legend and </span></span>
-<span id="cb452-2"><a href="ggplot2.html#cb452-2" tabindex="-1"></a><span class="co"># alternates the size of the lines in the background grid</span></span>
-<span id="cb452-3"><a href="ggplot2.html#cb452-3" tabindex="-1"></a>my_theme <span class="ot">&lt;-</span> <span class="fu">theme</span>(<span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;gray90&quot;</span>,</span>
-<span id="cb452-4"><a href="ggplot2.html#cb452-4" tabindex="-1"></a>                                                   <span class="at">size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb452-5"><a href="ggplot2.html#cb452-5" tabindex="-1"></a>                                                   <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>,</span>
-<span id="cb452-6"><a href="ggplot2.html#cb452-6" tabindex="-1"></a>                                                   <span class="at">color =</span> <span class="st">&quot;black&quot;</span>),</span>
-<span id="cb452-7"><a href="ggplot2.html#cb452-7" tabindex="-1"></a>                  <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb452-8"><a href="ggplot2.html#cb452-8" tabindex="-1"></a>                                                  <span class="at">size =</span> <span class="fl">1.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="ggplot2.html#cb451-1" tabindex="-1"></a><span class="co"># This theme adds a gray box around the legend and </span></span>
+<span id="cb451-2"><a href="ggplot2.html#cb451-2" tabindex="-1"></a><span class="co"># alternates the size of the lines in the background grid</span></span>
+<span id="cb451-3"><a href="ggplot2.html#cb451-3" tabindex="-1"></a>my_theme <span class="ot">&lt;-</span> <span class="fu">theme</span>(<span class="at">legend.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;gray90&quot;</span>,</span>
+<span id="cb451-4"><a href="ggplot2.html#cb451-4" tabindex="-1"></a>                                                   <span class="at">size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb451-5"><a href="ggplot2.html#cb451-5" tabindex="-1"></a>                                                   <span class="at">linetype =</span> <span class="st">&quot;solid&quot;</span>,</span>
+<span id="cb451-6"><a href="ggplot2.html#cb451-6" tabindex="-1"></a>                                                   <span class="at">color =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb451-7"><a href="ggplot2.html#cb451-7" tabindex="-1"></a>                  <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb451-8"><a href="ggplot2.html#cb451-8" tabindex="-1"></a>                                                  <span class="at">size =</span> <span class="fl">1.5</span>))</span></code></pre></div>
 <pre><code>## Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
 ## ℹ Please use the `linewidth` argument instead.
 ## This warning is displayed once every 8 hours.
@@ -711,6 +712,24 @@ a plot as a new layer:</p>
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 ## generated.</code></pre>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="ggplot2.html#cb454-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb454-2"><a href="ggplot2.html#cb454-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb454-3"><a href="ggplot2.html#cb454-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb454-4"><a href="ggplot2.html#cb454-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb454-5"><a href="ggplot2.html#cb454-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb454-6"><a href="ggplot2.html#cb454-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb454-7"><a href="ggplot2.html#cb454-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb454-8"><a href="ggplot2.html#cb454-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb454-9"><a href="ggplot2.html#cb454-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb454-10"><a href="ggplot2.html#cb454-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb454-11"><a href="ggplot2.html#cb454-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb454-12"><a href="ggplot2.html#cb454-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
+<span id="cb454-13"><a href="ggplot2.html#cb454-13" tabindex="-1"></a>  my_theme</span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg12-1.png" width="672" /></p>
+<p>Ugly. I know.</p>
+<p>If you’re not a graphic designer and your plots look as ugly as mine when you
+manipulate the theme yourself, <code>ggplot2</code> also offers a variety of pre-set themes.
+For example, here is the “minimal” theme:</p>
 <div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="ggplot2.html#cb455-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
 <span id="cb455-2"><a href="ggplot2.html#cb455-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb455-3"><a href="ggplot2.html#cb455-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
@@ -722,13 +741,10 @@ a plot as a new layer:</p>
 <span id="cb455-9"><a href="ggplot2.html#cb455-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
 <span id="cb455-10"><a href="ggplot2.html#cb455-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
 <span id="cb455-11"><a href="ggplot2.html#cb455-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb455-12"><a href="ggplot2.html#cb455-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
-<span id="cb455-13"><a href="ggplot2.html#cb455-13" tabindex="-1"></a>  my_theme</span></code></pre></div>
-<p><img src="reproducible-science_files/figure-html/gg12-1.png" width="672" /></p>
-<p>Ugly. I know.</p>
-<p>If you’re not a graphic designer and your plots look as ugly as mine when you
-manipulate the theme yourself, <code>ggplot2</code> also offers a variety of pre-set themes.
-For example, here is the “minimal” theme:</p>
+<span id="cb455-12"><a href="ggplot2.html#cb455-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb455-13"><a href="ggplot2.html#cb455-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg13-1.png" width="672" /></p>
+<p>Here is the “black and white” theme:</p>
 <div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="ggplot2.html#cb456-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
 <span id="cb456-2"><a href="ggplot2.html#cb456-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb456-3"><a href="ggplot2.html#cb456-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
@@ -740,10 +756,10 @@ For example, here is the “minimal” theme:</p>
 <span id="cb456-9"><a href="ggplot2.html#cb456-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
 <span id="cb456-10"><a href="ggplot2.html#cb456-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
 <span id="cb456-11"><a href="ggplot2.html#cb456-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb456-12"><a href="ggplot2.html#cb456-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb456-12"><a href="ggplot2.html#cb456-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb456-13"><a href="ggplot2.html#cb456-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
-<p><img src="reproducible-science_files/figure-html/gg13-1.png" width="672" /></p>
-<p>Here is the “black and white” theme:</p>
+<p><img src="reproducible-science_files/figure-html/gg14-1.png" width="672" /></p>
+<p>Here is the “void” theme:</p>
 <div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="ggplot2.html#cb457-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
 <span id="cb457-2"><a href="ggplot2.html#cb457-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb457-3"><a href="ggplot2.html#cb457-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
@@ -755,10 +771,14 @@ For example, here is the “minimal” theme:</p>
 <span id="cb457-9"><a href="ggplot2.html#cb457-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
 <span id="cb457-10"><a href="ggplot2.html#cb457-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
 <span id="cb457-11"><a href="ggplot2.html#cb457-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb457-12"><a href="ggplot2.html#cb457-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb457-12"><a href="ggplot2.html#cb457-12" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
 <span id="cb457-13"><a href="ggplot2.html#cb457-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
-<p><img src="reproducible-science_files/figure-html/gg14-1.png" width="672" /></p>
-<p>Here is the “void” theme:</p>
+<p><img src="reproducible-science_files/figure-html/gg15-1.png" width="672" /></p>
+<p>If you use a pre-set theme, make sure you add that layer before you add any
+other tweaks using <code>theme</code>, because if you add <code>theme</code> first, the pre-set theme
+will override whatever settings you specified in <code>theme</code>. For instance, if I put
+<code>theme_void</code> at the end in the previous example, the legend does not get moved
+to the bottom:</p>
 <div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="ggplot2.html#cb458-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
 <span id="cb458-2"><a href="ggplot2.html#cb458-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb458-3"><a href="ggplot2.html#cb458-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
@@ -770,27 +790,8 @@ For example, here is the “minimal” theme:</p>
 <span id="cb458-9"><a href="ggplot2.html#cb458-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
 <span id="cb458-10"><a href="ggplot2.html#cb458-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
 <span id="cb458-11"><a href="ggplot2.html#cb458-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb458-12"><a href="ggplot2.html#cb458-12" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb458-13"><a href="ggplot2.html#cb458-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
-<p><img src="reproducible-science_files/figure-html/gg15-1.png" width="672" /></p>
-<p>If you use a pre-set theme, make sure you add that layer before you add any
-other tweaks using <code>theme</code>, because if you add <code>theme</code> first, the pre-set theme
-will override whatever settings you specified in <code>theme</code>. For instance, if I put
-<code>theme_void</code> at the end in the previous example, the legend does not get moved
-to the bottom:</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="ggplot2.html#cb459-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb459-2"><a href="ggplot2.html#cb459-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb459-3"><a href="ggplot2.html#cb459-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb459-4"><a href="ggplot2.html#cb459-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb459-5"><a href="ggplot2.html#cb459-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb459-6"><a href="ggplot2.html#cb459-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb459-7"><a href="ggplot2.html#cb459-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb459-8"><a href="ggplot2.html#cb459-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb459-9"><a href="ggplot2.html#cb459-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb459-10"><a href="ggplot2.html#cb459-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb459-11"><a href="ggplot2.html#cb459-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb459-12"><a href="ggplot2.html#cb459-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
-<span id="cb459-13"><a href="ggplot2.html#cb459-13" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div>
+<span id="cb458-12"><a href="ggplot2.html#cb458-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) <span class="sc">+</span></span>
+<span id="cb458-13"><a href="ggplot2.html#cb458-13" tabindex="-1"></a>  <span class="fu">theme_void</span>() </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg16-1.png" width="672" /></p>
 </div>
 <div id="adding-transparency" class="section level3 hasAnchor" number="14.3.5">
@@ -799,19 +800,19 @@ to the bottom:</p>
 that we can actually get a better feel for the amount of data points within
 very clumpy clusters. We can do that by adding the argument <code>alpha</code> in our
 geometry layer:</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="ggplot2.html#cb460-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb460-2"><a href="ggplot2.html#cb460-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb460-3"><a href="ggplot2.html#cb460-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb460-4"><a href="ggplot2.html#cb460-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb460-5"><a href="ggplot2.html#cb460-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb460-6"><a href="ggplot2.html#cb460-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb460-7"><a href="ggplot2.html#cb460-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb460-8"><a href="ggplot2.html#cb460-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb460-9"><a href="ggplot2.html#cb460-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb460-10"><a href="ggplot2.html#cb460-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb460-11"><a href="ggplot2.html#cb460-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb460-12"><a href="ggplot2.html#cb460-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb460-13"><a href="ggplot2.html#cb460-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="ggplot2.html#cb459-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb459-2"><a href="ggplot2.html#cb459-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb459-3"><a href="ggplot2.html#cb459-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb459-4"><a href="ggplot2.html#cb459-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb459-5"><a href="ggplot2.html#cb459-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb459-6"><a href="ggplot2.html#cb459-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb459-7"><a href="ggplot2.html#cb459-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb459-8"><a href="ggplot2.html#cb459-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb459-9"><a href="ggplot2.html#cb459-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb459-10"><a href="ggplot2.html#cb459-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb459-11"><a href="ggplot2.html#cb459-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb459-12"><a href="ggplot2.html#cb459-12" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb459-13"><a href="ggplot2.html#cb459-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg16b-1.png" width="672" /></p>
 </div>
 <div id="overlaying-plots-with-different-aesthetics" class="section level3 hasAnchor" number="14.3.6">
@@ -821,9 +822,9 @@ total body length of a dragon and its wingspan. We could actually model that
 correlation using linear regression. And then we may want to overlay the
 regression line to the raw data on our existing plot. Let’s see how to do just
 that:</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="ggplot2.html#cb461-1" tabindex="-1"></a><span class="co"># Fit linear regression</span></span>
-<span id="cb461-2"><a href="ggplot2.html#cb461-2" tabindex="-1"></a>(reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> wingspan_cm <span class="sc">~</span> total_body_length_cm, </span>
-<span id="cb461-3"><a href="ggplot2.html#cb461-3" tabindex="-1"></a>          <span class="at">data =</span> morphometrics))</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="ggplot2.html#cb460-1" tabindex="-1"></a><span class="co"># Fit linear regression</span></span>
+<span id="cb460-2"><a href="ggplot2.html#cb460-2" tabindex="-1"></a>(reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> wingspan_cm <span class="sc">~</span> total_body_length_cm, </span>
+<span id="cb460-3"><a href="ggplot2.html#cb460-3" tabindex="-1"></a>          <span class="at">data =</span> morphometrics))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = wingspan_cm ~ total_body_length_cm, data = morphometrics)
@@ -831,24 +832,24 @@ that:</p>
 ## Coefficients:
 ##          (Intercept)  total_body_length_cm  
 ##             445.2124                0.8525</code></pre>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="ggplot2.html#cb463-1" tabindex="-1"></a><span class="co"># Let&#39;s grab the value of the intercept and slope</span></span>
-<span id="cb463-2"><a href="ggplot2.html#cb463-2" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> reg<span class="sc">$</span>coefficients</span>
-<span id="cb463-3"><a href="ggplot2.html#cb463-3" tabindex="-1"></a></span>
-<span id="cb463-4"><a href="ggplot2.html#cb463-4" tabindex="-1"></a><span class="co"># Now we can plot</span></span>
-<span id="cb463-5"><a href="ggplot2.html#cb463-5" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb463-6"><a href="ggplot2.html#cb463-6" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb463-7"><a href="ggplot2.html#cb463-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb463-8"><a href="ggplot2.html#cb463-8" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb463-9"><a href="ggplot2.html#cb463-9" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb463-10"><a href="ggplot2.html#cb463-10" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb463-11"><a href="ggplot2.html#cb463-11" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb463-12"><a href="ggplot2.html#cb463-12" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> coefs[<span class="dv">2</span>], <span class="at">intercept =</span> coefs[<span class="dv">1</span>])) <span class="sc">+</span> </span>
-<span id="cb463-13"><a href="ggplot2.html#cb463-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb463-14"><a href="ggplot2.html#cb463-14" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb463-15"><a href="ggplot2.html#cb463-15" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb463-16"><a href="ggplot2.html#cb463-16" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb463-17"><a href="ggplot2.html#cb463-17" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb463-18"><a href="ggplot2.html#cb463-18" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="ggplot2.html#cb462-1" tabindex="-1"></a><span class="co"># Let&#39;s grab the value of the intercept and slope</span></span>
+<span id="cb462-2"><a href="ggplot2.html#cb462-2" tabindex="-1"></a>coefs <span class="ot">&lt;-</span> reg<span class="sc">$</span>coefficients</span>
+<span id="cb462-3"><a href="ggplot2.html#cb462-3" tabindex="-1"></a></span>
+<span id="cb462-4"><a href="ggplot2.html#cb462-4" tabindex="-1"></a><span class="co"># Now we can plot</span></span>
+<span id="cb462-5"><a href="ggplot2.html#cb462-5" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb462-6"><a href="ggplot2.html#cb462-6" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb462-7"><a href="ggplot2.html#cb462-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb462-8"><a href="ggplot2.html#cb462-8" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb462-9"><a href="ggplot2.html#cb462-9" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb462-10"><a href="ggplot2.html#cb462-10" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb462-11"><a href="ggplot2.html#cb462-11" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb462-12"><a href="ggplot2.html#cb462-12" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> coefs[<span class="dv">2</span>], <span class="at">intercept =</span> coefs[<span class="dv">1</span>])) <span class="sc">+</span> </span>
+<span id="cb462-13"><a href="ggplot2.html#cb462-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb462-14"><a href="ggplot2.html#cb462-14" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb462-15"><a href="ggplot2.html#cb462-15" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb462-16"><a href="ggplot2.html#cb462-16" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb462-17"><a href="ggplot2.html#cb462-17" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb462-18"><a href="ggplot2.html#cb462-18" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg17-1.png" width="672" /></p>
 <p>I added a new layer to the plot with <code>geom_abline</code>. Instead of the global
 aesthetics (the ones I specify at the beginning in <code>ggplot</code>), I need to provide
@@ -860,23 +861,23 @@ get overridden for that layer only.</p>
 <div id="modifying-symbol-appearance" class="section level3 hasAnchor" number="14.3.7">
 <h3><span class="header-section-number">14.3.7</span> Modifying symbol appearance<a href="ggplot2.html#modifying-symbol-appearance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can now play around with size, color, and line type of our regression line:</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="ggplot2.html#cb464-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb464-2"><a href="ggplot2.html#cb464-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb464-3"><a href="ggplot2.html#cb464-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb464-4"><a href="ggplot2.html#cb464-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb464-5"><a href="ggplot2.html#cb464-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb464-6"><a href="ggplot2.html#cb464-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb464-7"><a href="ggplot2.html#cb464-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb464-8"><a href="ggplot2.html#cb464-8" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> coefs[<span class="dv">2</span>], <span class="at">intercept =</span> coefs[<span class="dv">1</span>]), </span>
-<span id="cb464-9"><a href="ggplot2.html#cb464-9" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>,</span>
-<span id="cb464-10"><a href="ggplot2.html#cb464-10" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;gray70&quot;</span>,</span>
-<span id="cb464-11"><a href="ggplot2.html#cb464-11" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb464-12"><a href="ggplot2.html#cb464-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb464-13"><a href="ggplot2.html#cb464-13" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb464-14"><a href="ggplot2.html#cb464-14" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb464-15"><a href="ggplot2.html#cb464-15" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb464-16"><a href="ggplot2.html#cb464-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb464-17"><a href="ggplot2.html#cb464-17" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="ggplot2.html#cb463-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb463-2"><a href="ggplot2.html#cb463-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb463-3"><a href="ggplot2.html#cb463-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb463-4"><a href="ggplot2.html#cb463-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb463-5"><a href="ggplot2.html#cb463-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb463-6"><a href="ggplot2.html#cb463-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb463-7"><a href="ggplot2.html#cb463-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb463-8"><a href="ggplot2.html#cb463-8" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> coefs[<span class="dv">2</span>], <span class="at">intercept =</span> coefs[<span class="dv">1</span>]), </span>
+<span id="cb463-9"><a href="ggplot2.html#cb463-9" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb463-10"><a href="ggplot2.html#cb463-10" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;gray70&quot;</span>,</span>
+<span id="cb463-11"><a href="ggplot2.html#cb463-11" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb463-12"><a href="ggplot2.html#cb463-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb463-13"><a href="ggplot2.html#cb463-13" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb463-14"><a href="ggplot2.html#cb463-14" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb463-15"><a href="ggplot2.html#cb463-15" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb463-16"><a href="ggplot2.html#cb463-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb463-17"><a href="ggplot2.html#cb463-17" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `linewidth` instead.
 ## This warning is displayed once every 8 hours.
@@ -884,23 +885,23 @@ get overridden for that layer only.</p>
 ## generated.</code></pre>
 <p><img src="reproducible-science_files/figure-html/gg18-1.png" width="672" /></p>
 <p>We can also change the symbols for the point data:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="ggplot2.html#cb466-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb466-2"><a href="ggplot2.html#cb466-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb466-3"><a href="ggplot2.html#cb466-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb466-4"><a href="ggplot2.html#cb466-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb466-5"><a href="ggplot2.html#cb466-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb466-6"><a href="ggplot2.html#cb466-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb466-7"><a href="ggplot2.html#cb466-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb466-8"><a href="ggplot2.html#cb466-8" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> coefs[<span class="dv">2</span>], <span class="at">intercept =</span> coefs[<span class="dv">1</span>]), </span>
-<span id="cb466-9"><a href="ggplot2.html#cb466-9" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>,</span>
-<span id="cb466-10"><a href="ggplot2.html#cb466-10" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;gray70&quot;</span>,</span>
-<span id="cb466-11"><a href="ggplot2.html#cb466-11" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb466-12"><a href="ggplot2.html#cb466-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb466-13"><a href="ggplot2.html#cb466-13" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb466-14"><a href="ggplot2.html#cb466-14" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb466-15"><a href="ggplot2.html#cb466-15" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb466-16"><a href="ggplot2.html#cb466-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb466-17"><a href="ggplot2.html#cb466-17" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="ggplot2.html#cb465-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb465-2"><a href="ggplot2.html#cb465-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb465-3"><a href="ggplot2.html#cb465-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb465-4"><a href="ggplot2.html#cb465-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb465-5"><a href="ggplot2.html#cb465-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb465-6"><a href="ggplot2.html#cb465-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb465-7"><a href="ggplot2.html#cb465-7" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">shape =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb465-8"><a href="ggplot2.html#cb465-8" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="fu">aes</span>(<span class="at">slope =</span> coefs[<span class="dv">2</span>], <span class="at">intercept =</span> coefs[<span class="dv">1</span>]), </span>
+<span id="cb465-9"><a href="ggplot2.html#cb465-9" tabindex="-1"></a>              <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb465-10"><a href="ggplot2.html#cb465-10" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;gray70&quot;</span>,</span>
+<span id="cb465-11"><a href="ggplot2.html#cb465-11" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb465-12"><a href="ggplot2.html#cb465-12" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb465-13"><a href="ggplot2.html#cb465-13" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb465-14"><a href="ggplot2.html#cb465-14" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb465-15"><a href="ggplot2.html#cb465-15" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb465-16"><a href="ggplot2.html#cb465-16" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb465-17"><a href="ggplot2.html#cb465-17" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg19-1.png" width="672" /></p>
 </div>
 <div id="fill-vs.-color" class="section level3 hasAnchor" number="14.3.8">
@@ -910,24 +911,43 @@ argument <code>color</code> in <code>ggplot2</code>. Shapes that are two-dimensi
 bars in a barplot, ecc.) are colored inside using the argument <code>fill</code>, and
 around the border with <code>color</code>. Let’s make an example with some boxplots, which
 are two-dimensional. This is what happens if we use <code>color</code> instead of <code>fill</code>:</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="ggplot2.html#cb467-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb467-2"><a href="ggplot2.html#cb467-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb467-3"><a href="ggplot2.html#cb467-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb467-4"><a href="ggplot2.html#cb467-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb467-5"><a href="ggplot2.html#cb467-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb467-6"><a href="ggplot2.html#cb467-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb467-7"><a href="ggplot2.html#cb467-7" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb467-8"><a href="ggplot2.html#cb467-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb467-9"><a href="ggplot2.html#cb467-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb467-10"><a href="ggplot2.html#cb467-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb467-11"><a href="ggplot2.html#cb467-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb467-12"><a href="ggplot2.html#cb467-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb467-13"><a href="ggplot2.html#cb467-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="ggplot2.html#cb466-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb466-2"><a href="ggplot2.html#cb466-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb466-3"><a href="ggplot2.html#cb466-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb466-4"><a href="ggplot2.html#cb466-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb466-5"><a href="ggplot2.html#cb466-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb466-6"><a href="ggplot2.html#cb466-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb466-7"><a href="ggplot2.html#cb466-7" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb466-8"><a href="ggplot2.html#cb466-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb466-9"><a href="ggplot2.html#cb466-9" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb466-10"><a href="ggplot2.html#cb466-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb466-11"><a href="ggplot2.html#cb466-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb466-12"><a href="ggplot2.html#cb466-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb466-13"><a href="ggplot2.html#cb466-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg20-1.png" width="672" /></p>
 <p>If we use fill, the border of the boxplots will be black and the inside will
 be colored (note that we need to change it in three places: the global
 aesthetics, the legend title in <code>labs</code>, and the name of the function to add
 legend labels becomes <code>scale_fill_discrete</code>):</p>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="ggplot2.html#cb467-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb467-2"><a href="ggplot2.html#cb467-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb467-3"><a href="ggplot2.html#cb467-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb467-4"><a href="ggplot2.html#cb467-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb467-5"><a href="ggplot2.html#cb467-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb467-6"><a href="ggplot2.html#cb467-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> wingspan_cm, <span class="at">fill =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb467-7"><a href="ggplot2.html#cb467-7" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb467-8"><a href="ggplot2.html#cb467-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb467-9"><a href="ggplot2.html#cb467-9" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb467-10"><a href="ggplot2.html#cb467-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb467-11"><a href="ggplot2.html#cb467-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb467-12"><a href="ggplot2.html#cb467-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb467-13"><a href="ggplot2.html#cb467-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<p><img src="reproducible-science_files/figure-html/gg21-1.png" width="672" /></p>
+</div>
+<div id="modifying-axis-values" class="section level3 hasAnchor" number="14.3.9">
+<h3><span class="header-section-number">14.3.9</span> Modifying axis values<a href="ggplot2.html#modifying-axis-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The values on the x axis don’t mean anything in this case because this is a
+boxplot. Let’s get rid of them in <code>theme</code>:</p>
 <div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="ggplot2.html#cb468-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
 <span id="cb468-2"><a href="ggplot2.html#cb468-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb468-3"><a href="ggplot2.html#cb468-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
@@ -940,27 +960,8 @@ legend labels becomes <code>scale_fill_discrete</code>):</p>
 <span id="cb468-10"><a href="ggplot2.html#cb468-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
 <span id="cb468-11"><a href="ggplot2.html#cb468-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
 <span id="cb468-12"><a href="ggplot2.html#cb468-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb468-13"><a href="ggplot2.html#cb468-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
-<p><img src="reproducible-science_files/figure-html/gg21-1.png" width="672" /></p>
-</div>
-<div id="modifying-axis-values" class="section level3 hasAnchor" number="14.3.9">
-<h3><span class="header-section-number">14.3.9</span> Modifying axis values<a href="ggplot2.html#modifying-axis-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The values on the x axis don’t mean anything in this case because this is a
-boxplot. Let’s get rid of them in <code>theme</code>:</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="ggplot2.html#cb469-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb469-2"><a href="ggplot2.html#cb469-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb469-3"><a href="ggplot2.html#cb469-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb469-4"><a href="ggplot2.html#cb469-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb469-5"><a href="ggplot2.html#cb469-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb469-6"><a href="ggplot2.html#cb469-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">y =</span> wingspan_cm, <span class="at">fill =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb469-7"><a href="ggplot2.html#cb469-7" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb469-8"><a href="ggplot2.html#cb469-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb469-9"><a href="ggplot2.html#cb469-9" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb469-10"><a href="ggplot2.html#cb469-10" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb469-11"><a href="ggplot2.html#cb469-11" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb469-12"><a href="ggplot2.html#cb469-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb469-13"><a href="ggplot2.html#cb469-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,</span>
-<span id="cb469-14"><a href="ggplot2.html#cb469-14" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>()) </span></code></pre></div>
+<span id="cb468-13"><a href="ggplot2.html#cb468-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,</span>
+<span id="cb468-14"><a href="ggplot2.html#cb468-14" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>()) </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg22-1.png" width="672" /></p>
 </div>
 <div id="adding-an-extra-dimension-with-facets" class="section level3 hasAnchor" number="14.3.10">
@@ -971,20 +972,20 @@ well as age class? That means we need to add another dimension to our scatterplo
 which is already showing 3: the x axis, the y axis, and the different colors.
 Facets expand the amount of information we can convey in a plot. Let’s see how
 they work:</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="ggplot2.html#cb470-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb470-2"><a href="ggplot2.html#cb470-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb470-3"><a href="ggplot2.html#cb470-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb470-4"><a href="ggplot2.html#cb470-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb470-5"><a href="ggplot2.html#cb470-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb470-6"><a href="ggplot2.html#cb470-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb470-7"><a href="ggplot2.html#cb470-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb470-8"><a href="ggplot2.html#cb470-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> species) <span class="sc">+</span></span>
-<span id="cb470-9"><a href="ggplot2.html#cb470-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb470-10"><a href="ggplot2.html#cb470-10" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb470-11"><a href="ggplot2.html#cb470-11" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb470-12"><a href="ggplot2.html#cb470-12" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb470-13"><a href="ggplot2.html#cb470-13" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb470-14"><a href="ggplot2.html#cb470-14" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="ggplot2.html#cb469-1" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb469-2"><a href="ggplot2.html#cb469-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb469-3"><a href="ggplot2.html#cb469-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb469-4"><a href="ggplot2.html#cb469-4" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb469-5"><a href="ggplot2.html#cb469-5" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb469-6"><a href="ggplot2.html#cb469-6" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb469-7"><a href="ggplot2.html#cb469-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb469-8"><a href="ggplot2.html#cb469-8" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> species) <span class="sc">+</span></span>
+<span id="cb469-9"><a href="ggplot2.html#cb469-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb469-10"><a href="ggplot2.html#cb469-10" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb469-11"><a href="ggplot2.html#cb469-11" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb469-12"><a href="ggplot2.html#cb469-12" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb469-13"><a href="ggplot2.html#cb469-13" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb469-14"><a href="ggplot2.html#cb469-14" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg23b-1.png" width="672" /></p>
 <p>The function I used to break down the plot into facets is <code>facet_wrap</code>. This
 function takes as input a one-sided formula: <code>~ variable/s</code>. What goes on the
@@ -997,49 +998,49 @@ or they are all lowercase and we want title case) we could change them. Let’s
 try to replace the full species names with just the initials. We need to define
 a labeller, which is a vector associating each label the way it appears in the
 current plot with the label that we want instead:</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="ggplot2.html#cb471-1" tabindex="-1"></a>species_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hebridean Black&quot;</span> <span class="ot">=</span> <span class="st">&quot;HB&quot;</span>,</span>
-<span id="cb471-2"><a href="ggplot2.html#cb471-2" tabindex="-1"></a>                    <span class="st">&quot;Romanian Longhorn&quot;</span> <span class="ot">=</span> <span class="st">&quot;RL&quot;</span>,</span>
-<span id="cb471-3"><a href="ggplot2.html#cb471-3" tabindex="-1"></a>                    <span class="st">&quot;Peruvian Vipertooth&quot;</span> <span class="ot">=</span> <span class="st">&quot;PV&quot;</span>,</span>
-<span id="cb471-4"><a href="ggplot2.html#cb471-4" tabindex="-1"></a>                    <span class="st">&quot;Ukrainian Ironbelly&quot;</span> <span class="ot">=</span> <span class="st">&quot;UI&quot;</span>,</span>
-<span id="cb471-5"><a href="ggplot2.html#cb471-5" tabindex="-1"></a>                    <span class="st">&quot;Norwegian Ridgeback&quot;</span> <span class="ot">=</span> <span class="st">&quot;NR&quot;</span>,</span>
-<span id="cb471-6"><a href="ggplot2.html#cb471-6" tabindex="-1"></a>                    <span class="st">&quot;Common Welsh Green&quot;</span> <span class="ot">=</span> <span class="st">&quot;CWG&quot;</span>,</span>
-<span id="cb471-7"><a href="ggplot2.html#cb471-7" tabindex="-1"></a>                    <span class="st">&quot;Swedish Short-Snout&quot;</span> <span class="ot">=</span> <span class="st">&quot;SSS&quot;</span>,</span>
-<span id="cb471-8"><a href="ggplot2.html#cb471-8" tabindex="-1"></a>                    <span class="st">&quot;Chinese Fireball&quot;</span> <span class="ot">=</span> <span class="st">&quot;CF&quot;</span>,</span>
-<span id="cb471-9"><a href="ggplot2.html#cb471-9" tabindex="-1"></a>                    <span class="st">&quot;Hungarian Horntail&quot;</span> <span class="ot">=</span> <span class="st">&quot;HH&quot;</span>,</span>
-<span id="cb471-10"><a href="ggplot2.html#cb471-10" tabindex="-1"></a>                    <span class="st">&quot;Antipodean Opaleye&quot;</span> <span class="ot">=</span> <span class="st">&quot;AO&quot;</span>)</span>
-<span id="cb471-11"><a href="ggplot2.html#cb471-11" tabindex="-1"></a>  </span>
-<span id="cb471-12"><a href="ggplot2.html#cb471-12" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb471-13"><a href="ggplot2.html#cb471-13" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb471-14"><a href="ggplot2.html#cb471-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
-<span id="cb471-15"><a href="ggplot2.html#cb471-15" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
-<span id="cb471-16"><a href="ggplot2.html#cb471-16" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb471-17"><a href="ggplot2.html#cb471-17" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
-<span id="cb471-18"><a href="ggplot2.html#cb471-18" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb471-19"><a href="ggplot2.html#cb471-19" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> species, <span class="at">labeller =</span> <span class="fu">labeller</span>(species_labels, </span>
-<span id="cb471-20"><a href="ggplot2.html#cb471-20" tabindex="-1"></a>                                            <span class="at">species =</span> species_labels)) <span class="sc">+</span></span>
-<span id="cb471-21"><a href="ggplot2.html#cb471-21" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
-<span id="cb471-22"><a href="ggplot2.html#cb471-22" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
-<span id="cb471-23"><a href="ggplot2.html#cb471-23" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
-<span id="cb471-24"><a href="ggplot2.html#cb471-24" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb471-25"><a href="ggplot2.html#cb471-25" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb471-26"><a href="ggplot2.html#cb471-26" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="ggplot2.html#cb470-1" tabindex="-1"></a>species_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hebridean Black&quot;</span> <span class="ot">=</span> <span class="st">&quot;HB&quot;</span>,</span>
+<span id="cb470-2"><a href="ggplot2.html#cb470-2" tabindex="-1"></a>                    <span class="st">&quot;Romanian Longhorn&quot;</span> <span class="ot">=</span> <span class="st">&quot;RL&quot;</span>,</span>
+<span id="cb470-3"><a href="ggplot2.html#cb470-3" tabindex="-1"></a>                    <span class="st">&quot;Peruvian Vipertooth&quot;</span> <span class="ot">=</span> <span class="st">&quot;PV&quot;</span>,</span>
+<span id="cb470-4"><a href="ggplot2.html#cb470-4" tabindex="-1"></a>                    <span class="st">&quot;Ukrainian Ironbelly&quot;</span> <span class="ot">=</span> <span class="st">&quot;UI&quot;</span>,</span>
+<span id="cb470-5"><a href="ggplot2.html#cb470-5" tabindex="-1"></a>                    <span class="st">&quot;Norwegian Ridgeback&quot;</span> <span class="ot">=</span> <span class="st">&quot;NR&quot;</span>,</span>
+<span id="cb470-6"><a href="ggplot2.html#cb470-6" tabindex="-1"></a>                    <span class="st">&quot;Common Welsh Green&quot;</span> <span class="ot">=</span> <span class="st">&quot;CWG&quot;</span>,</span>
+<span id="cb470-7"><a href="ggplot2.html#cb470-7" tabindex="-1"></a>                    <span class="st">&quot;Swedish Short-Snout&quot;</span> <span class="ot">=</span> <span class="st">&quot;SSS&quot;</span>,</span>
+<span id="cb470-8"><a href="ggplot2.html#cb470-8" tabindex="-1"></a>                    <span class="st">&quot;Chinese Fireball&quot;</span> <span class="ot">=</span> <span class="st">&quot;CF&quot;</span>,</span>
+<span id="cb470-9"><a href="ggplot2.html#cb470-9" tabindex="-1"></a>                    <span class="st">&quot;Hungarian Horntail&quot;</span> <span class="ot">=</span> <span class="st">&quot;HH&quot;</span>,</span>
+<span id="cb470-10"><a href="ggplot2.html#cb470-10" tabindex="-1"></a>                    <span class="st">&quot;Antipodean Opaleye&quot;</span> <span class="ot">=</span> <span class="st">&quot;AO&quot;</span>)</span>
+<span id="cb470-11"><a href="ggplot2.html#cb470-11" tabindex="-1"></a>  </span>
+<span id="cb470-12"><a href="ggplot2.html#cb470-12" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb470-13"><a href="ggplot2.html#cb470-13" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb470-14"><a href="ggplot2.html#cb470-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">age_class =</span> <span class="fu">factor</span>(age_class, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile&quot;</span>,</span>
+<span id="cb470-15"><a href="ggplot2.html#cb470-15" tabindex="-1"></a>                                                  <span class="st">&quot;Subadult&quot;</span>,</span>
+<span id="cb470-16"><a href="ggplot2.html#cb470-16" tabindex="-1"></a>                                                  <span class="st">&quot;Adult&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb470-17"><a href="ggplot2.html#cb470-17" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm, <span class="at">color =</span> age_class)) <span class="sc">+</span></span>
+<span id="cb470-18"><a href="ggplot2.html#cb470-18" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb470-19"><a href="ggplot2.html#cb470-19" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> species, <span class="at">labeller =</span> <span class="fu">labeller</span>(species_labels, </span>
+<span id="cb470-20"><a href="ggplot2.html#cb470-20" tabindex="-1"></a>                                            <span class="at">species =</span> species_labels)) <span class="sc">+</span></span>
+<span id="cb470-21"><a href="ggplot2.html#cb470-21" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Age class&quot;</span>) <span class="sc">+</span></span>
+<span id="cb470-22"><a href="ggplot2.html#cb470-22" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Juvenile (&lt; 1 year)&quot;</span>,</span>
+<span id="cb470-23"><a href="ggplot2.html#cb470-23" tabindex="-1"></a>                                 <span class="st">&quot;Subadult (2-3 years)&quot;</span>,</span>
+<span id="cb470-24"><a href="ggplot2.html#cb470-24" tabindex="-1"></a>                                 <span class="st">&quot;Adult (&gt; 3 years)&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb470-25"><a href="ggplot2.html#cb470-25" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb470-26"><a href="ggplot2.html#cb470-26" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg23-1.png" width="672" /></p>
 </div>
 <div id="error-bars" class="section level3 hasAnchor" number="14.3.11">
 <h3><span class="header-section-number">14.3.11</span> Error bars<a href="ggplot2.html#error-bars" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s look at the content of some dragon diet samples, for a change. What do
 dragons like to eat most?</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="ggplot2.html#cb472-1" tabindex="-1"></a><span class="fu">ggplot</span>(diet, <span class="fu">aes</span>(<span class="at">x =</span> item)) <span class="sc">+</span></span>
-<span id="cb472-2"><a href="ggplot2.html#cb472-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb472-3"><a href="ggplot2.html#cb472-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
-<span id="cb472-4"><a href="ggplot2.html#cb472-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="ggplot2.html#cb471-1" tabindex="-1"></a><span class="fu">ggplot</span>(diet, <span class="fu">aes</span>(<span class="at">x =</span> item)) <span class="sc">+</span></span>
+<span id="cb471-2"><a href="ggplot2.html#cb471-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb471-3"><a href="ggplot2.html#cb471-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb471-4"><a href="ggplot2.html#cb471-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg24-1.png" width="672" /></p>
 <p>Looks like they really like to eat domestic goats, huh? Let’s look at that in
 terms of relative frequency rather than count:</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="ggplot2.html#cb473-1" tabindex="-1"></a><span class="fu">ggplot</span>(diet, <span class="fu">aes</span>(<span class="at">x =</span> item)) <span class="sc">+</span></span>
-<span id="cb473-2"><a href="ggplot2.html#cb473-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop.., <span class="at">group =</span> <span class="dv">1</span>), <span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb473-3"><a href="ggplot2.html#cb473-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb473-4"><a href="ggplot2.html#cb473-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="ggplot2.html#cb472-1" tabindex="-1"></a><span class="fu">ggplot</span>(diet, <span class="fu">aes</span>(<span class="at">x =</span> item)) <span class="sc">+</span></span>
+<span id="cb472-2"><a href="ggplot2.html#cb472-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop.., <span class="at">group =</span> <span class="dv">1</span>), <span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb472-3"><a href="ggplot2.html#cb472-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb472-4"><a href="ggplot2.html#cb472-4" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <pre><code>## Warning: The dot-dot notation (`..prop..`) was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `after_stat(prop)` instead.
 ## This warning is displayed once every 8 hours.
@@ -1047,66 +1048,66 @@ terms of relative frequency rather than count:</p>
 ## generated.</code></pre>
 <p><img src="reproducible-science_files/figure-html/gg25-1.png" width="672" /></p>
 <p>Do different species like to eat different things?</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="ggplot2.html#cb475-1" tabindex="-1"></a>diet <span class="sc">%&gt;%</span> </span>
-<span id="cb475-2"><a href="ggplot2.html#cb475-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb475-3"><a href="ggplot2.html#cb475-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> item)) <span class="sc">+</span></span>
-<span id="cb475-4"><a href="ggplot2.html#cb475-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop.., <span class="at">group =</span> <span class="dv">1</span>), <span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb475-5"><a href="ggplot2.html#cb475-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> species) <span class="sc">+</span></span>
-<span id="cb475-6"><a href="ggplot2.html#cb475-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb475-7"><a href="ggplot2.html#cb475-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="ggplot2.html#cb474-1" tabindex="-1"></a>diet <span class="sc">%&gt;%</span> </span>
+<span id="cb474-2"><a href="ggplot2.html#cb474-2" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb474-3"><a href="ggplot2.html#cb474-3" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> item)) <span class="sc">+</span></span>
+<span id="cb474-4"><a href="ggplot2.html#cb474-4" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..prop.., <span class="at">group =</span> <span class="dv">1</span>), <span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb474-5"><a href="ggplot2.html#cb474-5" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> species) <span class="sc">+</span></span>
+<span id="cb474-6"><a href="ggplot2.html#cb474-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb474-7"><a href="ggplot2.html#cb474-7" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg26-1.png" width="672" /></p>
 <p>For each diet item, we can summarize the mean relative frequency in diet samples
 across species, calculate a standard deviation, and plot it as an error bar.
 Because we are plotting values that we calculate manually instead of using
 <code>geom_bar</code> to count <strong>and</strong> plot, we need to use <code>geom_col</code> instead:</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="ggplot2.html#cb476-1" tabindex="-1"></a><span class="co"># This is the count by item for each species</span></span>
-<span id="cb476-2"><a href="ggplot2.html#cb476-2" tabindex="-1"></a>item_count <span class="ot">&lt;-</span> diet <span class="sc">%&gt;%</span> </span>
-<span id="cb476-3"><a href="ggplot2.html#cb476-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb476-4"><a href="ggplot2.html#cb476-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species, item) <span class="sc">%&gt;%</span> </span>
-<span id="cb476-5"><a href="ggplot2.html#cb476-5" tabindex="-1"></a>  <span class="fu">tally</span>()</span>
-<span id="cb476-6"><a href="ggplot2.html#cb476-6" tabindex="-1"></a></span>
-<span id="cb476-7"><a href="ggplot2.html#cb476-7" tabindex="-1"></a><span class="co"># This is the total number of items per species</span></span>
-<span id="cb476-8"><a href="ggplot2.html#cb476-8" tabindex="-1"></a>tot_items <span class="ot">&lt;-</span> diet <span class="sc">%&gt;%</span> </span>
-<span id="cb476-9"><a href="ggplot2.html#cb476-9" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb476-10"><a href="ggplot2.html#cb476-10" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
-<span id="cb476-11"><a href="ggplot2.html#cb476-11" tabindex="-1"></a>  <span class="fu">tally</span>()</span>
-<span id="cb476-12"><a href="ggplot2.html#cb476-12" tabindex="-1"></a></span>
-<span id="cb476-13"><a href="ggplot2.html#cb476-13" tabindex="-1"></a><span class="co"># Divide to get relative frequency</span></span>
-<span id="cb476-14"><a href="ggplot2.html#cb476-14" tabindex="-1"></a>item_count <span class="ot">&lt;-</span> item_count <span class="sc">%&gt;%</span> </span>
-<span id="cb476-15"><a href="ggplot2.html#cb476-15" tabindex="-1"></a>  <span class="fu">left_join</span>(tot_items, <span class="at">by =</span> <span class="st">&quot;species&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb476-16"><a href="ggplot2.html#cb476-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> n.x<span class="sc">/</span>n.y)</span>
-<span id="cb476-17"><a href="ggplot2.html#cb476-17" tabindex="-1"></a></span>
-<span id="cb476-18"><a href="ggplot2.html#cb476-18" tabindex="-1"></a><span class="co"># Calculate mean and sd for each item across species</span></span>
-<span id="cb476-19"><a href="ggplot2.html#cb476-19" tabindex="-1"></a>rf <span class="ot">&lt;-</span> item_count <span class="sc">%&gt;%</span> </span>
-<span id="cb476-20"><a href="ggplot2.html#cb476-20" tabindex="-1"></a>  <span class="fu">group_by</span>(item) <span class="sc">%&gt;%</span> </span>
-<span id="cb476-21"><a href="ggplot2.html#cb476-21" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_rf =</span> <span class="fu">mean</span>(rel_freq), <span class="at">sd_rf =</span> <span class="fu">sd</span>(rel_freq))</span>
-<span id="cb476-22"><a href="ggplot2.html#cb476-22" tabindex="-1"></a></span>
-<span id="cb476-23"><a href="ggplot2.html#cb476-23" tabindex="-1"></a><span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
-<span id="cb476-24"><a href="ggplot2.html#cb476-24" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb476-25"><a href="ggplot2.html#cb476-25" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
-<span id="cb476-26"><a href="ggplot2.html#cb476-26" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
-<span id="cb476-27"><a href="ggplot2.html#cb476-27" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb476-28"><a href="ggplot2.html#cb476-28" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb476-29"><a href="ggplot2.html#cb476-29" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="ggplot2.html#cb475-1" tabindex="-1"></a><span class="co"># This is the count by item for each species</span></span>
+<span id="cb475-2"><a href="ggplot2.html#cb475-2" tabindex="-1"></a>item_count <span class="ot">&lt;-</span> diet <span class="sc">%&gt;%</span> </span>
+<span id="cb475-3"><a href="ggplot2.html#cb475-3" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-4"><a href="ggplot2.html#cb475-4" tabindex="-1"></a>  <span class="fu">group_by</span>(species, item) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-5"><a href="ggplot2.html#cb475-5" tabindex="-1"></a>  <span class="fu">tally</span>()</span>
+<span id="cb475-6"><a href="ggplot2.html#cb475-6" tabindex="-1"></a></span>
+<span id="cb475-7"><a href="ggplot2.html#cb475-7" tabindex="-1"></a><span class="co"># This is the total number of items per species</span></span>
+<span id="cb475-8"><a href="ggplot2.html#cb475-8" tabindex="-1"></a>tot_items <span class="ot">&lt;-</span> diet <span class="sc">%&gt;%</span> </span>
+<span id="cb475-9"><a href="ggplot2.html#cb475-9" tabindex="-1"></a>  <span class="fu">left_join</span>(dragons, <span class="at">by =</span> <span class="st">&quot;dragon_id&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-10"><a href="ggplot2.html#cb475-10" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-11"><a href="ggplot2.html#cb475-11" tabindex="-1"></a>  <span class="fu">tally</span>()</span>
+<span id="cb475-12"><a href="ggplot2.html#cb475-12" tabindex="-1"></a></span>
+<span id="cb475-13"><a href="ggplot2.html#cb475-13" tabindex="-1"></a><span class="co"># Divide to get relative frequency</span></span>
+<span id="cb475-14"><a href="ggplot2.html#cb475-14" tabindex="-1"></a>item_count <span class="ot">&lt;-</span> item_count <span class="sc">%&gt;%</span> </span>
+<span id="cb475-15"><a href="ggplot2.html#cb475-15" tabindex="-1"></a>  <span class="fu">left_join</span>(tot_items, <span class="at">by =</span> <span class="st">&quot;species&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-16"><a href="ggplot2.html#cb475-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rel_freq =</span> n.x<span class="sc">/</span>n.y)</span>
+<span id="cb475-17"><a href="ggplot2.html#cb475-17" tabindex="-1"></a></span>
+<span id="cb475-18"><a href="ggplot2.html#cb475-18" tabindex="-1"></a><span class="co"># Calculate mean and sd for each item across species</span></span>
+<span id="cb475-19"><a href="ggplot2.html#cb475-19" tabindex="-1"></a>rf <span class="ot">&lt;-</span> item_count <span class="sc">%&gt;%</span> </span>
+<span id="cb475-20"><a href="ggplot2.html#cb475-20" tabindex="-1"></a>  <span class="fu">group_by</span>(item) <span class="sc">%&gt;%</span> </span>
+<span id="cb475-21"><a href="ggplot2.html#cb475-21" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_rf =</span> <span class="fu">mean</span>(rel_freq), <span class="at">sd_rf =</span> <span class="fu">sd</span>(rel_freq))</span>
+<span id="cb475-22"><a href="ggplot2.html#cb475-22" tabindex="-1"></a></span>
+<span id="cb475-23"><a href="ggplot2.html#cb475-23" tabindex="-1"></a><span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
+<span id="cb475-24"><a href="ggplot2.html#cb475-24" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb475-25"><a href="ggplot2.html#cb475-25" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
+<span id="cb475-26"><a href="ggplot2.html#cb475-26" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
+<span id="cb475-27"><a href="ggplot2.html#cb475-27" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb475-28"><a href="ggplot2.html#cb475-28" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb475-29"><a href="ggplot2.html#cb475-29" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg27-1.png" width="672" /></p>
 <p>We can also change the color to match the bars so that only the top part of the
 error bar is visible:</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="ggplot2.html#cb477-1" tabindex="-1"></a><span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
-<span id="cb477-2"><a href="ggplot2.html#cb477-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb477-3"><a href="ggplot2.html#cb477-3" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
-<span id="cb477-4"><a href="ggplot2.html#cb477-4" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
-<span id="cb477-5"><a href="ggplot2.html#cb477-5" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.3</span>,</span>
-<span id="cb477-6"><a href="ggplot2.html#cb477-6" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
-<span id="cb477-7"><a href="ggplot2.html#cb477-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb477-8"><a href="ggplot2.html#cb477-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="ggplot2.html#cb476-1" tabindex="-1"></a><span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
+<span id="cb476-2"><a href="ggplot2.html#cb476-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb476-3"><a href="ggplot2.html#cb476-3" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
+<span id="cb476-4"><a href="ggplot2.html#cb476-4" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
+<span id="cb476-5"><a href="ggplot2.html#cb476-5" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.3</span>,</span>
+<span id="cb476-6"><a href="ggplot2.html#cb476-6" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb476-7"><a href="ggplot2.html#cb476-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb476-8"><a href="ggplot2.html#cb476-8" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg28-1.png" width="672" /></p>
 <p>We can also represent these as points with error bars:</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="ggplot2.html#cb478-1" tabindex="-1"></a><span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
-<span id="cb478-2"><a href="ggplot2.html#cb478-2" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
-<span id="cb478-3"><a href="ggplot2.html#cb478-3" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
-<span id="cb478-4"><a href="ggplot2.html#cb478-4" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
-<span id="cb478-5"><a href="ggplot2.html#cb478-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb478-6"><a href="ggplot2.html#cb478-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="ggplot2.html#cb477-1" tabindex="-1"></a><span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
+<span id="cb477-2"><a href="ggplot2.html#cb477-2" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
+<span id="cb477-3"><a href="ggplot2.html#cb477-3" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
+<span id="cb477-4"><a href="ggplot2.html#cb477-4" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb477-5"><a href="ggplot2.html#cb477-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb477-6"><a href="ggplot2.html#cb477-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg29-1.png" width="672" /></p>
 </div>
 <div id="plot-model-predictions-with-uncertainty" class="section level3 hasAnchor" number="14.3.12">
@@ -1118,24 +1119,24 @@ Let’s go back to the linear regression model that we ran to quantify the
 correlation between total body length and wingspan. We can get model predictions
 for that model, calculate 95% confidence intervals using the standard error,
 and make a plot where the model predictions are overlaid to the raw data points:</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="ggplot2.html#cb479-1" tabindex="-1"></a><span class="co"># Get model predictions for the original values of x</span></span>
-<span id="cb479-2"><a href="ggplot2.html#cb479-2" tabindex="-1"></a>mod_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg, </span>
-<span id="cb479-3"><a href="ggplot2.html#cb479-3" tabindex="-1"></a>        <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb479-4"><a href="ggplot2.html#cb479-4" tabindex="-1"></a></span>
-<span id="cb479-5"><a href="ggplot2.html#cb479-5" tabindex="-1"></a><span class="co"># Calculate 95% CIs from std error</span></span>
-<span id="cb479-6"><a href="ggplot2.html#cb479-6" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean =</span> mod_pred<span class="sc">$</span>fit,</span>
-<span id="cb479-7"><a href="ggplot2.html#cb479-7" tabindex="-1"></a>                    <span class="at">upr =</span> mod_pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> mod_pred<span class="sc">$</span>se.fit,</span>
-<span id="cb479-8"><a href="ggplot2.html#cb479-8" tabindex="-1"></a>                    <span class="at">lwr =</span> mod_pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> mod_pred<span class="sc">$</span>se.fit)</span>
-<span id="cb479-9"><a href="ggplot2.html#cb479-9" tabindex="-1"></a></span>
-<span id="cb479-10"><a href="ggplot2.html#cb479-10" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb479-11"><a href="ggplot2.html#cb479-11" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb479-12"><a href="ggplot2.html#cb479-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
-<span id="cb479-13"><a href="ggplot2.html#cb479-13" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> preds<span class="sc">$</span>lwr, <span class="at">ymax =</span> preds<span class="sc">$</span>upr), </span>
-<span id="cb479-14"><a href="ggplot2.html#cb479-14" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">&quot;gray90&quot;</span>) <span class="sc">+</span></span>
-<span id="cb479-15"><a href="ggplot2.html#cb479-15" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds<span class="sc">$</span>mean), <span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb479-16"><a href="ggplot2.html#cb479-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb479-17"><a href="ggplot2.html#cb479-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb479-18"><a href="ggplot2.html#cb479-18" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="ggplot2.html#cb478-1" tabindex="-1"></a><span class="co"># Get model predictions for the original values of x</span></span>
+<span id="cb478-2"><a href="ggplot2.html#cb478-2" tabindex="-1"></a>mod_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg, </span>
+<span id="cb478-3"><a href="ggplot2.html#cb478-3" tabindex="-1"></a>        <span class="at">se.fit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb478-4"><a href="ggplot2.html#cb478-4" tabindex="-1"></a></span>
+<span id="cb478-5"><a href="ggplot2.html#cb478-5" tabindex="-1"></a><span class="co"># Calculate 95% CIs from std error</span></span>
+<span id="cb478-6"><a href="ggplot2.html#cb478-6" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mean =</span> mod_pred<span class="sc">$</span>fit,</span>
+<span id="cb478-7"><a href="ggplot2.html#cb478-7" tabindex="-1"></a>                    <span class="at">upr =</span> mod_pred<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> mod_pred<span class="sc">$</span>se.fit,</span>
+<span id="cb478-8"><a href="ggplot2.html#cb478-8" tabindex="-1"></a>                    <span class="at">lwr =</span> mod_pred<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> mod_pred<span class="sc">$</span>se.fit)</span>
+<span id="cb478-9"><a href="ggplot2.html#cb478-9" tabindex="-1"></a></span>
+<span id="cb478-10"><a href="ggplot2.html#cb478-10" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb478-11"><a href="ggplot2.html#cb478-11" tabindex="-1"></a>morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb478-12"><a href="ggplot2.html#cb478-12" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
+<span id="cb478-13"><a href="ggplot2.html#cb478-13" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> preds<span class="sc">$</span>lwr, <span class="at">ymax =</span> preds<span class="sc">$</span>upr), </span>
+<span id="cb478-14"><a href="ggplot2.html#cb478-14" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">&quot;gray90&quot;</span>) <span class="sc">+</span></span>
+<span id="cb478-15"><a href="ggplot2.html#cb478-15" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds<span class="sc">$</span>mean), <span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
+<span id="cb478-16"><a href="ggplot2.html#cb478-16" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb478-17"><a href="ggplot2.html#cb478-17" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb478-18"><a href="ggplot2.html#cb478-18" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg30-1.png" width="672" /></p>
 <p>The global aesthetics that I’m using here are those for the raw data. Then in
 <code>geom_line</code> I override the y aesthetic by replacing it with the mean model
@@ -1153,12 +1154,12 @@ counterpart of <code>geom_line</code> is <code>geom_path</code>, which also plot
 order in which they appear in the data, not based on consecutive values of x.
 This is helpful in some situations, for example to plot movement tracks from
 telemetry data. Let’s plot the dragon GPS data:</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="ggplot2.html#cb480-1" tabindex="-1"></a>telemetry <span class="sc">%&gt;%</span> </span>
-<span id="cb480-2"><a href="ggplot2.html#cb480-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
-<span id="cb480-3"><a href="ggplot2.html#cb480-3" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb480-4"><a href="ggplot2.html#cb480-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
-<span id="cb480-5"><a href="ggplot2.html#cb480-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb480-6"><a href="ggplot2.html#cb480-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="ggplot2.html#cb479-1" tabindex="-1"></a>telemetry <span class="sc">%&gt;%</span> </span>
+<span id="cb479-2"><a href="ggplot2.html#cb479-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
+<span id="cb479-3"><a href="ggplot2.html#cb479-3" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
+<span id="cb479-4"><a href="ggplot2.html#cb479-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
+<span id="cb479-5"><a href="ggplot2.html#cb479-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb479-6"><a href="ggplot2.html#cb479-6" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg31-1.png" width="672" /></p>
 </div>
 </div>
@@ -1172,13 +1173,13 @@ and the variation in hue scales linearly with the variation in the underlying
 numerical values. <code>ggplot2</code> integrates with <code>viridis</code> seamlessly so it’s easy
 to transform your plots using <code>viridis</code> color palettes. Let’s demonstrate it
 with the telemetry plot we just made:</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="ggplot2.html#cb481-1" tabindex="-1"></a>telemetry <span class="sc">%&gt;%</span> </span>
-<span id="cb481-2"><a href="ggplot2.html#cb481-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
-<span id="cb481-3"><a href="ggplot2.html#cb481-3" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb481-4"><a href="ggplot2.html#cb481-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
-<span id="cb481-5"><a href="ggplot2.html#cb481-5" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
-<span id="cb481-6"><a href="ggplot2.html#cb481-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb481-7"><a href="ggplot2.html#cb481-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="ggplot2.html#cb480-1" tabindex="-1"></a>telemetry <span class="sc">%&gt;%</span> </span>
+<span id="cb480-2"><a href="ggplot2.html#cb480-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
+<span id="cb480-3"><a href="ggplot2.html#cb480-3" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
+<span id="cb480-4"><a href="ggplot2.html#cb480-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
+<span id="cb480-5"><a href="ggplot2.html#cb480-5" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb480-6"><a href="ggplot2.html#cb480-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb480-7"><a href="ggplot2.html#cb480-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg31b-1.png" width="672" /></p>
 <p>To change the color palette to viridis, I added another layer to my plot with
 the function <code>scale_color_viridis_d</code>. The “d” at the end stands for “discrete”,
@@ -1189,13 +1190,13 @@ parameter rather than a color parameter, I would have used the function
 <code>scale_fill_viridis_d</code>. The one I plotted is the standard viridis palette, but
 there are others to choose from (check out the viridis vignette!) For instance,
 this one is called <code>plasma</code>:</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="ggplot2.html#cb482-1" tabindex="-1"></a>telemetry <span class="sc">%&gt;%</span> </span>
-<span id="cb482-2"><a href="ggplot2.html#cb482-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
-<span id="cb482-3"><a href="ggplot2.html#cb482-3" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb482-4"><a href="ggplot2.html#cb482-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
-<span id="cb482-5"><a href="ggplot2.html#cb482-5" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="sc">+</span></span>
-<span id="cb482-6"><a href="ggplot2.html#cb482-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb482-7"><a href="ggplot2.html#cb482-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="ggplot2.html#cb481-1" tabindex="-1"></a>telemetry <span class="sc">%&gt;%</span> </span>
+<span id="cb481-2"><a href="ggplot2.html#cb481-2" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
+<span id="cb481-3"><a href="ggplot2.html#cb481-3" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
+<span id="cb481-4"><a href="ggplot2.html#cb481-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
+<span id="cb481-5"><a href="ggplot2.html#cb481-5" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="sc">+</span></span>
+<span id="cb481-6"><a href="ggplot2.html#cb481-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb481-7"><a href="ggplot2.html#cb481-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg32-1.png" width="672" /></p>
 </div>
 <div id="arranging-multiple-plots-together-with-patchwork" class="section level2 hasAnchor" number="14.5">
@@ -1209,59 +1210,59 @@ Figure 14.2: Artwork by Allison Horst
 <p>The package <code>patchwork</code> allows you to combine and arrange multiple plots into
 a single plot with several panels. Let’s load in the package (after installing
 it):</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="ggplot2.html#cb483-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="ggplot2.html#cb482-1" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div>
 <p>The first step to combine different plots is
 to save each plot by assigning it its own name. Each will be stored in the
 environment as a <code>ggplot2</code> object. For example, let’s take our diet barplot,
 our regression prediction plot, and our telemetry one. We’ll call these <code>p1</code>,
 <code>p2</code>, and <code>p3</code>:</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="ggplot2.html#cb484-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
-<span id="cb484-2"><a href="ggplot2.html#cb484-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb484-3"><a href="ggplot2.html#cb484-3" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
-<span id="cb484-4"><a href="ggplot2.html#cb484-4" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
-<span id="cb484-5"><a href="ggplot2.html#cb484-5" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.3</span>,</span>
-<span id="cb484-6"><a href="ggplot2.html#cb484-6" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
-<span id="cb484-7"><a href="ggplot2.html#cb484-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
-<span id="cb484-8"><a href="ggplot2.html#cb484-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb484-9"><a href="ggplot2.html#cb484-9" tabindex="-1"></a></span>
-<span id="cb484-10"><a href="ggplot2.html#cb484-10" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> morphometrics <span class="sc">%&gt;%</span> </span>
-<span id="cb484-11"><a href="ggplot2.html#cb484-11" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
-<span id="cb484-12"><a href="ggplot2.html#cb484-12" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> preds<span class="sc">$</span>lwr, <span class="at">ymax =</span> preds<span class="sc">$</span>upr), </span>
-<span id="cb484-13"><a href="ggplot2.html#cb484-13" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">&quot;gray90&quot;</span>) <span class="sc">+</span></span>
-<span id="cb484-14"><a href="ggplot2.html#cb484-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds<span class="sc">$</span>mean), <span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
-<span id="cb484-15"><a href="ggplot2.html#cb484-15" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb484-16"><a href="ggplot2.html#cb484-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb484-17"><a href="ggplot2.html#cb484-17" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span>
-<span id="cb484-18"><a href="ggplot2.html#cb484-18" tabindex="-1"></a></span>
-<span id="cb484-19"><a href="ggplot2.html#cb484-19" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> telemetry <span class="sc">%&gt;%</span> </span>
-<span id="cb484-20"><a href="ggplot2.html#cb484-20" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
-<span id="cb484-21"><a href="ggplot2.html#cb484-21" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
-<span id="cb484-22"><a href="ggplot2.html#cb484-22" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
-<span id="cb484-23"><a href="ggplot2.html#cb484-23" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="sc">+</span></span>
-<span id="cb484-24"><a href="ggplot2.html#cb484-24" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb484-25"><a href="ggplot2.html#cb484-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="ggplot2.html#cb483-1" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(rf, <span class="fu">aes</span>(<span class="at">x =</span> item, <span class="at">y =</span> mean_rf)) <span class="sc">+</span></span>
+<span id="cb483-2"><a href="ggplot2.html#cb483-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb483-3"><a href="ggplot2.html#cb483-3" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_rf <span class="sc">-</span> sd_rf,</span>
+<span id="cb483-4"><a href="ggplot2.html#cb483-4" tabindex="-1"></a>                    <span class="at">ymax =</span> mean_rf <span class="sc">+</span> sd_rf),</span>
+<span id="cb483-5"><a href="ggplot2.html#cb483-5" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.3</span>,</span>
+<span id="cb483-6"><a href="ggplot2.html#cb483-6" tabindex="-1"></a>                <span class="at">color =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-7"><a href="ggplot2.html#cb483-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot; &quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-8"><a href="ggplot2.html#cb483-8" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb483-9"><a href="ggplot2.html#cb483-9" tabindex="-1"></a></span>
+<span id="cb483-10"><a href="ggplot2.html#cb483-10" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> morphometrics <span class="sc">%&gt;%</span> </span>
+<span id="cb483-11"><a href="ggplot2.html#cb483-11" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> total_body_length_cm, <span class="at">y =</span> wingspan_cm)) <span class="sc">+</span></span>
+<span id="cb483-12"><a href="ggplot2.html#cb483-12" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> preds<span class="sc">$</span>lwr, <span class="at">ymax =</span> preds<span class="sc">$</span>upr), </span>
+<span id="cb483-13"><a href="ggplot2.html#cb483-13" tabindex="-1"></a>              <span class="at">fill =</span> <span class="st">&quot;gray90&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-14"><a href="ggplot2.html#cb483-14" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds<span class="sc">$</span>mean), <span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span> </span>
+<span id="cb483-15"><a href="ggplot2.html#cb483-15" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&quot;darkmagenta&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb483-16"><a href="ggplot2.html#cb483-16" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Total body length (cm)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Wingspan (cm)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-17"><a href="ggplot2.html#cb483-17" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span>
+<span id="cb483-18"><a href="ggplot2.html#cb483-18" tabindex="-1"></a></span>
+<span id="cb483-19"><a href="ggplot2.html#cb483-19" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> telemetry <span class="sc">%&gt;%</span> </span>
+<span id="cb483-20"><a href="ggplot2.html#cb483-20" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> utm_x, <span class="at">y =</span> utm_y, <span class="at">color =</span> dragon_id)) <span class="sc">+</span></span>
+<span id="cb483-21"><a href="ggplot2.html#cb483-21" tabindex="-1"></a>  <span class="fu">geom_path</span>() <span class="sc">+</span></span>
+<span id="cb483-22"><a href="ggplot2.html#cb483-22" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;UTM Easting&quot;</span>, <span class="at">y =</span> <span class="st">&quot;UTM Northing&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-23"><a href="ggplot2.html#cb483-23" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;plasma&quot;</span>) <span class="sc">+</span></span>
+<span id="cb483-24"><a href="ggplot2.html#cb483-24" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb483-25"><a href="ggplot2.html#cb483-25" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p>Now we can decide on the arrangement for these plots. The syntax for arranging
 plots uses combinations of three symbols: <code>+</code>, <code>/</code>, and <code>|</code>. Using <code>+</code> is the
 simplest option and it can be combined with the <code>plot_layout</code> function to tweak
 how many rows and columns the plots are arranged on. If no layout is specified,
 plots are aligned in row order:</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="ggplot2.html#cb485-1" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 </span></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="ggplot2.html#cb484-1" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 </span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg35-1.png" width="672" /></p>
 <p>But we can specify that we want them in 2 rows, in which case patchwork will
 fill the first row before starting the next:</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="ggplot2.html#cb486-1" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="ggplot2.html#cb485-1" tabindex="-1"></a>p1 <span class="sc">+</span> p2 <span class="sc">+</span> p3 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg36-1.png" width="672" /></p>
 <p>If we want the first plot to appear alone on the first row and the last two on
 the second row, we can enforce hierarchy with parentheses:</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="ggplot2.html#cb487-1" tabindex="-1"></a>p1 <span class="sc">+</span> (p2 <span class="sc">+</span> p3) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="ggplot2.html#cb486-1" tabindex="-1"></a>p1 <span class="sc">+</span> (p2 <span class="sc">+</span> p3) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg37-1.png" width="672" /></p>
 <p>The symbol <code>|</code> means “side by side” and the symbol <code>/</code> means “one on top of
 each other”. We can combine these to obtain any layout we want:</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="ggplot2.html#cb488-1" tabindex="-1"></a>p1 <span class="sc">|</span> p2 <span class="sc">/</span> p3</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="ggplot2.html#cb487-1" tabindex="-1"></a>p1 <span class="sc">|</span> p2 <span class="sc">/</span> p3</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg38-1.png" width="672" /></p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="ggplot2.html#cb489-1" tabindex="-1"></a>(p1 <span class="sc">|</span> p2) <span class="sc">/</span> p3</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="ggplot2.html#cb488-1" tabindex="-1"></a>(p1 <span class="sc">|</span> p2) <span class="sc">/</span> p3</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg38-2.png" width="672" /></p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="ggplot2.html#cb490-1" tabindex="-1"></a>(p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="ggplot2.html#cb489-1" tabindex="-1"></a>(p1 <span class="sc">/</span> p2) <span class="sc">|</span> p3</span></code></pre></div>
 <p><img src="reproducible-science_files/figure-html/gg38-3.png" width="672" /></p>
 </div>
 <div id="saving-plots" class="section level2 hasAnchor" number="14.6">
@@ -1275,12 +1276,12 @@ in the end. By default, if you don’t assign a name to a plot and specify its
 name in <code>ggsave</code>, it will assume you want to save the last plot you ran. You’ll
 need to give it a path to the folder where you want the file saved, including
 the name you want to give to the file:</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="ggplot2.html#cb491-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;img/patchwork1.tiff&quot;</span>, </span>
-<span id="cb491-2"><a href="ggplot2.html#cb491-2" tabindex="-1"></a>       <span class="at">device =</span> <span class="st">&quot;tiff&quot;</span>, <span class="co"># tiff is the best format for saving publication-quality figures</span></span>
-<span id="cb491-3"><a href="ggplot2.html#cb491-3" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">14</span>, <span class="co"># define the width of the plot in your units of choice</span></span>
-<span id="cb491-4"><a href="ggplot2.html#cb491-4" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">8</span>, <span class="co"># define the height of the plot in your units of choice</span></span>
-<span id="cb491-5"><a href="ggplot2.html#cb491-5" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="co"># define your units of choice (&quot;in&quot; stands for inches)</span></span>
-<span id="cb491-6"><a href="ggplot2.html#cb491-6" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">400</span>) <span class="co"># you can control exactly how many dots per inches your plot has, which comes in handy when the journal guidelines have a specific requirement</span></span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="ggplot2.html#cb490-1" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">filename =</span> <span class="st">&quot;img/patchwork1.tiff&quot;</span>, </span>
+<span id="cb490-2"><a href="ggplot2.html#cb490-2" tabindex="-1"></a>       <span class="at">device =</span> <span class="st">&quot;tiff&quot;</span>, <span class="co"># tiff is the best format for saving publication-quality figures</span></span>
+<span id="cb490-3"><a href="ggplot2.html#cb490-3" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">14</span>, <span class="co"># define the width of the plot in your units of choice</span></span>
+<span id="cb490-4"><a href="ggplot2.html#cb490-4" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">8</span>, <span class="co"># define the height of the plot in your units of choice</span></span>
+<span id="cb490-5"><a href="ggplot2.html#cb490-5" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">&quot;in&quot;</span>, <span class="co"># define your units of choice (&quot;in&quot; stands for inches)</span></span>
+<span id="cb490-6"><a href="ggplot2.html#cb490-6" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">400</span>) <span class="co"># you can control exactly how many dots per inches your plot has, which comes in handy when the journal guidelines have a specific requirement</span></span></code></pre></div>
 <p>Saving plots always requires a bit of back and forth: first, you guesstimate
 the right width and height, then you save the file, then you open it and look at
 it, then you go back to the code with any tweaks until you’re happy with it.</p>
@@ -1315,42 +1316,42 @@ it, then you go back to the code with any tweaks until you’re happy with it.</
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["reproducible-science.pdf", "reproducible-science.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["reproducible-science.pdf", "reproducible-science.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

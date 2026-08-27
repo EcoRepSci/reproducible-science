@@ -1,6 +1,8 @@
 **/.Rproj.user
 .Rproj.user
 .Rhistory
-**/.jpg
-**/.png
+**/*.jpg
+**/*.png
 data/
+*_files/
+*_cache/
